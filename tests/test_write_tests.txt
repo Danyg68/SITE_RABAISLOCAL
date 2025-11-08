@@ -1,1 +1,0 @@
-Test d'écriture dans le dossier tests - test réussi!
