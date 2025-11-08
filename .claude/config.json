@@ -1,0 +1,80 @@
+{
+  "project": "RabaisLocal",
+  "version": "1.0.0",
+  "owner": "Dany Gosselin",
+  "context": {
+    "mission": "Plateforme de rabais locaux avec IA, affiliation 2.0, sans commission",
+    "region": "Trois-Rivières, Québec, Canada",
+    "launch": {
+      "pre_launch": "2025-11-14",
+      "official": "2026-03-19"
+    },
+    "stack": {
+      "automation": "Make",
+      "affiliation": "GoAffPro",
+      "database": "Supabase",
+      "payments": ["Payments.AI", "PayPal"],
+      "funnels": "ClickFunnels",
+      "design": "Canva",
+      "ai": "OpenAI"
+    }
+  },
+  "business_model": {
+    "consommateurs": {
+      "bronze": "9.95$/mois",
+      "argent": "14.95$/mois",
+      "or": "24.95$/mois"
+    },
+    "commercants": {
+      "bronze": "147$/3mois",
+      "argent": "247$/3mois",
+      "or": "397$/3mois"
+    },
+    "affilies": {
+      "trousse_promo750": "47$",
+      "trousse_promo": "77$",
+      "trousse_normale": "147$",
+      "renouvellement": "47$/an",
+      "frais_mensuels": "27$/mois"
+    }
+  },
+  "rules": [
+    "Code COMPLET (pas d'extraits)",
+    "Commentaires en français",
+    "Format compatible ClickFunnels",
+    "Webhooks Make avec payloads JSON",
+    "Payments.AI et PayPal privilégiés",
+    "Gestion d'erreurs incluse",
+    "Responsive mobile-first"
+  ]
+}
+```
+
+4. **Sauvegarde** (Ctrl+S)
+
+---
+
+### **ÉTAPE 3 : Ajoute ton Document Maître**
+
+Crée un fichier **`docs/Document_Maitre.md`** et colle-y tout le contenu de ton document maître (celui que tu m'as fourni au début).
+
+Ça permettra à Claude d'avoir TOUT le contexte RabaisLocal quand tu travailles.
+
+---
+
+## 🚀 **COMMENT UTILISER CLAUDE CODE MAINTENANT**
+
+### **Méthode 1 : Chat intégré** (plus simple)
+
+1. Clique sur l'icône **Claude (🌀)** dans la barre latérale gauche
+2. Tu verras un panneau de chat
+3. Tape tes questions/demandes
+4. Claude génère le code directement dans VS Code
+
+**Exemple :**
+```
+"Crée un scénario Make pour inscription affilié RabaisLocal :
+- Webhook ClickFunnels
+- Création dans GoAffPro
+- Email de bienvenue
+- Log Google Sheets"
