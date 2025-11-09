@@ -397,6 +397,136 @@ Phase B - Beta (Février - Mai 2026):
 - Retool Admin complet
 - Rapports TPS/TVQ automatiques
 
+
+# ============================================================================
+# 🏗️ STRUCTURE MODULAIRE - ORGANISATION DES MODULES
+# ============================================================================
+
+## Principe directeur
+Chaque module est une unité indépendante, isolée, et réutilisable.
+Les modules partagent une infrastructure commune, mais NE S'ENTRELACENT PAS.
+
+## Structure de fichiers pour CHAQUE MODULE
+
+Chaque module X doit avoir cette structure :
+
+modules/
+└── module_x_NOM/
+    ├── make/
+    │   ├── webhook_*.json              (1 ou plusieurs webhooks)
+    │   ├── README.md                   (documentation Make)
+    │   └── payloads/
+    │       └── exemple_*.json          (exemples de test)
+    │
+    ├── supabase/
+    │   ├── 01_create_tables.sql        (création tables)
+    │   ├── 02_add_indexes.sql          (indexes et optimisations)
+    │   ├── 03_add_rls.sql              (Row Level Security)
+    │   ├── 04_add_functions.sql        (fonctions SQL)
+    │   └── 05_add_triggers.sql         (triggers automatiques)
+    │
+    ├── tests/
+    │   ├── test_*.sh                   (tests bash/curl)
+    │   ├── test_*.json                 (payloads de test)
+    │   └── README.md                   (guide tests)
+    │
+    ├── docs/
+    │   ├── INSTALLATION.md             (comment installer ce module)
+    │   ├── ARCHITECTURE.md             (comment ça marche)
+    │   ├── API.md                      (endpoints et webhooks)
+    │   ├── TROUBLESHOOTING.md          (erreurs et solutions)
+    │   └── DEPENDENCIES.md             (qui dépend de quoi ?)
+    │
+    ├── config.json                     (config spécifique au module)
+    └── README.md                       (index du module)
+
+## Règles d'organisation
+
+1. ✅ JAMAIS mettre les fichiers d'un module ailleurs que dans son dossier
+2. ✅ Nommer clairement : module_A_users, module_B_credits, etc.
+3. ✅ Numéroter les fichiers SQL : 01_, 02_, 03_, etc. (ordre d'exécution)
+4. ✅ Mettre la documentation DANS le dossier du module
+5. ✅ Chaque module doit pouvoir être installé INDÉPENDAMMENT
+6. ✅ Les dépendances entre modules doivent être DOCUMENTÉES
+
+## Infrastructure partagée (HORS modules)
+
+infrastructure/
+├── database/
+│   └── migrations/        (migrations globales Supabase)
+├── make/
+│   └── shared_workflows/  (workflows réutilisables)
+└── security/
+    └── rls_policies.sql   (politiques de sécurité globales)
+
+## INTERDICTIONS
+
+❌ Ne PAS mélanger les fichiers de modules différents
+❌ Ne PAS créer de fichiers "génériques" qui font plusieurs modules
+❌ Ne PAS imbriquer les modules les uns dans les autres
+❌ Ne PAS oublier la documentation dans chaque module
+
+## Exemple : Créer le Module B (Crédits & Paiements)
+
+Si tu demandes : "Crée le Module B pour gérer les crédits"
+
+Claude Code DOIT créer :
+
+modules/module_b_credits/
+├── make/
+│   ├── webhook_achat_credits.json
+│   ├── webhook_utilisation_credits.json
+│   ├── webhook_remboursement_credits.json
+│   ├── README.md
+│   └── payloads/
+│       ├── exemple_achat_50_credits.json
+│       ├── exemple_utilisation_3_credits.json
+│       └── exemple_remboursement_10_credits.json
+├── supabase/
+│   ├── 01_create_tables.sql
+│   ├── 02_add_indexes.sql
+│   ├── 03_add_rls.sql
+│   ├── 04_add_functions.sql
+│   └── 05_add_triggers.sql
+├── tests/
+│   ├── test_achat_credits.sh
+│   ├── test_utilisation_credits.sh
+│   └── README.md
+├── docs/
+│   ├── INSTALLATION.md
+│   ├── ARCHITECTURE.md
+│   ├── DEPENDENCIES.md (dépend de Module A: users)
+│   └── TROUBLESHOOTING.md
+├── config.json
+└── README.md
+
+## Matrice de dépendances
+
+Module A (Users)
+  └─> Module B (Credits)
+  └─> Module C (Offers)
+  └─> Module E (Affiliates)
+
+Module B (Credits)
+  └─> Module C (Offers) - réservations utilisent les crédits
+
+Module C (Offers)
+  └─> Module F (IA) - IA génère les offres
+
+Module E (Affiliates)
+  └─> Module B (Credits) - commissions = crédits transférés
+
+Cette dépendance doit être DOCUMENTÉE dans chaque module.
+
+## Index global
+
+À la racine du dossier modules/, créer :
+
+modules/README.md
+- Liste de tous les modules
+- Matrice de dépendances (qui dépend de qui)
+- Ordre recommandé d'installation
+- Liens vers chaque module
 ---
 
 **Dernière mise à jour**: 9 novembre 2025
