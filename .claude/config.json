@@ -1,80 +1,602 @@
 {
-  "project": "RabaisLocal",
-  "version": "1.0.0",
-  "owner": "Dany Gosselin",
-  "context": {
-    "mission": "Plateforme de rabais locaux avec IA, affiliation 2.0, sans commission",
-    "region": "Trois-Rivières, Québec, Canada",
-    "launch": {
-      "pre_launch": "2025-11-14",
-      "official": "2026-03-19"
+  "project": {
+    "name": "RabaisLocal",
+    "version": "2.0.0",
+    "owner": "Dany Gosselin",
+    "team_members": [
+      {
+        "name": "Dany Gosselin",
+        "role": "Fondateur / CEO",
+        "expertise": "Visionnaire, stratégie, affiliation 2.0"
+      },
+      {
+        "name": "Amélie (15%)",
+        "role": "Associée",
+        "expertise": "Marketing / Recrutement (progression)"
+      },
+      {
+        "name": "Roxanne (15%, adjointe)",
+        "role": "Associée",
+        "expertise": "Opérations / Support client (progression)"
+      }
+    ]
+  },
+
+  "mission": {
+    "vision": "Devenir la plateforme québécoise de référence pour l'économie locale intelligente",
+    "mission": "Offrir une plateforme sans commission qui relie consommateurs, commerçants et affiliés via rabais exclusifs propulsés par l'IA",
+    "values": [
+      "Transparence (zéro commission cachée)",
+      "Automatisation intelligente",
+      "Économie durable (3% redistribués)",
+      "Accessibilité universelle"
+    ],
+    "target_region": ["Trois-Rivières", "Québec", "Canada"],
+    "market_position": "Entre Groupon/Tuango et Panier Bleu, avec IA + zéro commission + économie circulaire"
+  },
+
+  "timeline": {
+    "pre_launch": "2025-11-14",
+    "official_launch": "2026-03-19",
+    "phases": {
+      "phase_a_mvp": {
+        "name": "MVP Pré-lancement",
+        "start": "2025-11-01",
+        "end": "2026-01-31",
+        "deliverables": [
+          "3 tunnels d'inscription (consumer, merchant, affiliate)",
+          "Base Supabase fonctionnelle",
+          "Automatisations Make essentielles",
+          "Webhooks GoAffPro reliés",
+          "Emails onboarding"
+        ],
+        "target_users": 2600
+      },
+      "phase_b_beta": {
+        "name": "Automatisation & IA",
+        "start": "2026-02-01",
+        "end": "2026-05-31",
+        "deliverables": [
+          "Paiements entrants (Payments.AI + PayPal)",
+          "IA Commerçant v1 (génération promos)",
+          "IA Consommateur v1 (recommandations)",
+          "Retool Admin complet",
+          "Rapports TPS/TVQ automatiques"
+        ],
+        "target_users": 10000,
+        "target_merchants": 500
+      },
+      "phase_c_launch": {
+        "name": "Lancement complet",
+        "start": "2026-06-01",
+        "end": "2026-03-19",
+        "deliverables": [
+          "App mobile (iOS + Android)",
+          "IA Affilié v1 (coaching + scripts)",
+          "API publique (partenaires)",
+          "Pentest externe",
+          "SEO régional",
+          "Campagne lancement grand public"
+        ],
+        "target_users": 50000,
+        "target_merchants": 5000,
+        "target_affiliates": 2500
+      }
+    }
+  },
+
+  "tech_stack": {
+    "core": {
+      "database": "Supabase (PostgreSQL + Auth + Storage + Edge Functions)",
+      "backend_automation": "Make (ex-Integromat)",
+      "frontend": "Webflow / ClickFunnels 2.0",
+      "admin": "Retool",
+      "hosting": "Vercel / Supabase Cloud (Canada)"
     },
-    "stack": {
-      "automation": "Make",
+    "services": {
       "affiliation": "GoAffPro",
-      "database": "Supabase",
       "payments": ["Payments.AI", "PayPal"],
-      "funnels": "ClickFunnels",
-      "design": "Canva",
-      "ai": "OpenAI"
+      "ai": "OpenAI (GPT-4o-mini)",
+      "design_generation": "Canva API + HeyGen",
+      "email": "MailerSend",
+      "notifications": "OneSignal + Make",
+      "analytics": ["Metabase", "Posthog", "Google Analytics 4"]
+    },
+    "development": {
+      "prototyping": "Claude Code + Bolt.new",
+      "design": "Figma / Canva",
+      "mobile": "FlutterFlow / React Native (2026)",
+      "version_control": "GitHub"
     }
   },
-  "business_model": {
-    "consommateurs": {
-      "bronze": "9.95$/mois",
-      "argent": "14.95$/mois",
-      "or": "24.95$/mois"
+
+  "modules": {
+    "A_users_auth": {
+      "name": "Utilisateurs & Authentification",
+      "priority": "🅰️ MVP",
+      "status": "✅ Live",
+      "features": [
+        "3 tunnels d'inscription (consumer/merchant/affiliate)",
+        "Supabase Auth (email + Google + Facebook + Apple)",
+        "Validation email simple",
+        "Récupération mot de passe",
+        "Gestion rôles multiples",
+        "Profil enrichi (photo, ville, notifications, historique)"
+      ],
+      "automations": ["Webhook_Signup → Supabase → Tag → Email MailerSend"]
     },
-    "commercants": {
-      "bronze": "147$/3mois",
-      "argent": "247$/3mois",
-      "or": "397$/3mois"
+    "B_credits_wallet": {
+      "name": "Système de Crédits & Portefeuille",
+      "priority": "🅰️ MVP",
+      "status": "🔄 En cours",
+      "features": [
+        "Achat crédits (Payments.AI / PayPal)",
+        "Crédits gratuits mensuels (non cumulables)",
+        "Historique complet (achats, utilisations, transferts)",
+        "Double portefeuille (compte principal + RabaisLocal)",
+        "Conversion 1 crédit = 0,35–0,50 $",
+        "Prélèvement mensuel 27 $ automatique",
+        "Renouvellement annuel 47 $ sur compte RabaisLocal"
+      ],
+      "automations": ["Payment_Credits → Supabase → Retrait 27$ mensuel → Renouvellement 47$ annuel"]
     },
-    "affilies": {
-      "trousse_promo750": "47$",
-      "trousse_promo": "77$",
-      "trousse_normale": "147$",
-      "renouvellement": "47$/an",
-      "frais_mensuels": "27$/mois"
+    "C_merchants": {
+      "name": "Commerçants",
+      "priority": "🅰️ MVP",
+      "status": "🔄 En cours",
+      "features": [
+        "Création offres via IA (texte + visuel Canva)",
+        "Gestion offres actives (dates, quotas, visibilité)",
+        "Statistiques temps réel (vues, réservations, conversion)",
+        "Plans : Gratuit (2/mois) / Bronze (50/mois) / Argent (85/mois) / Or (illimité)",
+        "Collaboration entre commerces (offres groupées)",
+        "Tableau de bord commercial (Retool + Supabase)"
+      ],
+      "pricing": {
+        "free": "0 $ (2 promos/mois)",
+        "bronze": "147 $ (3 mois, 50 promos/mois)",
+        "silver": "247 $ (3 mois, 85 promos/mois)",
+        "gold": "397 $ (3 mois, illimité)"
+      },
+      "automations": ["Webhook_Commercant_NewPromo → IA Canva → Supabase → Notif MailerSend"]
+    },
+    "D_consumers": {
+      "name": "Consommateurs",
+      "priority": "🅰️ MVP",
+      "status": "🔄 En cours",
+      "features": [
+        "Accès offres par ville/catégorie/IA",
+        "Carte membre virtuelle (QR code unique par offre)",
+        "Historique rabais utilisés",
+        "Système d'avis/notation (filtre IA anti-abus)",
+        "Notifications géolocalisées",
+        "Partage social (Facebook, TikTok, YouTube)",
+        "Concours/défis pour crédits bonus"
+      ],
+      "pricing": {
+        "bronze": "9.95 $/mois",
+        "silver": "14.95 $/mois",
+        "gold": "24.95 $/mois"
+      },
+      "automations": ["Webhook_Reservation → Débit crédits → QR code → Email confirmation"]
+    },
+    "E_affiliates": {
+      "name": "Affiliés (Programme 2.0)",
+      "priority": "🅰️ MVP",
+      "status": "🔄 En cours",
+      "features": [
+        "Inscription + contrat électronique",
+        "Tableau de bord GoAffPro intégré (iFrame/API)",
+        "Commissions en temps réel",
+        "Rangs et niveaux (jusqu'à 15 niveaux)",
+        "Classement et gamification",
+        "Paiements automatisés GoAffPro → Payments.AI",
+        "Formation IA (scripts, plans d'action)"
+      ],
+      "kits": {
+        "promo_750": "47 $",
+        "promo": "77 $",
+        "normal": "147 $",
+        "renewal_annual": "47 $/an",
+        "monthly_fees": "27 $/mois"
+      },
+      "automations": ["Webhook_Affilie_New → GoAffPro → Contrat PDF → Supabase tag"]
+    },
+    "F_ai_agents": {
+      "name": "Intelligence Artificielle (3 agents)",
+      "priority": "🅱️ BETA",
+      "status": "🔄 En cours",
+      "features": [
+        "Agent Commerçant : génère texte + visuel promo en < 5 min",
+        "Agent Consommateur : recommande offres personnalisées (géoloc + préférences)",
+        "Agent Affilié : scripts, plans d'action, coaching",
+        "Chat textuel (vocal 2026)",
+        "Historique conversations ('Mes conversations IA')",
+        "Limites mensuelles par forfait",
+        "Filtrage contenu inapproprié",
+        "Localisé québécois (expressions régionales)"
+      ],
+      "hosting": "OpenAI API (GPT-4o-mini)",
+      "automations": ["Webhook_IA_Request → OpenAI → Supabase ai_logs → Frontend"]
+    },
+    "G_admin_retool": {
+      "name": "Administrateur (Retool)",
+      "priority": "🅰️ MVP",
+      "status": "🔄 Proto",
+      "features": [
+        "Tableau de bord global KPIs temps réel",
+        "Gestion rôles et accès (RBAC)",
+        "CRUD complet : utilisateurs, offres, crédits, paiements",
+        "Module Support (tickets internes)",
+        "Logs d'audit automatiques",
+        "Vue simplifiée pour assistants",
+        "Gestion remboursements / litiges",
+        "Mode 'Sandbox' pour tests"
+      ],
+      "access_roles": [
+        "admin_principal (global)",
+        "moderator_support (tickets seulement)",
+        "comptable (paiements/TPS-TVQ)"
+      ]
+    },
+    "H_legal_compliance": {
+      "name": "Légal & Conformité",
+      "priority": "🅰️ MVP",
+      "status": "✅ Live",
+      "features": [
+        "CGU, politique confidentialité, mentions légales",
+        "Consentement explicite (case à cocher)",
+        "Gestion consentements Loi 25 (consent_log)",
+        "Bandeau cookies + centre préférences",
+        "Signature électronique contrats affiliés",
+        "Effacement données (24 mois inactivité)",
+        "Export données utilisateur (ZIP/JSON)",
+        "Conformité TPS/TVQ",
+        "Page mise à jour légales automatique"
+      ],
+      "standards": ["Loi 25 (Québec)", "RGPD", "OWASP", "ISO/IEC 27001 inspiration"]
+    },
+    "I_marketing_comms": {
+      "name": "Marketing & Communication",
+      "priority": "🅰️ MVP",
+      "status": "✅ Live",
+      "features": [
+        "Pages publiques Webflow/ClickFunnels",
+        "Campagnes par région (géolocalisation)",
+        "Blog/magazine RabaisLocal (SEO + actualités)",
+        "Chatbot IA d'accueil",
+        "Emailing automatisé (MailerSend)",
+        "Compteur dynamique (preuve sociale)",
+        "UTM tracking (Google Analytics)",
+        "Intégration réseaux sociaux (Facebook, TikTok, Instagram)",
+        "Vidéos explicatives (HeyGen / Canva)"
+      ]
+    },
+    "J_analytics_kpi": {
+      "name": "Analytics & Performance",
+      "priority": "🅱️ BETA",
+      "status": "🔄 En cours",
+      "features": [
+        "Intégration Metabase / Posthog",
+        "Tableau de bord Retool : trafic, inscriptions, ventes, conversion",
+        "Suivi UTM et tracking affilié",
+        "Rapport mensuel automatisé (Make → Sheets → PDF)",
+        "Analytics public (compteur offres/membres)",
+        "Score IA performance (analyse texte/visuel promos)",
+        "KPIs par rôle (affilié, commerçant, consommateur)",
+        "Comparaison régionale"
+      ]
+    },
+    "K_security_infrastructure": {
+      "name": "Sécurité & Infrastructure",
+      "priority": "🅱️ BETA",
+      "status": "🔄 En cours",
+      "features": [
+        "SSL/HTTPS sur tous sous-domaines",
+        "2FA optionnel pour affiliés/commerçants",
+        "reCAPTCHA sur tous formulaires publics",
+        "Système anti-fraude (double compte, faux rabais)",
+        "Logs audit complets (logs_audit)",
+        "Sauvegarde quotidienne automatique (Supabase → Google Drive)",
+        "Audit sécurité annuel (externe)",
+        "Mode maintenance IA en cas de panne",
+        "Alertes automatiques (anomalies / fraude)"
+      ]
+    },
+    "L_cms_content": {
+      "name": "Gestion de Contenu (CMS)",
+      "priority": "🅱️ BETA",
+      "status": "🔄 Proto",
+      "features": [
+        "CMS Webflow (pages publiques)",
+        "CMS Supabase (Retool admin) pour promotions/témoignages",
+        "Création pages commerçants automatique (/commerce.rabaislocal.com/nom)",
+        "Gestion catégories/filtres/régions",
+        "Publication programmée (Make)",
+        "Historique modifications + restauration"
+      ]
+    },
+    "M_future_expansion": {
+      "name": "Expansion Future",
+      "priority": "🅲 POST-LAUNCH",
+      "status": "Planifié",
+      "features": [
+        "Application mobile native (iOS/Android)",
+        "Push notifications géolocalisées",
+        "Carte interactive des offres",
+        "Mode hors ligne",
+        "Scan QR intégré",
+        "API publique RabaisLocal",
+        "Documentation API (Swagger)",
+        "Multi-langue (français/anglais)",
+        "Support multi-province (TPS/TVQ auto)",
+        "Architecture IA embarquée (app)"
+      ]
     }
   },
-  "rules": [
-    "Code COMPLET (pas d'extraits)",
-    "Commentaires en français",
-    "Format compatible ClickFunnels",
-    "Webhooks Make avec payloads JSON",
-    "Payments.AI et PayPal privilégiés",
-    "Gestion d'erreurs incluse",
-    "Responsive mobile-first"
-  ]
+
+  "database": {
+    "engine": "Supabase (PostgreSQL)",
+    "region": "Canada (conformité Loi 25)",
+    "backup": "Quotidienne (7 jours glissants)",
+    "rls_enabled": true,
+    "main_tables": [
+      "users",
+      "credits",
+      "merchants",
+      "offers",
+      "reservations",
+      "reviews",
+      "affiliates",
+      "commissions",
+      "payments",
+      "ai_logs",
+      "logs_audit",
+      "legal_consents",
+      "notifications_log"
+    ]
+  },
+
+  "financial": {
+    "commission_model": "Zéro commission commerçants",
+    "affiliate_program": "2.0 (GoAffPro)",
+    "revenue_streams": [
+      "Abonnements commerçants (Bronze/Argent/Or)",
+      "Trousses d'affiliation (47/77/147 $)",
+      "Frais mensuels affiliés (27 $/mois)",
+      "Renouvellements annuels (47 $ affiliés)",
+      "TPS/TVQ collectées (5% + 9.975%)"
+    ],
+    "redistribution": {
+      "community_fund": "3% des revenus redistribués à la communauté"
+    },
+    "payment_processors": ["Payments.AI", "PayPal"]
+  },
+
+  "rules": {
+    "code_standards": [
+      "Code COMPLET (pas d'extraits)",
+      "Commentaires en FRANÇAIS",
+      "Format compatible ClickFunnels",
+      "Webhooks Make avec payloads JSON",
+      "Payments.AI et PayPal privilégiés",
+      "Gestion d'erreurs incluse",
+      "Responsive mobile-first",
+      "Idempotence sur paiements/réservations",
+      "Logs + monitoring"
+    ],
+    "security": [
+      "HTTPS/TLS 1.2+",
+      "RLS (Row Level Security) activé Supabase",
+      "JWT Bearer + X-API-Key",
+      "HMAC-SHA256 webhooks",
+      "reCAPTCHA formulaires publics",
+      "2FA optionnel (affiliés/commerçants)",
+      "Logs audit complets"
+    ],
+    "compliance": [
+      "Loi 25 (Québec)",
+      "RGPD optionnel",
+      "TPS/TVQ collectées/rapportées",
+      "Consentements tracés",
+      "Données inactives anonymisées (24 mois)",
+      "Sauvegardes quotidiennes"
+    ]
+  },
+
+  "kpis_targets": {
+    "2026": {
+      "consumer_signups": 50000,
+      "active_consumers": 10000,
+      "merchants": 5000,
+      "merchant_paying_percent": "40%",
+      "affiliates_active": 2500,
+      "affiliate_builder_plus": "25%",
+      "ai_generated_offers_percent": "60%",
+      "offer_to_reservation_rate": "30%",
+      "nps_score": 8,
+      "platform_uptime": "99.5%",
+      "support_ticket_resolution": "< 24h"
+    },
+    "2027": {
+      "canada_expansion": "Actif",
+      "international_francophone": "En pilote",
+      "mobile_app_users": "15000+",
+      "api_partners": "10+",
+      "foundation_launched": true
+    }
+  },
+
+  "team_structure": {
+    "founder_ceo": {
+      "name": "Dany Gosselin",
+      "email": "dany@rabaislocal.com",
+      "roles": ["Visionnaire", "Stratégie", "Fondateur"]
+    },
+    "co_founders": [
+      {
+        "name": "Amélie (fille)",
+        "equity": "15%",
+        "role": "Marketing / Recrutement (progression)",
+        "current_status": "Intéressée"
+      },
+      {
+        "name": "Roxanne (fille)",
+        "equity": "15%",
+        "role": "Adjointe / Opérations (progression)",
+        "current_status": "Intéressée"
+      }
+    ],
+    "key_hires_needed": [
+      {
+        "role": "Architecte technique (CTO)",
+        "type": "Freelance senior",
+        "hours_per_week": "10-15",
+        "when": "Novembre 2025"
+      },
+      {
+        "role": "Designer UX/UI",
+        "type": "Freelance",
+        "weeks": "3-4",
+        "when": "Décembre 2025"
+      },
+      {
+        "role": "Intégrateur Make / Supabase",
+        "type": "Freelance / Apprenticeship",
+        "hours_per_week": "20",
+        "when": "Novembre 2025"
+      },
+      {
+        "role": "Développeur Backend spécialisé Supabase",
+        "type": "Freelance/Temps partiel",
+        "when": "Février 2026"
+      }
+    ]
+  },
+
+  "subdomains": {
+    "www": {
+      "domain": "rabaislocal.com",
+      "purpose": "Site principal public",
+      "type": "Webflow / ClickFunnels",
+      "access": "Public"
+    },
+    "app": {
+      "domain": "app.rabaislocal.com",
+      "purpose": "Interface utilisateur (dashboard)",
+      "type": "Supabase Auth + Webflow/ClickFunnels",
+      "access": "Authentifié"
+    },
+    "admin": {
+      "domain": "admin.rabaislocal.com",
+      "purpose": "Panneau Retool",
+      "type": "Retool SSO",
+      "access": "Restreint (admin seulement)"
+    },
+    "ai": {
+      "domain": "ai.rabaislocal.com",
+      "purpose": "Agents IA (chat + API)",
+      "type": "OpenAI + Make",
+      "access": "Authentifié"
+    },
+    "api": {
+      "domain": "api.rabaislocal.com",
+      "purpose": "API interne & externe future",
+      "type": "Edge Functions Supabase",
+      "access": "Token API"
+    },
+    "marketing": {
+      "domain": "marketing.rabaislocal.com",
+      "purpose": "Funnels pré-lancement",
+      "type": "ClickFunnels",
+      "access": "Public"
+    }
+  },
+
+  "key_integrations": [
+    {
+      "service": "Supabase",
+      "role": "Base de données centralisée",
+      "status": "✅ Active"
+    },
+    {
+      "service": "Make",
+      "role": "Automatisations et webhooks",
+      "status": "✅ Active"
+    },
+    {
+      "service": "GoAffPro",
+      "role": "Gestion programme d'affiliation",
+      "status": "✅ Configurée"
+    },
+    {
+      "service": "Payments.AI",
+      "role": "Traitement paiements",
+      "status": "🔄 En test"
+    },
+    {
+      "service": "PayPal",
+      "role": "Alternative paiements",
+      "status": "🔄 En test"
+    },
+    {
+      "service": "OpenAI",
+      "role": "3 agents IA",
+      "status": "✅ En dev"
+    },
+    {
+      "service": "Canva API",
+      "role": "Génération visuels promos",
+      "status": "🔄 À intégrer"
+    },
+    {
+      "service": "MailerSend",
+      "role": "Emails automatisés",
+      "status": "✅ Active"
+    },
+    {
+      "service": "OneSignal",
+      "role": "Push notifications",
+      "status": "🔄 À configurer"
+    },
+    {
+      "service": "Metabase / Posthog",
+      "role": "Analytics et KPIs",
+      "status": "🔄 À brancher"
+    },
+    {
+      "service": "Retool",
+      "role": "Interface admin",
+      "status": "🔄 En dev"
+    },
+    {
+      "service": "Webflow",
+      "role": "Pages publiques + CMS",
+      "status": "✅ En dev"
+    }
+  ],
+
+  "vision_long_term": {
+    "tagline": "RabaisLocal n'est pas un simple site de rabais — c'est un écosystème d'économie intelligente",
+    "2027_objectives": [
+      "IA prédictive (analyse tendances locales)",
+      "Tableau de bord économique provincial",
+      "Partenariats municipalités & chambres de commerce",
+      "Extension Canada + francophonie",
+      "Fondation RabaisLocal (redistribution 3% revenus)"
+    ],
+    "mission_impact": "Reddonner le pouvoir économique aux citoyens via l'intelligence locale et l'automatisation"
+  },
+
+  "owner_notes": {
+    "dany_personality": "Spirituel (pendule, cartes tarot, ange gardien, loi d'attraction), IA enthusiaste, OVNI curieux",
+    "dany_dreams": [
+      "Famille en santé",
+      "Maison au bord de l'eau",
+      "Décapotable motorisée",
+      "Entraînement régulier",
+      "Entreprise familiale généreuse et engagée"
+    ],
+    "family_involvement": "Amélie (15%, marketing/recrutement) et Roxanne (15%, adjointe/ops) travaillent avec Dany"
+  }
 }
-```
-
-4. **Sauvegarde** (Ctrl+S)
-
----
-
-### **ÉTAPE 3 : Ajoute ton Document Maître**
-
-Crée un fichier **`docs/Document_Maitre.md`** et colle-y tout le contenu de ton document maître (celui que tu m'as fourni au début).
-
-Ça permettra à Claude d'avoir TOUT le contexte RabaisLocal quand tu travailles.
-
----
-
-## 🚀 **COMMENT UTILISER CLAUDE CODE MAINTENANT**
-
-### **Méthode 1 : Chat intégré** (plus simple)
-
-1. Clique sur l'icône **Claude (🌀)** dans la barre latérale gauche
-2. Tu verras un panneau de chat
-3. Tape tes questions/demandes
-4. Claude génère le code directement dans VS Code
-
-**Exemple :**
-```
-"Crée un scénario Make pour inscription affilié RabaisLocal :
-- Webhook ClickFunnels
-- Création dans GoAffPro
-- Email de bienvenue
-- Log Google Sheets"
