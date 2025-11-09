@@ -1,0 +1,404 @@
+# 🚀 Claude Code Rules for RabaisLocal
+# Règles de codage et standards pour le projet RabaisLocal
+# Fichier lu automatiquement par Claude Code dans VS Code
+
+## 📋 CONTEXTE DU PROJET
+
+project_name = "RabaisLocal"
+project_type = "Plateforme d'économie locale intelligente"
+founder = "Dany Gosselin"
+launch_date = "19 mars 2026"
+region = "Québec, Canada"
+repository = "GitHub (rabaislocal)"
+
+## 🏗️ STACK TECHNOLOGIQUE
+
+### Backend & Base de données
+- Database: Supabase (PostgreSQL)
+- Authentification: Supabase Auth
+- Backend APIs: Edge Functions Supabase
+- Automatisations: Make (ex-Integromat)
+
+### Frontend & CMS
+- Frontend principal: Webflow / ClickFunnels 2.0
+- Admin dashboard: Retool
+- Design & visuels: Figma / Canva
+
+### Services externes
+- Affiliation: GoAffPro
+- Paiements: Payments.AI + PayPal
+- IA: OpenAI (GPT-4o-mini)
+- Design generation: Canva API + HeyGen
+- Emails: MailerSend
+- Notifications: OneSignal + Make
+- Analytics: Metabase + Posthog + Google Analytics 4
+
+### Hosting
+- Cloud: Supabase Cloud (Canada)
+- Frontend: Vercel / Webflow
+- Version control: GitHub
+
+## 📚 MODULES PRINCIPAUX (A → M)
+
+A. Utilisateurs & Authentification
+B. Système de Crédits & Portefeuille
+C. Commerçants
+D. Consommateurs
+E. Affiliés (Programme 2.0)
+F. Intelligence Artificielle (3 agents)
+G. Administrateur (Retool)
+H. Légal & Conformité (Loi 25)
+I. Marketing & Communication
+J. Analytics & Performance
+K. Sécurité & Infrastructure
+L. Gestion de Contenu (CMS)
+M. Expansion Future
+
+## ✍️ STANDARDS DE CODE
+
+### Langue
+- Tous les commentaires: FRANÇAIS
+- Toutes les variables: FRANÇAIS (sauf conventions API)
+- Noms de fonctions: français_avec_underscores
+- Exemples: "creer_utilisateur", "valider_paiement", "generer_qr_code"
+
+### Format & Complétude
+- Code COMPLET, jamais d'extraits ou de pseudo-code
+- Fonctionnalité 100% testable et déployable
+- Commentaires clairs et détaillés
+- Gestion d'erreurs obligatoire
+- Logging et audit trace requis
+
+### Structure
+- Responsive mobile-first
+- Accessible (WCAG AA minimum)
+- Performance optimisée (< 3s latence API)
+- Scalable (compatible montée en charge 1000+ req/min)
+
+### JSON/API
+- Format: JSON valide, pas de trailing commas
+- Indentation: 2 espaces
+- Nommage: camelCase pour les clés
+- Validation: schéma clair fourni
+
+### SQL (Supabase)
+- Format: PostgreSQL standard
+- Indentation: 2 espaces
+- Commentaires: -- en français
+- RLS (Row Level Security) obligatoire sur tables sensibles
+- Indexes sur colonnes critiques (email, dates)
+
+### JavaScript/TypeScript
+- Format: ESLint standard
+- Indentation: 2 espaces
+- Const par défaut, let si mutation nécessaire
+- Arrow functions préférées
+- Async/await pour promesses
+
+### Make (Automatisations)
+- Idempotence: obligatoire sur paiements/réservations
+- Signature HMAC: vérifiée sur webhooks externes
+- Logs: exportés quotidiennement en CSV
+- Erreurs: catchées et loguées, pas de timeout silencieux
+- Payload: JSON structuré avec schéma clair
+
+## 🔒 SÉCURITÉ & CONFORMITÉ
+
+### Standards de sécurité
+- HTTPS/TLS 1.2+ obligatoire partout
+- Chiffrement au repos (Supabase)
+- Chiffrement en transit (TLS)
+- RLS (Row Level Security) Supabase activé par défaut
+- JWT Bearer tokens pour authentification
+- X-API-Key pour services internes
+
+### Authentification & Autorisation
+- Supabase Auth (email + Google + Facebook + Apple)
+- Rôles: consumer, merchant, affiliate, admin, support, comptable
+- RLS par rôle : chaque utilisateur ne voit que ses données
+- 2FA optionnel pour affiliés et commerçants
+
+### Webhooks & API
+- X-API-Key en header pour services Make
+- Signature HMAC-SHA256 (header X-Signature)
+- IP allowlist (Payments.AI, PayPal, GoAffPro)
+- Idempotency-Key (UUID v4) sur opérations financières
+- Timeout: 30s max, gestion des retries
+
+### Conformité légale
+- Loi 25 (Québec) obligatoire
+- RGPD compatible (si expansion EU)
+- OWASP Top 10 mitigué
+- CGU, Politique de confidentialité, Mentions légales
+- Consentements traçables (consent_log)
+- Export données utilisateur possible (ZIP/JSON)
+- Anonymisation après 24 mois inactivité
+- TPS/TVQ collectées et rapportées
+
+### Audits & Logs
+- Tous les changements critiques loggés (logs_audit)
+- Logs incluent : user_id, action, timestamp, IP, détails
+- Sauvegardes quotidiennes (7 jours glissants)
+- Tests restauration mensuels documentés
+- Pentest annuel (interne + externe)
+
+## 💰 MODÈLE FINANCIER
+
+### Pricing (INCHANGÉ)
+
+#### Consommateurs
+- Bronze: 9.95 $/mois
+- Argent: 14.95 $/mois
+- Or: 24.95 $/mois
+
+#### Commerçants
+- Gratuit: 0 $ (2 promos/mois)
+- Bronze: 147 $ (3 mois, 50 promos/mois)
+- Argent: 247 $ (3 mois, 85 promos/mois)
+- Or: 397 $ (3 mois, illimité)
+
+#### Affiliés
+- Trousse Promo 750: 47 $
+- Trousse Promo: 77 $
+- Trousse Normale: 147 $
+- Renouvellement annuel: 47 $
+- Frais mensuels: 27 $/mois (prélevés automatiquement)
+
+### Principes financiers
+- Zéro commission commerçants (100% des revenus conservés)
+- Commission model affiliés: GoAffPro géré (15 niveaux max)
+- Double portefeuille affiliés: Compte Principal + Compte RabaisLocal
+- Retenue 27 $/mois depuis commissions
+- Renouvellement 47 $ annuel (sur Compte RabaisLocal uniquement)
+- TPS (5%) + TVQ (9.975%) collectées automatiquement
+- 3% des revenus redistribués à la communauté (future fondation)
+
+### Paiements
+- Processeurs: Payments.AI + PayPal prioritaires
+- Cryptage: HMAC-SHA256 signatures
+- Idempotence: bloquée via Idempotency-Key
+- Rapports: TPS/TVQ exportés mensuellement (Google Sheets)
+- Conservation: 7 ans (obligations fiscales)
+
+## 🧠 RÈGLES MAKE (CRITIQUES)
+
+### Webhooks entrants
+- Format: JSON structuré
+- Validation: schéma défini avant traitement
+- Signature HMAC: vérifiée (X-Signature header)
+- Idempotency: bloquer les doublons via Idempotency-Key
+- Logs: exécution complète + erreurs + timestamps
+
+### Scénarios principaux
+- Webhook_Signup → Supabase + GoAffPro + Email
+- Webhook_Payment → Supabase crédits + audit
+- Webhook_Commission → Sync GoAffPro ↔ Supabase
+- Webhook_IA_Request → OpenAI + Supabase ai_logs
+- Paiement_Mensuel_Check → Retrait 27 $ affiliés
+- Renewal_Check_Annual → Prélèvement 47 $ annuel
+
+### Gestion d'erreurs Make
+- Retry: max 3 tentatives (exponential backoff)
+- Timeout: 30s max
+- Error logging: toujours enregistrer l'erreur
+- Fallback: notification admin si échec après retries
+- Idempotence: vérifier avant de rejouer
+
+### Performance Make
+- Temps de réponse API: < 3s cible
+- Parallelisation: activée si possible (multi-routeurs)
+- Rate limiting: respecter les limites des APIs externes
+- Batch: grouper les opérations similaires
+
+## 📊 DONNÉES & TABLES SUPABASE
+
+### Tables principales
+- users (id, email, role, created_at, etc.)
+- credits (id_user, amount, type, balance_after, etc.)
+- merchants (id, id_user, plan, promo_count, etc.)
+- offers (id, id_merchant, title, credits_cost, etc.)
+- reservations (id, user_id, offer_id, qr_code, status, etc.)
+- reviews (id, user_id, merchant_id, rating, comment, etc.)
+- affiliates (id, user_id, rank, commissions, etc.)
+- commissions (id, affiliate_id, amount, status, etc.)
+- payments (id, user_id, amount, taxes, status, etc.)
+- ai_logs (id, user_id, prompt, response, timestamp, etc.)
+- logs_audit (id, action, user_id, timestamp, ip, etc.)
+- legal_consents (id, user_id, type, version, ip, etc.)
+- notifications_log (id, user_id, channel, message, status, etc.)
+
+### RLS (Row Level Security)
+- Activé sur toutes les tables sensibles
+- Chaque utilisateur ne voit que ses données
+- Admin a accès global (rôle spécial)
+- Support a accès limité (lecture seulement)
+
+### Indexes critiques
+- email (unique)
+- user_id (sur credits, reservations, commissions, etc.)
+- created_at (pour tri/filtrage dates)
+- merchant_id (pour offres liées)
+- status (pour filtres état)
+
+## 🤖 RÈGLES IA (OpenAI)
+
+### Agents IA (3 types)
+
+#### Agent Commerçant
+- Génère: titre offre + description + texte promo
+- Génère: visuel Canva (image promo)
+- Locale: expressions québécoises
+- Tempo: < 5 minutes total
+- Contrôle qualité: filtrage contenu inapproprié
+
+#### Agent Consommateur
+- Recommande: offres personnalisées (géoloc + préférences)
+- Localise: par ville, catégorie, prix en crédits
+- Tempo: < 2 secondes
+- Memoria: historique utilisateur (Supabase)
+
+#### Agent Affilié
+- Fourni: scripts d'approche
+- Fourni: plan d'action stratégique
+- Fourni: formation continue
+- Locale: terminologie affilié 2.0
+
+### Limites mensuelles
+- Bronze: 10 requêtes IA/mois
+- Argent: 50 requêtes IA/mois
+- Or: illimité
+- Quotas gérés par Supabase triggers
+
+### Sécurité IA
+- Pas d'envoi PII vers OpenAI
+- Stockage réponses: Supabase ai_logs
+- Filtrage: contenu toxique/illégal détecté
+- Logs: toute requête tracée (ai_logs)
+
+## 📱 RESPONSIVE & UX
+
+### Breakpoints
+- Mobile: < 600px
+- Tablet: 600px - 1024px
+- Desktop: > 1024px
+
+### Mobile-first
+- Conception: mobile d'abord
+- Navigation: menu hamburger < 768px
+- Buttons: min 44px (WCAG)
+- Texte: min 16px pour lisibilité
+- Spacing: généreux, tactile-friendly
+
+### Accessibilité
+- Contraste: AA minimum (WCAG)
+- Navigation clavier: complète (tab-index)
+- Labels: tous les champs ont labels lisibles
+- Images: alt-text fourni
+- Couleurs: pas unique moyen d'info
+
+## 📝 COMMENTAIRES & DOCUMENTATION
+
+### Commentaires requis
+- Fonctions: décrire paramètres + retour
+- Sections critiques: logique complexe expliquée
+- TODO/FIXME: acceptés mais à résoudre avant merge
+- Format: `// Ceci est un commentaire` en français
+
+### Exemple bon commentaire
+```javascript
+// Crée un nouveau crédit utilisateur et met à jour le solde
+// Params: user_id (UUID), amount (number), type (enum: purchase|reward|use)
+// Return: { created: boolean, new_balance: number }
+function creerCredit(userId, amount, type) {
+  // Valide le montant (doit être > 0)
+  if (amount <= 0) throw new Error("Montant invalide");
+  
+  // Récupère le solde actuel depuis Supabase
+  const currentBalance = await obtenirSolde(userId);
+  
+  // Ajoute le crédit
+  const newBalance = currentBalance + amount;
+  
+  // Enregistre dans Supabase + audit log
+  return { created: true, new_balance: newBalance };
+}
+```
+
+## 🧪 TESTS & VALIDATION
+
+### Avant de livrer
+- Tests manuels: cas nominaux + cas d'erreur
+- Validation schema: JSON/SQL validé
+- Erreurs: tous les chemins d'erreur testés
+- Performance: latence < 3s mesurée
+- Mobile: testé sur mobile et tablet
+
+### Checklist livraison
+- ✅ Code complet (pas de TODO non-résolus)
+- ✅ Commentaires français présents
+- ✅ Erreurs gérées + loguées
+- ✅ Sécurité validée (RLS, HTTPS, etc.)
+- ✅ Loi 25 respectée
+- ✅ Mobile-first responsive
+- ✅ Performance acceptable
+- ✅ Audit trail loggé
+
+## 🚀 STRUCTURE DE RÉPONSE CLAUDE CODE
+
+Quand tu me demandes du code, fournis:
+
+1. **Contexte**: Module (A-M), cas d'usage
+2. **Détails**: Qui? Quoi? Où? Quand? Pourquoi?
+3. **Intégrations**: Services externes impliqués
+4. **Sécurité**: Qui peut accéder? Conformité?
+5. **Erreurs**: Cas d'échec à gérer
+
+Exemple bon prompt:
+```
+"Module B (Crédits) :
+Crée un webhook Make qui :
+1. Reçoit une confirmation paiement Payments.AI
+2. Valide signature HMAC
+3. Crée entrée payments + credits dans Supabase
+4. Envoie facture PDF via MailerSend
+5. Ajoute dans audit_log
+
+Respecte idempotence + gestion d'erreurs + logs complets"
+```
+
+## 📞 FICHIERS DE RÉFÉRENCE
+
+- Document_Maitre.md: Cahier de charge COMPLET (sections 1-12)
+- config.json: Configuration projet (prix, modules, timelines)
+- Cette règle (.claude_rules): Standards de code
+
+## 🎯 OBJECTIFS CLÉS 2026
+
+- Utilisateurs: 50 000 inscrits (10 000 actifs)
+- Commerçants: 5 000 (40% payants)
+- Affiliés: 2 500 actifs (25% level Bâtisseur+)
+- Offres IA: 60% générées automatiquement
+- Platform uptime: 99.5%
+- NPS: 8/10
+
+## ⚡ PRIORITÉS ACTUELLES (Septembre - Décembre 2025)
+
+Phase A - MVP:
+- 3 tunnels d'inscription ✅
+- Base Supabase fonctionnelle ✅
+- Automatisations Make essentielles 🔄
+- Webhooks GoAffPro reliés 🔄
+- Emails onboarding ✅
+
+Phase B - Beta (Février - Mai 2026):
+- Paiements entrants (Payments.AI + PayPal)
+- IA Commerçant v1 (génération promos)
+- IA Consommateur v1 (recommandations)
+- Retool Admin complet
+- Rapports TPS/TVQ automatiques
+
+---
+
+**Dernière mise à jour**: 9 novembre 2025
+**Auteur**: Claude (en collaboration avec Dany Gosselin)
+**Statut**: ✅ ACTIF
