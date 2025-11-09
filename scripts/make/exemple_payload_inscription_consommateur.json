@@ -1,0 +1,135 @@
+{
+  "description": "Exemple de payload JSON pour tester le webhook d'inscription consommateur",
+  "endpoint": "https://hook.eu2.make.com/VOTRE_WEBHOOK_ID",
+  "method": "POST",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "exemples": {
+    "inscription_complete": {
+      "description": "Inscription avec tous les champs remplis",
+      "payload": {
+        "email": "marie.tremblay@example.com",
+        "prenom": "Marie",
+        "nom": "Tremblay",
+        "ville": "Trois-Rivières",
+        "telephone": "819-555-9876",
+        "plan": "silver",
+        "utm_source": "google",
+        "utm_campaign": "prelancement_novembre_2025",
+        "referral_code": "AFF98765",
+        "ip_address": "192.168.1.100",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+      }
+    },
+    "inscription_minimale": {
+      "description": "Inscription avec seulement les champs obligatoires",
+      "payload": {
+        "email": "jean.dupont@example.com",
+        "prenom": "Jean",
+        "ville": "Québec"
+      }
+    },
+    "inscription_bronze": {
+      "description": "Inscription au plan Bronze (gratuit)",
+      "payload": {
+        "email": "sophie.gagnon@example.com",
+        "prenom": "Sophie",
+        "nom": "Gagnon",
+        "ville": "Montréal",
+        "telephone": "514-555-1234",
+        "plan": "bronze",
+        "utm_source": "facebook",
+        "utm_campaign": "ads_montreal_q4"
+      }
+    },
+    "inscription_gold_avec_referral": {
+      "description": "Inscription au plan Gold avec code de parrainage affilié",
+      "payload": {
+        "email": "pierre.leblanc@example.com",
+        "prenom": "Pierre",
+        "nom": "Leblanc",
+        "ville": "Sherbrooke",
+        "telephone": "819-555-4567",
+        "plan": "gold",
+        "utm_source": "affiliate",
+        "utm_campaign": "affiliate_promo_november",
+        "referral_code": "AFFTOP100",
+        "ip_address": "24.200.123.45",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"
+      }
+    },
+    "inscription_mobile": {
+      "description": "Inscription depuis un appareil mobile",
+      "payload": {
+        "email": "amelie.roy@example.com",
+        "prenom": "Amélie",
+        "nom": "Roy",
+        "ville": "Laval",
+        "telephone": "450-555-7890",
+        "plan": "silver",
+        "utm_source": "instagram",
+        "utm_campaign": "story_ads_laval",
+        "ip_address": "172.16.0.50",
+        "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15"
+      }
+    }
+  },
+  "commande_curl": {
+    "description": "Commande cURL pour tester le webhook depuis le terminal",
+    "commande": "curl -X POST https://hook.eu2.make.com/VOTRE_WEBHOOK_ID -H \"Content-Type: application/json\" -d @exemple_payload.json"
+  },
+  "reponse_attendue_succes": {
+    "status": 200,
+    "body": {
+      "success": true,
+      "message": "Inscription réussie",
+      "user_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "email": "marie.tremblay@example.com",
+      "prenom": "Marie",
+      "plan": "silver",
+      "credits_free": 20,
+      "timestamp": "2025-11-08T23:30:00.000Z"
+    }
+  },
+  "reponse_attendue_erreur_email_duplique": {
+    "status": 400,
+    "body": {
+      "success": false,
+      "error": "Email already exists",
+      "message": "Un compte avec cet email existe déjà",
+      "email": "marie.tremblay@example.com"
+    }
+  },
+  "mapping_clickfunnels": {
+    "description": "Configuration du mapping dans ClickFunnels",
+    "champs": {
+      "email": "[EMAIL]",
+      "prenom": "[FIRST_NAME]",
+      "nom": "[LAST_NAME]",
+      "ville": "[CITY]",
+      "telephone": "[PHONE]",
+      "plan": "[PLAN]",
+      "utm_source": "[UTM_SOURCE]",
+      "utm_campaign": "[UTM_CAMPAIGN]",
+      "referral_code": "[AFFILIATE_CODE]",
+      "ip_address": "[IP_ADDRESS]",
+      "user_agent": "[USER_AGENT]"
+    }
+  },
+  "credits_gratuits_par_plan": {
+    "bronze": 10,
+    "silver": 20,
+    "gold": 50
+  },
+  "notes": [
+    "Les champs obligatoires sont : email, prenom, ville",
+    "Le plan par défaut est 'bronze' si non spécifié",
+    "Les crédits gratuits mensuels sont attribués selon le plan",
+    "L'email est automatiquement converti en minuscules",
+    "Le prénom et le nom sont automatiquement capitalisés",
+    "Le webhook retourne un user_id UUID unique pour chaque inscription",
+    "Un email de bienvenue est envoyé automatiquement via MailerSend",
+    "Toutes les actions sont enregistrées dans logs_audit"
+  ]
+}
