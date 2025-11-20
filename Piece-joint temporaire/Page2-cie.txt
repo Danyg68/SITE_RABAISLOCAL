@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merci – RabaisLocal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="margin:0; background:#F5F8FF; font-family:'Poppins',sans-serif; color:#1B2240;">
+
+<section class="rl-thankyou-commercant" style="padding:50px 0;">
+  <div style="width:min(900px,92vw); margin:0 auto; background:#fff; border-radius:18px; box-shadow:0 8px 25px rgba(0,0,0,0.08); padding:50px 60px;">
+
+    <!-- HEADER -->
+    <div style="text-align:center; margin-bottom:30px;">
+      <img src="https://statics.myclickfunnels.com/workspace/jklqVP/image/17823503/file/d5fb15091926d11524543af90a9a5e26.png"
+           alt="Logo RabaisLocal" style="height:60px; width:auto; margin-bottom:20px;">
+      <h1 style="font-size:2rem; color:#3E53A5; font-weight:700;">🎁 Merci et bienvenue dans la communauté RabaisLocal !</h1>
+      <p style="font-size:1rem; margin-top:12px; line-height:1.6;">
+        Tu viens de franchir une étape importante : 
+        <span style="background:#FFF8E1; padding:2px 6px; border-radius:4px; font-weight:600;">ton commerce est maintenant inscrit gratuitement</span> 
+        sur la plateforme québécoise la plus innovante dédiée à la promotion locale.
+      </p>
+    </div>
+
+    <!-- VIDÉO -->
+    <div style="margin-bottom:45px;">
+      <iframe src="https://www.youtube.com/embed/vJYb6d8I0iY"
+              title="Vidéo de remerciement RabaisLocal"
+              allowfullscreen
+              style="width:100%; height:420px; border-radius:14px; border:none; box-shadow:0 10px 25px rgba(0,0,0,0.15);"></iframe>
+    </div>
+
+    <!-- BLOC PÉRIODE DE PRÉ-LANCEMENT -->
+    <div style="background:#EEF2FF; border:2px solid #3E53A5; border-radius:14px; padding:35px; box-shadow:0 4px 12px rgba(62,83,165,0.08); margin-bottom:45px;">
+      <p style="display:flex; align-items:flex-start; gap:10px; margin-bottom:18px;">
+        <span style="font-size:1.2rem;">🚀</span>
+        <span><strong>Période de pré-lancement :</strong> tu fais partie des premiers commerçants à utiliser RabaisLocal et à nous revenir avec tes commentaires.  
+        D’ici le lancement officiel, nous peaufinons la plateforme grâce à vos retours de commentaires pour offrir une expérience optimale à tous les commerces du Québec.</span>
+      </p>
+
+      <p style="display:flex; align-items:flex-start; gap:10px; margin-bottom:18px;">
+        <span style="font-size:1.2rem;">🤖</span>
+        <span><strong>Tests IA et outils novateurs :</strong> tu auras la chance d’essayer certaines fonctionnalités de notre <strong>assistant intelligent RabaisLocal</strong>  
+        (création automatique de promotions, recommandations, statistiques locales, etc.) avant tout le monde.</span>
+      </p>
+
+      <p style="display:flex; align-items:flex-start; gap:10px; margin-bottom:18px;">
+        <span style="font-size:1.2rem;">🎁</span>
+        <span><strong>Bonus spécial commerçant :</strong> tous les commerces inscrits avant le lancement officiel recevront automatiquement  
+        <strong>3 mois d’accès Privilège gratuits</strong> après le lancement de janvier 2026, incluant IA, page vitrine gratuite, visibilité accru et statistiques détaillées.</span>
+      </p>
+
+      <p style="display:flex; align-items:flex-start; gap:10px;">
+        <span style="font-size:1.2rem;">💬</span>
+        <span><strong>Ton avis compte :</strong> tu recevras des sondages simples pour partager ton expérience et contribuer activement à la version finale de RabaisLocal.</span>
+      </p>
+    </div>
+
+    <!-- BLOC EMAIL SPÉCIAL -->
+    <div style="position:relative; background:linear-gradient(135deg,#667eea 0%,#764ba2 100%); border-radius:16px; color:#fff; padding:35px 40px; margin-bottom:50px; box-shadow:0 8px 20px rgba(102,126,234,0.3); border:3px solid #FFD700; animation:pulseBox 2s infinite;">
+      <div style="position:absolute; top:-15px; right:20px; background:linear-gradient(135deg,#FF416C 0%,#FF4B2B 100%); color:#fff; padding:8px 20px; border-radius:20px; font-weight:700; font-size:0.85rem; box-shadow:0 4px 12px rgba(255,65,108,0.4); text-transform:uppercase; letter-spacing:0.5px; animation:shake 3s infinite;">⚠️ Important</div>
+
+      <p style="display:flex; align-items:flex-start; gap:12px; margin-bottom:16px;">
+        <span style="font-size:1.3rem;">📧</span>
+        <span><strong>Vérifie ton courriel dès maintenant :</strong> tu vas recevoir un message de confirmation avec les prochaines étapes à suivre.</span>
+      </p>
+
+      <p style="display:flex; align-items:flex-start; gap:12px; margin:0;">
+        <span style="font-size:1.3rem;">📩</span>
+        <span>Si tu ne vois pas notre message, <strong>regarde dans ton dossier “courriers indésirables”</strong> ou l’onglet <strong>“Promotions”</strong>.<span style="animation:blink 1.5s infinite; margin-left:6px;">✨</span></span>
+      </p>
+    </div>
+
+<!-- BLOC EN ATTENDANT -->
+<div style="text-align:center; background:#fff; border:2px solid #3E53A5; border-radius:14px; padding:40px 35px; box-shadow:0 6px 15px rgba(62,83,165,0.1);">
+  <h3 style="font-size:1.6rem; color:#3E53A5; margin-bottom:15px; font-weight:700;">💙 En attendant le grand lancement...</h3>
+  <p style="font-size:1rem; line-height:1.7; margin-bottom:18px;">
+    Reste à l’affût ! Tu recevras prochainement des <strong>mises à jour exclusives</strong> sur l’évolution de la plateforme,  
+    les premiers tests IA et les nouvelles fonctionnalités disponibles pour ton commerce.
+  </p>
+  <p style="font-size:1rem; line-height:1.7; margin-bottom:20px;">
+    En attendant, découvre RabaisLocal <strong>du point de vue des consommateurs</strong> : inscris-toi gratuitement dès maintenant.
+  </p>
+  <a 
+    href="https://www.rabaislocal.net/page-1-inscription-client"
+    style="display:inline-block; background:#3E53A5; color:#fff; padding:16px 40px; border-radius:10px; text-decoration:none; font-weight:600; font-size:1.05rem; box-shadow:0 6px 12px rgba(62,83,165,0.3); transition:0.3s;">
+    👀 Voir le parcours consommateur gratuit
+  </a>
+</div>
+
+
+    <!-- FOOTER -->
+    <div style="text-align:center; padding-top:30px; border-top:1px solid #E5E7EB; margin-top:40px;">
+      <p style="font-size:0.9rem; color:#6B7280;">RabaisLocal aide les commerçants d’ici à se faire découvrir, sans payer de commission, grâce à des promotions locales propulsées par l’IA.</p>
+      <p style="font-size:0.85rem; color:#6B7280;">© 2025 RabaisLocal — Une initiative locale pour soutenir l’économie d’ici.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+@keyframes pulseBox {
+  0% { box-shadow:0 0 0 0 rgba(255,215,0,0.6); }
+  70% { box-shadow:0 0 0 12px rgba(255,215,0,0); }
+  100% { box-shadow:0 0 0 0 rgba(255,215,0,0); }
+}
+@keyframes blink {
+  0%,50%,100%{opacity:1;} 25%,75%{opacity:0.3;}
+}
+@keyframes shake {
+  0%,90%,100%{transform:translateX(0);}
+  92%,96%{transform:translateX(-3px);}
+  94%,98%{transform:translateX(3px);}
+}
+</style>
+</body>
+</html>

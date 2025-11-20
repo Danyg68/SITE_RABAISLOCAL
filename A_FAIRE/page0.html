@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RabaisLocal - Accueil</title>
+
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F5F8FF;
+    color: #1B2240;
+  }
+
+  .top-info {
+    background-color: #3E53A5;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+
+  header {
+    text-align: center;
+    padding: 25px 15px 10px;
+  }
+
+  header img.logo {
+    max-width: 300px;
+    height: auto;
+  }
+
+  .slogan {
+    font-size: 1.3rem;
+    color: #3E53A5;
+    margin-top: 10px;
+  }
+
+  .tagline {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+
+  /* ==== VIDÉOS ==== */
+  .video-section {
+    text-align: center;
+    padding: 40px 20px 20px;
+    background: #fff;
+  }
+  .video-section h2 {
+    color: #3E53A5;
+    font-size: clamp(20px, 2vw, 26px);
+    margin-bottom: 10px;
+  }
+  .video-section p {
+    color: #333;
+    font-size: 1rem;
+    max-width: 700px;
+    margin: 0 auto 25px;
+  }
+  .video-frame {
+    max-width: 720px;
+    margin: 0 auto 40px;
+  }
+  .video-frame iframe {
+    width: 100%;
+    height: 320px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  }
+
+  /* ==== BLOCS DE RÔLES (CHECK) ==== */
+  .roles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px 50px;
+  }
+  .role-box {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 460px;
+    transition: transform 0.2s ease;
+    text-align: center;
+  }
+  .role-box:hover { transform: translateY(-5px); }
+  .role-box img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+  }
+  .role-box h2 {
+    color: #3E53A5;
+    font-size: 1.3rem;
+    margin: 15px 0 8px;
+  }
+  .role-box a { text-decoration: none; }
+  .role-body p { font-size: 0.95rem; margin: 0 20px 10px; }
+  .testimonial { font-style: italic; color: #555; margin-top: auto; }
+
+  /* ==== SECTION MISSION ==== */
+  .mission { background: #F5F8FF; padding: 60px 20px 50px; text-align: center; }
+  .mission-box {
+    background: #fff; border: 2px solid #3E53A5; border-radius: 14px;
+    padding: 35px 25px; max-width: 650px; margin: 0 auto;
+    box-shadow: 0 6px 15px rgba(62,83,165,0.08);
+  }
+  .mission h2 { color: #3E53A5; font-size: 1.6rem; margin-bottom: 10px; }
+  .mission p { font-size: 1rem; margin: 6px 0; line-height: 1.6; }
+
+  /* ==== CTA FINAL ==== */
+  .cta { background: linear-gradient(180deg, #fff 0%, #F0F3FF 100%); text-align: center; padding: 60px 20px; }
+  .cta h3 { color: #3E53A5; font-size: 1.5rem; margin-bottom: 15px; }
+  .cta p { font-size: 1rem; color: #1B2240; margin-bottom: 12px; }
+  .cta-buttons { margin-top: 25px; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+  .cta-buttons a {
+    background-color: #3E53A5; color: white; text-decoration: none;
+    padding: 12px 25px; border-radius: 30px; font-weight: 600;
+    transition: all 0.3s ease; box-shadow: 0 3px 10px rgba(62,83,165,0.2);
+  }
+  .cta-buttons a:hover { background-color: #2d4189; transform: translateY(-3px); }
+
+  /* ==== FOOTER ==== */
+  footer { background-color: #3E53A5; color: white; text-align: center; padding: 18px; font-size: 0.9rem; letter-spacing: 0.3px; }
+
+  @media (max-width: 768px) {
+    .video-frame iframe { height: 210px; }
+    .role-box { min-height: 420px; }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="top-info">
+  Fait partie des premiers Québécois à activer ta carte
+</div>
+
+<header>
+  <img src="https://statics.myclickfunnels.com/workspace/jklqVP/image/17823503/file/d5fb15091926d11524543af90a9a5e26.png" 
+       alt="RabaisLocal" class="logo">
+  <p class="slogan">Découvre comment économiser, vendre plus ou bâtir un revenu dès aujourd’hui.</p>
+  <p class="tagline">RabaisLocal, c’est LA solution locale faite pour toi.</p>
+</header>
+
+<!-- === 1ère VIDÉO : Présentation rapide === -->
+<section class="video-section">
+  <h2>🎥 Découvre en 1 minute ce qu’est RabaisLocal</h2>
+  <p>Une plateforme 100 % québécoise qui connecte <strong>Consommateurs</strong>, <strong>Commerçants</strong> et <strong>Affiliés</strong> pour faire circuler la richesse locale.</p>
+  <div class="video-frame">
+    <iframe src="https://www.youtube.com/embed/qk4nJTvNO8k" 
+            title="C’est quoi RabaisLocal – Présentation rapide" 
+            allowfullscreen></iframe>
+  </div>
+</section>
+
+<!-- ================================
+SECTION — CHOIX DE PARCOURS
+================================ -->
+<section style="background-color:#F5F8FF; text-align:center; padding:60px 20px;">
+  <h2 style="font-size:2rem; color:#3E53A5; font-weight:700; margin-bottom:40px;">
+    Choisissez votre parcours
+  </h2>
+
+  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:40px;">
+
+    <!-- Parcours 1 -->
+    <div style="flex:1 1 280px; max-width:300px;">
+      <p style="font-size:1rem; font-weight:600; color:#3E53A5; margin-bottom:8px;">
+        Cliquez ici <span style="font-size:1.4rem;">⬇️</span>
+      </p>
+        </a>
+    </div>
+
+    <!-- Parcours 2 -->
+    <div style="flex:1 1 280px; max-width:300px;">
+      <p style="font-size:1rem; font-weight:600; color:#3E53A5; margin-bottom:8px;">
+        Cliquez ici <span style="font-size:1.4rem;">⬇️</span>
+      </p>
+      <a href="#commercant">
+      </a>
+    </div>
+
+    <!-- Parcours 3 -->
+    <div style="flex:1 1 280px; max-width:300px;">
+      <p style="font-size:1rem; font-weight:600; color:#3E53A5; margin-bottom:8px;">
+        Cliquez ici <span style="font-size:1.4rem;">⬇️</span>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================================
+SECTION — CHECK (3 BLOCS D’ORIGINE)
+================================ -->
+<section class="roles" style="padding-top:30px;">
+
+  <!-- Consommateur -->
+  <article id="consommateur" class="role-box">
+    <a href="https://www.rabaislocal.net/page-1-inscription-client" target="_blank" rel="noopener">
+      <img src="https://statics.myclickfunnels.com/workspace/jklqVP/image/15395678/file/a104ad44b9babe9a1efe5792dbf5febe.png" alt="Consommateur">
+    </a>
+    <a href="https://www.rabaislocal.net/page-1-inscription-client" target="_blank" rel="noopener">
+      <h2>Consommateur</h2>
+    </a>
+    <div class="role-body">
+      <p>Découvre des offres exclusives et locales qui allègent ton budget dès aujourd’hui.</p>
+      <p class="testimonial">« J’en parle autour de moi, tout le monde veut embarquer! »<br>– Pierre B., Shawinigan</p>
+    </div>
+  </article>
+
+  <!-- Commerçant -->
+  <article id="commercant" class="role-box">
+    <a href="https://www.rabaislocal.net/page1-inscription-cie" target="_blank" rel="noopener">
+      <img src="https://statics.myclickfunnels.com/workspace/jklqVP/image/15594847/file/c16a686feebe64d577ef7742a4eb65a8.jpg" alt="Commerçant">
+    </a>
+    <a href="https://www.rabaislocal.net/page1-inscription-cie" target="_blank" rel="noopener">
+      <h2>Commerçant</h2>
+    </a>
+    <div class="role-body">
+      <p>Attire plus de clients sans dépendre de gros sites ou payer des commissions folles.</p>
+      <p class="testimonial">« Je veux être là dès le départ! »<br>– Megan V., Québec</p>
+    </div>
+  </article>
+
+  <!-- Affilié -->
+  <article id="affilie" class="role-box">
+    <a href="https://www.rabaislocal.net/page-1-affilie-inscription" target="_blank" rel="noopener">
+      <img src="https://statics.myclickfunnels.com/workspace/jklqVP/image/17828973/file/1eee5bf97c6c27c19f1c39708afc3e4b.jpg" alt="Affilié">
+    </a>
+    <div class="role-body">
+      <h2><a href="https://www.rabaislocal.net/page-1-affilie-inscription" target="_blank" rel="noopener">Affilié</a></h2>
+      <p>Recommande RabaisLocal, aide ton monde et bâtis un revenu même en dormant – <strong>SANS VENTE!</strong></p>
+      <p class="testimonial">« J’ai jamais pensé que ça pouvait aller aussi vite. »<br>– Bruno L., St-Hyacinthe</p>
+    </div>
+  </article>
+
+</section>
+
+<!-- === MISSION === -->
+<section class="mission">
+  <div class="mission-box">
+    <h2>💙 Notre Mission</h2>
+    <p>Acheter local. Économiser facilement. Bâtir un revenu durable.</p>
+    <p>Une plateforme <strong>locale, humaine et sans intermédiaire</strong> qui redonne le pouvoir à la communauté.</p>
+  </div>
+</section>
+
+<!-- === CTA FINAL === -->
+<section class="cta">
+  <h3>🚀 Rejoins le mouvement RabaisLocal</h3>
+  <p><strong>Inscription 100 % <span style="color:#E53935; font-weight:700;">GRATUITE</span> et <u>sans engagement</u>.</p>
+</section>
+
+<footer>
+  <p>© 2025 <strong>RabaisLocal</strong> — Fait avec 💙 au Québec</p>
+</footer>
+
+</body>
+</html>

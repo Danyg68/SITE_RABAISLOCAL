@@ -1,0 +1,112 @@
+<!-- ==========================================================
+RABAISLOCAL • BLOC 1 – PAGE DE PAIEMENT AFFILIÉ FONDATEUR
+Version corrigée et optimisée (Style québécois + Conversion)
+========================================================== -->
+<style>
+  .rl-order-top {
+    font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    text-align: center;
+    background: #fff;
+    color: #1B2240;
+    line-height: 1.6;
+    padding: 0 20px 40px;
+    position: relative;
+  }
+
+  /* === BANDEAU RARETÉ === */
+  .rl-banner-top {
+    background: #3E53A5;
+    color: #fff;
+    font-weight: 600;
+    padding: 12px 20px;
+    font-size: clamp(15px, 1.4vw, 17px);
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+  }
+
+  .rl-banner-top span {
+    color: #FFD500;
+    font-weight: 700;
+  }
+
+  /* === TITRE ET PARAGRAPHES === */
+  .rl-order-top h1 {
+    color: #3E53A5;
+    font-size: clamp(28px, 3vw, 38px);
+    font-weight: 800;
+    margin-top: 40px;
+    margin-bottom: 14px;
+  }
+
+  .rl-order-top p {
+    font-size: clamp(16px, 1.6vw, 18px);
+    margin: 0 auto 20px;
+    max-width: 680px;
+  }
+
+  .rl-highlight {
+    color: #3E53A5;
+    font-weight: 700;
+  }
+
+  /* === CADRE VIDÉO === */
+  .rl-order-top .video-wrapper {
+    max-width: 680px;
+    margin: 32px auto 0;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 22px rgba(0,0,0,0.12);
+  }
+
+  /* === MOBILE === */
+  @media (max-width: 600px) {
+    .rl-order-top {
+      padding: 0 14px 32px;
+    }
+    .rl-banner-top {
+      font-size: 14px;
+      padding: 10px 14px;
+    }
+    .rl-order-top h1 {
+      font-size: 26px;
+      margin-top: 30px;
+    }
+    .rl-order-top p {
+      font-size: 16px;
+    }
+  }
+</style>
+
+<section class="rl-order-top">
+
+  <!-- 🔥 BANDEAU RARETÉ -->
+  <div class="rl-banner-top">
+    ⚡ Offre exclusive : <span>750 places Fondateurs</span> seulement — profite de <span>80 % de rabais</span> avant le lancement officiel de <span>janvier 2026</span> !
+  </div>
+
+  <!-- 🔹 TITRE + PROMESSE -->
+  <h1>Finalise ton accès <span class="rl-highlight">Affilié Fondateur RabaisLocal</span></h1>
+  <p>
+    Pour seulement <span class="rl-highlight">47 $</span>, tu fais partie des
+    <strong>750 premiers affiliés fondateurs</strong> et tu obtiens ta
+    <strong>trousse complète RabaisLocal et le rang de bâtisseur</strong> (valeur de plus de 650 $).
+  </p>
+  <p>
+    Tu recevras immédiatement ton lien personnel, accès à ton tableau de bord et aux différents groupes d'entraide, ton agent IA et beaucoup plus.
+    <br>🎯 Tout ce qu’il faut pour bâtir ton revenu automatique dès aujourd’hui.
+  </p>
+
+  <!-- 🔹 VIDÉO EXPLICATIVE -->
+  <div class="video-wrapper">
+    <iframe
+      width="100%"
+      height="360"
+      src="https://www.youtube.com/embed/aOx0oTiUJ9E"
+      title="Pourquoi RabaisLocal est différent"
+      frameborder="0"
+      allowfullscreen
+    ></iframe>
+  </div>
+
+</section>

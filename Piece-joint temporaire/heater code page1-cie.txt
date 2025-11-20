@@ -1,0 +1,61 @@
+<script>
+(function () {
+  // Récupère ?ref= ou ?rl_ref=
+  function getRef() {
+    try {
+      const usp = new URLSearchParams(window.location.search);
+      return usp.get('ref') || usp.get('rl_ref') || null;
+    } catch (e) { return null; }
+  }
+
+  // Nettoie la valeur (letters/digits/_/-)
+  function sanitizeRef(ref) {
+    return (ref || '').toString().replace(/[^\w\-]/g, '').trim();
+  }
+
+  // Écrit dans le champ caché si présent
+  function setHiddenRef(ref) {
+    try {
+      const el = document.getElementById('ref');
+      if (el && ref) el.value = ref;
+    } catch (e) {}
+  }
+
+  // Ajoute ?ref=... à tous les liens internes + stocke
+  function propagateRef() {
+    var ref = getRef();
+    if (!ref) { try { ref = localStorage.getItem('rl_ref') || null; } catch(e) {} }
+    if (!ref) return;
+
+    ref = sanitizeRef(ref);
+    try { localStorage.setItem('rl_ref', ref); } catch(e) {}
+
+    // Injection dans le champ caché du formulaire
+    setHiddenRef(ref);
+
+    // Ajout du ?ref= sur tous les liens internes
+    document.querySelectorAll('a[href]').forEach(function (a) {
+      var href = a.getAttribute('href') || '';
+      if (!href || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('javascript:')) return;
+
+      try {
+        var url = new URL(href, location.origin);
+        if (!url.searchParams.get('ref') && !url.searchParams.get('rl_ref')) {
+          url.searchParams.set('ref', ref);
+          a.setAttribute('href', url.toString());
+        }
+      } catch (e) {}
+    });
+  }
+
+  // Démarrage quand le DOM est prêt
+  document.addEventListener('DOMContentLoaded', function () {
+    // 1) propage et 2) remplit l'input
+    propagateRef();
+
+    // Debug optionnel
+    var hidden = document.getElementById('ref');
+    if (hidden) console.log('REF prêt pour submit =', hidden.value || '(vide)');
+  });
+})();
+</script>

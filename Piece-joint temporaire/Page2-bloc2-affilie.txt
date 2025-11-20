@@ -1,0 +1,146 @@
+<!-- ==========================================================
+RABAISLOCAL • SECTION 16 DIFFÉRENCES – VERSION CORRIGÉE
+Texte révisé + ton québécois + style uniforme
+========================================================== -->
+<style>
+  .rl-differences-section {
+    background: linear-gradient(180deg, #F5F8FF 0%, #FFFFFF 100%);
+    padding: 70px 20px 60px;
+    font-family: "Poppins", system-ui, sans-serif;
+    color: #1B2240;
+    text-align: center;
+  }
+
+  .rl-differences-section h2 {
+    color: #3E53A5;
+    font-weight: 800;
+    font-size: clamp(24px, 2.6vw, 32px);
+    margin-bottom: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .rl-differences-section h2::before {
+    content: "💎";
+    font-size: 1.4em;
+    animation: shine 2.5s infinite ease-in-out;
+  }
+
+  @keyframes shine {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.1); }
+  }
+
+  .rl-differences-section p.subtitle {
+    font-size: 16px;
+    color: #4B569A;
+    margin-bottom: 45px;
+  }
+
+  /* === GRILLE DES CARTES === */
+  .rl-differences-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto 50px;
+  }
+
+  .rl-diff-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 16px 20px;
+    box-shadow: 0 6px 18px rgba(62, 83, 165, 0.08);
+    font-size: 15.5px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-start;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    text-align: left;
+  }
+
+  .rl-diff-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .rl-diff-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 22px rgba(62, 83, 165, 0.12);
+  }
+
+  /* Variations de fond pour variété visuelle */
+  .rl-diff-card:nth-child(3n+1) { background: linear-gradient(180deg, #FFFFFF 0%, #F9FBFF 100%); }
+  .rl-diff-card:nth-child(3n+2) { background: linear-gradient(180deg, #FFFFFF 0%, #F5F8FF 100%); }
+  .rl-diff-card:nth-child(3n+3) { background: linear-gradient(180deg, #FFFFFF 0%, #EEF3FF 100%); }
+
+  /* === MOBILE === */
+  @media (max-width: 600px) {
+    .rl-differences-section { padding: 50px 16px; text-align: left; }
+    .rl-differences-grid { grid-template-columns: 1fr; gap: 14px; }
+    .rl-diff-card { font-size: 15px; padding: 14px 18px; justify-content: flex-start; }
+    .rl-diff-card span { display: inline-block; min-width: 22px; }
+  }
+
+  /* === BLOC FINAL === */
+  .rl-diff-footer {
+    background: #E8EDFF;
+    border-radius: 14px;
+    padding: 22px 18px;
+    max-width: 700px;
+    margin: 0 auto;
+    box-shadow: 0 4px 12px rgba(62, 83, 165, 0.08);
+  }
+  .rl-diff-footer p {
+    font-weight: 600;
+    color: #1B2240;
+    font-size: 16px;
+    margin: 0;
+  }
+</style>
+
+<section class="rl-differences-section">
+  <h2>Pourquoi RabaisLocal est différent</h2>
+  <p class="subtitle">Voici 16 raisons qui montrent clairement que RabaisLocal n’a rien d’un MLM traditionnel 👇</p>
+
+  <div class="rl-differences-grid">
+    <div class="rl-diff-card">💎 1. Aucun achat obligatoire</div>
+    <div class="rl-diff-card">💸 2. Zéro frais de tes poches</div>
+    <div class="rl-diff-card">🤝 3. Commissions à vie sur tes références</div>
+    <div class="rl-diff-card">🚫 4. Aucun recrutement obligatoire</div>
+    <div class="rl-diff-card">⚙️ 5. Automatisation complète grâce à l’IA</div>
+    <div class="rl-diff-card">🌎 6. Croissance contrôlée selon les régions</div>
+    <div class="rl-diff-card">🔒 7. Ton rang demeure aquis</div>
+    <div class="rl-diff-card">🏪 8. Un vrai impact positif pour les commerces d’ici</div>
+    <div class="rl-diff-card">🤖 9. Une IA qui travaille pour toi en continu</div>
+    <div class="rl-diff-card">🧩 10. Modèle hybride unique et éthique</div>
+    <div class="rl-diff-card">🎁 11. Tu réfères, l’IA s’occupe de la vente</div>
+    <div class="rl-diff-card">🌱 12. Revenu 100 % passif et évolutif</div>
+    <div class="rl-diff-card">🧘 13. Aucune pression de performance</div>
+    <div class="rl-diff-card">💥 14. Lancement québécois 100 % indépendant</div>
+    <div class="rl-diff-card">🎯 15. La mission avant le profit</div>
+    <div class="rl-diff-card">💡 16. Évolution basée sur des résultats concrets</div>
+  </div>
+
+  <div class="rl-diff-footer">
+    <p>💬 Chez <strong>RabaisLocal</strong> chaque différence a un but de bâtir un modèle : <u>éthique, durable et gagnant pour tout le monde</u>.</p>
+  </div>
+</section>
+
+<script>
+  // Animation douce d’apparition des cartes
+  document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".rl-diff-card");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    }, { threshold: 0.1 });
+    cards.forEach(card => observer.observe(card));
+  });
+</script>

@@ -1,0 +1,58 @@
+<!-- ==========================================================
+RABAISLOCAL • BLOC BAS DE PAGE (FOOTER SIMPLE)
+Version épurée et responsive
+========================================================== -->
+<style>
+  .rl-footer {
+    background: #fff;
+    border-top: 2px solid #E0E6FF;
+    text-align: center;
+    font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    color: #444;
+    padding: 35px 16px 25px;
+    font-size: 14.5px;
+    line-height: 1.6;
+  }
+
+  .rl-footer a {
+    color: #3E53A5;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .rl-footer a:hover {
+    color: #2E408D;
+    text-decoration: underline;
+  }
+
+  .rl-footer .divider {
+    margin: 0 8px;
+    color: #999;
+  }
+
+  .rl-footer small {
+    display: block;
+    color: #777;
+    margin-top: 8px;
+    font-size: 13px;
+  }
+
+  @media (max-width: 600px) {
+    .rl-footer {
+      font-size: 13.5px;
+      padding: 28px 10px 22px;
+    }
+  }
+</style>
+
+<footer class="rl-footer">
+  <p>
+    © 2025 <b>RabaisLocal</b>. Tous droits réservés.
+    <span class="divider">|</span>
+    <a href="https://www.rabaislocal.com/politique-confidentialite" target="_blank">Politique de confidentialité</a>
+    <span class="divider">|</span>
+    <a href="mailto:support@rabaislocal.com">support@rabaislocal.com</a>
+  </p>
+  <small>Plateforme 100 % québécoise. Paiement sécurisé via Payments AI.</small>
+</footer>

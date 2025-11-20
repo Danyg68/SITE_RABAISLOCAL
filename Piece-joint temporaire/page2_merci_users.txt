@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>RabaisLocal – Bienvenue dans la famille !</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --rl-blue:#3E53A5;
+  --rl-danger:#E94D4C;
+  --bg:#F5F8FF;
+  --card:#fff;
+}
+body{
+  font-family:'Poppins',sans-serif;
+  background:var(--bg);
+  color:#1A1A1A;
+  margin:0;
+  padding:0;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+h1,h2,h3{margin:0;}
+img{max-width:100%;display:block;border-radius:12px;}
+section{padding:0;margin:0;}
+
+/* --- Animations --- */
+@keyframes fadeSlideUp {
+  from {opacity:0; transform:translateY(25px);}
+  to {opacity:1; transform:translateY(0);}
+}
+.fade-up {opacity:0;animation:fadeSlideUp 1s ease forwards;}
+.fade-delay-1{animation-delay:.2s;}
+.fade-delay-2{animation-delay:.4s;}
+.fade-delay-3{animation-delay:.6s;}
+.fade-delay-4{animation-delay:.8s;}
+
+/* --- Barre supérieure --- */
+.topbar{
+  background:var(--rl-blue);
+  color:#fff;
+  text-align:center;
+  padding:12px 8px;
+  font-weight:500;
+  font-size:0.95rem;
+}
+
+/* --- Conteneur principal --- */
+.container{
+  max-width:1000px;
+  margin:40px auto;
+  padding:0 18px;
+}
+
+/* --- Titre principal --- */
+.hero-title{
+  text-align:center;
+  font-size:1.9rem;
+  font-weight:700;
+  margin-bottom:16px;
+}
+.hero-title span{color:var(--rl-blue);}
+.subtitle{
+  text-align:center;
+  color:#444;
+  font-size:1.05rem;
+  margin-bottom:32px;
+}
+
+/* --- Bloc vidéo --- */
+.video-section{
+  text-align:center;
+  margin:30px auto 50px;
+  max-width:900px;
+}
+.video-wrapper{
+  position:relative;
+  width:100%;
+  max-width:860px;
+  aspect-ratio:16/9;
+  overflow:hidden;
+  border-radius:18px;
+  box-shadow:0 8px 30px rgba(0,0,0,0.12);
+  background:#000;
+  margin:0 auto 18px;
+}
+.video-wrapper iframe{
+  position:absolute;
+  top:-3.5%;
+  left:0;
+  width:100%;
+  height:107%;
+  border:0;
+  transform:scale(0.97);
+  transform-origin:center;
+}
+
+/* --- Bloc 5000 premiers --- */
+.highlight{
+  background:#fff7e6;
+  border:2px solid var(--rl-danger);
+  border-radius:10px;
+  padding:16px 18px;
+  margin:24px 0;
+  text-align:center;
+}
+.highlight p{margin:6px 0;font-size:1rem;}
+.highlight strong{color:#000;}
+
+/* --- Liste d’instructions --- */
+.instructions{
+  list-style:none;
+  padding:0;
+  margin:20px 0 40px 0;
+  text-align:center;
+  font-size:1rem;
+}
+.instructions li{margin-bottom:6px;}
+.instructions li:first-child{color:var(--rl-danger);font-weight:700;}
+
+/* --- Boutons CTA --- */
+.cta-btn{
+  display:inline-block;
+  background:var(--rl-blue);
+  color:#fff;
+  padding:14px 34px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+  font-size:1.1rem;
+  box-shadow:0 6px 16px rgba(62,83,165,0.35);
+  transition:background .25s ease;
+}
+.cta-btn:hover{background:#2E4191;}
+.cta-note{
+  font-size:1rem;
+  color:#444;
+  margin-top:18px;
+}
+.cta-secondary{
+  display:inline-block;
+  background:#E94D4C;
+  color:#fff;
+  padding:12px 30px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+  font-size:1rem;
+  box-shadow:0 6px 16px rgba(233,77,76,0.35);
+  transition:background .25s ease;
+  margin-top:20px;
+}
+.cta-secondary:hover{background:#c83b3a;}
+
+/* --- Témoignages affiliés --- */
+.affiliates{
+  margin-top:60px;
+}
+.affiliates h3{
+  text-align:center;
+  color:#1A1A1A;
+  font-size:1.5rem;
+  margin-bottom:26px;
+}
+
+/* --- Responsive --- */
+@media(max-width:768px){
+  .hero-title{font-size:1.6rem;}
+  .subtitle{font-size:0.95rem;}
+  .cta-btn{font-size:1rem;padding:12px 28px;}
+  .highlight{padding:14px;}
+}
+@media(max-width:480px){
+  .container{margin:30px auto;padding:0 14px;}
+  .highlight p{font-size:0.95rem;}
+}
+</style>
+</head>
+
+<body>
+  <div class="topbar fade-up">🚀 Pré-lancement RabaisLocal 🚀</div>
+
+  <div class="container fade-up fade-delay-1">
+    <h1 class="hero-title">🎉 Merci, bienvenue dans la famille <span>RabaisLocal</span> !</h1>
+    <p class="subtitle fade-up fade-delay-2">
+      Ton inscription est confirmée ✅ Voici la suite pour profiter au maximum de ton compte et découvrir comment transformer un simple partage en revenu mensuel.
+    </p>
+
+    <!-- Bloc 5000 premiers -->
+    <div class="highlight fade-up fade-delay-3">
+      <p style="color:var(--rl-danger);font-weight:700;font-size:1.1rem;">
+        🎉 Félicitations ! Tu fais partie des <strong>5,000 premiers consommateurs inscrits</strong> à RabaisLocal !
+      </p>
+      <p>
+        Tu pourras <strong>tester gratuitement et sans limite</strong> toutes les fonctionnalités pendant les <strong>3 premiers mois</strong>
+        après l’ouverture officielle le <strong>19 mars 2026</strong> 🚀
+      </p>
+    </div>
+
+    <!-- Liste d’instructions -->
+    <ul class="instructions fade-up fade-delay-3">
+      <li>📧 Vérifie ton courriel et tes indésirables pour activer ton accès !</li>
+      <li>🔗 Partage ton lien de parrainage dès sa réception pour te permettre d'inviter tes proches.</li>
+      <li>🚀 Apprends comment devenir affilié et profiter pleinement de tout ce que RabaisLocal te permet d’accomplir.</li>
+    </ul>
+
+    <!-- Bloc vidéo -->
+    <section class="video-section fade-up fade-delay-4">
+      <h2 class="flash-text" style="color:var(--rl-blue);font-weight:700;font-size:1.6rem;margin-bottom:10px;">🎬 Regarde cette courte vidéo 👇</h2>
+      <p style="max-width:760px;margin:0 auto 30px;color:#333;font-size:1.05rem;line-height:1.5;">
+        Découvre en moins d’une minute comment ton inscription t’ouvre les portes d’une belle opportunité locale, simple, rapide et 100 % automatisé. 🔥
+      </p>
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/f0ERVBcRIew" title="Vidéo de remerciement RabaisLocal"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <style>
+        @keyframes flashRed {0%,100%{color:#3E53A5;}50%{color:#ff2c2c;}}
+        .flash-text{animation:flashRed 1.2s infinite;transition:color .3s ease;}
+      </style>
+    </section>
+
+    <!-- Cartes -->
+    <div class="card-grid fade-up fade-delay-4">
+      <div class="card">💳 <strong>Carte membre gratuite lors du lancement</strong><br>Accès immédiat à ton espace membre.</div>
+      <div class="card">🔗 <strong>Lien de parrainage personnel</strong><br>Partage-le à 10 de tes proches pour commencer.</div>
+    </div>
+
+    <!-- CTA affilié -->
+    <div style="text-align:center;margin-top:20px;">
+      <a href="https://www.rabaislocal.net/page-3-paiement-affilie" class="cta-btn fade-up">🚀 Je veux devenir affilié maintenant</a>
+      <p class="cta-note fade-up fade-delay-2">
+        👉 Tu veux en savoir plus ? Découvre comment transformer ton inscription gratuite en revenu.
+      </p>
+      <a href="https://www.rabaislocal.net/page-1-affilie-inscription" class="cta-secondary fade-up fade-delay-3">
+        💼 En savoir plus sur le rôle d’affilié
+      </a>
+    </div>
+  </div>
+</body>
+</html>

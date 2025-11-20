@@ -11,7 +11,10 @@
       "Bash(npm run dev:*)",
       "Bash(tree:*)",
       "Bash(npx tsc:*)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(git checkout:*)"
     ],
     "deny": [],
     "ask": []
