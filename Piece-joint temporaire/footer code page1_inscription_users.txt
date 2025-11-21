@@ -1,0 +1,131 @@
+<!-- ======================================================
+ RABAISLOCAL – REF TRACKER + AUTO REDIRECTION CF2.0
+ Version spéciale 2025 (ClickFunnels AJAX compatible)
+------------------------------------------------------ -->
+<script>
+(function(){
+  "use strict";
+
+  /* ====== OUTILS ====== */
+  function getParam(name){
+    try{
+      var p=new URLSearchParams(window.location.search);
+      return p.get(name)||"";
+    }catch(e){return"";}
+  }
+  function sanitize(v){return (v||"").toString().replace(/[^\w\-]/g,"").trim();}
+  function setCookie(n,v,days){
+    try{
+      var t=new Date();
+      t.setTime(t.getTime()+days*24*60*60*1000);
+      document.cookie=n+"="+encodeURIComponent(v)+";expires="+t.toUTCString()+";path=/";
+    }catch(e){}
+  }
+  function getCookie(n){
+    try{
+      var m=document.cookie.match(new RegExp("(^| )"+n+"=([^;]+)"));
+      return m?decodeURIComponent(m[2]):"";
+    }catch(e){return"";}
+  }
+  function setLS(k,v){try{localStorage.setItem(k,v);}catch(e){}}
+  function getLS(k){try{return localStorage.getItem(k)||"";}catch(e){return"";}}
+
+  /* ====== CAPTURE REF ====== */
+  var refURL=getParam("ref")||getParam("rl_ref")||getParam("referred_by");
+  var refCookie=getCookie("rl_ref");
+  var refLS=getLS("rl_ref");
+  var REF=sanitize(refURL||refCookie||refLS);
+
+  if(refURL){
+    REF=sanitize(refURL);
+    setCookie("rl_ref",REF,180);
+    setLS("rl_ref",REF);
+  } else if(REF){
+    setCookie("rl_ref",REF,180);
+    setLS("rl_ref",REF);
+  }
+
+  /* ====== INJECTION FORM ====== */
+  function injectHiddenRef(){
+    var val=REF||"";
+    document.querySelectorAll("form").forEach(function(f){
+      if(!f.querySelector('input[name="rl_ref"]')){
+        var i=document.createElement("input");
+        i.type="hidden"; i.name="rl_ref"; i.value=val;
+        f.appendChild(i);
+      } else {
+        var ex=f.querySelector('input[name="rl_ref"]');
+        if(!ex.value && val) ex.value=val;
+      }
+    });
+  }
+
+  /* ====== PROPAGATION LIENS ====== */
+  function propagateLinks(){
+    if(!REF) return;
+    document.querySelectorAll("a[href]").forEach(function(a){
+      var href=a.getAttribute("href");
+      if(!href || href.startsWith("mailto:")||href.startsWith("tel:")||href.startsWith("javascript:")||href.startsWith("#")) return;
+      try{
+        var url=new URL(href,window.location.origin);
+        if(url.origin!==window.location.origin) return;
+        if(!url.searchParams.get("ref")&&!url.searchParams.get("rl_ref")){
+          url.searchParams.set("ref",REF);
+        }
+        a.setAttribute("href",url.toString());
+      }catch(e){
+        if(href.indexOf("?")===-1) a.setAttribute("href",href+"?ref="+encodeURIComponent(REF));
+        else if(!/[?&](ref|rl_ref)=/i.test(href))
+          a.setAttribute("href",href+"&ref="+encodeURIComponent(REF));
+      }
+    });
+  }
+
+  /* ====== EXECUTION INITIALE ====== */
+  function run(){
+    if(!REF) REF=sanitize(getLS("rl_ref")||getCookie("rl_ref"));
+    injectHiddenRef();
+    propagateLinks();
+  }
+  window.addEventListener("load",run);
+  var mo=new MutationObserver(run);
+  mo.observe(document.documentElement,{childList:true,subtree:true});
+
+  /* ====== SAUVEGARDE AVANT CLIC ====== */
+  document.addEventListener("click",function(e){
+    if(e.target.closest("button,[type='submit'],a")){
+      try{
+        if(REF){
+          setLS("rl_ref",REF);
+          setCookie("rl_ref",REF,180);
+        }
+      }catch(err){}
+    }
+  });
+
+  /* ====== REDIRECTION AUTO CF2.0 ====== */
+  // Ce bloc détecte la soumission du formulaire CF2.0 et redirige proprement vers la page "merci" avec le ref
+  const observer=new MutationObserver(function(muts){
+    muts.forEach(function(m){
+      m.addedNodes.forEach(function(n){
+        if(n.nodeType===1 && n.querySelector && n.querySelector("[data-success-message]")){
+          // On attend un court délai pour laisser CF afficher le message de succès
+          setTimeout(function(){
+            try{
+              var ref=getLS("rl_ref")||getCookie("rl_ref")||"";
+              if(ref){
+                var thankURL="https://www.rabaislocal.net/page-2-merci-consommateur?ref="+encodeURIComponent(ref);
+                window.location.href=thankURL;
+              } else {
+                window.location.href="https://www.rabaislocal.net/page-2-merci-consommateur";
+              }
+            }catch(e){}
+          }, 1500);
+        }
+      });
+    });
+  });
+  observer.observe(document.body,{childList:true,subtree:true});
+
+})();
+</script>

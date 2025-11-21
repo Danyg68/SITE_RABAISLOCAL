@@ -1,0 +1,118 @@
+<!-- ==========================================================
+PAGE 4 — REMERCIEMENT / AFFILIÉ FONDATEUR 47 $
+Version premium – Design amélioré (Octobre 2025)
+========================================================== -->
+
+<section id="rl-thankyou" style="background:#F5F8FF; font-family:'Poppins',Arial,sans-serif; color:#1F2637; line-height:1.6; margin:0;">
+
+  <!-- HEADER -->
+  <div style="background:#F5F8FF; padding:20px 0; text-align:center;">
+    <img src="https://statics.myclickfunnels.com/workspace/jklqVP/image/17823503/file/d5fb15091926d11524543af90a9a5e26.png"
+         alt="Logo RabaisLocal" style="max-height:60px; width:auto;">
+  </div>
+  <div style="height:4px; background:#3E53A5; width:100%;"></div>
+
+  <!-- HERO -->
+  <div style="max-width:920px; margin:50px auto 30px; text-align:center; padding:0 20px;">
+    <h1 style="font-size:clamp(26px,3vw,34px); font-weight:700; margin-bottom:14px;">
+      🎉 Félicitations ! Tu fais officiellement partie des <span style="color:#3E53A5;">Affiliés Fondateurs RabaisLocal</span> !
+    </h1>
+    <p style="font-size:18px; max-width:640px; margin:10px auto 30px;">
+      Tu viens d’activer ton accès exclusif et ta trousse de démarrage.<br>
+      Dans quelques minutes, tu recevras tes accès par courriel.
+    </p>
+  </div>
+
+  <!-- ÉTAPES VERS LE SUCCÈS (mise en avant visuelle) -->
+  <div style="max-width:800px; margin:0 auto 60px; background:#ffffff; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.08); padding:40px 30px;">
+    <h2 style="text-align:center; font-size:26px; color:#3E53A5; margin-bottom:30px;">
+      🚀 Tes <span style="color:#1F2637;">5 Étapes</span> vers le succès
+    </h2>
+
+    <div style="display:flex; flex-direction:column; gap:20px; font-size:17px;">
+      <div style="display:flex; align-items:flex-start; gap:12px;">
+        <div style="font-size:22px;">📩</div>
+        <div><strong>Vérifie tes courriels</strong> (principal + indésirables) pour <strong>signer ton contrat</strong> et <strong>débloquer ton portail d’Affilié Fondateur </strong>.</div>
+      </div>
+
+      <div style="display:flex; align-items:flex-start; gap:12px;">
+        <div style="font-size:22px;">🗒️</div>
+        <div><strong>Fais la liste</strong> de toutes les personnes que tu connais qui pourraient être intéressées à devenir membres gratuitement prêt à économiser.  
+        Ensuite, refais ce même exercice avec les <strong>commerçants</strong> que tu connais ou que tu aimerais recevoir des rabais.</div>
+      </div>
+
+      <div style="display:flex; align-items:flex-start; gap:12px;">
+        <div style="font-size:22px;">💬</div>
+        <div><strong>Envoie des messages</strong> (Messenger, texto ou courriel) à ta liste.  
+        Tu trouveras des <strong>modèles prêts à être utiliser</strong> dans ton portail, onglet <em>“Documents utiles”</em>.</div>
+      </div>
+
+      <div style="display:flex; align-items:flex-start; gap:12px;">
+        <div style="font-size:22px;">🧭</div>
+        <div><strong>Fais le tour de ton portail</strong> pour te familiariser avec les outils, ton tableau de bord et tes ressources de formation.</div>
+      </div>
+
+      <div style="display:flex; align-items:flex-start; gap:12px;">
+        <div style="font-size:22px;">📊</div>
+        <div><strong>Reprends tes tâches quotidiennes</strong> et <strong>suis tes résultats</strong> dans ton portail Affilié — ton succès se bâtit jour après jour !</div>
+      </div>
+    </div>
+
+  </div>
+
+<!-- AVIS IMPORTANT – MISE EN AVANT MAXIMALE -->
+<div style="text-align:center; margin:40px auto 40px;">
+  <div style="
+    background:linear-gradient(135deg, #FFD700 0%, #FFED9A 100%);
+    border:3px solid #3E53A5;
+    border-radius:16px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.15);
+    padding:22px 24px;
+    max-width:680px;
+    margin:0 auto;
+    animation:pulseBox 2s infinite;
+  ">
+    <p style="font-size:22px; font-weight:700; color:#1B2240; margin:0; line-height:1.5;">
+      ⚠️ <span style="color:#3E53A5;">IMPORTANT :</span>  
+      <br>Regarde tes <strong>courriels (principal + indésirables)</strong>  
+      pour <strong>signer ton contrat</strong> et <strong>débloquer ton portail Affilié</strong> ✍️
+    </p>
+    <p style="font-size:18px; color:#1B2240; margin-top:10px;">
+      📩 <em>Ton accès complet sera activé seulement après la signature — vérifie maintenant !</em> 👇
+    </p>
+  </div>
+
+  <style>
+    @keyframes pulseBox {
+      0% { box-shadow:0 0 0 0 rgba(62,83,165,0.5); }
+      70% { box-shadow:0 0 0 12px rgba(62,83,165,0); }
+      100% { box-shadow:0 0 0 0 rgba(62,83,165,0); }
+    }
+  </style>
+</div>
+
+
+  <!-- VIDÉO -->
+  <div style="max-width:760px; margin:0 auto 40px; background:#E9EEFF; border-radius:16px; padding:16px;">
+    <iframe style="width:100%; height:360px; border-radius:12px; border:none;"
+      src="https://www.youtube.com/embed/aGwPIGjPBZI"
+      title="Message de bienvenue RabaisLocal" allowfullscreen></iframe>
+  </div>
+
+  <!-- PREUVE SOCIALE -->
+  <div style="text-align:center; margin:50px auto 70px; font-size:16px; color:#333;">
+    💬 Déjà <strong>2 600 membres</strong> ont rejoint RabaisLocal depuis quleques jours, et ça continue.<br>
+    Tu n’es pas seul — tu fais partie du mouvement 💙
+  </div>
+
+  <!-- FOOTER -->
+  <footer style="background:#3E53A5; padding:30px 20px; text-align:center;">
+    <div style="margin-bottom:15px;">
+      <img src="https://statics.myclickfunnels.com/workspace/jklqVP/image/17823503/file/d5fb15091926d11524543af90a9a5e26.png"
+           alt="RabaisLocal" style="height:40px; width:auto;">
+    </div>
+    <p style="color:white; margin:0; font-size:14px; font-weight:400; opacity:0.9;">
+      © 2025 RabaisLocal. Tous droits réservés.
+    </p>
+  </footer>
+</section>
