@@ -1,0 +1,671 @@
+{
+  "name": "Module A - Inscription Consommateur",
+  "flow": [
+    {
+      "id": 1,
+      "module": "gateway:CustomWebHook",
+      "version": 1,
+      "parameters": {
+        "hook": "RabaisLocal_Consumer_Signup",
+        "maxResults": 1
+      },
+      "mapper": {},
+      "metadata": {
+        "designer": {
+          "x": 0,
+          "y": 0
+        },
+        "restore": {},
+        "expect": [
+          {
+            "name": "email",
+            "type": "email",
+            "label": "Email du consommateur",
+            "required": true
+          },
+          {
+            "name": "prenom",
+            "type": "text",
+            "label": "Prénom",
+            "required": true
+          },
+          {
+            "name": "nom",
+            "type": "text",
+            "label": "Nom",
+            "required": false
+          },
+          {
+            "name": "ville",
+            "type": "text",
+            "label": "Ville",
+            "required": true
+          },
+          {
+            "name": "telephone",
+            "type": "text",
+            "label": "Téléphone",
+            "required": false
+          },
+          {
+            "name": "plan",
+            "type": "text",
+            "label": "Plan choisi (bronze/silver/gold)",
+            "required": false
+          },
+          {
+            "name": "utm_source",
+            "type": "text",
+            "label": "UTM Source",
+            "required": false
+          },
+          {
+            "name": "utm_campaign",
+            "type": "text",
+            "label": "UTM Campaign",
+            "required": false
+          },
+          {
+            "name": "referral_code",
+            "type": "text",
+            "label": "Code de parrainage affilié",
+            "required": false
+          }
+        ],
+        "interface": {
+          "name": "RabaisLocal - Inscription Consommateur",
+          "type": "http",
+          "url": "https://hook.eu2.make.com/VOTRE_WEBHOOK_ID"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "module": "util:SetVariables",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "variables": [
+          {
+            "name": "user_id",
+            "value": "{{uuid()}}"
+          },
+          {
+            "name": "timestamp",
+            "value": "{{now}}"
+          },
+          {
+            "name": "plan_default",
+            "value": "{{if(1.plan; 1.plan; \"bronze\")}}"
+          },
+          {
+            "name": "full_name",
+            "value": "{{1.prenom}} {{if(1.nom; 1.nom; \"\")}}"
+          }
+        ],
+        "scope": "roundtrip"
+      },
+      "metadata": {
+        "designer": {
+          "x": 300,
+          "y": 0
+        },
+        "restore": {
+          "expect": {
+            "scope": {
+              "label": "One cycle"
+            },
+            "variables": {
+              "items": [
+                null,
+                null,
+                null,
+                null
+              ]
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "variables",
+            "spec": [
+              {
+                "name": "name",
+                "type": "text",
+                "label": "Variable name",
+                "required": true
+              },
+              {
+                "name": "value",
+                "label": "Variable value"
+              }
+            ],
+            "type": "array",
+            "label": "Variables"
+          },
+          {
+            "name": "scope",
+            "type": "select",
+            "label": "Variable lifetime",
+            "required": true,
+            "validate": {
+              "enum": [
+                "roundtrip",
+                "execution"
+              ]
+            }
+          }
+        ],
+        "interface": {
+          "name": "Initialisation Variables",
+          "type": "util:SetVariables"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "module": "supabase:insertRow",
+      "version": 1,
+      "parameters": {
+        "connection": "supabase_rabaislocal"
+      },
+      "mapper": {
+        "table": "users",
+        "record": {
+          "id": "{{2.user_id}}",
+          "email": "{{lower(trim(1.email))}}",
+          "prenom": "{{capitalize(trim(1.prenom))}}",
+          "nom": "{{if(1.nom; capitalize(trim(1.nom)); emptystring)}}",
+          "ville": "{{capitalize(trim(1.ville))}}",
+          "telephone": "{{if(1.telephone; 1.telephone; emptystring)}}",
+          "role": "consumer",
+          "plan": "{{2.plan_default}}",
+          "credits_balance": 0,
+          "credits_free_monthly": "{{if(2.plan_default = \"bronze\"; 10; if(2.plan_default = \"silver\"; 20; if(2.plan_default = \"gold\"; 50; 10)))}}",
+          "utm_source": "{{if(1.utm_source; 1.utm_source; emptystring)}}",
+          "utm_campaign": "{{if(1.utm_campaign; 1.utm_campaign; emptystring)}}",
+          "referral_code": "{{if(1.referral_code; 1.referral_code; emptystring)}}",
+          "account_status": "active",
+          "email_verified": false,
+          "created_at": "{{2.timestamp}}",
+          "updated_at": "{{2.timestamp}}",
+          "metadata": {
+            "signup_source": "clickfunnels",
+            "funnel_name": "consumer_signup",
+            "ip_address": "{{1.ip_address}}",
+            "user_agent": "{{1.user_agent}}"
+          }
+        },
+        "upsert": false
+      },
+      "metadata": {
+        "designer": {
+          "x": 600,
+          "y": 0
+        },
+        "restore": {
+          "expect": {
+            "upsert": {
+              "mode": "chose"
+            }
+          },
+          "parameters": {
+            "connection": {
+              "label": "RabaisLocal Supabase",
+              "data": {
+                "scoped": "true",
+                "connection": "supabase_rabaislocal"
+              }
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "table",
+            "type": "text",
+            "label": "Table",
+            "required": true
+          },
+          {
+            "name": "record",
+            "type": "object",
+            "spec": "rpc://supabase_rabaislocal/users/fields",
+            "label": "Record",
+            "required": true
+          },
+          {
+            "name": "upsert",
+            "type": "boolean",
+            "label": "Upsert",
+            "required": false
+          }
+        ],
+        "interface": {
+          "name": "Création Utilisateur Supabase",
+          "type": "supabase:insertRow"
+        }
+      }
+    },
+    {
+      "id": 4,
+      "module": "supabase:insertRow",
+      "version": 1,
+      "parameters": {
+        "connection": "supabase_rabaislocal"
+      },
+      "mapper": {
+        "table": "logs_audit",
+        "record": {
+          "id": "{{uuid()}}",
+          "user_id": "{{3.id}}",
+          "action": "user_signup",
+          "entity_type": "user",
+          "entity_id": "{{3.id}}",
+          "changes": {
+            "email": "{{3.email}}",
+            "prenom": "{{3.prenom}}",
+            "ville": "{{3.ville}}",
+            "plan": "{{3.plan}}",
+            "role": "consumer"
+          },
+          "metadata": {
+            "source": "webhook_make",
+            "funnel": "clickfunnels_consumer",
+            "utm_source": "{{1.utm_source}}",
+            "utm_campaign": "{{1.utm_campaign}}",
+            "referral_code": "{{1.referral_code}}"
+          },
+          "ip_address": "{{1.ip_address}}",
+          "user_agent": "{{1.user_agent}}",
+          "created_at": "{{now}}"
+        },
+        "upsert": false
+      },
+      "metadata": {
+        "designer": {
+          "x": 900,
+          "y": 0
+        },
+        "restore": {
+          "expect": {
+            "upsert": {
+              "mode": "chose"
+            }
+          },
+          "parameters": {
+            "connection": {
+              "label": "RabaisLocal Supabase",
+              "data": {
+                "scoped": "true",
+                "connection": "supabase_rabaislocal"
+              }
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "table",
+            "type": "text",
+            "label": "Table",
+            "required": true
+          },
+          {
+            "name": "record",
+            "type": "object",
+            "label": "Record",
+            "required": true
+          }
+        ],
+        "interface": {
+          "name": "Log Audit - Inscription",
+          "type": "supabase:insertRow"
+        }
+      }
+    },
+    {
+      "id": 5,
+      "module": "mailersend:sendEmail",
+      "version": 1,
+      "parameters": {
+        "connection": "mailersend_rabaislocal"
+      },
+      "mapper": {
+        "from": {
+          "email": "bienvenue@rabaislocal.com",
+          "name": "Équipe RabaisLocal"
+        },
+        "to": [
+          {
+            "email": "{{3.email}}",
+            "name": "{{2.full_name}}"
+          }
+        ],
+        "subject": "🎉 Bienvenue sur RabaisLocal, {{3.prenom}} !",
+        "template_id": "rabaislocal_consumer_welcome",
+        "personalization": [
+          {
+            "email": "{{3.email}}",
+            "data": {
+              "prenom": "{{3.prenom}}",
+              "ville": "{{3.ville}}",
+              "plan": "{{3.plan}}",
+              "credits_free": "{{3.credits_free_monthly}}",
+              "login_url": "https://app.rabaislocal.com/login",
+              "dashboard_url": "https://app.rabaislocal.com/dashboard",
+              "support_url": "https://rabaislocal.com/support",
+              "year": "{{formatDate(now; \"YYYY\")}}"
+            }
+          }
+        ],
+        "tags": [
+          "onboarding",
+          "consumer",
+          "welcome"
+        ],
+        "reply_to": {
+          "email": "support@rabaislocal.com",
+          "name": "Support RabaisLocal"
+        }
+      },
+      "metadata": {
+        "designer": {
+          "x": 1200,
+          "y": 0
+        },
+        "restore": {
+          "parameters": {
+            "connection": {
+              "label": "RabaisLocal MailerSend",
+              "data": {
+                "scoped": "true",
+                "connection": "mailersend_rabaislocal"
+              }
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "from",
+            "type": "object",
+            "label": "From",
+            "required": true,
+            "spec": [
+              {
+                "name": "email",
+                "type": "email",
+                "label": "Email",
+                "required": true
+              },
+              {
+                "name": "name",
+                "type": "text",
+                "label": "Name"
+              }
+            ]
+          },
+          {
+            "name": "to",
+            "type": "array",
+            "label": "To",
+            "required": true,
+            "spec": [
+              {
+                "name": "email",
+                "type": "email",
+                "label": "Email",
+                "required": true
+              },
+              {
+                "name": "name",
+                "type": "text",
+                "label": "Name"
+              }
+            ]
+          },
+          {
+            "name": "subject",
+            "type": "text",
+            "label": "Subject",
+            "required": true
+          },
+          {
+            "name": "template_id",
+            "type": "text",
+            "label": "Template ID"
+          },
+          {
+            "name": "personalization",
+            "type": "array",
+            "label": "Personalization"
+          },
+          {
+            "name": "tags",
+            "type": "array",
+            "label": "Tags"
+          },
+          {
+            "name": "reply_to",
+            "type": "object",
+            "label": "Reply To"
+          }
+        ],
+        "interface": {
+          "name": "Email Bienvenue MailerSend",
+          "type": "mailersend:sendEmail"
+        }
+      }
+    },
+    {
+      "id": 6,
+      "module": "supabase:updateRow",
+      "version": 1,
+      "parameters": {
+        "connection": "supabase_rabaislocal"
+      },
+      "mapper": {
+        "table": "users",
+        "filter": {
+          "id": {
+            "eq": "{{3.id}}"
+          }
+        },
+        "record": {
+          "onboarding_email_sent": true,
+          "onboarding_email_sent_at": "{{now}}",
+          "updated_at": "{{now}}"
+        }
+      },
+      "metadata": {
+        "designer": {
+          "x": 1500,
+          "y": 0
+        },
+        "restore": {
+          "parameters": {
+            "connection": {
+              "label": "RabaisLocal Supabase",
+              "data": {
+                "scoped": "true",
+                "connection": "supabase_rabaislocal"
+              }
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "table",
+            "type": "text",
+            "label": "Table",
+            "required": true
+          },
+          {
+            "name": "filter",
+            "type": "object",
+            "label": "Filter",
+            "required": true
+          },
+          {
+            "name": "record",
+            "type": "object",
+            "label": "Record",
+            "required": true
+          }
+        ],
+        "interface": {
+          "name": "Mise à jour - Email envoyé",
+          "type": "supabase:updateRow"
+        }
+      }
+    },
+    {
+      "id": 7,
+      "module": "util:SetVariable",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "name": "response_success",
+        "value": {
+          "success": true,
+          "message": "Inscription réussie",
+          "user_id": "{{3.id}}",
+          "email": "{{3.email}}",
+          "prenom": "{{3.prenom}}",
+          "plan": "{{3.plan}}",
+          "credits_free": "{{3.credits_free_monthly}}",
+          "timestamp": "{{now}}"
+        },
+        "scope": "roundtrip"
+      },
+      "metadata": {
+        "designer": {
+          "x": 1800,
+          "y": 0
+        },
+        "restore": {
+          "expect": {
+            "scope": {
+              "label": "One cycle"
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "name",
+            "type": "text",
+            "label": "Variable name",
+            "required": true
+          },
+          {
+            "name": "value",
+            "label": "Variable value"
+          },
+          {
+            "name": "scope",
+            "type": "select",
+            "label": "Variable lifetime",
+            "required": true
+          }
+        ],
+        "interface": {
+          "name": "Réponse Succès",
+          "type": "util:SetVariable"
+        }
+      }
+    },
+    {
+      "id": 8,
+      "module": "gateway:WebhookRespond",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "status": "200",
+        "body": "{{7.response_success}}",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      },
+      "metadata": {
+        "designer": {
+          "x": 2100,
+          "y": 0
+        },
+        "restore": {
+          "expect": {
+            "headers": {
+              "items": [
+                null
+              ]
+            }
+          }
+        },
+        "expect": [
+          {
+            "name": "status",
+            "type": "uinteger",
+            "label": "Status",
+            "required": true,
+            "validate": {
+              "min": 100
+            }
+          },
+          {
+            "name": "body",
+            "type": "any",
+            "label": "Body"
+          },
+          {
+            "name": "headers",
+            "spec": [
+              {
+                "name": "key",
+                "type": "text",
+                "label": "Key",
+                "required": true,
+                "validate": {
+                  "max": 256
+                }
+              },
+              {
+                "name": "value",
+                "type": "text",
+                "label": "Value",
+                "required": true,
+                "validate": {
+                  "max": 4096
+                }
+              }
+            ],
+            "type": "array",
+            "label": "Custom headers",
+            "validate": {
+              "maxItems": 16
+            }
+          }
+        ],
+        "interface": {
+          "name": "Webhook Response",
+          "type": "gateway:WebhookRespond"
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "version": 1,
+    "scenario": {
+      "roundtrips": 1,
+      "maxErrors": 3,
+      "autoCommit": true,
+      "sequential": true,
+      "confidential": false,
+      "dataloss": false,
+      "dlq": false
+    },
+    "designer": {
+      "orphans": []
+    },
+    "zone": "eu2.make.com"
+  }
+}

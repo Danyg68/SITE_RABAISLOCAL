@@ -1,0 +1,21 @@
+{
+  // ---- Claude Code ----
+  "claude.enable": true,
+  "claude.folder": ".claude",
+  "claude.language": "fr",
+  "claude.autoReadDocs": true,
+
+  // ---- Codex (OpenAI) ----
+  "codegpt.model": "gpt-4-turbo",
+  "codegpt.language": "fr",
+  "codegpt.autoComplete": true,
+  "codegpt.enableChat": true,
+
+  // ---- Éditeur et Git ----
+  "editor.inlineSuggest.enabled": true,
+  "editor.suggest.showSnippets": true,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 2000,
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false
+}
