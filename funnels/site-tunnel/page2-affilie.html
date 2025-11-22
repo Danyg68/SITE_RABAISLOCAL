@@ -112,7 +112,7 @@ BLOC 1 - Page de paiement affilié fondateur
 </section>
 
 <!-- ==========================================================
-SECTION PAYPAL - INTÉGRATION SANDBOX
+SECTION PAIEMENT - BOUTON PAYPAL HÉBERGÉ
 ========================================================== -->
 <style>
   #section-paiement-affilie {
@@ -139,13 +139,25 @@ SECTION PAYPAL - INTÉGRATION SANDBOX
     font-family: "Poppins", sans-serif;
   }
 
-  #paypal-button-container {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 14px;
-    box-shadow: 0 6px 20px rgba(62, 83, 165, 0.1);
+  .paypal-info-box {
+    background: #FFF9E6;
+    border-left: 4px solid #FFD140;
+    padding: 18px 20px;
+    border-radius: 8px;
+    margin: 25px auto;
+    max-width: 550px;
+    text-align: left;
+  }
+
+  .paypal-info-box p {
+    margin: 8px 0;
+    font-size: 15px;
+    color: #1B2240;
+    line-height: 1.7;
+  }
+
+  .paypal-info-box strong {
+    color: #3E53A5;
   }
 
   @media (max-width: 600px) {
@@ -158,28 +170,54 @@ SECTION PAYPAL - INTÉGRATION SANDBOX
     #section-paiement-affilie p {
       font-size: 16px;
     }
+    .paypal-info-box {
+      padding: 15px 18px;
+    }
+    .paypal-info-box p {
+      font-size: 14px;
+    }
   }
 </style>
 
 <section id="section-paiement-affilie">
   <h2>Étape 2 — Active ta trousse affiliée</h2>
-  <p>Remplis le formulaire ci-dessous pour finaliser ton inscription sécurisée à <strong>1 $ CAD</strong>.</p>
+  <p>Remplis le formulaire ci-dessous pour finaliser ton inscription sécurisée à <strong>47 $ CAD</strong>.</p>
 
   <!-- Formulaire d'inscription -->
   <div style="max-width: 600px; margin: 30px auto 0;">
     <form id="form-inscription-affilie" style="background: #fff; padding: 30px; border-radius: 14px; box-shadow: 0 6px 20px rgba(62, 83, 165, 0.1);">
 
-      <!-- Nom complet -->
+      <!-- Champ caché pour la référence -->
+      <input type="hidden" id="ref" name="ref" value="" />
+
+      <!-- Prénom -->
       <div style="margin-bottom: 20px;">
-        <label for="nom_complet" style="display: block; font-family: 'Poppins', sans-serif; font-weight: 600; color: #1B2240; margin-bottom: 8px; font-size: 15px;">
-          Nom complet *
+        <label for="prenom" style="display: block; font-family: 'Poppins', sans-serif; font-weight: 600; color: #1B2240; margin-bottom: 8px; font-size: 15px;">
+          Prénom *
         </label>
         <input
           type="text"
-          id="nom_complet"
-          name="nom_complet"
+          id="prenom"
+          name="prenom"
           required
-          placeholder="Ex: Jean Tremblay"
+          placeholder="Ex: Jean"
+          style="width: 100%; padding: 12px 16px; border: 2px solid #E0E6FF; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 15px; transition: border-color 0.3s ease;"
+          onfocus="this.style.borderColor='#3E53A5'"
+          onblur="this.style.borderColor='#E0E6FF'"
+        />
+      </div>
+
+      <!-- Nom -->
+      <div style="margin-bottom: 20px;">
+        <label for="nom" style="display: block; font-family: 'Poppins', sans-serif; font-weight: 600; color: #1B2240; margin-bottom: 8px; font-size: 15px;">
+          Nom *
+        </label>
+        <input
+          type="text"
+          id="nom"
+          name="nom"
+          required
+          placeholder="Ex: Tremblay"
           style="width: 100%; padding: 12px 16px; border: 2px solid #E0E6FF; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 15px; transition: border-color 0.3s ease;"
           onfocus="this.style.borderColor='#3E53A5'"
           onblur="this.style.borderColor='#E0E6FF'"
@@ -220,41 +258,51 @@ SECTION PAYPAL - INTÉGRATION SANDBOX
         />
       </div>
 
-      <!-- Ville -->
+      <!-- Référé par -->
       <div style="margin-bottom: 20px;">
-        <label for="ville" style="display: block; font-family: 'Poppins', sans-serif; font-weight: 600; color: #1B2240; margin-bottom: 8px; font-size: 15px;">
-          Ville *
+        <label for="referer" style="display: block; font-family: 'Poppins', sans-serif; font-weight: 600; color: #1B2240; margin-bottom: 8px; font-size: 15px;">
+          Référé par (optionnel)
         </label>
         <input
           type="text"
-          id="ville"
-          name="ville"
-          required
-          placeholder="Ex: Montréal"
+          id="referer"
+          name="referer"
+          placeholder="Nom ou code de la personne qui t'a référé"
           style="width: 100%; padding: 12px 16px; border: 2px solid #E0E6FF; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 15px; transition: border-color 0.3s ease;"
           onfocus="this.style.borderColor='#3E53A5'"
           onblur="this.style.borderColor='#E0E6FF'"
         />
       </div>
 
-      <!-- Message d'information -->
-      <div style="background: #F5F8FF; padding: 15px; border-radius: 8px; margin-bottom: 25px; border-left: 4px solid #3E53A5;">
-        <p style="margin: 0; font-family: 'Poppins', sans-serif; font-size: 14px; color: #4B569A; line-height: 1.6;">
-          <strong>💡 Note :</strong> Après avoir complété le paiement, tu recevras immédiatement ton lien personnel d'affilié et l'accès à ton tableau de bord par courriel.
-        </p>
-      </div>
-
-      <!-- Bouton PayPal -->
-      <div id="paypal-button-zone" style="text-align: center;">
-        <style>.pp-UEB6T5RGU53K2{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}</style>
-        <form action="https://www.paypal.com/ncp/payment/UEB6T5RGU53K2" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
-          <input class="pp-UEB6T5RGU53K2" type="submit" value="Payer 1$ avec PayPal" />
-          <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
-          <section style="font-size: 0.75rem;"> Optimisé par <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
-        </form>
-      </div>
+      <!-- Bouton de soumission du formulaire d'inscription -->
+      <button type="button" id="btn-submit-inscription" style="width: 100%; padding: 14px 20px; background: linear-gradient(135deg, #3E53A5 0%, #5068C4 100%); color: #fff; border: none; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(62, 83, 165, 0.3); transition: all 0.3s ease; margin-bottom: 20px;">
+        Valider et passer au paiement PayPal →
+      </button>
 
     </form>
+
+    <!-- Message d'information paiement -->
+    <div class="paypal-info-box">
+      <p><strong>🔐 Comment ça fonctionne :</strong></p>
+      <p>✓ Une fenêtre PayPal va s'ouvrir pour compléter votre paiement sécurisé.</p>
+      <p>✓ Une fois le paiement complété, vous serez automatiquement redirigé vers la page de confirmation.</p>
+      <p>✓ Vous recevrez immédiatement votre lien d'affilié et l'accès à votre tableau de bord par courriel.</p>
+    </div>
+
+    <!-- Bouton PayPal Hébergé -->
+    <div id="paypal-button-zone" style="text-align: center;">
+      <div>
+        <style>.pp-UEB6T5RGU53K2{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}</style>
+        <form id="paypal-hosted-form" action="https://www.paypal.com/ncp/payment/UEB6T5RGU53K2" method="post" target="paypal_popup" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
+          <input type="hidden" name="custom" value="" id="paypal-custom-id" />
+          <input type="hidden" name="return" value="https://marketing.rabaislocal.com/page2_form_affilie.html" />
+          <input type="hidden" name="cancel_return" value="https://marketing.rabaislocal.com/page2-affilie.html" />
+          <input class="pp-UEB6T5RGU53K2" type="submit" value="Acheter" />
+          <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
+          <section style="font-size: 0.75rem;">Optimisé par <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
+        </form>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -446,9 +494,8 @@ BLOC 3 - Footer
 </footer>
 
 <!-- ==========================================================
-SCRIPTS - GESTION REF + FORMULAIRE
+SCRIPTS - GESTION REF + VALIDATION FORMULAIRE
 ========================================================== -->
-
 <script>
 // ===== GESTION DU PARRAIN "REF" =====
 const urlParams = new URLSearchParams(window.location.search);
@@ -456,6 +503,11 @@ let ref = urlParams.get("ref") || localStorage.getItem("rl_ref") || "0";
 
 // Sauvegarder dans localStorage
 localStorage.setItem("rl_ref", ref);
+
+// Remplir le champ caché
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById('ref').value = ref;
+});
 
 // Log pour debug
 console.log("Référence du parrain :", ref);
@@ -476,74 +528,91 @@ function propagateRef() {
 
 document.addEventListener("DOMContentLoaded", propagateRef);
 
-// ===== VALIDATION ET ENVOI DU FORMULAIRE =====
+// ===== VALIDATION DU FORMULAIRE D'INSCRIPTION ET ENVOI AU WEBHOOK =====
 document.addEventListener("DOMContentLoaded", function() {
-  const form = document.getElementById('form-inscription-affilie');
-  const paypalButtonZone = document.getElementById('paypal-button-zone');
+  const btnSubmitInscription = document.getElementById('btn-submit-inscription');
+  const formInscription = document.getElementById('form-inscription-affilie');
+  const paypalHostedForm = document.getElementById('paypal-hosted-form');
 
-  // Initialement, masquer le bouton PayPal
-  paypalButtonZone.style.display = 'none';
+  if (btnSubmitInscription && formInscription && paypalHostedForm) {
+    btnSubmitInscription.addEventListener('click', function(e) {
+      e.preventDefault();
 
-  // Vérifier si tous les champs sont remplis
-  function checkFormValidity() {
-    const nomComplet = document.getElementById('nom_complet').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const telephone = document.getElementById('telephone').value.trim();
-    const ville = document.getElementById('ville').value.trim();
+      // Valider le formulaire d'inscription
+      if (!formInscription.checkValidity()) {
+        formInscription.reportValidity();
+        return;
+      }
 
-    if (nomComplet && email && telephone && ville) {
-      paypalButtonZone.style.display = 'block';
+      // Générer un ID unique pour lier le formulaire et le paiement PayPal
+      const uniqueId = 'RL-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
 
-      // Envoyer les données au webhook Make.com
+      // Injecter l'ID unique dans le champ caché PayPal
+      document.getElementById('paypal-custom-id').value = uniqueId;
+
+      // Récupérer les données du formulaire d'inscription
+      const prenom = document.getElementById('prenom').value.trim();
+      const nom = document.getElementById('nom').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const telephone = document.getElementById('telephone').value.trim();
+      const referer = document.getElementById('referer').value.trim();
+
+      // Préparer les données pour le webhook
       const formData = {
-        type: 'formulaire_affilie_avant_paiement',
+        type: 'formulaire_inscription_affilie',
+        source: 'page2_avant_paiement',
+        transaction_id: uniqueId,
         ref: ref,
-        nomComplet: nomComplet,
+        prenom: prenom,
+        nom: nom,
         email: email,
         telephone: telephone,
-        ville: ville,
+        referer: referer,
         timestamp: new Date().toISOString()
       };
 
-      console.log('📋 Formulaire valide, données:', formData);
+      console.log('📋 Envoi des données du formulaire d\'inscription au webhook:', formData);
 
-      // Envoi au webhook Make.com
-      fetch('https://hook.us2.make.com/x3yp1l7u7mo3uiihkajgsxexitgrq3qt', {
+      // Envoyer au webhook Make.com (sans attendre la réponse)
+      fetch('https://hook.us2.make.com/x3yp1l7u7mo3uiihkajgsexitgrq3qt', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(formData)
-      })
-      .then(response => {
-        console.log('✅ Données du formulaire envoyées au webhook. Status:', response.status);
-      })
-      .catch(err => {
-        console.error('❌ Erreur lors de l\'envoi des données du formulaire:', err);
+        body: JSON.stringify(formData),
+        keepalive: true
+      }).then(response => {
+        console.log('✅ Données du formulaire d\'inscription envoyées. Status:', response.status);
+      }).catch(err => {
+        console.error('❌ Erreur lors de l\'envoi:', err);
       });
 
-      // Sauvegarder les données dans localStorage pour la page suivante
-      localStorage.setItem('rl_affilie_nom', nomComplet);
+      // Sauvegarder dans localStorage
+      localStorage.setItem('rl_affilie_prenom', prenom);
+      localStorage.setItem('rl_affilie_nom', nom);
       localStorage.setItem('rl_affilie_email', email);
       localStorage.setItem('rl_affilie_telephone', telephone);
-      localStorage.setItem('rl_affilie_ville', ville);
+      localStorage.setItem('rl_affilie_referer', referer);
+      localStorage.setItem('rl_affilie_transaction_id', uniqueId);
 
-    } else {
-      paypalButtonZone.style.display = 'none';
-    }
+      // Ouvrir PayPal dans un popup centré
+      const width = 800;
+      const height = 700;
+      const left = (screen.width - width) / 2;
+      const top = (screen.height - height) / 2;
+
+      window.open('', 'paypal_popup',
+        'width=' + width +
+        ',height=' + height +
+        ',top=' + top +
+        ',left=' + left +
+        ',resizable=yes,scrollbars=yes,status=yes'
+      );
+
+      // Soumettre le formulaire PayPal dans le popup
+      paypalHostedForm.submit();
+    });
   }
-
-  // Écouter les changements sur tous les champs
-  document.getElementById('nom_complet').addEventListener('input', checkFormValidity);
-  document.getElementById('email').addEventListener('input', checkFormValidity);
-  document.getElementById('telephone').addEventListener('input', checkFormValidity);
-  document.getElementById('ville').addEventListener('input', checkFormValidity);
-
-  // Empêcher la soumission du formulaire principal
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    checkFormValidity();
-  });
 });
 
 // ===== ANIMATION D'APPARITION DES CARTES =====

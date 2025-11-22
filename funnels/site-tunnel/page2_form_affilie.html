@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complète ton inscription affilié – RabaisLocal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body style="margin:0;padding:0;background:#F5F8FF;">
+
+<!-- ==========================================================
+BLOC 1 - En-tête
+========================================================== -->
+<style>
+  .rl-header {
+    font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    text-align: center;
+    background: #fff;
+    color: #1B2240;
+    line-height: 1.6;
+    padding: 0 20px 40px;
+    position: relative;
+  }
+
+  .rl-banner-top {
+    background: #3E53A5;
+    color: #fff;
+    font-weight: 600;
+    padding: 12px 20px;
+    font-size: clamp(15px, 1.4vw, 17px);
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+  }
+
+  .rl-banner-top span {
+    color: #FFD500;
+    font-weight: 700;
+  }
+
+  .rl-header h1 {
+    color: #3E53A5;
+    font-size: clamp(28px, 3vw, 38px);
+    font-weight: 800;
+    margin-top: 40px;
+    margin-bottom: 14px;
+  }
+
+  .rl-header p {
+    font-size: clamp(16px, 1.6vw, 18px);
+    margin: 0 auto 20px;
+    max-width: 680px;
+    color: #4B569A;
+  }
+
+  .rl-highlight {
+    color: #3E53A5;
+    font-weight: 700;
+  }
+
+  @media (max-width: 600px) {
+    .rl-header {
+      padding: 0 14px 32px;
+    }
+    .rl-banner-top {
+      font-size: 14px;
+      padding: 10px 14px;
+    }
+    .rl-header h1 {
+      font-size: 26px;
+      margin-top: 30px;
+    }
+    .rl-header p {
+      font-size: 16px;
+    }
+  }
+</style>
+
+<section class="rl-header">
+  <div class="rl-banner-top">
+    ✅ Paiement confirmé – <span>Bienvenue dans l'équipe RabaisLocal</span> !
+  </div>
+
+  <h1>Complète ton inscription <span class="rl-highlight">Affilié Fondateur</span></h1>
+  <p>
+    Ton paiement a été confirmé avec succès ! Il ne reste qu'à compléter ces informations pour activer ton compte affilié et recevoir ton lien personnel.
+  </p>
+</section>
+
+<!-- ==========================================================
+SECTION FORMULAIRE COMPLET
+========================================================== -->
+<style>
+  #section-form-affilie {
+    padding: 50px 20px 60px;
+    background: linear-gradient(180deg, #ffffff 0%, #F5F8FF 100%);
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+  }
+
+  #section-form-affilie h2 {
+    color: #3E53A5;
+    font-size: clamp(24px, 2.8vw, 32px);
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+
+  #section-form-affilie p.subtitle {
+    font-size: 17px;
+    color: #4B569A;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .form-container {
+    max-width: 700px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px 35px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(62, 83, 165, 0.12);
+    text-align: left;
+  }
+
+  .form-container h3 {
+    color: #3E53A5;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 30px;
+    margin-bottom: 18px;
+    border-bottom: 2px solid #E0E6FF;
+    padding-bottom: 8px;
+  }
+
+  .form-container h3:first-of-type {
+    margin-top: 0;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    display: block;
+    font-weight: 600;
+    color: #1B2240;
+    margin-bottom: 8px;
+    font-size: 15px;
+  }
+
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #E0E6FF;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: #3E53A5;
+  }
+
+  .checkbox-group {
+    margin-bottom: 18px;
+  }
+
+  .checkbox-group label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-weight: 500;
+    color: #1B2240;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .checkbox-group input[type="checkbox"] {
+    margin-top: 3px;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+
+  .btn-submit {
+    width: 100%;
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #3E53A5 0%, #5068C4 100%);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(62, 83, 165, 0.35);
+    transition: all 0.3s ease;
+    margin-top: 10px;
+  }
+
+  .btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(62, 83, 165, 0.45);
+  }
+
+  .success-message {
+    display: none;
+    background: #E8F5E9;
+    border-left: 4px solid #4CAF50;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    color: #2E7D32;
+    font-weight: 600;
+  }
+
+  .error-message {
+    display: none;
+    background: #FFEBEE;
+    border-left: 4px solid #F44336;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    color: #C62828;
+    font-weight: 600;
+  }
+
+  @media (max-width: 600px) {
+    #section-form-affilie {
+      padding: 40px 16px 50px;
+    }
+    .form-container {
+      padding: 30px 20px;
+    }
+    #section-form-affilie h2 {
+      font-size: 24px;
+    }
+    #section-form-affilie p.subtitle {
+      font-size: 16px;
+    }
+  }
+</style>
+
+<section id="section-form-affilie">
+  <h2>Informations complémentaires</h2>
+  <p class="subtitle">Remplis ce formulaire pour finaliser ton inscription et recevoir ton accès affilié.</p>
+
+  <div class="form-container">
+    <form id="affilie-form">
+
+      <h3>Identité</h3>
+
+      <div class="form-group">
+        <label for="prenom">Prénom *</label>
+        <input type="text" id="prenom" name="prenom" required placeholder="Ex: Jean">
+      </div>
+
+      <div class="form-group">
+        <label for="nom">Nom *</label>
+        <input type="text" id="nom" name="nom" required placeholder="Ex: Tremblay">
+      </div>
+
+      <div class="form-group">
+        <label for="email_inscription">Adresse courriel *</label>
+        <input type="email" id="email_inscription" name="email" required placeholder="Ex: jean.tremblay@exemple.com">
+      </div>
+
+      <div class="form-group">
+        <label for="telephone">Téléphone</label>
+        <input type="tel" id="telephone" name="telephone" placeholder="Ex: 514-555-1234">
+      </div>
+
+      <h3>Adresse complète</h3>
+
+      <div class="form-group">
+        <label for="adresse_numero">Numéro civique / unité *</label>
+        <input type="text" id="adresse_numero" name="adresse_numero" required placeholder="Ex: 8-444">
+      </div>
+
+      <div class="form-group">
+        <label for="adresse_rue">Rue *</label>
+        <input type="text" id="adresse_rue" name="adresse_rue" required placeholder="Ex: boul Ste-Madeleine">
+      </div>
+
+      <div class="form-group">
+        <label for="province">Province *</label>
+        <select id="province" name="province" required>
+          <option value="">Sélectionne ta province</option>
+          <option value="QC">Québec</option>
+          <option value="ON">Ontario</option>
+          <option value="NB">Nouveau-Brunswick</option>
+          <option value="NS">Nouvelle-Écosse</option>
+          <option value="PE">Île-du-Prince-Édouard</option>
+          <option value="NL">Terre-Neuve-et-Labrador</option>
+          <option value="MB">Manitoba</option>
+          <option value="SK">Saskatchewan</option>
+          <option value="AB">Alberta</option>
+          <option value="BC">Colombie-Britannique</option>
+          <option value="YT">Yukon</option>
+          <option value="NT">Territoires du Nord-Ouest</option>
+          <option value="NU">Nunavut</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="ville">Ville *</label>
+        <input
+          type="text"
+          id="ville"
+          name="ville"
+          list="ville-options"
+          placeholder="Commence à taper ta ville"
+          required
+        />
+        <datalist id="ville-options"></datalist>
+      </div>
+
+      <div class="form-group">
+        <label for="code_postal">Code postal *</label>
+        <input type="text" id="code_postal" name="code_postal" required placeholder="Ex: H2X 1Y4">
+      </div>
+
+      <h3>Informations complémentaires</h3>
+
+      <div class="form-group">
+        <label for="referer_affilie">Référé par (nom ou code affilié)</label>
+        <input type="text" id="referer_affilie" name="referer" placeholder="Nom ou code de la personne qui t'a référé">
+      </div>
+
+      <h3>Confirmations</h3>
+
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" name="accept_contrat" required>
+          <span>J'ai lu et j'accepte le <a href="https://www.rabaislocal.com/contrat-affiliation" target="_blank" style="color: #3E53A5; text-decoration: underline;">contrat d'affiliation RabaisLocal</a>.</span>
+        </label>
+      </div>
+
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" name="accept_prelaunch" required>
+          <span>Je comprends que RabaisLocal est en pré-lancement et que la plateforme sera activée au lancement officiel.</span>
+        </label>
+      </div>
+
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" name="newsletter_optin">
+          <span>Je souhaite recevoir les nouveautés et conseils pour réussir comme affilié.</span>
+        </label>
+      </div>
+
+      <button type="submit" class="btn-submit">
+        ✅ Valider mon inscription affilié
+      </button>
+
+      <div class="success-message" id="success-msg">
+        Merci ! Ton inscription a été envoyée avec succès. Tu vas recevoir un courriel de confirmation avec ton lien d'affilié sous peu.
+      </div>
+
+      <div class="error-message" id="error-msg">
+        Une erreur est survenue lors de l'envoi. Merci de réessayer ou de contacter le support à <a href="mailto:support@rabaislocal.com" style="color: #C62828; text-decoration: underline;">support@rabaislocal.com</a>.
+      </div>
+
+    </form>
+  </div>
+</section>
+
+<!-- ==========================================================
+BLOC 2 - Footer
+========================================================== -->
+<style>
+  .rl-footer {
+    background: #fff;
+    border-top: 2px solid #E0E6FF;
+    text-align: center;
+    font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    color: #444;
+    padding: 35px 16px 25px;
+    font-size: 14.5px;
+    line-height: 1.6;
+  }
+
+  .rl-footer a {
+    color: #3E53A5;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .rl-footer a:hover {
+    color: #2E408D;
+    text-decoration: underline;
+  }
+
+  .rl-footer .divider {
+    margin: 0 8px;
+    color: #999;
+  }
+
+  .rl-footer small {
+    display: block;
+    color: #777;
+    margin-top: 8px;
+    font-size: 13px;
+  }
+
+  @media (max-width: 600px) {
+    .rl-footer {
+      font-size: 13.5px;
+      padding: 28px 10px 22px;
+    }
+  }
+</style>
+
+<footer class="rl-footer">
+  <p>
+    © 2025 <b>RabaisLocal</b>. Tous droits réservés.
+    <span class="divider">|</span>
+    <a href="https://www.rabaislocal.com/politique-confidentialite" target="_blank">Politique de confidentialité</a>
+    <span class="divider">|</span>
+    <a href="mailto:support@rabaislocal.com">support@rabaislocal.com</a>
+  </p>
+  <small>Plateforme 100 % québécoise.</small>
+</footer>
+
+<!-- ==========================================================
+SCRIPTS - AUTO-COMPLÉTION + ENVOI WEBHOOK
+========================================================== -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const provinceSelect = document.getElementById('province');
+  const villeInput = document.getElementById('ville');
+  const datalist = document.getElementById('ville-options');
+  const affilieForm = document.getElementById('affilie-form');
+  const successMsg = document.getElementById('success-msg');
+  const errorMsg = document.getElementById('error-msg');
+
+  let villesParProvince = {};
+
+  // 1) Charger le JSON des villes par province
+  fetch('assets/json/villes_canada.json')
+    .then(function (response) {
+      if (!response.ok) {
+        throw new Error('Erreur de chargement de villes_canada.json');
+      }
+      return response.json();
+    })
+    .then(function (data) {
+      villesParProvince = data;
+      console.log('✅ Fichier villes_canada.json chargé avec succès');
+    })
+    .catch(function (error) {
+      console.error('❌ Erreur lors du chargement des villes:', error);
+    });
+
+  // 2) Quand la province change, remplir la datalist avec les villes correspondantes
+  if (provinceSelect && datalist) {
+    provinceSelect.addEventListener('change', function () {
+      const codeProvince = provinceSelect.value;
+      datalist.innerHTML = '';
+
+      if (codeProvince && villesParProvince[codeProvince]) {
+        villesParProvince[codeProvince].forEach(function (ville) {
+          const option = document.createElement('option');
+          option.value = ville;
+          datalist.appendChild(option);
+        });
+        console.log('🏙️ Villes chargées pour la province:', codeProvince);
+      }
+    });
+  }
+
+  // 3) Pré-remplir le formulaire avec les données du localStorage
+  const prenomSaved = localStorage.getItem('rl_affilie_prenom');
+  const nomSaved = localStorage.getItem('rl_affilie_nom');
+  const emailSaved = localStorage.getItem('rl_affilie_email');
+  const telephoneSaved = localStorage.getItem('rl_affilie_telephone');
+  const refererSaved = localStorage.getItem('rl_affilie_referer');
+  const transactionId = localStorage.getItem('rl_affilie_transaction_id');
+
+  if (prenomSaved) document.getElementById('prenom').value = prenomSaved;
+  if (nomSaved) document.getElementById('nom').value = nomSaved;
+  if (emailSaved) document.getElementById('email_inscription').value = emailSaved;
+  if (telephoneSaved) document.getElementById('telephone').value = telephoneSaved;
+  if (refererSaved) document.getElementById('referer_affilie').value = refererSaved;
+
+  // 4) Envoi du formulaire à Make via webhook
+  if (affilieForm) {
+    affilieForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Masquer les messages précédents
+      successMsg.style.display = 'none';
+      errorMsg.style.display = 'none';
+
+      const formData = new FormData(affilieForm);
+
+      // Ajouter des données supplémentaires
+      formData.append('transaction_id', transactionId || '');
+      formData.append('timestamp', new Date().toISOString());
+      formData.append('type', 'formulaire_complet_affilie');
+      formData.append('source', 'page2_form_affilie');
+
+      // Convertir FormData en objet pour affichage console
+      const formObject = {};
+      formData.forEach((value, key) => {
+        formObject[key] = value;
+      });
+      console.log('📋 Envoi du formulaire complet affilié au webhook:', formObject);
+
+      // Webhook Make.com pour le formulaire complet post-paiement
+      const webhookUrl = 'https://hook.us2.make.com/2yh1km3xxqenpgy6r6kf8pol3v4pcg63';
+
+      fetch(webhookUrl, {
+        method: 'POST',
+        body: formData
+      })
+      .then(function (response) {
+        if (response.ok) {
+          console.log('✅ Formulaire complet envoyé avec succès. Status:', response.status);
+          successMsg.style.display = 'block';
+          affilieForm.reset();
+
+          // Nettoyer le localStorage après envoi réussi
+          localStorage.removeItem('rl_affilie_prenom');
+          localStorage.removeItem('rl_affilie_nom');
+          localStorage.removeItem('rl_affilie_email');
+          localStorage.removeItem('rl_affilie_telephone');
+          localStorage.removeItem('rl_affilie_referer');
+          localStorage.removeItem('rl_affilie_transaction_id');
+
+          // Optionnel : redirection vers une page de merci après 3 secondes
+          // setTimeout(function() {
+          //   window.location.href = 'page3_affilie_merci.html';
+          // }, 3000);
+        } else {
+          throw new Error('Erreur HTTP: ' + response.status);
+        }
+      })
+      .catch(function (error) {
+        console.error('❌ Erreur lors de l\'envoi du formulaire affilié:', error);
+        errorMsg.style.display = 'block';
+      });
+    });
+  }
+});
+</script>
+
+</body>
+</html>

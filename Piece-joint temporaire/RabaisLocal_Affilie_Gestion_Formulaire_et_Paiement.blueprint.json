@@ -1,0 +1,342 @@
+{
+    "name": "RabaisLocal - Affilié - Formulaire + PayPal",
+    "flow": [
+        {
+            "id": 1,
+            "module": "gateway:CustomWebHook",
+            "version": 1,
+            "parameters": {
+                "hook": 1581668,
+                "maxResults": 1
+            },
+            "mapper": {},
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 0
+                },
+                "restore": {
+                    "parameters": {
+                        "hook": {
+                            "label": "Webhook Formulaire + PayPal",
+                            "data": {
+                                "editable": "true"
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "hook",
+                        "type": "hook:gateway-webhook",
+                        "label": "Webhook",
+                        "required": true
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "type",
+                        "type": "text",
+                        "label": "Type (formulaire ou PayPal)"
+                    },
+                    {
+                        "name": "transaction_id",
+                        "type": "text",
+                        "label": "Transaction ID unique"
+                    },
+                    {
+                        "name": "custom",
+                        "type": "text",
+                        "label": "Custom ID from PayPal"
+                    },
+                    {
+                        "name": "source",
+                        "type": "text"
+                    },
+                    {
+                        "name": "ref",
+                        "type": "text"
+                    },
+                    {
+                        "name": "prenom",
+                        "type": "text"
+                    },
+                    {
+                        "name": "nom",
+                        "type": "text"
+                    },
+                    {
+                        "name": "email",
+                        "type": "text"
+                    },
+                    {
+                        "name": "telephone",
+                        "type": "text"
+                    },
+                    {
+                        "name": "timestamp",
+                        "type": "text"
+                    },
+                    {
+                        "name": "payment_status",
+                        "type": "text"
+                    },
+                    {
+                        "name": "txn_id",
+                        "type": "text"
+                    },
+                    {
+                        "name": "payer_email",
+                        "type": "text"
+                    },
+                    {
+                        "name": "first_name",
+                        "type": "text"
+                    },
+                    {
+                        "name": "last_name",
+                        "type": "text"
+                    },
+                    {
+                        "name": "mc_gross",
+                        "type": "text"
+                    },
+                    {
+                        "name": "mc_currency",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 2,
+            "module": "builtin:BasicRouter",
+            "version": 1,
+            "mapper": null,
+            "metadata": {
+                "designer": {
+                    "x": 300,
+                    "y": 0
+                }
+            },
+            "routes": [
+                {
+                    "flow": [
+                        {
+                            "id": 3,
+                            "module": "google-sheets:addRow",
+                            "version": 4,
+                            "parameters": {
+                                "__IMTCONN__": 0
+                            },
+                            "mapper": {
+                                "select": "map",
+                                "spreadsheetId": "VOTRE_SPREADSHEET_ID",
+                                "sheetId": "VOTRE_SHEET_ID",
+                                "tableFirstLine": "A1:Z1",
+                                "values": {
+                                    "transaction_id": "{{1.transaction_id}}",
+                                    "ref": "{{1.ref}}",
+                                    "prenom": "{{1.prenom}}",
+                                    "nom": "{{1.nom}}",
+                                    "email": "{{1.email}}",
+                                    "telephone": "{{1.telephone}}",
+                                    "status": "pending",
+                                    "timestamp": "{{1.timestamp}}",
+                                    "source": "{{1.source}}"
+                                }
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 600,
+                                    "y": -150
+                                },
+                                "restore": {},
+                                "expect": [
+                                    {
+                                        "name": "spreadsheetId",
+                                        "type": "text",
+                                        "label": "Spreadsheet ID",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "sheetId",
+                                        "type": "text",
+                                        "label": "Sheet ID",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 4,
+                            "module": "email:ActionSendEmail",
+                            "version": 7,
+                            "parameters": {},
+                            "mapper": {
+                                "to": "post_inscription@rabaislocal.com",
+                                "subject": "Nouveau formulaire affilié - En attente de paiement",
+                                "html": "<h2>Nouvelle inscription affilié</h2>\n<p><strong>Transaction ID:</strong> {{1.transaction_id}}</p>\n<p><strong>Prénom:</strong> {{1.prenom}}</p>\n<p><strong>Nom:</strong> {{1.nom}}</p>\n<p><strong>Email:</strong> {{1.email}}</p>\n<p><strong>Téléphone:</strong> {{1.telephone}}</p>\n<p><strong>Référence:</strong> {{1.ref}}</p>\n<p><strong>Status:</strong> En attente de paiement</p>\n<p><strong>Timestamp:</strong> {{1.timestamp}}</p>",
+                                "contentType": "html"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 900,
+                                    "y": -150
+                                }
+                            }
+                        }
+                    ],
+                    "filter": {
+                        "name": "Route 1: Formulaire",
+                        "conditions": [
+                            [
+                                {
+                                    "a": "{{1.type}}",
+                                    "b": "formulaire_inscription_affilie",
+                                    "o": "text:equal"
+                                }
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "flow": [
+                        {
+                            "id": 5,
+                            "module": "google-sheets:searchRows",
+                            "version": 2,
+                            "parameters": {},
+                            "mapper": {
+                                "spreadsheetId": "VOTRE_SPREADSHEET_ID",
+                                "sheetId": "VOTRE_SHEET_ID",
+                                "filter": {
+                                    "condition": "AND",
+                                    "criteria": [
+                                        {
+                                            "field": "transaction_id",
+                                            "value": "{{1.custom}}",
+                                            "operator": "equal"
+                                        }
+                                    ]
+                                },
+                                "limit": 1
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 600,
+                                    "y": 150
+                                }
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "module": "google-sheets:updateRow",
+                            "version": 2,
+                            "parameters": {},
+                            "mapper": {
+                                "spreadsheetId": "VOTRE_SPREADSHEET_ID",
+                                "sheetId": "VOTRE_SHEET_ID",
+                                "row": "{{5.row}}",
+                                "values": {
+                                    "paypal_txn_id": "{{1.txn_id}}",
+                                    "payment_status": "{{1.payment_status}}",
+                                    "payer_email": "{{1.payer_email}}",
+                                    "payer_first_name": "{{1.first_name}}",
+                                    "payer_last_name": "{{1.last_name}}",
+                                    "amount": "{{1.mc_gross}}",
+                                    "currency": "{{1.mc_currency}}",
+                                    "status": "paid",
+                                    "payment_date": "{{now}}"
+                                }
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 900,
+                                    "y": 150
+                                }
+                            }
+                        },
+                        {
+                            "id": 7,
+                            "module": "http:ActionSendData",
+                            "version": 3,
+                            "parameters": {},
+                            "mapper": {
+                                "url": "https://hook.us2.make.com/VOTRE_AUTRE_SCENARIO",
+                                "method": "POST",
+                                "headers": [
+                                    {
+                                        "name": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "qs": [],
+                                "body": "{\n  \"transaction_id\": \"{{1.custom}}\",\n  \"prenom\": \"{{5.prenom}}\",\n  \"nom\": \"{{5.nom}}\",\n  \"email\": \"{{5.email}}\",\n  \"telephone\": \"{{5.telephone}}\",\n  \"ref\": \"{{5.ref}}\",\n  \"paypal_txn_id\": \"{{1.txn_id}}\",\n  \"payer_email\": \"{{1.payer_email}}\",\n  \"amount\": \"{{1.mc_gross}}\",\n  \"payment_status\": \"{{1.payment_status}}\"\n}",
+                                "type": "json"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 1200,
+                                    "y": 150
+                                },
+                                "notes": "Appelle votre scénario principal existant avec toutes les données combinées"
+                            }
+                        },
+                        {
+                            "id": 8,
+                            "module": "email:ActionSendEmail",
+                            "version": 7,
+                            "parameters": {},
+                            "mapper": {
+                                "to": "{{5.email}}",
+                                "subject": "Bienvenue chez RabaisLocal - Votre accès affilié est activé !",
+                                "html": "<h2>Félicitations {{5.prenom}} !</h2>\n<p>Votre paiement a été confirmé et votre compte affilié est maintenant actif.</p>\n<p><strong>Transaction PayPal ID:</strong> {{1.txn_id}}</p>\n<p><strong>Montant:</strong> {{1.mc_gross}} {{1.mc_currency}}</p>\n<p>Vous allez recevoir un autre email avec vos accès et votre lien d'affilié personnalisé.</p>\n<p>Merci de votre confiance !</p>\n<p>L'équipe RabaisLocal</p>",
+                                "contentType": "html"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 1500,
+                                    "y": 150
+                                },
+                                "notes": "Email de confirmation à l'affilié"
+                            }
+                        }
+                    ],
+                    "filter": {
+                        "name": "Route 2: PayPal IPN",
+                        "conditions": [
+                            [
+                                {
+                                    "a": "{{1.custom}}",
+                                    "o": "exist"
+                                },
+                                {
+                                    "a": "{{1.payment_status}}",
+                                    "b": "Completed",
+                                    "o": "text:equal"
+                                }
+                            ]
+                        ]
+                    }
+                }
+            ]
+        }
+    ],
+    "metadata": {
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": false,
+            "sequential": false,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "us2.make.com"
+    }
+}
