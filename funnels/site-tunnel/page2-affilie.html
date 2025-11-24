@@ -190,38 +190,15 @@ SECTION PAIEMENT - BOUTON PAYPAL HÉBERGÉ
       <!-- Champ caché pour la référence -->
       <input type="hidden" id="ref" name="ref" value="" />
 
-      <!-- Prénom -->
-      <div style="margin-bottom: 20px;">
-        <label for="prenom" style="display: block; font-family: 'Poppins', sans-serif; font-weight: 600; color: #1B2240; margin-bottom: 8px; font-size: 15px;">
-          Prénom *
-        </label>
-        <input
-          type="text"
-          id="prenom"
-          name="prenom"
-          required
-          placeholder="Ex: Jean"
-          style="width: 100%; padding: 12px 16px; border: 2px solid #E0E6FF; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 15px; transition: border-color 0.3s ease;"
-          onfocus="this.style.borderColor='#3E53A5'"
-          onblur="this.style.borderColor='#E0E6FF'"
-        />
-      </div>
-
-      <!-- Nom -->
-      <div style="margin-bottom: 20px;">
-        <label for="nom" style="display: block; font-family: 'Poppins', sans-serif; font-weight: 600; color: #1B2240; margin-bottom: 8px; font-size: 15px;">
-          Nom *
-        </label>
-        <input
-          type="text"
-          id="nom"
-          name="nom"
-          required
-          placeholder="Ex: Tremblay"
-          style="width: 100%; padding: 12px 16px; border: 2px solid #E0E6FF; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 15px; transition: border-color 0.3s ease;"
-          onfocus="this.style.borderColor='#3E53A5'"
-          onblur="this.style.borderColor='#E0E6FF'"
-        />
+      <!-- Avertissement VPN -->
+      <div style="background: #FFF4E6; border-left: 4px solid #FF9800; padding: 16px 18px; border-radius: 8px; margin-bottom: 20px;">
+        <p style="font-size: 15px; color: #1B2240; margin: 0; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 20px;">⚠️</span>
+          <strong>Important : Utilisateurs VPN</strong>
+        </p>
+        <p style="font-size: 14px; color: #5A5A5A; margin: 8px 0 0 0; line-height: 1.6;">
+          Si vous utilisez un VPN, assurez-vous de le <strong>désactiver</strong> ou de sélectionner le <strong>Canada</strong> comme pays lors du paiement PayPal pour éviter tout problème avec la devise ou la facturation.
+        </p>
       </div>
 
       <!-- Email -->
@@ -234,45 +211,18 @@ SECTION PAIEMENT - BOUTON PAYPAL HÉBERGÉ
           id="email"
           name="email"
           required
-          placeholder="Ex: jean.tremblay@exemple.com"
+          placeholder="Ex: ton.email@exemple.com"
           style="width: 100%; padding: 12px 16px; border: 2px solid #E0E6FF; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 15px; transition: border-color 0.3s ease;"
           onfocus="this.style.borderColor='#3E53A5'"
           onblur="this.style.borderColor='#E0E6FF'"
         />
+        <p style="font-size: 13px; color: #6B7280; margin-top: 6px; margin-bottom: 0;">
+          Ceci nous permet de te retracer en cas de problème lors du paiement. Tu compléteras le reste après.
+        </p>
       </div>
 
-      <!-- Téléphone -->
-      <div style="margin-bottom: 20px;">
-        <label for="telephone" style="display: block; font-family: 'Poppins', sans-serif; font-weight: 600; color: #1B2240; margin-bottom: 8px; font-size: 15px;">
-          Numéro de téléphone *
-        </label>
-        <input
-          type="tel"
-          id="telephone"
-          name="telephone"
-          required
-          placeholder="Ex: 514-555-1234"
-          style="width: 100%; padding: 12px 16px; border: 2px solid #E0E6FF; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 15px; transition: border-color 0.3s ease;"
-          onfocus="this.style.borderColor='#3E53A5'"
-          onblur="this.style.borderColor='#E0E6FF'"
-        />
-      </div>
-
-      <!-- Référé par -->
-      <div style="margin-bottom: 20px;">
-        <label for="referer" style="display: block; font-family: 'Poppins', sans-serif; font-weight: 600; color: #1B2240; margin-bottom: 8px; font-size: 15px;">
-          Référé par (optionnel)
-        </label>
-        <input
-          type="text"
-          id="referer"
-          name="referer"
-          placeholder="Nom ou code de la personne qui t'a référé"
-          style="width: 100%; padding: 12px 16px; border: 2px solid #E0E6FF; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 15px; transition: border-color 0.3s ease;"
-          onfocus="this.style.borderColor='#3E53A5'"
-          onblur="this.style.borderColor='#E0E6FF'"
-        />
-      </div>
+      <!-- Référence cachée - capturée automatiquement de l'URL -->
+      <input type="hidden" id="referer" name="referer" value="" />
 
       <!-- Bouton de soumission du formulaire d'inscription -->
       <button type="button" id="btn-submit-inscription" style="width: 100%; padding: 14px 20px; background: linear-gradient(135deg, #3E53A5 0%, #5068C4 100%); color: #fff; border: none; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(62, 83, 165, 0.3); transition: all 0.3s ease; margin-bottom: 20px;">
@@ -289,14 +239,17 @@ SECTION PAIEMENT - BOUTON PAYPAL HÉBERGÉ
       <p>✓ Vous recevrez immédiatement votre lien d'affilié et l'accès à votre tableau de bord par courriel.</p>
     </div>
 
-    <!-- Bouton PayPal Hébergé -->
-    <div id="paypal-button-zone" style="text-align: center;">
+    <!-- Bouton PayPal Hébergé (caché - soumis automatiquement par le formulaire d'inscription) -->
+    <div id="paypal-button-zone" style="display: none;">
       <div>
         <style>.pp-UEB6T5RGU53K2{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}</style>
         <form id="paypal-hosted-form" action="https://www.paypal.com/ncp/payment/UEB6T5RGU53K2" method="post" target="paypal_popup" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
           <input type="hidden" name="custom" value="" id="paypal-custom-id" />
           <input type="hidden" name="return" value="https://marketing.rabaislocal.com/page2_form_affilie.html" />
           <input type="hidden" name="cancel_return" value="https://marketing.rabaislocal.com/page2-affilie.html" />
+          <input type="hidden" name="country" value="CA" />
+          <input type="hidden" name="currency_code" value="CAD" />
+          <input type="hidden" name="lc" value="CA" />
           <input class="pp-UEB6T5RGU53K2" type="submit" value="Acheter" />
           <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
           <section style="font-size: 0.75rem;">Optimisé par <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
@@ -504,9 +457,10 @@ let ref = urlParams.get("ref") || localStorage.getItem("rl_ref") || "0";
 // Sauvegarder dans localStorage
 localStorage.setItem("rl_ref", ref);
 
-// Remplir le champ caché
+// Remplir les champs cachés
 document.addEventListener("DOMContentLoaded", function() {
   document.getElementById('ref').value = ref;
+  document.getElementById('referer').value = ref; // Remplir automatiquement avec le code ref de l'URL
 });
 
 // Log pour debug
@@ -550,11 +504,8 @@ document.addEventListener("DOMContentLoaded", function() {
       // Injecter l'ID unique dans le champ caché PayPal
       document.getElementById('paypal-custom-id').value = uniqueId;
 
-      // Récupérer les données du formulaire d'inscription
-      const prenom = document.getElementById('prenom').value.trim();
-      const nom = document.getElementById('nom').value.trim();
+      // Récupérer les données du formulaire d'inscription (simplifié)
       const email = document.getElementById('email').value.trim();
-      const telephone = document.getElementById('telephone').value.trim();
       const referer = document.getElementById('referer').value.trim();
 
       // Préparer les données pour le webhook
@@ -563,10 +514,7 @@ document.addEventListener("DOMContentLoaded", function() {
         source: 'page2_avant_paiement',
         transaction_id: uniqueId,
         ref: ref,
-        prenom: prenom,
-        nom: nom,
         email: email,
-        telephone: telephone,
         referer: referer,
         timestamp: new Date().toISOString()
       };
@@ -574,7 +522,7 @@ document.addEventListener("DOMContentLoaded", function() {
       console.log('📋 Envoi des données du formulaire d\'inscription au webhook:', formData);
 
       // Envoyer au webhook Make.com (sans attendre la réponse)
-      fetch('https://hook.us2.make.com/x3yp1l7u7mo3uiihkajgsexitgrq3qt', {
+      fetch('https://hook.us2.make.com/2yh1km3xxqenpgy6r6kf8pol3v4pcg63', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -588,12 +536,26 @@ document.addEventListener("DOMContentLoaded", function() {
       });
 
       // Sauvegarder dans localStorage
-      localStorage.setItem('rl_affilie_prenom', prenom);
-      localStorage.setItem('rl_affilie_nom', nom);
       localStorage.setItem('rl_affilie_email', email);
-      localStorage.setItem('rl_affilie_telephone', telephone);
       localStorage.setItem('rl_affilie_referer', referer);
       localStorage.setItem('rl_affilie_transaction_id', uniqueId);
+
+      // Propager le ref dans les URLs PayPal de redirection
+      const returnUrlInput = paypalHostedForm.querySelector('input[name="return"]');
+      const cancelUrlInput = paypalHostedForm.querySelector('input[name="cancel_return"]');
+
+      if (returnUrlInput && ref) {
+        returnUrlInput.value = 'https://marketing.rabaislocal.com/page2_form_affilie.html?ref=' + encodeURIComponent(ref);
+      }
+      if (cancelUrlInput && ref) {
+        cancelUrlInput.value = 'https://marketing.rabaislocal.com/page2-affilie.html?ref=' + encodeURIComponent(ref);
+      }
+
+      // Désactiver le bouton pour éviter les doubles clics
+      btnSubmitInscription.disabled = true;
+      btnSubmitInscription.textContent = 'Ouverture de PayPal...';
+      btnSubmitInscription.style.opacity = '0.6';
+      btnSubmitInscription.style.cursor = 'not-allowed';
 
       // Ouvrir PayPal dans un popup centré
       const width = 800;
@@ -611,6 +573,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
       // Soumettre le formulaire PayPal dans le popup
       paypalHostedForm.submit();
+
+      // Réactiver le bouton après 3 secondes (au cas où l'utilisateur revient)
+      setTimeout(function() {
+        btnSubmitInscription.disabled = false;
+        btnSubmitInscription.textContent = 'Valider et passer au paiement PayPal →';
+        btnSubmitInscription.style.opacity = '1';
+        btnSubmitInscription.style.cursor = 'pointer';
+      }, 3000);
     });
   }
 });

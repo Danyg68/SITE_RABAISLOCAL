@@ -275,14 +275,20 @@ SECTION FORMULAIRE COMPLET
 
       <div class="form-group">
         <label for="telephone">Téléphone</label>
-        <input type="tel" id="telephone" name="telephone" placeholder="Ex: 514-555-1234">
+        <input type="tel" id="telephone" name="telephone" placeholder="Ex: 514-555-1234" maxlength="14">
+        <small style="font-size: 12px; color: #6B7280; display: block; margin-top: 4px;">Format automatique : XXX-XXX-XXXX</small>
       </div>
 
       <h3>Adresse complète</h3>
 
       <div class="form-group">
-        <label for="adresse_numero">Numéro civique / unité *</label>
-        <input type="text" id="adresse_numero" name="adresse_numero" required placeholder="Ex: 8-444">
+        <label for="adresse_numero">Numéro civique *</label>
+        <input type="text" id="adresse_numero" name="adresse_numero" required placeholder="Ex: 444">
+      </div>
+
+      <div class="form-group">
+        <label for="adresse_appartement">Appartement / Bureau / Suite (optionnel)</label>
+        <input type="text" id="adresse_appartement" name="adresse_appartement" placeholder="Ex: App. 8, Bureau 201, Suite A">
       </div>
 
       <div class="form-group">
@@ -325,15 +331,12 @@ SECTION FORMULAIRE COMPLET
 
       <div class="form-group">
         <label for="code_postal">Code postal *</label>
-        <input type="text" id="code_postal" name="code_postal" required placeholder="Ex: H2X 1Y4">
+        <input type="text" id="code_postal" name="code_postal" required placeholder="Ex: H2X 1Y4" maxlength="7">
+        <small style="font-size: 12px; color: #6B7280; display: block; margin-top: 4px;">Format automatique : A1A 1A1</small>
       </div>
 
-      <h3>Informations complémentaires</h3>
-
-      <div class="form-group">
-        <label for="referer_affilie">Référé par (nom ou code affilié)</label>
-        <input type="text" id="referer_affilie" name="referer" placeholder="Nom ou code de la personne qui t'a référé">
-      </div>
+      <!-- Référence cachée - capturée automatiquement de l'URL -->
+      <input type="hidden" id="referer_affilie" name="referer" value="" />
 
       <h3>Confirmations</h3>
 
@@ -437,6 +440,32 @@ SCRIPTS - AUTO-COMPLÉTION + ENVOI WEBHOOK
 ========================================================== -->
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+  // ===================================================
+  // GESTION POPUP PAYPAL - Redirection vers fenêtre principale
+  // ===================================================
+  // Si cette page s'ouvre dans une popup PayPal, rediriger la fenêtre principale et fermer la popup
+  if (window.opener && window.opener !== window) {
+    console.log('🔄 Page ouverte dans une popup PayPal - Redirection vers fenêtre principale');
+
+    // Récupérer le ref depuis l'URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const ref = urlParams.get('ref') || localStorage.getItem('rl_ref') || '0';
+
+    // Construire l'URL de redirection avec le ref
+    const redirectUrl = window.location.origin + window.location.pathname + '?ref=' + encodeURIComponent(ref);
+
+    // Rediriger la fenêtre principale (opener)
+    window.opener.location.href = redirectUrl;
+
+    // Fermer la popup après un court délai
+    setTimeout(function() {
+      window.close();
+    }, 500);
+
+    // Arrêter l'exécution du reste du script
+    return;
+  }
+
   const provinceSelect = document.getElementById('province');
   const villeInput = document.getElementById('ville');
   const datalist = document.getElementById('ville-options');
@@ -445,8 +474,17 @@ document.addEventListener('DOMContentLoaded', function () {
   const errorMsg = document.getElementById('error-msg');
 
   let villesParProvince = {};
+  let villesChargees = false;
 
-  // 1) Charger le JSON des villes par province
+  // Récupérer le ref depuis l'URL ou localStorage
+  const urlParams = new URLSearchParams(window.location.search);
+  let ref = urlParams.get('ref') || localStorage.getItem('rl_ref') || '0';
+
+  // Sauvegarder le ref dans localStorage
+  localStorage.setItem('rl_ref', ref);
+  console.log('📌 Référence affilié (ref):', ref);
+
+  // 1) Charger toutes les villes au démarrage
   fetch('assets/json/villes_canada.json')
     .then(function (response) {
       if (!response.ok) {
@@ -456,44 +494,102 @@ document.addEventListener('DOMContentLoaded', function () {
     })
     .then(function (data) {
       villesParProvince = data;
-      console.log('✅ Fichier villes_canada.json chargé avec succès');
+      villesChargees = true;
+      console.log('✅ Villes de toutes les provinces chargées avec succès');
     })
     .catch(function (error) {
       console.error('❌ Erreur lors du chargement des villes:', error);
+      if (villeInput) {
+        villeInput.placeholder = 'Entrez votre ville manuellement (auto-complétion indisponible)';
+        villeInput.title = 'L\'auto-complétion des villes n\'a pas pu être chargée. Vous pouvez quand même saisir votre ville manuellement.';
+      }
     });
 
-  // 2) Quand la province change, remplir la datalist avec les villes correspondantes
-  if (provinceSelect && datalist) {
+  // 2) Quand la province change, afficher les villes de cette province
+  if (provinceSelect && datalist && villeInput) {
     provinceSelect.addEventListener('change', function () {
       const codeProvince = provinceSelect.value;
       datalist.innerHTML = '';
 
       if (codeProvince && villesParProvince[codeProvince]) {
-        villesParProvince[codeProvince].forEach(function (ville) {
+        const villes = villesParProvince[codeProvince];
+
+        villes.forEach(function (ville) {
           const option = document.createElement('option');
           option.value = ville;
           datalist.appendChild(option);
         });
-        console.log('🏙️ Villes chargées pour la province:', codeProvince);
+
+        villeInput.placeholder = 'Commence à taper ta ville';
+        console.log('🏙️ ' + villes.length + ' villes affichées pour ' + codeProvince);
+      } else if (codeProvince) {
+        villeInput.placeholder = 'Entrez votre ville manuellement';
+        console.warn('⚠️ Aucune ville trouvée pour la province:', codeProvince);
+      } else {
+        villeInput.placeholder = 'Sélectionnez d\'abord une province';
       }
     });
   }
 
-  // 3) Pré-remplir le formulaire avec les données du localStorage
-  const prenomSaved = localStorage.getItem('rl_affilie_prenom');
-  const nomSaved = localStorage.getItem('rl_affilie_nom');
+  // 3) Auto-formatage du téléphone
+  const telephoneInput = document.getElementById('telephone');
+  if (telephoneInput) {
+    telephoneInput.addEventListener('input', function (e) {
+      let value = e.target.value.replace(/\D/g, ''); // Garder seulement les chiffres
+
+      if (value.length > 10) {
+        value = value.slice(0, 10); // Limiter à 10 chiffres
+      }
+
+      // Formatter: XXX-XXX-XXXX
+      let formatted = '';
+      if (value.length > 0) {
+        formatted = value.slice(0, 3);
+      }
+      if (value.length > 3) {
+        formatted += '-' + value.slice(3, 6);
+      }
+      if (value.length > 6) {
+        formatted += '-' + value.slice(6, 10);
+      }
+
+      e.target.value = formatted;
+    });
+  }
+
+  // 4) Auto-formatage du code postal
+  const codePostalInput = document.getElementById('code_postal');
+  if (codePostalInput) {
+    codePostalInput.addEventListener('input', function (e) {
+      let value = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, ''); // Garder seulement lettres et chiffres
+
+      if (value.length > 6) {
+        value = value.slice(0, 6); // Limiter à 6 caractères
+      }
+
+      // Formatter: A1A 1A1
+      let formatted = '';
+      if (value.length > 0) {
+        formatted = value.slice(0, 3);
+      }
+      if (value.length > 3) {
+        formatted += ' ' + value.slice(3, 6);
+      }
+
+      e.target.value = formatted;
+    });
+  }
+
+  // 5) Pré-remplir le formulaire avec les données du localStorage
   const emailSaved = localStorage.getItem('rl_affilie_email');
-  const telephoneSaved = localStorage.getItem('rl_affilie_telephone');
-  const refererSaved = localStorage.getItem('rl_affilie_referer');
   const transactionId = localStorage.getItem('rl_affilie_transaction_id');
 
-  if (prenomSaved) document.getElementById('prenom').value = prenomSaved;
-  if (nomSaved) document.getElementById('nom').value = nomSaved;
   if (emailSaved) document.getElementById('email_inscription').value = emailSaved;
-  if (telephoneSaved) document.getElementById('telephone').value = telephoneSaved;
-  if (refererSaved) document.getElementById('referer_affilie').value = refererSaved;
 
-  // 4) Envoi du formulaire à Make via webhook
+  // Remplir automatiquement le champ caché referer avec le ref de l'URL
+  document.getElementById('referer_affilie').value = ref;
+
+  // 6) Envoi du formulaire à Make via webhook
   if (affilieForm) {
     affilieForm.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -506,6 +602,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // Ajouter des données supplémentaires
       formData.append('transaction_id', transactionId || '');
+      formData.append('ref', ref);
       formData.append('timestamp', new Date().toISOString());
       formData.append('type', 'formulaire_complet_affilie');
       formData.append('source', 'page2_form_affilie');
@@ -518,11 +615,15 @@ document.addEventListener('DOMContentLoaded', function () {
       console.log('📋 Envoi du formulaire complet affilié au webhook:', formObject);
 
       // Webhook Make.com pour le formulaire complet post-paiement
-      const webhookUrl = 'https://hook.us2.make.com/2yh1km3xxqenpgy6r6kf8pol3v4pcg63';
+      const webhookUrl = 'https://hook.us2.make.com/oo9u9nkoj0fwd7373h1iygp8i2x7p1ed';
 
       fetch(webhookUrl, {
         method: 'POST',
-        body: formData
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formObject),
+        keepalive: true
       })
       .then(function (response) {
         if (response.ok) {
@@ -530,18 +631,15 @@ document.addEventListener('DOMContentLoaded', function () {
           successMsg.style.display = 'block';
           affilieForm.reset();
 
-          // Nettoyer le localStorage après envoi réussi
-          localStorage.removeItem('rl_affilie_prenom');
-          localStorage.removeItem('rl_affilie_nom');
+          // Nettoyer le localStorage après envoi réussi (sauf le ref)
           localStorage.removeItem('rl_affilie_email');
-          localStorage.removeItem('rl_affilie_telephone');
           localStorage.removeItem('rl_affilie_referer');
           localStorage.removeItem('rl_affilie_transaction_id');
 
-          // Optionnel : redirection vers une page de merci après 3 secondes
-          // setTimeout(function() {
-          //   window.location.href = 'page3_affilie_merci.html';
-          // }, 3000);
+          // Redirection vers page3 avec le ref après 3 secondes
+          setTimeout(function() {
+            window.location.href = 'page3-affilie.html?ref=' + encodeURIComponent(ref);
+          }, 3000);
         } else {
           throw new Error('Erreur HTTP: ' + response.status);
         }

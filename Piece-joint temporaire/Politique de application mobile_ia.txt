@@ -1,0 +1,225 @@
+Politique de l’application mobile et de l’agent IA
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Politique de l’application mobile et de l’agent IA – RabaisLocal</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root { --rl-blue:#3E53A5; --rl-bg:#F5F8FF; --rl-ink:#1B2240; --rl-muted:#5B6385; --rl-line:#E3E8FF; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--rl-bg);color:var(--rl-ink);
+       font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;}
+  .wrap{width:min(1100px,92vw);margin:0 auto;padding:24px 0 56px;}
+  header.hero{background:#fff;border:1px solid var(--rl-line);border-radius:18px;
+              padding:22px 20px;margin:18px 0 22px;text-align:center;}
+  header.hero img.logo{width:150px;max-width:80%;height:auto;margin-bottom:14px;}
+  header.hero h1{margin:0 0 6px;font-size:clamp(22px,3.2vw,34px);color:var(--rl-blue);font-weight:900;}
+  .meta{color:var(--rl-muted);font-size:13px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+  .info-box{background:#E8EDFF;border:1px solid #DDE3FF;border-radius:12px;
+            padding:14px 18px;margin:20px 0;color:#1B2240;font-size:15px;text-align:left;}
+  section.block{background:#fff;border:1px solid var(--rl-line);border-radius:16px;padding:18px;margin:12px 0;}
+  section.block h2{margin:0 0 10px;font-size:clamp(18px,2.4vw,24px);color:var(--rl-blue);font-weight:800;}
+  a{color:var(--rl-blue);text-decoration:underline;}
+  .note{color:#5B6385;font-size:13px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <img class="logo" src="https://statics.myclickfunnels.com/workspace/jklqVP/image/17823503/file/d5fb15091926d11524543af90a9a5e26.png" alt="Logo RabaisLocal">
+    <h1>Politique de l’application mobile et de l’agent IA</h1>
+    <div class="meta">
+      <span>Éditeur : <strong>RabaisLocal / RabaisLocal Marketing</strong></span>
+      <span>Dernière mise à jour : <strong>24 octobre 2025</strong></span>
+    </div>
+
+    <div class="info-box">
+      🤖 <strong>Objectif :</strong><br>
+      Cette politique explique comment l’application mobile et l’agent IA RabaisLocal utilisent les données de localisation, les notifications et les échanges utilisateur afin d’offrir une expérience personnalisée, fluide et sécurisée.
+    </div>
+  </header>
+
+  <section class="block">
+    <h2>1) Application mobile RabaisLocal</h2>
+    <p>L’application RabaisLocal permet aux utilisateurs de découvrir des offres locales, de réserver des rabais avec des crédits, et de recevoir des notifications personnalisées selon leurs préférences et leur position géographique.</p>
+    <ul>
+      <li><strong>Accès à la géolocalisation :</strong> uniquement pour afficher les offres les plus proches. Aucune donnée de localisation n’est conservée après la session.</li>
+      <li><strong>Notifications :</strong> l’utilisateur peut choisir d’activer ou de désactiver les notifications à tout moment dans les paramètres de l’appareil.</li>
+      <li><strong>Stockage local :</strong> certaines données (ex. préférences, crédits restants, rabais favoris) peuvent être sauvegardées temporairement dans l’application pour accélérer le chargement et améliorer l’expérience.</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>2) Agent IA RabaisLocal</h2>
+    <p>L’agent IA RabaisLocal (chatbot et assistant intelligent) est conçu pour :</p>
+    <ul>
+      <li>aider les consommateurs à trouver des offres selon leurs goûts, leur emplacement et leur budget ;</li>
+      <li>répondre aux questions fréquentes sur les abonnements, crédits et programmes affiliés ;</li>
+      <li>assister les commerçants dans la création de promotions ;</li>
+      <li>offrir un support instantané et personnalisé 24h/24, 7j/7.</li>
+    </ul>
+    <p>Toutes les conversations avec l’IA sont analysées de manière automatisée uniquement dans le but d’améliorer les réponses et la qualité du service. Aucune donnée sensible n’est utilisée à des fins publicitaires.</p>
+  </section>
+
+  <section class="block">
+    <h2>3) Protection et sécurité des données</h2>
+    <ul>
+      <li>Les échanges via l’application et l’agent IA sont chiffrés (HTTPS / TLS).</li>
+      <li>Les données personnelles (nom, courriel, localisation approximative, historique des échanges) sont conservées sur des serveurs sécurisés situés au Canada.</li>
+      <li>RabaisLocal applique la <strong>Loi 25 (Québec)</strong> et les principes du <strong>RGPD</strong> pour la gestion du consentement, l’accès, la portabilité et la suppression des données.</li>
+      <li>Aucune donnée personnelle n’est vendue ni partagée avec des tiers à des fins commerciales sans consentement explicite.</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>4) Finalité et durée de conservation</h2>
+    <ul>
+      <li><strong>Données de session :</strong> conservées uniquement pendant l’utilisation active de l’application.</li>
+      <li><strong>Historique d’échanges IA :</strong> anonymisé et stocké pour une durée maximale de 12 mois à des fins d’amélioration du service.</li>
+      <li><strong>Comptes utilisateurs :</strong> supprimés sur demande ou après 24 mois d’inactivité.</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>5) Responsabilités et limites</h2>
+    <p>L’agent IA RabaisLocal vise à fournir des recommandations pertinentes, mais ses réponses peuvent parfois être approximatives ou incomplètes.  
+    Les utilisateurs sont invités à vérifier les informations avant toute décision d’achat ou de publication.  
+    RabaisLocal ne peut être tenu responsable des erreurs d’interprétation ou de l’usage inapproprié des conseils générés par l’IA.</p>
+  </section>
+
+  <section class="block">
+    <h2>6) Droits des utilisateurs</h2>
+    <p>Conformément à la <strong>Loi 25</strong>, tu disposes des droits suivants :</p>
+    <ul>
+      <li>Accéder à tes données personnelles ;</li>
+      <li>Corriger ou supprimer certaines informations ;</li>
+      <li>Demander la désactivation ou la suppression complète de ton compte ;</li>
+      <li>Retirer ton consentement à tout moment (géolocalisation, notifications, IA, courriels).</li>
+    </ul>
+    <p>Pour exercer tes droits, contacte : <a href="mailto:rabaislocal@rabaislocal.com">rabaislocal@rabaislocal.com</a>.</p>
+  </section>
+
+  <section class="block">
+    <h2>7) Loi applicable</h2>
+    <p>Cette politique est régie par les lois du Québec et du Canada.  
+    Tout litige sera soumis aux tribunaux compétents du district judiciaire de <strong>Trois-Rivières (Québec, Canada)</strong>.</p>
+    <p class="note">Cette politique complète la <a href="/politique-confidentialite">Politique de confidentialité</a> et la <a href="/conditions-generales">Conditions générales d’utilisation</a>.</p>
+  </section>
+
+</div>
+</body>
+</html>
+
+<!-- =======================
+     FOOTER RABAISLOCAL 2025 – VERSION PRO RESPONSIVE
+     ======================= -->
+
+<!-- 1️⃣ VERSION PC / TABLETTE -->
+<footer class="rl-footer-desktop" style="background:#F5F8FF;border-top:4px solid #3E53A5;padding:40px 0 30px;
+               text-align:center;font-family:'Poppins',sans-serif;color:#1B2240;line-height:1.7;
+               box-shadow:0 -3px 10px rgba(0,0,0,0.04);">
+
+  <!-- Logo + slogan -->
+  <div style="margin-bottom:22px;">
+    <img src="https://statics.myclickfunnels.com/workspace/jklqVP/image/17823503/file/d5fb15091926d11524543af90a9a5e26.png"
+         alt="Logo RabaisLocal"
+         style="width:160px;max-width:80%;height:auto;display:block;margin:0 auto 12px auto;">
+    <p style="font-size:15px;font-weight:600;color:#3E53A5;margin:0;">
+      💙 Ensemble, on fait gagner tout le monde.
+    </p>
+  </div>
+
+  <!-- Liens légaux -->
+  <div style="font-size:14px;margin-bottom:10px;">
+    <a href="https://www.rabaislocal.net/conditions-utilisation" style="color:#1B2240;text-decoration:none;margin:0 8px;">Conditions d’utilisation</a> |
+    <a href="https://www.rabaislocal.net/politique-deconfidentialite" style="color:#1B2240;text-decoration:none;margin:0 8px;">Confidentialité</a> |
+    <a href="https://www.rabaislocal.net/politique-de-cookies-bandeau-de-consentement" style="color:#1B2240;text-decoration:none;margin:0 8px;">Cookies</a> |
+    <a href="https://www.rabaislocal.net/politique-de-remboursement-annulation" style="color:#1B2240;text-decoration:none;margin:0 8px;">Remboursement</a> |
+    <a href="https://www.rabaislocal.net/politique-d-utilisation-acceptable" style="color:#1B2240;text-decoration:none;margin:0 8px;">Utilisation acceptable</a> |
+    <a href="https://www.rabaislocal.net/avis-de-non-responsabilite" style="color:#1B2240;text-decoration:none;margin:0 8px;">Non-responsabilité</a> |
+    <a href="https://www.rabaislocal.net/politique-de-application-mobile-et-de-agent-ia" style="color:#1B2240;text-decoration:none;margin:0 8px;">App & IA</a> |
+    <a href="https://www.rabaislocal.net/mentions-legales-completes-rabaislocal" style="color:#1B2240;text-decoration:none;margin:0 8px;">Mentions légales</a>
+  </div>
+
+  <!-- Copyright -->
+  <div style="color:#5B6385;font-size:13px;margin-top:8px;">
+    © 2025 RabaisLocal – Tous droits réservés • Trois-Rivières (QC) • 
+    <a href="mailto:rabaislocal@rabaislocal.com" style="color:#3E53A5;text-decoration:none;">Contact</a> • 
+    <a href="#" onclick="window.dispatchEvent(new CustomEvent('rl-open-prefs'));return false;"
+       style="color:#3E53A5;text-decoration:none;">Gérer mes cookies</a>
+  </div>
+
+  <!-- Preuve sociale -->
+  <div style="margin-top:15px;font-size:13px;color:#3E53A5;font-weight:500;">
+    🚀 Déjà <strong>2 600 membres</strong> inscrits au pré-lancement • Une initiative 100 % québécoise propulsée par l’IA 🤖
+  </div>
+</footer>
+
+<!-- 2️⃣ VERSION MOBILE ALLÉGÉE + "VOIR PLUS" -->
+<div class="rl-footer-mobile" style="display:none;background:#F5F8FF;border-top:4px solid #3E53A5;
+            text-align:center;font-family:'Poppins',sans-serif;color:#1B2240;padding:35px 18px 30px;">
+
+  <!-- Logo -->
+  <img src="https://statics.myclickfunnels.com/workspace/jklqVP/image/17823503/file/d5fb15091926d11524543af90a9a5e26.png"
+       alt="RabaisLocal Logo"
+       style="width:140px;height:auto;margin:0 auto 12px auto;display:block;">
+
+  <!-- Slogan -->
+  <p style="margin:0;font-size:15px;font-weight:600;color:#3E53A5;">
+    💙 Ensemble, on fait gagner tout le monde.
+  </p>
+
+  <!-- CTA -->
+  <a href="https://www.rabaislocal.net"
+     style="display:inline-block;margin-top:14px;background:#3E53A5;color:#fff;
+            font-weight:600;text-decoration:none;padding:12px 28px;border-radius:8px;">
+     🔗 S'inscrire gratuitement
+  </a>
+
+  <!-- Liens essentiels -->
+  <div style="margin-top:16px;font-size:13px;line-height:1.8;">
+    <a href="https://www.rabaislocal.net/conditions-utilisation" style="color:#1B2240;text-decoration:none;">Conditions</a> |
+    <a href="https://www.rabaislocal.net/politique-deconfidentialite" style="color:#1B2240;text-decoration:none;">Confidentialité</a> |
+    <a href="https://www.rabaislocal.net/politique-de-cookies-bandeau-de-consentement" style="color:#1B2240;text-decoration:none;">Cookies</a>
+  </div>
+
+  <!-- Bouton "Voir plus" -->
+  <div id="rl-more-links" style="margin-top:8px;">
+    <a href="#" onclick="document.getElementById('rl-extra-links').style.display='block'; this.style.display='none'; return false;"
+       style="color:#3E53A5;text-decoration:none;font-size:13px;font-weight:600;">
+       🔽 Voir plus de pages
+    </a>
+  </div>
+
+  <!-- Liens cachés (affichés après clic) -->
+  <div id="rl-extra-links" style="display:none;margin-top:8px;font-size:13px;line-height:1.8;">
+    <a href="https://www.rabaislocal.net/politique-de-remboursement-annulation" style="color:#1B2240;text-decoration:none;">Remboursement</a> |
+    <a href="https://www.rabaislocal.net/politique-d-utilisation-acceptable" style="color:#1B2240;text-decoration:none;">Utilisation</a> |
+    <a href="https://www.rabaislocal.net/avis-de-non-responsabilite" style="color:#1B2240;text-decoration:none;">Non-responsabilité</a> |
+    <a href="https://www.rabaislocal.net/politique-de-application-mobile-et-de-agent-ia" style="color:#1B2240;text-decoration:none;">App & IA</a> |
+    <a href="https://www.rabaislocal.net/mentions-legales-completes-rabaislocal" style="color:#1B2240;text-decoration:none;">Mentions légales</a>
+  </div>
+
+  <!-- Copyright -->
+  <p style="margin-top:16px;font-size:12px;color:#5B6385;">
+    © 2025 RabaisLocal • Trois-Rivières (QC) • 
+    <a href="mailto:rabaislocal@rabaislocal.com" style="color:#3E53A5;text-decoration:none;">Contact</a>
+  </p>
+</div>
+
+<!-- 3️⃣ RESPONSIVE CSS -->
+<style>
+@media(max-width:768px){
+  .rl-footer-desktop{display:none !important;}
+  .rl-footer-mobile{display:block !important;}
+}
+@media(min-width:769px){
+  .rl-footer-desktop{display:block !important;}
+  .rl-footer-mobile{display:none !important;}
+}
+</style>
+

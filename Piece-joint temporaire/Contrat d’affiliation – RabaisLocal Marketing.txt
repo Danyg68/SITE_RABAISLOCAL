@@ -1,0 +1,191 @@
+
+Contrat d’affiliation – RabaisLocal Marketing (v1.0)
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contrat d’affiliation – RabaisLocal Marketing (v1.0)</title>
+<style>
+  body{margin:0;font-family:"Poppins",Arial,sans-serif;background:#fff;color:#222;line-height:1.7}
+  .wrap{max-width:900px;margin:0 auto;padding:40px 20px}
+  h1,h2,h3{color:#1b2240;font-weight:600}
+  h1{text-align:center;font-size:26px;margin-bottom:10px}
+  .subtitle{text-align:center;color:#555;font-size:14px;margin-bottom:40px}
+  p,li{font-size:15px;margin-bottom:12px}
+  ul{margin-left:20px}
+  a{color:#3E53A5;text-decoration:underline}
+  .section{margin-bottom:35px}
+  .notice{border-left:4px solid #3E53A5;background:#f8f9fc;padding:12px 16px;margin:20px 0}
+  form{margin-top:60px;padding:25px 20px;border:1px solid #ddd;border-radius:10px;background:#fafafa}
+  .field{margin-bottom:18px}
+  label{display:block;margin-bottom:6px;font-weight:600;font-size:14px}
+  input[type="text"],input[type="email"],input[type="date"]{width:100%;padding:12px;border:1px solid #ccc;border-radius:8px;font-size:15px}
+  input:focus{outline:none;border-color:#3E53A5;box-shadow:0 0 0 2px rgba(62,83,165,.15)}
+  .checkline{display:flex;align-items:flex-start;gap:10px;margin-bottom:18px}
+  .checkline input{margin-top:5px}
+  button{background:#3E53A5;color:#fff;border:none;border-radius:50px;padding:12px 24px;font-size:16px;font-weight:600;cursor:pointer}
+  button:disabled{opacity:.6;cursor:not-allowed}
+  .muted{color:#666;font-size:13px}
+  footer{text-align:center;margin-top:40px;font-size:13px;color:#777}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Contrat d’affiliation – RabaisLocal Marketing (v1.0)</h1>
+    <p class="subtitle">Document légal – Québec, Canada • Statut : <strong>PRÉ-LANCEMENT</strong> (lancement officiel le <strong>19 mars 2026</strong>)</p>
+
+    <div class="notice">
+      <strong>Résumé :</strong> Ce contrat encadre la participation au <strong>programme d’affiliation 2.0</strong> de RabaisLocal Marketing. Commissions uniquement sur ventes réelles (abonnements, crédits, services). Aucun achat obligatoire. Frais mensuels (27 $) prélevés uniquement sur profits après 6 mois. Renouvellement annuel (47 $) prélevé sur profits.
+    </div>
+
+    <div class="section">
+      <h2>1. Objet</h2>
+      <p>Le présent contrat définit les droits et obligations de l’« Affilié » participant au programme d’affiliation 2.0 de RabaisLocal Marketing (« RabaisLocal »). L’Affilié réfère des consommateurs, des commerçants et d’autres affiliés via son lien unique. RabaisLocal assure le suivi (cookies, IA, automatisations), la conversion et le versement des commissions.</p>
+    </div>
+
+    <div class="section">
+      <h2>2. Plan de rémunération</h2>
+      <p>Les commissions sont calculées uniquement sur les ventes réelles générées par ton réseau (abonnements, crédits, forfaits commerçants, etc.). Il n’y a <strong>aucune rémunération pour le recrutement</strong> d’affiliés.</p>
+      <p>Pour consulter les pourcentages, les rangs et les exemples de revenus :  
+        <a href="https://www.rabaislocal.net/plan-remuneration" target="_blank" rel="noopener">Plan de rémunération RabaisLocal</a>.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>3. Frais et renouvellement</h2>
+      <ul>
+        <li><strong>Frais mensuels (27 $)</strong> : prélevés uniquement si des profits ≥ 27 $ ont été générés durant le mois (après 6 mois d’activité).</li>
+        <li><strong>Renouvellement annuel (47 $)</strong> : prélevé uniquement sur les profits cumulés. Si le solde est insuffisant, le compte reste actif et les virements sont suspendus jusqu’à ce que le montant soit atteint, puis reprennent.</li>
+        <li><strong>Virement automatique</strong> : dès que le solde net dépasse 25 $.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>4. Croissance contrôlée et conformité</h2>
+      <p>RabaisLocal limite volontairement le nombre d’affiliés par région selon le ratio commerces/consommateurs, pour un développement durable. L’affilié s’engage à communiquer de façon honnête, sans promesse de gains irréalistes. 3 % des revenus sont reversés à des causes locales.</p>
+    </div>
+
+    <div class="section">
+      <h2>5. Clause d’équité</h2>
+      <p>En cas de contrainte exceptionnelle (baisse temporaire, saturation du réseau), RabaisLocal peut ajuster temporairement la distribution des commissions afin d’assurer un montant minimal à chaque affilié actif, avec une communication transparente.</p>
+    </div>
+
+    <div class="section">
+      <h2>6. Durée, résiliation et loi applicable</h2>
+      <ul>
+        <li>Contrat à durée indéterminée, résiliable en tout temps par l’une ou l’autre des parties.</li>
+        <li>Régit par les lois du Québec et du Canada.</li>
+        <li>Litiges : tribunal compétent du district de Trois-Rivières (QC).</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>7. Ressources gouvernementales</h2>
+      <ul>
+        <li><a href="https://www.competitionbureau.gc.ca" target="_blank" rel="noopener">Bureau de la concurrence (Canada)</a> — marketing de réseau, pratiques commerciales.</li>
+        <li><a href="https://www.ftc.gov/business-guidance/advertising-and-marketing" target="_blank" rel="noopener">FTC (États-Unis)</a> — Advertising & Marketing.</li>
+      </ul>
+    </div>
+
+    <div class="notice">
+      <strong>Statut :</strong> Nous sommes en <strong>pré-lancement</strong>. Les offres, rabais et tableaux de bord seront activés au <strong>lancement officiel le 19 mars 2026</strong>.
+    </div>
+
+    <!-- iFrame caché pour éviter la navigation vers le webhook -->
+    <iframe name="rl_hidden_iframe" style="display:none;width:0;height:0;border:0;"></iframe>
+
+    <!-- FORMULAIRE -->
+    <form id="rl-contract-form"
+          action="https://hook.us2.make.com/wcc9tzq1cuv4ddq8svhl41zjvan8amk2"
+          method="POST"
+          target="rl_hidden_iframe">
+      <h2>Signature et acceptation</h2>
+
+      <div class="field">
+        <label for="full_name">Nom complet</label>
+        <input type="text" id="full_name" name="full_name" placeholder="Prénom Nom" required />
+      </div>
+
+      <div class="field">
+        <label for="email">Courriel</label>
+        <input type="email" id="email" name="email" placeholder="ton@email.com" required />
+      </div>
+
+      <div class="field">
+        <label for="date_signed">Date</label>
+        <input type="date" id="date_signed" name="date" required />
+      </div>
+
+      <!-- Champs cachés -->
+      <input type="hidden" id="timestamp_iso" name="timestamp" />
+      <input type="hidden" id="ip" name="ip" />
+      <input type="hidden" id="user_agent" name="user_agent" />
+      <input type="hidden" id="page_url" name="page_url" />
+      <input type="hidden" name="document_version" value="Affiliation-RL-v1.0" />
+
+      <div class="checkline">
+        <input type="checkbox" id="accept_terms" name="accept" value="TRUE" required />
+        <label for="accept_terms">
+          J’ai lu et j’accepte le <strong>Contrat d’affiliation RabaisLocal Marketing (v1.0)</strong>.  
+          Je comprends que les commissions sont basées sur des ventes réelles et que les frais (27 $/mois après 6 mois & 47 $/an) sont prélevés uniquement sur mes profits.
+        </label>
+      </div>
+
+      <button id="submitBtn" type="submit">Signer et envoyer</button>
+      <p id="form-msg" class="muted"></p>
+      <p class="muted">En signant, tu recevras une copie du contrat par courriel et ton accès affilié.</p>
+    </form>
+
+    <footer>
+      © <span id="year"></span> RabaisLocal Marketing — Tous droits réservés<br>
+      Adresse : 8-444 Boul. Sainte-Madeleine, Trois-Rivières, G8T-3N4, Québec, Canada<br>
+      Courriel : <a href="mailto:rabaislocal@rabaislocal.com">rabaislocal@rabaislocal.com</a> • Tél. : 819-944-2199
+    </footer>
+  </div>
+
+  <script>
+    (function(){
+      const now=new Date(), pad=n=>String(n).padStart(2,'0');
+      const today=now.getFullYear()+'-'+pad(now.getMonth()+1)+'-'+pad(now.getDate());
+      document.getElementById('date_signed').value=today;
+      document.getElementById('timestamp_iso').value=now.toISOString();
+      document.getElementById('user_agent').value=navigator.userAgent||'';
+      document.getElementById('page_url').value=window.location.href||'';
+      document.getElementById('year').textContent=now.getFullYear();
+
+      // Récupération de l’IP publique
+      fetch("https://api.ipify.org?format=json")
+        .then(res => res.json())
+        .then(data => { document.getElementById("ip").value = data.ip || ""; })
+        .catch(() => { document.getElementById("ip").value = "non détectée"; });
+
+      const form=document.getElementById('rl-contract-form');
+      const btn=document.getElementById('submitBtn');
+      const msg=document.getElementById('form-msg');
+
+      form.addEventListener('submit', function(e){
+        const okName=form.full_name.value.trim().length>=2;
+        const okEmail=/\S+@\S+\.\S+/.test(form.email.value);
+        const okAccept=form.accept.checked;
+
+        if(!okName||!okEmail||!okAccept){
+          e.preventDefault();
+          msg.textContent="Merci de remplir tous les champs et d’accepter le contrat.";
+          msg.style.color="#b91c1c";
+          return;
+        }
+
+        btn.disabled=true;
+        btn.textContent="Envoi en cours…";
+        msg.textContent="Transmission sécurisée…";
+        msg.style.color="#666";
+
+        setTimeout(()=>{window.location.href="https://www.rabaislocal.net/contrat-recu";},900);
+      });
+    })();
+  </script>
+</body>
+</html>
