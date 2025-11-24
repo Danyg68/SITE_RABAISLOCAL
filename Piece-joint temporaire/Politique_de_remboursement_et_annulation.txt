@@ -1,0 +1,279 @@
+Politique_de_remboursement_et_annulation
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Politique de remboursement et d’annulation – RabaisLocal</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rl-blue:#3E53A5;
+    --rl-bg:#F5F8FF;
+    --rl-ink:#1B2240;
+    --rl-muted:#5B6385;
+    --rl-line:#E3E8FF;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--rl-bg);
+    color:var(--rl-ink);
+    font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    line-height:1.6;
+  }
+  .wrap{width:min(1100px,92vw);margin:0 auto;padding:24px 0 56px}
+  header.hero{
+    background:#fff;
+    border:1px solid var(--rl-line);
+    border-radius:18px;
+    padding:22px 20px;
+    margin:18px 0 22px;
+    text-align:center;
+  }
+  header.hero img.logo{
+    width:150px;
+    max-width:80%;
+    height:auto;
+    margin-bottom:14px;
+  }
+  header.hero h1{
+    margin:0 0 6px;
+    font-size:clamp(22px,3.2vw,34px);
+    color:var(--rl-blue);
+    font-weight:900;
+  }
+  .meta{color:var(--rl-muted);font-size:13px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+  .info-box{
+    background:#E8EDFF;
+    border:1px solid #DDE3FF;
+    border-radius:12px;
+    padding:14px 18px;
+    margin-top:20px;
+    margin-bottom:20px;
+    color:#1B2240;
+    font-size:15px;
+    text-align:left;
+  }
+  section.block{
+    background:#fff;
+    border:1px solid var(--rl-line);
+    border-radius:16px;
+    padding:18px;
+    margin:12px 0;
+  }
+  section.block h2{
+    margin:0 0 10px;
+    font-size:clamp(18px,2.4vw,24px);
+    color:var(--rl-blue);
+    font-weight:800;
+  }
+  section.block h3{
+    margin:12px 0 8px;
+    font-size:clamp(15px,2vw,18px);
+    color:#1B2240;
+    font-weight:700;
+  }
+  ul,ol{margin:8px 0 8px 18px}
+  a{color:var(--rl-blue);text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <img class="logo" src="https://statics.myclickfunnels.com/workspace/jklqVP/image/17823503/file/d5fb15091926d11524543af90a9a5e26.png" alt="Logo RabaisLocal">
+    <h1>Politique de remboursement et d’annulation</h1>
+    <div class="meta">
+      <span>Éditeur : <strong>RabaisLocal / RabaisLocal Marketing</strong></span>
+      <span>Dernière mise à jour : <strong>24 octobre 2025</strong></span>
+    </div>
+
+    <div class="info-box">
+      💡 <strong>Transparence et équité :</strong><br>
+      Cette politique vise à protéger à la fois nos membres, commerçants, affiliés et l’équipe RabaisLocal.  
+      Elle explique les modalités d’annulation et de remboursement applicables à nos différents services et abonnements.
+    </div>
+  </header>
+
+  <section class="block">
+    <h2>1) Objet de la politique</h2>
+    <p>La présente politique définit les conditions de remboursement, d’annulation et de renouvellement pour tous les produits et services offerts par <strong>RabaisLocal</strong> et <strong>RabaisLocal Marketing</strong>, incluant les abonnements consommateurs, les forfaits commerçants et les trousses affiliés.</p>
+  </section>
+
+  <section class="block">
+    <h2>2) Produits et services couverts</h2>
+    <ul>
+      <li><strong>Trousse affilié</strong> (47 $ en pré-lancement, 77 $ régulier)</li>
+      <li><strong>Forfaits commerçants</strong> : Gratuit, Bronze (147 $/3 mois), Argent (247 $/3 mois), Or (247 $/2 ans)</li>
+      <li><strong>Abonnements consommateurs</strong> : Essentiel Local (gratuit), Privilège Local (14,95 $/mois), VIP Économies+ (24,95 $/mois)</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>3) Délai de remboursement</h2>
+    <p>Un membre peut demander le remboursement de son achat dans un délai de <strong>7 jours suivant la date de paiement</strong>, à condition que le service ou le contenu n’ait pas déjà été activé, livré ou téléchargé.</p>
+  </section>
+
+  <section class="block">
+    <h2>4) Produits et contenus non remboursables</h2>
+    <p>Les produits numériques et services instantanés suivants sont <strong>non remboursables</strong> dès qu’ils sont accessibles :</p>
+    <ul>
+      <li>La <strong>Trousse affilié RabaisLocal</strong> (accès immédiat aux outils, formations et avantages).</li>
+      <li>Les <strong>eBooks, formations, guides ou contenus numériques</strong> livrés après l’achat.</li>
+      <li>Les <strong>abonnements ou forfaits</strong> déjà activés sur la plateforme.</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>5) Renouvellement et frais automatiques</h2>
+    <p>Les affiliés RabaisLocal bénéficient d’un modèle unique sans prélèvement sur carte bancaire :</p>
+    <ul>
+      <li>Les <strong>frais mensuels</strong> (27 $/mois) et le <strong>renouvellement annuel</strong> (47 $) sont <strong>automatiquement déduits des commissions générées</strong>.</li>
+      <li>Aucun montant n’est prélevé sur la carte de crédit ou le compte personnel du membre.</li>
+      <li>Si le solde de commissions est insuffisant, le compte est simplement suspendu jusqu’à régularisation.</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>6) Procédure de demande de remboursement</h2>
+    <p>Toute demande doit être adressée par courriel à <a href="mailto:rabaislocal@rabaislocal.com">rabaislocal@rabaislocal.com</a>  
+    en précisant : ton nom complet, ton courriel d’inscription, le produit concerné et la date d’achat.  
+    Les demandes valides sont traitées sous <strong>5 à 10 jours ouvrables</strong>.</p>
+  </section>
+
+  <section class="block">
+    <h2>7) Cas particuliers et suspension</h2>
+    <p>RabaisLocal se réserve le droit de suspendre ou annuler un compte sans remboursement en cas de fraude, d’abus manifeste, de non-respect des conditions générales ou de violation des lois applicables.</p>
+  </section>
+
+  <section class="block">
+    <h2>8) Loi applicable</h2>
+    <p>La présente politique est régie par les lois du Québec et du Canada.  
+    Tout litige relatif à son interprétation ou à son application relève du tribunal compétent du district judiciaire de <strong>Trois-Rivières (Québec, Canada)</strong>.</p>
+  </section>
+
+  <section class="block">
+    <h2>9) Contact</h2>
+    <p>Pour toute question ou assistance, tu peux contacter :</p>
+    <ul>
+      <li><strong>Dany Gosselin</strong> – Responsable des opérations et du service aux membres</li>
+      <li>Courriel : <a href="mailto:rabaislocal@rabaislocal.com">rabaislocal@rabaislocal.com</a></li>
+      <li>Téléphone : 819-944-2199</li>
+      <li>Adresse : 8-444 Boul. Sainte-Madeleine, Trois-Rivières, G8T 3N4, Québec, Canada</li>
+    </ul>
+  </section>
+
+</div>
+</body>
+</html>
+
+<!-- =======================
+     FOOTER RABAISLOCAL 2025 – VERSION PRO RESPONSIVE
+     ======================= -->
+
+<!-- 1️⃣ VERSION PC / TABLETTE -->
+<footer class="rl-footer-desktop" style="background:#F5F8FF;border-top:4px solid #3E53A5;padding:40px 0 30px;
+               text-align:center;font-family:'Poppins',sans-serif;color:#1B2240;line-height:1.7;
+               box-shadow:0 -3px 10px rgba(0,0,0,0.04);">
+
+  <!-- Logo + slogan -->
+  <div style="margin-bottom:22px;">
+    <img src="https://statics.myclickfunnels.com/workspace/jklqVP/image/17823503/file/d5fb15091926d11524543af90a9a5e26.png"
+         alt="Logo RabaisLocal"
+         style="width:160px;max-width:80%;height:auto;display:block;margin:0 auto 12px auto;">
+    <p style="font-size:15px;font-weight:600;color:#3E53A5;margin:0;">
+      💙 Ensemble, on fait gagner tout le monde.
+    </p>
+  </div>
+
+  <!-- Liens légaux -->
+  <div style="font-size:14px;margin-bottom:10px;">
+    <a href="https://www.rabaislocal.net/conditions-utilisation" style="color:#1B2240;text-decoration:none;margin:0 8px;">Conditions d’utilisation</a> |
+    <a href="https://www.rabaislocal.net/politique-deconfidentialite" style="color:#1B2240;text-decoration:none;margin:0 8px;">Confidentialité</a> |
+    <a href="https://www.rabaislocal.net/politique-de-cookies-bandeau-de-consentement" style="color:#1B2240;text-decoration:none;margin:0 8px;">Cookies</a> |
+    <a href="https://www.rabaislocal.net/politique-de-remboursement-annulation" style="color:#1B2240;text-decoration:none;margin:0 8px;">Remboursement</a> |
+    <a href="https://www.rabaislocal.net/politique-d-utilisation-acceptable" style="color:#1B2240;text-decoration:none;margin:0 8px;">Utilisation acceptable</a> |
+    <a href="https://www.rabaislocal.net/avis-de-non-responsabilite" style="color:#1B2240;text-decoration:none;margin:0 8px;">Non-responsabilité</a> |
+    <a href="https://www.rabaislocal.net/politique-de-application-mobile-et-de-agent-ia" style="color:#1B2240;text-decoration:none;margin:0 8px;">App & IA</a> |
+    <a href="https://www.rabaislocal.net/mentions-legales-completes-rabaislocal" style="color:#1B2240;text-decoration:none;margin:0 8px;">Mentions légales</a>
+  </div>
+
+  <!-- Copyright -->
+  <div style="color:#5B6385;font-size:13px;margin-top:8px;">
+    © 2025 RabaisLocal – Tous droits réservés • Trois-Rivières (QC) • 
+    <a href="mailto:rabaislocal@rabaislocal.com" style="color:#3E53A5;text-decoration:none;">Contact</a> • 
+    <a href="#" onclick="window.dispatchEvent(new CustomEvent('rl-open-prefs'));return false;"
+       style="color:#3E53A5;text-decoration:none;">Gérer mes cookies</a>
+  </div>
+
+  <!-- Preuve sociale -->
+  <div style="margin-top:15px;font-size:13px;color:#3E53A5;font-weight:500;">
+    🚀 Déjà <strong>2 600 membres</strong> inscrits au pré-lancement • Une initiative 100 % québécoise propulsée par l’IA 🤖
+  </div>
+</footer>
+
+<!-- 2️⃣ VERSION MOBILE ALLÉGÉE + "VOIR PLUS" -->
+<div class="rl-footer-mobile" style="display:none;background:#F5F8FF;border-top:4px solid #3E53A5;
+            text-align:center;font-family:'Poppins',sans-serif;color:#1B2240;padding:35px 18px 30px;">
+
+  <!-- Logo -->
+  <img src="https://statics.myclickfunnels.com/workspace/jklqVP/image/17823503/file/d5fb15091926d11524543af90a9a5e26.png"
+       alt="RabaisLocal Logo"
+       style="width:140px;height:auto;margin:0 auto 12px auto;display:block;">
+
+  <!-- Slogan -->
+  <p style="margin:0;font-size:15px;font-weight:600;color:#3E53A5;">
+    💙 Ensemble, on fait gagner tout le monde.
+  </p>
+
+  <!-- CTA -->
+  <a href="https://www.rabaislocal.net"
+     style="display:inline-block;margin-top:14px;background:#3E53A5;color:#fff;
+            font-weight:600;text-decoration:none;padding:12px 28px;border-radius:8px;">
+     🔗 S'inscrire gratuitement
+  </a>
+
+  <!-- Liens essentiels -->
+  <div style="margin-top:16px;font-size:13px;line-height:1.8;">
+    <a href="https://www.rabaislocal.net/conditions-utilisation" style="color:#1B2240;text-decoration:none;">Conditions</a> |
+    <a href="https://www.rabaislocal.net/politique-deconfidentialite" style="color:#1B2240;text-decoration:none;">Confidentialité</a> |
+    <a href="https://www.rabaislocal.net/politique-de-cookies-bandeau-de-consentement" style="color:#1B2240;text-decoration:none;">Cookies</a>
+  </div>
+
+  <!-- Bouton "Voir plus" -->
+  <div id="rl-more-links" style="margin-top:8px;">
+    <a href="#" onclick="document.getElementById('rl-extra-links').style.display='block'; this.style.display='none'; return false;"
+       style="color:#3E53A5;text-decoration:none;font-size:13px;font-weight:600;">
+       🔽 Voir plus de pages
+    </a>
+  </div>
+
+  <!-- Liens cachés (affichés après clic) -->
+  <div id="rl-extra-links" style="display:none;margin-top:8px;font-size:13px;line-height:1.8;">
+    <a href="https://www.rabaislocal.net/politique-de-remboursement-annulation" style="color:#1B2240;text-decoration:none;">Remboursement</a> |
+    <a href="https://www.rabaislocal.net/politique-d-utilisation-acceptable" style="color:#1B2240;text-decoration:none;">Utilisation</a> |
+    <a href="https://www.rabaislocal.net/avis-de-non-responsabilite" style="color:#1B2240;text-decoration:none;">Non-responsabilité</a> |
+    <a href="https://www.rabaislocal.net/politique-de-application-mobile-et-de-agent-ia" style="color:#1B2240;text-decoration:none;">App & IA</a> |
+    <a href="https://www.rabaislocal.net/mentions-legales-completes-rabaislocal" style="color:#1B2240;text-decoration:none;">Mentions légales</a>
+  </div>
+
+  <!-- Copyright -->
+  <p style="margin-top:16px;font-size:12px;color:#5B6385;">
+    © 2025 RabaisLocal • Trois-Rivières (QC) • 
+    <a href="mailto:rabaislocal@rabaislocal.com" style="color:#3E53A5;text-decoration:none;">Contact</a>
+  </p>
+</div>
+
+<!-- 3️⃣ RESPONSIVE CSS -->
+<style>
+@media(max-width:768px){
+  .rl-footer-desktop{display:none !important;}
+  .rl-footer-mobile{display:block !important;}
+}
+@media(min-width:769px){
+  .rl-footer-desktop{display:block !important;}
+  .rl-footer-mobile{display:none !important;}
+}
+</style>

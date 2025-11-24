@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Guide de démarrage Affilié – RabaisLocal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #F5F8FF;
+      color: #1B2240;
+    }
+    .container {
+      max-width: 860px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+    h1 {
+      color: #3E53A5;
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+    p.intro {
+      margin-bottom: 30px;
+      font-size: 16px;
+    }
+    .step {
+      background: white;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      margin-bottom: 30px;
+    }
+    .step h2 {
+      font-size: 22px;
+      color: #3E53A5;
+      margin-bottom: 10px;
+    }
+    .step ul {
+      padding-left: 20px;
+      margin-bottom: 16px;
+    }
+    .step ul li {
+      margin-bottom: 8px;
+    }
+    .step img {
+      max-width: 100%;
+      max-height: 300px;
+      width: auto;
+      height: auto;
+      display: block;
+      margin: 10px auto 0;
+      border-radius: 12px;
+    }
+    .cta {
+      display: inline-block;
+      background: #3E53A5;
+      color: #fff;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      text-align: center;
+      margin-top: 40px;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🧭 Guide de démarrage affilié</h1>
+    <p class="intro"><strong>Bienvenue dans la grande famille RabaisLocal !</strong><br>
+      Voici les 5 étapes pour activer ta trousse, comprendre ton rôle et démarrer rapidement.
+    </p>
+
+    <div class="step">
+      <h2>1️⃣ Active ta trousse affiliée</h2>
+      <ul>
+        <li>Signe ton contrat électronique RabaisLocal</li>
+        <li>Connecte-toi sur <a href="https://partenaires.rabaislocal.com/login" target="_blank">partenaires.rabaislocal.com</a></li>
+        <li>Première connexion ? Clique sur « Mot de passe oublié »</li>
+        <li>Remplis ton profil et tes infos de paiement (onglet Réglage)</li>
+        <li>Vérifie ton lien de parrainage unique</li>
+      </ul>
+      <img src="https://statics.myclickfunnels.com/workspace/jklqVP/image/18803378/file/1e4ba6ccc32468aa5ecce5e76e10fcec.jpg" alt="Connexion RabaisLocal">
+    </div>
+
+    <div class="step">
+      <h2>2️⃣ Partage ton lien</h2>
+      <ul>
+        <li>Va dans « Documents utiles »</li>
+        <li>Partage à 5 amis, 2 commerçants et 1 curieux</li>
+        <li>Laisse RabaisLocal faire le reste (IA, tunnels, e-mails)</li>
+      </ul>
+      <img src="https://statics.myclickfunnels.com/workspace/jklqVP/image/18803276/file/66314fb79710606979aed4fc0bd5ced2.jpg" alt="Partage de lien">
+    </div>
+
+    <div class="step">
+      <h2>3️⃣ Découvre tes outils</h2>
+      <ul>
+        <li>🎥 Vidéos & documents à partager</li>
+        <li>🧠 Agent IA personnel (disponible au lancement)</li>
+        <li>📊 Tableau de bord affilié</li>
+      </ul>
+      <img src="https://statics.myclickfunnels.com/workspace/jklqVP/image/18803280/file/eee4dc1c2cf75b887cda726e8794b9d5.jpg" alt="Outils affilié">
+    </div>
+
+    <div class="step">
+      <h2>4️⃣ Suis ton évolution</h2>
+      <ul>
+        <li>Revenus en temps réel</li>
+        <li>Inscriptions via ton lien</li>
+        <li>Rang et progression</li>
+        <li>🎯 Objectif : atteindre “Bâtisseur” (5 affiliés ou 25 consommateurs)</li>
+      </ul>
+      <img src="https://statics.myclickfunnels.com/workspace/jklqVP/image/18803279/file/2910b40e6ef622fd2fdd2f8c097ebd1c.jpg" alt="Évolution">
+    </div>
+
+    <div class="step">
+      <h2>5️⃣ Reste connecté</h2>
+      <ul>
+        <li>👉 Groupe Facebook RabaisLocal</li>
+        <li>👉 Infolettre hebdomadaire</li>
+        <li>👉 Contact ressource affilié</li>
+        <li>👉 Agent IA (bientôt disponible)</li>
+      </ul>
+      <img src="https://statics.myclickfunnels.com/workspace/jklqVP/image/18803278/file/447dc2c628f48c25a8c16b707fa03015.jpg" alt="Connexion communauté">
+    </div>
+
+    <a class="cta" href="https://www.rabaislocal.net/plan-remuneration" target="_blank">📊 Voir le Plan de rémunération</a>
+
+    <div class="footer">
+      RabaisLocal Marketing Inc. – © 2025<br>
+      8-444 Boul. Sainte-Madeleine, Trois-Rivières, QC
+    </div>
+  </div>
+</body>
+</html>

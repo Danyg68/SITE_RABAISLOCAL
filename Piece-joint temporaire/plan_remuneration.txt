@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plan de Rémunération RabaisLocal</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background: #fff;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 4px solid #f26522;
+    }
+    header img {
+      max-height: 60px;
+    }
+    main {
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 30px 20px;
+      background: #fff;
+    }
+    h1, h2, h3 {
+      color: #f26522;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    .note {
+      background: #f0f0f0;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 0.95em;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8em;
+      padding: 20px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <header>
+
+    <h1>Plan de Rémunération – Affiliés RabaisLocal</h1>
+  </header>
+  <main>
+    <h2>1. Pourquoi RabaisLocal n’est pas un MLM traditionnel</h2>
+    <table>
+      <tr><th>🔍 Élément</th><th>💼 MLM traditionnel</th><th>🌍 RabaisLocal</th></tr>
+      <tr><td>Coût d’entrée</td><td>100 $ à 1 000 $</td><td>47 $ promo, aucun achat requis</td></tr>
+      <tr><td>Commissions</td><td>Sur recrutement</td><td>Sur achats réels de référés</td></tr>
+      <tr><td>Frais mensuels & renouvellement annuel</td><td>Obligatoires</td><td>Prélevés seulement si profits. Pu aucun montant prélevé sur votre carte de crédit</td></tr>
+      <tr><td>Produits</td><td>Difficiles à revendre</td><td>Rabais locaux utiles</td></tr>
+      <tr><td>Structure</td><td>Floue</td><td>Claire jusqu’à 15 niveaux</td></tr>
+      <tr><td>Risque</td><td>Élevé</td><td>Zéro risque financier</td></tr>
+      <tr><td>Image</td><td>Méfiance pyramidale</td><td>Locale, transparente</td></tr>
+    </table>
+
+    <h2>2. Comment ça fonctionne ?</h2>
+    <ul>
+      <li>🔗 Tu partages ton lien affilié</li>
+      <li>🤖 RabaisLocal s’occupe du reste (IA, emails, tunnel…)</li>
+      <li>💸 Tu gagnes sur chaque achat de ton réseau</li>
+    </ul>
+
+    <h2>3. Plan de rémunération – résumé</h2>
+    <a href="https://statics.myclickfunnels.com/workspace/jklqVP/image/18664100/file/8ef8c807758818841c37df4cd0fa662a.png" target="_blank">
+      <img src="https://statics.myclickfunnels.com/workspace/jklqVP/image/18664100/file/8ef8c807758818841c37df4cd0fa662a.png" alt="Plan de rémunération RabaisLocal" style="width:100%;max-width:1000px;margin:20px 0;cursor:zoom-in;">
+    </a>
+
+
+    <h2>4. Frais et virements</h2>
+    <ul>
+      <li>💳 27 $/mois prélevés uniquement si tu fais des commissions</li>
+      <li>✅ Dès 25 $ accumulés → virement automatique</li>
+      <li>🔁 47 $/an prélevés sur les profits (compte gelé temporairement si non dispo)</li>
+    </ul>
+
+    <h2>5. Exemples de revenus mensuels</h2>
+    <table>
+      <tr><th>Rang</th><th>Passif</th><th>Actif</th><th>Optimisé</th></tr>
+      <tr><td>Explorateur</td><td>15 $</td><td>30 $</td><td>50 $</td></tr>
+      <tr><td>Coordonnateur</td><td>264 $</td><td>480 $</td><td>750 $</td></tr>
+      <tr><td>Directeur</td><td>2 700 $</td><td>4 200 $</td><td>6 000 $</td></tr>
+      <tr><td>Ambassadeur</td><td>15 000 $</td><td>20 000 $</td><td>25 000 $</td></tr>
+    </table>
+    <div class="note">*Basé sur duplication simple, implication croissante. Les montants à titre d'exemple seulement.  RabaisLocal ne peux garantir les montants des commissions MAIS peux vos garantir que vous ne paierai plus jamais de montant de votre poche.</div>
+
+    <h2>6. Deux styles possibles</h2>
+    <table>
+      <tr><th>Mode</th><th>Description</th><th>Gains</th><th>Exemples</th></tr>
+      <tr><td>Passif</td><td>Je réfère, RL fait le reste</td><td>Automatique</td><td>Étudiant, retraité</td></tr>
+      <tr><td>Actif</td><td>Je guide, j'accompagne</td><td>Évolutif</td><td>Coach, parent impliqué</td></tr>
+    </table>
+
+    <h2>7. Comment progresser</h2>
+    <ul>
+      <li>🚀 Explorateur → Trousse à 47 $</li>
+      <li>🧩 Bâtisseur → 5 affiliés ou 25 conso</li>
+      <li>🎯 Coordonnateur → 10 affiliés actifs</li>
+      <li>🏅 Ambassadeur → 3 Présidents + 160 aff. + 300 conso</li>
+    </ul>
+
+    <h2>8. Ce qu’il faut retenir</h2>
+    <ul>
+      <li>Tu peux gagner en étant 100 % passif</li>
+      <li>Aucun achat requis, aucun quota</li>
+      <li>Tu contribues à l’économie locale</li>
+      <li>Tu peux bâtir un vrai revenu récurrent</li>
+    </ul>
+  <h2>📊 Plan complet par niveau (détail)</h2>
+    <p>Voici le tableau de rémunération détaillé jusqu’au niveau 15, tel qu'affiché dans le système officiel :</p>
+    <img src="https://cdn.rabaislocal.ca/images/tableau-rangs-detail-15niveaux.png" alt="Tableau complet des rangs RabaisLocal" style="width:100%;max-width:1000px;margin:20px 0;">
+</main>
+  <div class="footer">© RabaisLocal – Tous droits réservés</div>
+</body>
+</html>

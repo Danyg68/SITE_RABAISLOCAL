@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RabaisLocal — Conditions d’utilisation</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rl-blue:#3E53A5; /* Couleur de marque */
+    --rl-bg:#F5F8FF;
+    --rl-text:#1B2240;
+    --rl-muted:#5C668C;
+    --rl-line:#E3E8FF;
+  }
+  html,body{margin:0;padding:0;background:var(--rl-bg);color:var(--rl-text);font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
+  .wrap{max-width:980px;margin:0 auto;padding:32px 16px}
+  h1,h2,h3{line-height:1.25}
+  h1{font-size:30px;margin:8px 0 16px 0;color:var(--rl-blue);font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+  h2{font-size:22px;margin:32px 0 12px 0;color:var(--rl-blue);font-weight:700;text-transform:uppercase}
+  h3{font-size:18px;margin:24px 0 8px 0;color:var(--rl-blue);font-weight:600;text-transform:uppercase}
+  p{margin:8px 0;text-align:justify}
+  ul{margin:8px 0 16px 20px}
+  li{margin:6px 0}
+  .toc{background:#fff;border:1px solid var(--rl-line);border-radius:14px;padding:16px 18px;margin:12px 0 24px 0;box-shadow:0 6px 18px rgba(0,0,0,.05)}
+  .toc h2{margin-top:0}
+  .toc a{color:var(--rl-blue);text-decoration:none;border-bottom:1px dashed rgba(62,83,165,.35)}
+  .note{background:#fff;border-left:5px solid var(--rl-blue);padding:12px 14px;border-radius:10px;margin:16px 0}
+  .tag{display:inline-block;padding:4px 10px;border-radius:999px;background:#E8EDFF;color:#2A3778;font-size:12px;font-weight:600;letter-spacing:.3px;margin-right:6px}
+  .muted{color:var(--rl-muted)}
+  .hr{height:1px;background:var(--rl-line);margin:24px 0}
+  .small{font-size:13px}
+  .legal-list{margin-left:18px}
+  a{color:var(--rl-blue)}
+  /* Ancrages internes lisibles dans ClickFunnels */
+  .anchor{scroll-margin-top:96px}
+  /* Bandeau alerte RGPD */
+  .gdpr-banner{display:none;background:#fff5f5;border:1px solid #ffd6d6;color:#8a2b2b;padding:12px 14px;border-radius:10px;margin:12px 0}
+  /* Responsive */
+  @media (max-width:720px){
+    h1{font-size:26px}
+    h2{font-size:20px}
+    h3{font-size:16px}
+  }
+</style>
+<script>
+  // Affiche un bandeau d’alerte si l’utilisateur semble provenir de l’UE (approximation côté client à adapter serveur)
+  // NB: Cette logique client est indicative. Pour conformité RGPD, faire filtrage serveur par IP (GeoIP).
+  (async function(){
+    try{
+      // Si vous avez une variable serveur, remplacez par ****.
+      const isEU = false; /* **** Remplacer par la détection côté serveur (true/false) */
+      if(isEU){
+        var b=document.getElementById('gdpr-banner'); if(b) b.style.display='block';
+      }
+    }catch(e){}
+  })();
+</script>
+</head>
+<body>
+  <div class="wrap">
+
+    <span class="tag">DOCUMENT JURIDIQUE</span>
+    <span class="tag">QUÉBEC — LOI 25</span>
+    <span class="tag">PRÉ-LANCEMENT</span>
+
+    <h1>CONDITIONS D’UTILISATION</h1>
+    <p class="muted small">
+      Dernière mise à jour :  2025-07-23 • Entité légale : :RABAIS LOCAL & WWW.RABAISLOCAL.COM • NEQ : 2240032849 • Adresse : :	8-444 boul. Sainte-Madeleine Trois-Rivières (Québec) G8T3N4 Canada • Courriel : danygosselin68@hotmail.com
+    </p>
+
+    <div id="gdpr-banner" class="gdpr-banner small">
+      <strong>Alerte RGPD (Union européenne).</strong> RabaisLocal s’adresse prioritairement au marché canadien (Québec/Canada).
+      Les utilisateurs provenant de l’Union européenne ne sont pas visés par nos services et ne doivent pas utiliser la plateforme,
+      sauf mention écrite contraire et spécifique. Voir la section <a href="#rgpd">12. DONNÉES PERSONNELLES &amp; LOI 25 / RGPD</a>.
+    </div>
+
+    <div class="note">
+      <p><strong>Statut pré-lancement.</strong> RabaisLocal est actuellement en <strong>pré-lancement</strong>. 
+      Les rabais, crédits et tableaux de bord complets seront actifs à compter du <strong>19 mars 2026</strong>. 
+      Les inscriptions actuelles permettent de réserver l’accès et de recevoir des communications d’information (voir section C-28). 
+      Voir <a href="#dispositions-prelancement">15. DISPOSITIONS LIÉES AU PRÉ-LANCEMENT</a>.</p>
+    </div>
+
+    <div class="toc">
+      <h2>Sommaire</h2>
+      <ul>
+        <li><a href="#objet">1. OBJET ET ACCEPTATION</a></li>
+        <li><a href="#definitions">2. DÉFINITIONS</a></li>
+        <li><a href="#public">3. CHAMP D’APPLICATION (VISITEURS, CONSOMMATEURS, COMMERÇANTS)</a></li>
+        <li><a href="#inscription">4. INSCRIPTION, COMPTE ET SÉCURITÉ</a></li>
+        <li><a href="#services">5. SERVICES OFFERTS (RABAIS, CRÉDITS, CARTE, RÉSERVATIONS, IA, INFOLETTRE)</a></li>
+        <li><a href="#utilisation-rabais">6. UTILISATION DES RABAIS &amp; CRÉDITS</a></li>
+        <li><a href="#commercants">7. OBLIGATIONS SPÉCIFIQUES DES COMMERÇANTS PARTENAIRES</a></li>
+        <li><a href="#conduite">8. RÈGLES DE CONDUITE &amp; CONTENUS</a></li>
+        <li><a href="#paiements">9. PAIEMENTS, TAXES &amp; REMBOURSEMENTS</a></li>
+        <li><a href="#propriete-intellectuelle">10. PROPRIÉTÉ INTELLECTUELLE</a></li>
+        <li><a href="#securite">11. SÉCURITÉ, ACCÈS &amp; INTÉGRITÉ</a></li>
+        <li><a href="#rgpd">12. DONNÉES PERSONNELLES &amp; LOI 25 / LPRPDE / RGPD</a></li>
+        <li><a href="#anti-pourriel">13. COMMUNICATIONS &amp; LOI CANADIENNE ANTI-POURRIEL (C-28)</a></li>
+        <li><a href="#responsabilites">14. LIMITATIONS DE RESPONSABILITÉ &amp; GARANTIES</a></li>
+        <li><a href="#dispositions-prelancement">15. DISPOSITIONS LIÉES AU PRÉ-LANCEMENT</a></li>
+        <li><a href="#modif-resiliation">16. MODIFICATIONS, SUSPENSION &amp; RÉSILIATION</a></li>
+        <li><a href="#droit-applicable">17. DROIT APPLICABLE, LITIGES &amp; CONTACT</a></li>
+        <li><a href="#divers">18. DISPOSITIONS DIVERSES</a></li>
+      </ul>
+    </div>
+
+    <div id="objet" class="anchor"></div>
+    <h2>1. OBJET ET ACCEPTATION</h2>
+    <p>Les présentes conditions d’utilisation (« <strong>CGU</strong> ») régissent l’accès et l’utilisation du site web, des applications et des services associés
+      fournis par <strong>RabaisLocal</strong> (« <strong>nous</strong> », « <strong>notre</strong> », « <strong>la Plateforme</strong> »), une entreprise enregistrée au Québec 
+      sous la dénomination **** (NEQ ****). En accédant à la Plateforme, en vous y inscrivant ou en utilisant nos services, vous (« <strong>vous</strong> », « <strong>utilisateur</strong> »)
+      acceptez d’être lié par les présentes CGU. Si vous n’acceptez pas ces CGU, vous ne devez pas utiliser la Plateforme.</p>
+    <p>Les présentes CGU s’appliquent <em>en complément</em> de notre <a href="****" target="_blank" rel="noopener">Politique de confidentialité</a> et, le cas échéant,
+      des conditions particulières de services (programme d’affiliation 2.0, conditions commerçants, politiques de remboursements : <a href="****" target="_blank" rel="noopener">Modalités de remboursement</a>).
+      En cas de conflit, l’ordre de priorité sera précisé dans les documents spécifiques.</p>
+
+    <div id="definitions" class="anchor"></div>
+    <h2>2. DÉFINITIONS</h2>
+    <ul class="legal-list">
+      <li><strong>Visiteur :</strong> toute personne consultant le site sans compte.</li>
+      <li><strong>Consommateur :</strong> utilisateur final (compte gratuit « Essentiel Local » ou forfait payant « Privilège Local » / « VIP Économies+ ») qui explore, réserve et utilise des rabais/avantages via des crédits.</li>
+      <li><strong>Commerçant partenaire :</strong> entreprise locale référençant des offres/rabais sur la Plateforme (forfaits : Gratuit / Bronze / Argent / Or).</li>
+      <li><strong>Crédits :</strong> unités virtuelles permettant de réserver des rabais (packs : 20, 50, 100 ; coût par crédit variant selon le pack et le statut d’abonnement).</li>
+      <li><strong>Carte de membre :</strong> identifiant numérique donnant accès aux avantages de base.</li>
+      <li><strong>Programme de points (XP) :</strong> points non monnayables reflétant l’engagement (ex. visionnage de contenus, partages, évaluations), pouvant donner accès à des avantages promotionnels.</li>
+      <li><strong>Réservation :</strong> action de bloquer temporairement un rabais chez un commerçant selon les modalités de l’offre.</li>
+      <li><strong>Infolettre :</strong> communications électroniques (emails info/promos) envoyées conformément à la Loi C-28.</li>
+      <li><strong>Programme d’affiliation 2.0 :</strong> mécanisme de référencement et de commissions à vie, géré via GoAffPro, soumis à des conditions spécifiques (voir <a href="****" target="_blank" rel="noopener">Accord d’affiliation</a>).</li>
+    </ul>
+
+    <div id="public" class="anchor"></div>
+    <h2>3. CHAMP D’APPLICATION (VISITEURS, CONSOMMATEURS, COMMERÇANTS)</h2>
+    <h3>3.1 VISITEURS</h3>
+    <p>Les Visiteurs peuvent consulter publiquement certaines pages (ex. présentation, catégories d’offres). Aucune authentification n’est requise, mais
+      l’usage demeure soumis aux présentes CGU et aux lois applicables.</p>
+    <h3>3.2 CONSOMMATEURS</h3>
+    <p>Les Consommateurs peuvent créer un compte gratuit (« Essentiel Local ») ou opter pour des forfaits payants (« Privilège Local », « VIP Économies+ »). 
+      Ils utilisent des crédits pour réserver des rabais, participent au programme XP et peuvent recevoir une carte de membre. 
+      Pendant le pré-lancement, certaines fonctionnalités peuvent être limitées (voir section 15).</p>
+    <h3>3.3 COMMERÇANTS PARTENAIRES</h3>
+    <p>Les Commerçants créent et gèrent leurs offres via la Plateforme (avec assistance IA). Ils sont responsables du contenu, de la disponibilité, du prix,
+      de la qualité et de la conformité de leurs biens/services ainsi que des taxes applicables. Des forfaits différenciés existent (Gratuit / Bronze / Argent / Or). 
+      Des conditions commerciales spécifiques peuvent s’appliquer et prévaudront en cas de divergence (voir <a href="****" target="_blank" rel="noopener">Conditions Commerçants</a>).</p>
+
+    <div id="inscription" class="anchor"></div>
+    <h2>4. INSCRIPTION, COMPTE ET SÉCURITÉ</h2>
+    <h3>4.1 CRÉATION DE COMPTE</h3>
+    <p>La création d’un compte nécessite des informations exactes, à jour et complètes (nom, courriel, code postal, etc.). 
+      L’utilisateur s’engage à les maintenir à jour. Nous pouvons refuser ou fermer un compte en cas d’informations inexactes, de fraude présumée ou de non-respect des CGU.</p>
+    <h3>4.2 ACCÈS &amp; AUTHENTIFICATION</h3>
+    <p>Vous êtes responsable de la confidentialité de vos identifiants et de toute activité réalisée via votre compte. 
+      En cas de suspicion d’accès non autorisé, vous devez nous en informer promptement à **** (courriel support).</p>
+    <h3>4.3 ÂGE MINIMUM</h3>
+    <p>Vous déclarez avoir l’âge légal de conclure un contrat dans votre province de résidence (au Québec, 14 ans et plus avec consentement parental au besoin). 
+      Les parents/tuteurs sont responsables de l’usage par des mineurs sous leur garde.</p>
+
+    <div id="services" class="anchor"></div>
+    <h2>5. SERVICES OFFERTS (RABAIS, CRÉDITS, CARTE, RÉSERVATIONS, IA, INFOLETTRE)</h2>
+    <ul class="legal-list">
+      <li><strong>Rabais numériques :</strong> offres émises par des commerçants partenaires. Les détails (prix, réduction, durée, conditions) figurent sur chaque fiche d’offre.</li>
+      <li><strong>Crédits :</strong> nécessaires pour réserver la plupart des offres (ex. 3 à 5 crédits par rabais). Les packs de crédits sont achetables ou gagnables (jeux, parrainage, XP).</li>
+      <li><strong>Carte de membre :</strong> accès de base aux offres ; les abonnements payants réduisent parfois le nombre de crédits requis.</li>
+      <li><strong>Programme XP :</strong> points d’engagement non monnayables, permettant d’accéder à des avantages promotionnels.</li>
+      <li><strong>Réservations :</strong> blocage temporaire d’un rabais chez un commerçant, selon les règles de l’offre (délais, annulation, non-présentation).</li>
+      <li><strong>IA d’assistance :</strong> suggestions d’offres, rédaction, modération : l’IA assiste mais ne se substitue pas au jugement humain (voir section 14 pour limites).</li>
+      <li><strong>Infolettre :</strong> communications électroniques sur l’actualité, les offres et les nouveautés (désinscription possible à tout moment ; voir section 13).</li>
+    </ul>
+
+    <div id="utilisation-rabais" class="anchor"></div>
+    <h2>6. UTILISATION DES RABAIS &amp; CRÉDITS</h2>
+    <h3>6.1 RÉSERVATION ET VALIDATION</h3>
+    <p>La réservation déduit les crédits du compte de l’utilisateur. La validation s’effectue selon les instructions propres à l’offre (QR code, code alphanumérique, carte de membre, etc.).</p>
+    <h3>6.2 CONDITIONS SPÉCIFIQUES</h3>
+    <ul class="legal-list">
+      <li>Les offres sont <strong>émises et assumées</strong> par les commerçants : disponibilité, quantités, restrictions d’usage, dates, exclusions, etc.</li>
+      <li>Certains rabais peuvent être non remboursables après réservation ou soumis à des frais d’annulation. Les règles figurent sur la fiche de l’offre.</li>
+      <li>Les crédits ne constituent pas de la monnaie électronique et n’ont pas de valeur au pair hors Plateforme. Ils n’expirent pas, sauf mention contraire dans une promotion spécifique.</li>
+    </ul>
+    <h3>6.3 ABUS, FRAUDE &amp; SUSPENSION</h3>
+    <p>Toute tentative de contournement, multi-comptes, utilisation de bots ou falsification de preuves d’éligibilité peut mener à la suspension ou à la fermeture du compte, sans remboursement,
+      sous réserve de recours judiciaires.</p>
+
+    <div id="commercants" class="anchor"></div>
+    <h2>7. OBLIGATIONS SPÉCIFIQUES DES COMMERÇANTS PARTENAIRES</h2>
+    <ul class="legal-list">
+      <li><strong>Exactitude des offres :</strong> contenu, visuels, prix, restrictions et dates doivent être exacts et à jour. L’IA ne dispense pas de la vérification humaine.</li>
+      <li><strong>Conformité :</strong> les commerçants sont responsables de la conformité légale de leurs offres (Loi sur la protection du consommateur, affichage des prix, garanties, sécurité, etc.).</li>
+      <li><strong>Disponibilité &amp; service :</strong> honorer les réservations validées, maintenir un niveau de service raisonnable et traiter les réclamations de bonne foi.</li>
+      <li><strong>Taxes :</strong> perception et remise de la TPS/TVQ, TVH ou autres taxes applicables selon la juridiction.</li>
+      <li><strong>Contenus :</strong> aucun contenu illicite, trompeur, diffamatoire, discriminatoire, ou violant des droits de tiers.</li>
+      <li><strong>Assistance &amp; support :</strong> répondre aux demandes des consommateurs liées à l’exécution de l’offre.</li>
+    </ul>
+
+    <div id="conduite" class="anchor"></div>
+    <h2>8. RÈGLES DE CONDUITE &amp; CONTENUS</h2>
+    <ul class="legal-list">
+      <li>Respect des lois, de l’ordre public et des bonnes mœurs.</li>
+      <li>Interdiction de contourner les mesures techniques, d’introduire des maliciels, de procéder à de l’ingénierie inverse non autorisée.</li>
+      <li>Interdiction de scraper massivement ou de réutiliser commercialement nos listings sans autorisation écrite.</li>
+      <li>Interdiction de publier des contenus violents, haineux, diffamatoires, ou portant atteinte à la vie privée.</li>
+      <li>Signalement : tout contenu problématique peut être signalé à **** (courriel) pour modération.</li>
+    </ul>
+
+    <div id="paiements" class="anchor"></div>
+    <h2>9. PAIEMENTS, TAXES &amp; REMBOURSEMENTS</h2>
+    <h3>9.1 FOURNISSEURS DE PAIEMENT</h3>
+    <p>Les paiements sont traités par <strong>Payments.AI</strong> et <strong>PayPal</strong>. <em>À noter :</em> Stripe n’est pas utilisé en raison des politiques internes
+      liées aux programmes d’affiliation (voir notre <a href="****" target="_blank" rel="noopener">FAQ paiements</a>).</p>
+    <h3>9.2 TAXES</h3>
+    <p>Les prix sont indiqués hors taxes sauf mention contraire. Les taxes applicables (ex. TPS/TVQ au Québec) sont calculées et perçues selon la réglementation.</p>
+    <h3>9.3 REMBOURSEMENTS</h3>
+    <p>Nos règles de remboursement varient selon la nature de l’achat (crédits, abonnement, offre d’un commerçant). 
+      Voir la politique dédiée : <a href="****" target="_blank" rel="noopener">Modalités de remboursement</a>. 
+      Certaines réservations peuvent être non remboursables si l’offre l’indique clairement.</p>
+
+    <div id="propriete-intellectuelle" class="anchor"></div>
+    <h2>10. PROPRIÉTÉ INTELLECTUELLE</h2>
+    <p>La Plateforme, ses marques, logos (y compris « RabaisLocal »), contenus, interfaces, textes, gabarits, scripts, bases de données et éléments graphiques
+      sont protégés par les lois sur le droit d’auteur et le droit des marques. Toute reproduction, adaptation, diffusion ou utilisation non autorisée est interdite.</p>
+    <p>Les contenus fournis par les Commerçants (textes, images, logos) restent leur propriété ; ils nous accordent une licence mondiale, non exclusive 
+      et gratuite pour héberger, reproduire et publier ces contenus dans le cadre de la Plateforme et de sa promotion.</p>
+
+    <div id="securite" class="anchor"></div>
+    <h2>11. SÉCURITÉ, ACCÈS &amp; INTÉGRITÉ</h2>
+    <p>Nous mettons en œuvre des mesures techniques et organisationnelles raisonnables (chiffrement en transit, contrôle d’accès, 
+      sauvegardes) pour protéger la Plateforme. Aucune mesure n’offrant une sécurité absolue, nous ne garantissons pas l’absence
+      d’interruptions, d’erreurs, de pertes de données ou d’atteintes illicites par des tiers.</p>
+    <p>Les intégrations tierces (ex. GoAffPro, Supabase, services d’emailing, analytics) sont soumises à leurs propres conditions. 
+      En les utilisant, vous acceptez leurs politiques respectives.</p>
+
+    <div id="rgpd" class="anchor"></div>
+    <h2>12. DONNÉES PERSONNELLES &amp; LOI 25 / LPRPDE / RGPD</h2>
+    <h3>12.1 LOI 25 (QUÉBEC) &amp; LPRPDE (CANADA)</h3>
+    <p>RabaisLocal traite les renseignements personnels conformément à la <strong>Loi 25</strong> (Québec) et à la <strong>LPRPDE</strong> (Canada), 
+      tel que détaillé dans notre <a href="****" target="_blank" rel="noopener">Politique de confidentialité</a> (finalités, base légale, tiers, conservation, droits).</p>
+    <h3>12.2 EXCLUSION RGPD (UTILISATEURS UE)</h3>
+    <p>Nos services visent prioritairement le Canada. <strong>Les utilisateurs situés dans l’Union européenne ne sont pas autorisés à utiliser la Plateforme</strong>, 
+      sauf accord écrit spécifique avec RabaisLocal. Si vous êtes dans l’UE, veuillez ne pas utiliser nos services.</p>
+    <h3>12.3 TÉMOINS (COOKIES) &amp; ANALYTIQUE</h3>
+    <p>Nous utilisons des témoins essentiels au fonctionnement et, le cas échéant, des témoins d’analytique/performance. 
+      Un bandeau et/ou des paramètres de préférences peuvent être proposés. Voir la <a href="****" target="_blank" rel="noopener">Politique de cookies</a>.</p>
+    <h3>12.4 DROITS &amp; DEMANDES</h3>
+    <p>Pour exercer vos droits (accès, rectification, retrait de consentement dans les limites légales), écrivez à **** (courriel confidentialité). 
+      Certaines demandes peuvent nécessiter une vérification d’identité.</p>
+
+    <div id="anti-pourriel" class="anchor"></div>
+    <h2>13. COMMUNICATIONS &amp; LOI CANADIENNE ANTI-POURRIEL (C-28)</h2>
+    <p>Nous envoyons des communications électroniques conformément à la Loi C-28. Vous pouvez retirer votre consentement à tout moment via le lien de désinscription
+      <em>présent dans chaque message</em> ou en écrivant à ****. Le traitement de la désinscription est généralement immédiat, avec un délai technique maximum raisonnable.</p>
+    <p>En période de pré-lancement, l’abonnement à l’infolettre est utilisé pour vous informer de l’ouverture des fonctionnalités et des étapes à venir.</p>
+
+    <div id="responsabilites" class="anchor"></div>
+    <h2>14. LIMITATIONS DE RESPONSABILITÉ &amp; GARANTIES</h2>
+    <ul class="legal-list">
+      <li><strong>Nature des offres :</strong> les offres sont proposées par des Commerçants indépendants. RabaisLocal n’est pas partie à la transaction entre le Consommateur et le Commerçant.</li>
+      <li><strong>Aucune garantie implicite :</strong> la Plateforme est fournie « telle quelle ». Nous n’offrons aucune garantie implicite de qualité marchande, adéquation à un usage particulier, 
+        disponibilité ininterrompue ou absence d’erreurs.</li>
+      <li><strong>IA &amp; recommandations :</strong> les recommandations IA sont indicatives et ne constituent pas un conseil professionnel.</li>
+      <li><strong>Limitation :</strong> dans la mesure permise par la loi, notre responsabilité totale est limitée au plus élevé des montants suivants : 
+        (i) 100 $ CAD ; (ii) le montant payé par vous à RabaisLocal au cours des 3 derniers mois.</li>
+      <li><strong>Exclusions :</strong> RabaisLocal ne peut être tenu responsable des pertes de profits, d’affaires, d’économies prévues, ou de dommages indirects, spéciaux, accessoires ou consécutifs.</li>
+    </ul>
+
+    <div id="dispositions-prelancement" class="anchor"></div>
+    <h2>15. DISPOSITIONS LIÉES AU PRÉ-LANCEMENT</h2>
+    <p>Pendant le pré-lancement, l’accès peut être restreint (tableaux de bord, IA, points, certaines fonctions de réservation). Les rabais et outils complets 
+      seront activés à compter du <strong>19 mars 2026</strong>. Toute mention d’offres est à comprendre comme une pré-inscription / réservation d’accès.</p>
+    <p>Certains prix, fonctionnalités ou règles opérationnelles peuvent évoluer avant le lancement officiel. Les conditions à l’ouverture prévaudront et seront annoncées.</p>
+
+    <div id="modif-resiliation" class="anchor"></div>
+    <h2>16. MODIFICATIONS, SUSPENSION &amp; RÉSILIATION</h2>
+    <p>Nous pouvons modifier les CGU afin de refléter l’évolution légale, technique ou commerciale. La date de mise à jour sera indiquée en tête du document. 
+      En cas de modifications substantielles, un avis raisonnable sera communiqué (courriel ou bannière sur la Plateforme). 
+      Nous pouvons suspendre ou résilier un compte en cas de violation des CGU ou d’utilisation abusive.</p>
+
+    <div id="droit-applicable" class="anchor"></div>
+    <h2>17. DROIT APPLICABLE, LITIGES &amp; CONTACT</h2>
+    <p>Les présentes CGU sont régies par les lois en vigueur dans la province de <strong>Québec</strong> et les lois fédérales du Canada applicables. 
+      Tout litige sera soumis à la compétence exclusive des tribunaux du district judiciaire de **** (ex. « <em>Montréal</em> » ou « <em>Trois-Rivières</em> »).</p>
+    <p>Contact juridique : **** (courriel), adresse postale : ****.</p>
+
+    <div id="divers" class="anchor"></div>
+    <h2>18. DISPOSITIONS DIVERSES</h2>
+    <ul class="legal-list">
+      <li><strong>Intégralité de l’accord :</strong> les présentes CGU constituent l’intégralité de l’accord entre vous et RabaisLocal sur l’objet visé.</li>
+      <li><strong>Divisibilité :</strong> si une stipulation est jugée invalide, les autres dispositions demeurent en vigueur.</li>
+      <li><strong>Cession :</strong> vous ne pouvez céder vos droits/obligations sans notre consentement écrit. Nous pouvons céder nos droits dans le cadre d’une réorganisation d’entreprise.</li>
+      <li><strong>Force majeure :</strong> aucune partie n’est responsable d’un manquement dû à un événement raisonnablement hors de son contrôle (ex. panne Internet, catastrophe).</li>
+      <li><strong>Langue :</strong> les présentes CGU sont rédigées en français (Canada). Une version anglaise peut être fournie à titre informatif.</li>
+    </ul>
+
+  </div>
+</body>
+</html>
+
+
+
+
+<!-- =======================
+     FOOTER RABAISLOCAL 2025 – VERSION PRO RESPONSIVE
+     ======================= -->
+
+<!-- 1️⃣ VERSION PC / TABLETTE -->
+<footer class="rl-footer-desktop" style="background:#F5F8FF;border-top:4px solid #3E53A5;padding:40px 0 30px;
+               text-align:center;font-family:'Poppins',sans-serif;color:#1B2240;line-height:1.7;
+               box-shadow:0 -3px 10px rgba(0,0,0,0.04);">
+
+  <!-- Logo + slogan -->
+  <div style="margin-bottom:22px;">
+    <img src="https://statics.myclickfunnels.com/workspace/jklqVP/image/17823503/file/d5fb15091926d11524543af90a9a5e26.png"
+         alt="Logo RabaisLocal"
+         style="width:160px;max-width:80%;height:auto;display:block;margin:0 auto 12px auto;">
+    <p style="font-size:15px;font-weight:600;color:#3E53A5;margin:0;">
+      💙 Ensemble, on fait gagner tout le monde.
+    </p>
+  </div>
+
+  <!-- Liens légaux -->
+  <div style="font-size:14px;margin-bottom:10px;">
+    <a href="https://www.rabaislocal.net/conditions-utilisation" style="color:#1B2240;text-decoration:none;margin:0 8px;">Conditions d’utilisation</a> |
+    <a href="https://www.rabaislocal.net/politique-deconfidentialite" style="color:#1B2240;text-decoration:none;margin:0 8px;">Confidentialité</a> |
+    <a href="https://www.rabaislocal.net/politique-de-cookies-bandeau-de-consentement" style="color:#1B2240;text-decoration:none;margin:0 8px;">Cookies</a> |
+    <a href="https://www.rabaislocal.net/politique-de-remboursement-annulation" style="color:#1B2240;text-decoration:none;margin:0 8px;">Remboursement</a> |
+    <a href="https://www.rabaislocal.net/politique-d-utilisation-acceptable" style="color:#1B2240;text-decoration:none;margin:0 8px;">Utilisation acceptable</a> |
+    <a href="https://www.rabaislocal.net/avis-de-non-responsabilite" style="color:#1B2240;text-decoration:none;margin:0 8px;">Non-responsabilité</a> |
+    <a href="https://www.rabaislocal.net/politique-de-application-mobile-et-de-agent-ia" style="color:#1B2240;text-decoration:none;margin:0 8px;">App & IA</a> |
+    <a href="https://www.rabaislocal.net/mentions-legales-completes-rabaislocal" style="color:#1B2240;text-decoration:none;margin:0 8px;">Mentions légales</a>
+  </div>
+
+  <!-- Copyright -->
+  <div style="color:#5B6385;font-size:13px;margin-top:8px;">
+    © 2025 RabaisLocal – Tous droits réservés • Trois-Rivières (QC) • 
+    <a href="mailto:rabaislocal@rabaislocal.com" style="color:#3E53A5;text-decoration:none;">Contact</a> • 
+    <a href="#" onclick="window.dispatchEvent(new CustomEvent('rl-open-prefs'));return false;"
+       style="color:#3E53A5;text-decoration:none;">Gérer mes cookies</a>
+  </div>
+
+  <!-- Preuve sociale -->
+  <div style="margin-top:15px;font-size:13px;color:#3E53A5;font-weight:500;">
+    🚀 Déjà <strong>2 600 membres</strong> inscrits au pré-lancement • Une initiative 100 % québécoise propulsée par l’IA 🤖
+  </div>
+</footer>
+
+<!-- 2️⃣ VERSION MOBILE ALLÉGÉE + "VOIR PLUS" -->
+<div class="rl-footer-mobile" style="display:none;background:#F5F8FF;border-top:4px solid #3E53A5;
+            text-align:center;font-family:'Poppins',sans-serif;color:#1B2240;padding:35px 18px 30px;">
+
+  <!-- Logo -->
+  <img src="https://statics.myclickfunnels.com/workspace/jklqVP/image/17823503/file/d5fb15091926d11524543af90a9a5e26.png"
+       alt="RabaisLocal Logo"
+       style="width:140px;height:auto;margin:0 auto 12px auto;display:block;">
+
+  <!-- Slogan -->
+  <p style="margin:0;font-size:15px;font-weight:600;color:#3E53A5;">
+    💙 Ensemble, on fait gagner tout le monde.
+  </p>
+
+  <!-- CTA -->
+  <a href="https://www.rabaislocal.net"
+     style="display:inline-block;margin-top:14px;background:#3E53A5;color:#fff;
+            font-weight:600;text-decoration:none;padding:12px 28px;border-radius:8px;">
+     🔗 S'inscrire gratuitement
+  </a>
+
+  <!-- Liens essentiels -->
+  <div style="margin-top:16px;font-size:13px;line-height:1.8;">
+    <a href="https://www.rabaislocal.net/conditions-utilisation" style="color:#1B2240;text-decoration:none;">Conditions</a> |
+    <a href="https://www.rabaislocal.net/politique-deconfidentialite" style="color:#1B2240;text-decoration:none;">Confidentialité</a> |
+    <a href="https://www.rabaislocal.net/politique-de-cookies-bandeau-de-consentement" style="color:#1B2240;text-decoration:none;">Cookies</a>
+  </div>
+
+  <!-- Bouton "Voir plus" -->
+  <div id="rl-more-links" style="margin-top:8px;">
+    <a href="#" onclick="document.getElementById('rl-extra-links').style.display='block'; this.style.display='none'; return false;"
+       style="color:#3E53A5;text-decoration:none;font-size:13px;font-weight:600;">
+       🔽 Voir plus de pages
+    </a>
+  </div>
+
+  <!-- Liens cachés (affichés après clic) -->
+  <div id="rl-extra-links" style="display:none;margin-top:8px;font-size:13px;line-height:1.8;">
+    <a href="https://www.rabaislocal.net/politique-de-remboursement-annulation" style="color:#1B2240;text-decoration:none;">Remboursement</a> |
+    <a href="https://www.rabaislocal.net/politique-d-utilisation-acceptable" style="color:#1B2240;text-decoration:none;">Utilisation</a> |
+    <a href="https://www.rabaislocal.net/avis-de-non-responsabilite" style="color:#1B2240;text-decoration:none;">Non-responsabilité</a> |
+    <a href="https://www.rabaislocal.net/politique-de-application-mobile-et-de-agent-ia" style="color:#1B2240;text-decoration:none;">App & IA</a> |
+    <a href="https://www.rabaislocal.net/mentions-legales-completes-rabaislocal" style="color:#1B2240;text-decoration:none;">Mentions légales</a>
+  </div>
+
+  <!-- Copyright -->
+  <p style="margin-top:16px;font-size:12px;color:#5B6385;">
+    © 2025 RabaisLocal • Trois-Rivières (QC) • 
+    <a href="mailto:rabaislocal@rabaislocal.com" style="color:#3E53A5;text-decoration:none;">Contact</a>
+  </p>
+</div>
+
+<!-- 3️⃣ RESPONSIVE CSS -->
+<style>
+@media(max-width:768px){
+  .rl-footer-desktop{display:none !important;}
+  .rl-footer-mobile{display:block !important;}
+}
+@media(min-width:769px){
+  .rl-footer-desktop{display:block !important;}
+  .rl-footer-mobile{display:none !important;}
+}
+</style>
+
