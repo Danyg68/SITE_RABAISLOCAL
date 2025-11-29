@@ -330,6 +330,82 @@ img {
 }
 
 /* ================================================
+   LIENS ADDITIONNELS
+   ================================================ */
+.additional-links {
+  text-align: center;
+  padding: 30px 20px;
+  margin-top: 30px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.additional-links p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.link-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  border: 2px solid;
+}
+
+.link-btn.info {
+  background: #f0f4ff;
+  border-color: var(--rl-blue);
+  color: var(--rl-blue);
+}
+
+.link-btn.info:hover {
+  background: var(--rl-blue);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(62, 83, 165, 0.3);
+}
+
+.link-btn.site {
+  background: #fff;
+  border-color: #ddd;
+  color: #333;
+}
+
+.link-btn.site:hover {
+  background: #f5f5f5;
+  border-color: #999;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .link-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .link-btn {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+  }
+}
+
+/* ================================================
    RESPONSIVE
    ================================================ */
 @media (max-width: 768px) {
@@ -450,6 +526,21 @@ button:focus {
     </ul>
   </div>
 
+</div>
+
+<!-- ================================================
+     LIENS ADDITIONNELS
+     ================================================ -->
+<div class="additional-links">
+  <p>💼 Tu es commerçant ou tu veux devenir affilié ?</p>
+  <div class="link-buttons">
+    <a href="index.html" class="link-btn info">
+      📋 Info commerçant ou affilié - Clique ici
+    </a>
+    <a href="https://rabaislocal.com/" class="link-btn site" data-no-ref="true" target="_blank">
+      🌐 Visiter RabaisLocal.com
+    </a>
+  </div>
 </div>
 
 <!-- ================================================
@@ -583,6 +674,11 @@ button:focus {
 
     document.querySelectorAll('a[href]').forEach(function(link) {
       const href = link.getAttribute('href');
+
+      // Ignorer les liens avec data-no-ref
+      if (link.hasAttribute('data-no-ref')) {
+        return;
+      }
 
       if (!href ||
           href.startsWith('mailto:') ||

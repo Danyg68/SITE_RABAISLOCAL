@@ -1,0 +1,971 @@
+{
+    "name": "signature contrat affilié, Supabase",
+    "flow": [
+        {
+            "id": 1,
+            "module": "gateway:CustomWebHook",
+            "version": 1,
+            "parameters": {
+                "hook": 1482494,
+                "maxResults": 1
+            },
+            "mapper": {},
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 0
+                },
+                "restore": {
+                    "parameters": {
+                        "hook": {
+                            "data": {
+                                "editable": "true"
+                            },
+                            "label": "contrat-affilie"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "hook",
+                        "type": "hook:gateway-webhook",
+                        "label": "Webhook",
+                        "required": true
+                    },
+                    {
+                        "name": "maxResults",
+                        "type": "number",
+                        "label": "Maximum number of results"
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "nom_complet",
+                        "type": "text"
+                    },
+                    {
+                        "name": "courriel",
+                        "type": "text"
+                    },
+                    {
+                        "name": "date_signature",
+                        "type": "text"
+                    },
+                    {
+                        "name": "acceptation",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "ref",
+                        "type": "text"
+                    },
+                    {
+                        "name": "timestamp",
+                        "type": "text"
+                    },
+                    {
+                        "name": "type",
+                        "type": "text"
+                    },
+                    {
+                        "name": "version_contrat",
+                        "type": "text"
+                    },
+                    {
+                        "name": "ip_address",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 13,
+            "module": "google-docs:createADocumentFromTemplate",
+            "version": 1,
+            "parameters": {
+                "__IMTCONN__": 2613380
+            },
+            "mapper": {
+                "from": "drive",
+                "name": "Contrat affiliation {{1.nom_complet}}",
+                "select": "dropdown",
+                "document": "/1a4GtWilLsU2Hcrt-pK-w5wDr-eVS4o4D/1kqTIiEY0TjnJSmSIdpbjVcSmvcFiRnHG/1I45ueiJB3Nz1OOlbFE0eZL0_gbHuVEao/1kc9H5nwzLsZuzV7Xkw6vSsdCDsb_Qg9Mdl8m3kTr_mc",
+                "folderId": "/1a4GtWilLsU2Hcrt-pK-w5wDr-eVS4o4D/1kqTIiEY0TjnJSmSIdpbjVcSmvcFiRnHG/1I45ueiJB3Nz1OOlbFE0eZL0_gbHuVEao",
+                "requests": {
+                    "email": "{{1.courriel}}",
+                    "accepted": "{{if(1.acceptation; \"Oui\"; \"Non\")}}",
+                    "full_name": "{{1.nom_complet}}",
+                    "sign_date": "{{1.date_signature}}",
+                    "timestamp": "{{1.timestamp}}",
+                    "ip_address": "{{1.ip_address}}",
+                    "contract_version": "{{1.version_contrat}}"
+                },
+                "destination": "drive"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 296,
+                    "y": -143
+                },
+                "restore": {
+                    "expect": {
+                        "from": {
+                            "label": "My Drive"
+                        },
+                        "select": {
+                            "label": "By Dropdown"
+                        },
+                        "document": {
+                            "path": [
+                                "RabaisLocal",
+                                "Backup formulaire inscription ",
+                                "Contrats_RabaisLocal",
+                                "Contrat d’affiliation simplifié – RabaisLocal Marketing"
+                            ]
+                        },
+                        "folderId": {
+                            "mode": "chose",
+                            "path": [
+                                "RabaisLocal",
+                                "Backup formulaire inscription ",
+                                "Contrats_RabaisLocal"
+                            ]
+                        },
+                        "destination": {
+                            "label": "My Drive"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "google"
+                            },
+                            "label": "My Google connection (rabaislocal@gmail.com)"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:google",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "select",
+                        "type": "select",
+                        "label": "Create a Document from a Template",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "map",
+                                "dropdown"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "type": "text",
+                        "label": "Title",
+                        "required": true
+                    },
+                    {
+                        "name": "destination",
+                        "type": "select",
+                        "label": "New Drive Location",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "drive",
+                                "share",
+                                "team"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "from",
+                        "type": "select",
+                        "label": "Choose a Drive",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "drive",
+                                "share",
+                                "team"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "document",
+                        "type": "file",
+                        "label": "Document ID",
+                        "required": true
+                    },
+                    {
+                        "name": "requests",
+                        "spec": [
+                            {
+                                "name": "contract_version",
+                                "type": "any"
+                            },
+                            {
+                                "name": "sign_date",
+                                "type": "any"
+                            },
+                            {
+                                "name": "full_name",
+                                "type": "any"
+                            },
+                            {
+                                "name": "email",
+                                "type": "any"
+                            },
+                            {
+                                "name": "ip_address",
+                                "type": "any"
+                            },
+                            {
+                                "name": "timestamp",
+                                "type": "any"
+                            },
+                            {
+                                "name": "accepted",
+                                "type": "any"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Values"
+                    },
+                    {
+                        "name": "folderId",
+                        "type": "folder",
+                        "label": "New Document's Location",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        {
+            "id": 15,
+            "module": "email:ActionSendEmail",
+            "version": 7,
+            "parameters": {
+                "account": 2792085,
+                "saveAfterSent": false
+            },
+            "mapper": {
+                "cc": [],
+                "to": [
+                    "{{1.courriel}}"
+                ],
+                "bcc": [],
+                "from": "",
+                "html": "<div style=\"font-family:'Poppins',Arial,Helvetica,sans-serif;color:#1B2240;background:#F5F8FF;padding:24px;border-radius:10px;\">\r\n  <div style=\"text-align:center;margin-bottom:16px;\">\r\n    <img src=\"https://statics.myclickfunnels.com/workspace/jklqVP/image/17823503/file/d5fb15091926d11524543af90a9a5e26.png\" \r\n         alt=\"RabaisLocal\" width=\"140\" style=\"margin-bottom:10px;\">\r\n    <div style=\"background:#3E53A5;color:#fff;display:inline-block;padding:4px 10px;border-radius:6px;font-size:13px;\">\r\n      Contrat d’affiliation officiel\r\n    </div>\r\n  </div>\r\n\r\n  <h2 style=\"color:#1B2240;text-align:center;margin-top:8px;\">Félicitations {{1.nom_complet}} 🎉</h2>\r\n\r\n  <p style=\"font-size:16px;line-height:1.5;margin:16px 0;\">\r\n    Merci d’avoir signé ton <strong>contrat d’affiliation RabaisLocal</strong> (version {{1.version_contrat}}).\r\n    Ton inscription est maintenant complète ! Tu trouveras ci-dessous les détails de ta signature :\r\n  </p>\r\n\r\n  <ul style=\"font-size:15px;line-height:1.6;background:#fff;border-radius:8px;padding:16px 20px;border:1px solid #E0E5F0;\">\r\n    <li><strong>Date de signature :</strong> {{1.date_signature}}</li>\r\n    <li><strong>Adresse IP :</strong> {{1.ip_address}}</li>\r\n    <li><strong>Horodatage :</strong> {{1.timestamp}}</li>\r\n  </ul>\r\n\r\n  <p style=\"margin-top:20px;font-size:16px;\">Tu peux télécharger ta copie PDF officielle ici 👇</p>\r\n\r\n  <div style=\"text-align:center;margin:22px 0;\">\r\n    <a href=\"{{13.exportLinks.`application/pdf`}}\" target=\"_blank\" \r\n       style=\"background:#3E53A5;color:#fff;text-decoration:none;font-weight:600;padding:12px 20px;border-radius:8px;display:inline-block;\">\r\n      📄 Télécharger mon contrat\r\n    </a>\r\n  </div>\r\n\r\n  <p style=\"font-size:14px;line-height:1.5;color:#555;\">\r\n    Conserve ce document dans tes dossiers. Il confirme ton adhésion au programme d’affiliation 2.0 de RabaisLocal.\r\n    <br><br>\r\n    <strong>Bienvenue dans la famille RabaisLocal !</strong> 💙<br>\r\n    {{1.nom_complet}}<br>\r\n    <small>Fondateur, RabaisLocal Marketing inc.</small>\r\n  </p>\r\n\r\n  <hr style=\"border:none;border-top:1px solid #E0E5F0;margin:20px 0;\">\r\n  <p style=\"font-size:12px;color:#777;text-align:center;\">\r\n    Courriel automatique – ne pas répondre.<br>\r\n    © 2025 RabaisLocal Marketing inc. – Tous droits réservés.\r\n  </p>\r\n</div>\r\n",
+                "sender": "",
+                "headers": [],
+                "replyTo": "",
+                "subject": "Ton contrat d'affiliation RabaisLocal est prêt",
+                "priority": "normal",
+                "inReplyTo": "",
+                "references": [],
+                "attachments": [],
+                "contentType": "html"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 546,
+                    "y": -208
+                },
+                "restore": {
+                    "expect": {
+                        "cc": {
+                            "mode": "chose"
+                        },
+                        "to": {
+                            "mode": "chose",
+                            "items": [
+                                null
+                            ]
+                        },
+                        "bcc": {
+                            "mode": "chose"
+                        },
+                        "priority": {
+                            "label": "Normal"
+                        },
+                        "references": {
+                            "mode": "chose"
+                        },
+                        "attachments": {
+                            "mode": "chose"
+                        },
+                        "contentType": {
+                            "label": "HTML"
+                        }
+                    },
+                    "parameters": {
+                        "account": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "smtp"
+                            },
+                            "label": "likuid (SMTP envoi-form@rabaislocal.com)"
+                        },
+                        "saveAfterSent": {
+                            "label": "No"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "account",
+                        "type": "account:smtp,google-restricted,microsoft-smtp-imap",
+                        "label": "Connection",
+                        "required": true
+                    },
+                    {
+                        "name": "saveAfterSent",
+                        "type": "select",
+                        "label": "Save message after sending",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                true,
+                                false
+                            ]
+                        }
+                    },
+                    {
+                        "type": "hidden"
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "to",
+                        "spec": {
+                            "name": "value",
+                            "type": "email",
+                            "label": "Email address",
+                            "required": true
+                        },
+                        "type": "array",
+                        "label": "To",
+                        "required": true
+                    },
+                    {
+                        "name": "subject",
+                        "type": "text",
+                        "label": "Subject"
+                    },
+                    {
+                        "name": "contentType",
+                        "type": "select",
+                        "label": "Content Type",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "html",
+                                "text"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "attachments",
+                        "spec": [
+                            {
+                                "name": "fileName",
+                                "type": "filename",
+                                "label": "File name",
+                                "required": true,
+                                "semantic": "file:name"
+                            },
+                            {
+                                "name": "data",
+                                "type": "buffer",
+                                "label": "Data",
+                                "required": true,
+                                "semantic": "file:data"
+                            },
+                            {
+                                "name": "cid",
+                                "type": "text",
+                                "label": "Content-ID"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Attachments"
+                    },
+                    {
+                        "name": "cc",
+                        "spec": {
+                            "name": "value",
+                            "type": "email",
+                            "label": "Email address"
+                        },
+                        "type": "array",
+                        "label": "Copy recipient"
+                    },
+                    {
+                        "name": "bcc",
+                        "spec": {
+                            "name": "value",
+                            "type": "email",
+                            "label": "Email address"
+                        },
+                        "type": "array",
+                        "label": "Blind copy recipient"
+                    },
+                    {
+                        "name": "from",
+                        "type": "text",
+                        "label": "From"
+                    },
+                    {
+                        "name": "sender",
+                        "type": "text",
+                        "label": "Sender"
+                    },
+                    {
+                        "name": "replyTo",
+                        "type": "text",
+                        "label": "Reply-To"
+                    },
+                    {
+                        "name": "inReplyTo",
+                        "type": "text",
+                        "label": "In-Reply-To"
+                    },
+                    {
+                        "name": "references",
+                        "spec": {
+                            "name": "value",
+                            "type": "text",
+                            "label": "Reference",
+                            "required": true
+                        },
+                        "type": "array",
+                        "label": "References"
+                    },
+                    {
+                        "name": "priority",
+                        "type": "select",
+                        "label": "Priority",
+                        "validate": {
+                            "enum": [
+                                "high",
+                                "normal",
+                                "low"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "headers",
+                        "spec": [
+                            {
+                                "name": "key",
+                                "type": "text",
+                                "label": "Key",
+                                "required": true
+                            },
+                            {
+                                "name": "value",
+                                "type": "text",
+                                "label": "Value",
+                                "required": true
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Headers"
+                    },
+                    {
+                        "name": "html",
+                        "type": "text",
+                        "label": "Content"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 16,
+            "module": "supabase:createARow",
+            "version": 1,
+            "parameters": {
+                "__IMTCONN__": 5926029
+            },
+            "mapper": {
+                "email": "{{1.courriel}}",
+                "table": "BACKUP affiliates_signatures",
+                "accepted": "{{if(1.acceptation; \"Oui\"; \"Non\")}}",
+                "full_name": "{{1.nom_complet}}",
+                "sign_date": "{{1.date_signature}}",
+                "timestamp": "{{1.timestamp}}",
+                "created_at": "{{1.date_signature}}",
+                "ip_address": "{{1.ip_address}}",
+                "contract_versio": "{{1.version_contrat}}"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 824,
+                    "y": -254
+                },
+                "restore": {
+                    "expect": {
+                        "table": {
+                            "mode": "chose",
+                            "label": "BACKUP affiliates_signatures",
+                            "nested": [
+                                {
+                                    "help": "Note:\nThis is a Primary Key.<pk/>",
+                                    "name": "id",
+                                    "type": "integer",
+                                    "label": "id",
+                                    "options": null,
+                                    "required": false
+                                },
+                                {
+                                    "help": "Defaults to now(). ",
+                                    "name": "created_at",
+                                    "type": "text",
+                                    "label": "created_at",
+                                    "options": null,
+                                    "required": false
+                                },
+                                {
+                                    "help": "",
+                                    "name": "email",
+                                    "type": "text",
+                                    "label": "email",
+                                    "options": null,
+                                    "required": false
+                                },
+                                {
+                                    "help": "",
+                                    "name": "full_name",
+                                    "type": "text",
+                                    "label": "full_name",
+                                    "options": null,
+                                    "required": false
+                                },
+                                {
+                                    "help": "",
+                                    "name": "sign_date",
+                                    "type": "date",
+                                    "label": "sign_date",
+                                    "options": null,
+                                    "required": false
+                                },
+                                {
+                                    "help": "",
+                                    "name": "ip_address",
+                                    "type": "text",
+                                    "label": "ip_address",
+                                    "options": null,
+                                    "required": false
+                                },
+                                {
+                                    "help": "",
+                                    "name": "contract_versio",
+                                    "type": "text",
+                                    "label": "contract_versio",
+                                    "options": null,
+                                    "required": false
+                                },
+                                {
+                                    "help": "",
+                                    "name": "accepted",
+                                    "type": "boolean",
+                                    "label": "accepted",
+                                    "options": null,
+                                    "required": false
+                                },
+                                {
+                                    "help": "",
+                                    "name": "timestamp",
+                                    "type": "time",
+                                    "label": "timestamp",
+                                    "options": null,
+                                    "required": false
+                                }
+                            ]
+                        },
+                        "accepted": {
+                            "mode": "edit"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "supabase"
+                            },
+                            "label": "RabaisLocal Supabase"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:supabase",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "table",
+                        "type": "select",
+                        "label": "Table",
+                        "required": true
+                    },
+                    {
+                        "name": "id",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "created_at",
+                        "type": "text"
+                    },
+                    {
+                        "name": "email",
+                        "type": "text"
+                    },
+                    {
+                        "name": "full_name",
+                        "type": "text"
+                    },
+                    {
+                        "name": "sign_date",
+                        "type": "date"
+                    },
+                    {
+                        "name": "ip_address",
+                        "type": "text"
+                    },
+                    {
+                        "name": "contract_versio",
+                        "type": "text"
+                    },
+                    {
+                        "name": "accepted",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "timestamp",
+                        "type": "time"
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "id",
+                        "type": "number",
+                        "label": "id"
+                    },
+                    {
+                        "name": "created_at",
+                        "type": "text",
+                        "label": "created_at"
+                    },
+                    {
+                        "name": "email",
+                        "type": "text",
+                        "label": "email"
+                    },
+                    {
+                        "name": "full_name",
+                        "type": "text",
+                        "label": "full_name"
+                    },
+                    {
+                        "name": "sign_date",
+                        "type": "text",
+                        "label": "sign_date"
+                    },
+                    {
+                        "name": "ip_address",
+                        "type": "text",
+                        "label": "ip_address"
+                    },
+                    {
+                        "name": "contract_versio",
+                        "type": "text",
+                        "label": "contract_versio"
+                    },
+                    {
+                        "name": "accepted",
+                        "type": "boolean",
+                        "label": "accepted"
+                    },
+                    {
+                        "name": "timestamp",
+                        "type": "text",
+                        "label": "timestamp"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 4,
+            "module": "email:ActionSendEmail",
+            "version": 7,
+            "parameters": {
+                "account": 2792085,
+                "saveAfterSent": false
+            },
+            "mapper": {
+                "cc": [],
+                "to": [
+                    "contrat-affilie@rabaislocal.com"
+                ],
+                "bcc": [],
+                "from": "",
+                "html": "Date : {{1.date_signature}}\nNom : {{1.nom_complet}}\nemail :{{1.courriel}}\nversion contrat : {{1.version_contrat}}\nAccecpt  : {{if(1.acceptation; \"Oui\"; \"Non\")}}\nTimestamp : {{1.timestamp}}\nAdtresse ip : {{1.ip_address}}\nid supabase : {{16.id}}\nCreate_at : {{1.timestamp}}",
+                "sender": "",
+                "headers": [],
+                "replyTo": "",
+                "subject": "Contrat Affilié {{1.nom_complet}}",
+                "priority": "normal",
+                "inReplyTo": "",
+                "references": [],
+                "attachments": [],
+                "contentType": "html"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 1086,
+                    "y": -331
+                },
+                "restore": {
+                    "expect": {
+                        "cc": {
+                            "mode": "chose"
+                        },
+                        "to": {
+                            "mode": "chose",
+                            "items": [
+                                null
+                            ]
+                        },
+                        "bcc": {
+                            "mode": "chose"
+                        },
+                        "priority": {
+                            "label": "Normal"
+                        },
+                        "references": {
+                            "mode": "chose"
+                        },
+                        "attachments": {
+                            "mode": "chose"
+                        },
+                        "contentType": {
+                            "label": "HTML"
+                        }
+                    },
+                    "parameters": {
+                        "account": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "smtp"
+                            },
+                            "label": "likuid (SMTP envoi-form@rabaislocal.com)"
+                        },
+                        "saveAfterSent": {
+                            "label": "No"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "account",
+                        "type": "account:smtp,google-restricted,microsoft-smtp-imap",
+                        "label": "Connection",
+                        "required": true
+                    },
+                    {
+                        "name": "saveAfterSent",
+                        "type": "select",
+                        "label": "Save message after sending",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                true,
+                                false
+                            ]
+                        }
+                    },
+                    {
+                        "type": "hidden"
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "to",
+                        "spec": {
+                            "name": "value",
+                            "type": "email",
+                            "label": "Email address",
+                            "required": true
+                        },
+                        "type": "array",
+                        "label": "To",
+                        "required": true
+                    },
+                    {
+                        "name": "subject",
+                        "type": "text",
+                        "label": "Subject"
+                    },
+                    {
+                        "name": "contentType",
+                        "type": "select",
+                        "label": "Content Type",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "html",
+                                "text"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "attachments",
+                        "spec": [
+                            {
+                                "name": "fileName",
+                                "type": "filename",
+                                "label": "File name",
+                                "required": true,
+                                "semantic": "file:name"
+                            },
+                            {
+                                "name": "data",
+                                "type": "buffer",
+                                "label": "Data",
+                                "required": true,
+                                "semantic": "file:data"
+                            },
+                            {
+                                "name": "cid",
+                                "type": "text",
+                                "label": "Content-ID"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Attachments"
+                    },
+                    {
+                        "name": "cc",
+                        "spec": {
+                            "name": "value",
+                            "type": "email",
+                            "label": "Email address"
+                        },
+                        "type": "array",
+                        "label": "Copy recipient"
+                    },
+                    {
+                        "name": "bcc",
+                        "spec": {
+                            "name": "value",
+                            "type": "email",
+                            "label": "Email address"
+                        },
+                        "type": "array",
+                        "label": "Blind copy recipient"
+                    },
+                    {
+                        "name": "from",
+                        "type": "text",
+                        "label": "From"
+                    },
+                    {
+                        "name": "sender",
+                        "type": "text",
+                        "label": "Sender"
+                    },
+                    {
+                        "name": "replyTo",
+                        "type": "text",
+                        "label": "Reply-To"
+                    },
+                    {
+                        "name": "inReplyTo",
+                        "type": "text",
+                        "label": "In-Reply-To"
+                    },
+                    {
+                        "name": "references",
+                        "spec": {
+                            "name": "value",
+                            "type": "text",
+                            "label": "Reference",
+                            "required": true
+                        },
+                        "type": "array",
+                        "label": "References"
+                    },
+                    {
+                        "name": "priority",
+                        "type": "select",
+                        "label": "Priority",
+                        "validate": {
+                            "enum": [
+                                "high",
+                                "normal",
+                                "low"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "headers",
+                        "spec": [
+                            {
+                                "name": "key",
+                                "type": "text",
+                                "label": "Key",
+                                "required": true
+                            },
+                            {
+                                "name": "value",
+                                "type": "text",
+                                "label": "Value",
+                                "required": true
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Headers"
+                    },
+                    {
+                        "name": "html",
+                        "type": "text",
+                        "label": "Content"
+                    }
+                ]
+            }
+        }
+    ],
+    "metadata": {
+        "instant": true,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": false,
+            "slots": null,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false,
+            "freshVariables": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "us2.make.com",
+        "notes": []
+    }
+}

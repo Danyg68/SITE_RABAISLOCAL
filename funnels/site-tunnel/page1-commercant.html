@@ -10,6 +10,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
+
 <style>
 /* ================================================
    RABAISLOCAL - PAGE INSCRIPTION COMMERÇANT
@@ -552,7 +556,7 @@ input:focus {
       <h3>Rejoignez dès maintenant les commerçants du pré-lancement RabaisLocal</h3>
 
       <form id="rlForm"
-            action="https://hook.us2.make.com/r2cexc5igyhdbruvsjaygjcp681tab8y"
+            action="https://hook.us2.make.com/b3foxids3cmxgj2nv7vghhehxk38dawn"
             method="POST"
             novalidate>
 
@@ -804,6 +808,20 @@ input:focus {
     form.addEventListener('submit', function(e) {
       e.preventDefault();
 
+      // Capturer l'email avant soumission
+      const emailInput = form.querySelector('input[name="email"]');
+      const userEmail = emailInput ? emailInput.value : '';
+
+      // Sauvegarder le REF et l'email avant soumission
+      if (REF) {
+        setLS('rl_ref', REF);
+        setCookie('rl_ref', REF, 180);
+      }
+      if (userEmail) {
+        setLS('user_email', userEmail);
+        setCookie('user_email', userEmail, 7);
+      }
+
       // Afficher l'overlay
       overlay.style.display = 'flex';
 
@@ -815,27 +833,56 @@ input:focus {
         method: 'POST',
         body: formData
       })
-      .then(response => {
-        if (response.ok) {
-          // Sauvegarder le REF avant redirection
-          if (REF) {
-            setLS('rl_ref', REF);
-            setCookie('rl_ref', REF, 180);
-          }
+      .then(function(response) {
+        const locationHeader = response.headers.get('location');
+        const isRedirectStatus = response.status >= 300 && response.status < 400;
+        const contentType = (response.headers.get('content-type') || '').toLowerCase();
+        const isJSON = contentType.includes('application/json');
 
-          // Construire l'URL de redirection avec le REF
-          let nextUrl = 'page2-commercant.html';
-          if (REF) {
-            nextUrl += (nextUrl.includes('?') ? '&' : '?') + 'ref=' + encodeURIComponent(REF);
-          }
-
-          // Redirection après 1.8 secondes
-          setTimeout(function() {
-            window.location.href = nextUrl;
-          }, 1800);
-        } else {
-          throw new Error('Erreur serveur');
+        // Accepter les 3xx avec header Location
+        if (!response.ok && !isRedirectStatus) {
+          throw new Error('Erreur serveur: ' + response.status);
         }
+
+        if (isJSON) {
+          return response.json().catch(function() {
+            return { redirect: null };
+          }).then(function(body) {
+            return { body: body, location: locationHeader, isText: false };
+          });
+        }
+
+        // Texte brut (ex: URL de redirection dans le body)
+        return response.text().catch(function() { return ''; }).then(function(txt) {
+          return { body: txt, location: locationHeader, isText: true };
+        });
+      })
+      .then(function(payload) {
+        const locationHeader = payload.location;
+        const isText = payload.isText;
+        const body = payload.body || {};
+
+        // Priorité : champ JSON redirect -> header Location -> body texte -> fallback local
+        let nextUrl = (!isText && body.redirect) ? body.redirect
+                    : locationHeader
+                    : isText ? (typeof body === 'string' ? body.trim() : '') : ''
+                    || 'page2-commercant.html';
+
+        // Si le body est une URL relative ou absolue valide, on l'utilise
+        if (!nextUrl) nextUrl = 'page2-commercant.html';
+
+        const params = [];
+        if (REF) params.push('ref=' + encodeURIComponent(REF));
+        if (userEmail) params.push('email=' + encodeURIComponent(userEmail));
+        if (params.length > 0) {
+          const separator = nextUrl.includes('?') ? '&' : '?';
+          nextUrl += separator + params.join('&');
+        }
+
+        console.log('✅ Redirection vers:', nextUrl);
+        setTimeout(function() {
+          window.location.href = nextUrl;
+        }, 800);
       })
       .catch(function(error) {
         console.error('❌ Erreur lors de l\'envoi:', error);
@@ -909,7 +956,7 @@ input:focus {
   const htmlBar = `<div class="rl-cookie-wrap">
     <div class="rl-cookie-text">
       Nous utilisons des cookies pour assurer le bon fonctionnement du site et améliorer ton expérience.
-      <a class="rl-cookie-link" href="/politique-cookies">En savoir plus</a>.
+      <a class="rl-cookie-link" href="politique-cookies.html">En savoir plus</a>.
     </div>
     <div class="rl-cookie-actions">
       <button class="rl-btn rl-btn-ghost" id="rlRefuse">Refuser</button>

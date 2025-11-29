@@ -1,0 +1,945 @@
+{
+    "name": "Scenario B1 Validation Universelle",
+    "flow": [
+        {
+            "id": 1,
+            "module": "gateway:CustomWebHook",
+            "version": 1,
+            "parameters": {
+                "hook": 1600527,
+                "maxResults": 1
+            },
+            "mapper": {},
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 0
+                },
+                "restore": {
+                    "parameters": {
+                        "hook": {
+                            "data": {
+                                "editable": "true"
+                            },
+                            "label": "Validation Universelle"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "hook",
+                        "type": "hook:gateway-webhook",
+                        "label": "Webhook",
+                        "required": true
+                    },
+                    {
+                        "name": "maxResults",
+                        "type": "number",
+                        "label": "Maximum number of results"
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "email",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 2,
+            "module": "goaffpro:ActionGetAffiliate",
+            "version": 1,
+            "parameters": {
+                "__IMTCONN__": 5299091
+            },
+            "mapper": {
+                "in": [
+                    "email"
+                ],
+                "limit": "10",
+                "fields": [
+                    "id",
+                    "first_name",
+                    "last_name",
+                    "email",
+                    "ref_code",
+                    "group_id",
+                    "status"
+                ],
+                "keyword": "{{1.email}}"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 300,
+                    "y": 0
+                },
+                "restore": {
+                    "expect": {
+                        "in": {
+                            "mode": "chose",
+                            "label": [
+                                "Email"
+                            ]
+                        },
+                        "fields": {
+                            "mode": "chose",
+                            "label": [
+                                "ID",
+                                "First Name",
+                                "Last Name",
+                                "Email",
+                                "Referral Code",
+                                "Group ID",
+                                "Status"
+                            ]
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "goaffpro"
+                            },
+                            "label": "Groupe_conso"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:goaffpro",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "in",
+                        "type": "select",
+                        "label": "In",
+                        "multiple": true,
+                        "required": true
+                    },
+                    {
+                        "name": "keyword",
+                        "type": "text",
+                        "label": "Keyword",
+                        "required": true
+                    },
+                    {
+                        "name": "fields",
+                        "type": "select",
+                        "label": "Fields",
+                        "multiple": true,
+                        "required": true
+                    },
+                    {
+                        "name": "limit",
+                        "type": "uinteger",
+                        "label": "Limit"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 3,
+            "module": "goaffpro:ActionUdateAffiliate",
+            "version": 1,
+            "parameters": {
+                "__IMTCONN__": 5299091
+            },
+            "mapper": {
+                "id": "{{2.id}}",
+                "coupon": {},
+                "status": "approved",
+                "commission": {
+                    "on": "product"
+                }
+            },
+            "metadata": {
+                "designer": {
+                    "x": 600,
+                    "y": 0
+                },
+                "restore": {
+                    "expect": {
+                        "id": {
+                            "mode": "edit"
+                        },
+                        "gender": {
+                            "mode": "chose",
+                            "label": "Empty"
+                        },
+                        "status": {
+                            "mode": "chose",
+                            "label": "Approved"
+                        },
+                        "commission": {
+                            "nested": {
+                                "on": {
+                                    "mode": "chose",
+                                    "label": "Product"
+                                },
+                                "type": {
+                                    "mode": "chose",
+                                    "label": "Empty"
+                                }
+                            }
+                        },
+                        "parent_email": {
+                            "mode": "edit"
+                        },
+                        "password_expired": {
+                            "mode": "chose"
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "goaffpro"
+                            },
+                            "label": "Groupe_conso"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:goaffpro",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "mode": "edit",
+                        "name": "id",
+                        "type": "select",
+                        "label": "Affiliate ID",
+                        "required": true
+                    },
+                    {
+                        "name": "honorific",
+                        "type": "text",
+                        "label": "Honorific"
+                    },
+                    {
+                        "name": "name",
+                        "type": "text",
+                        "label": "Name"
+                    },
+                    {
+                        "name": "first_name",
+                        "type": "text",
+                        "label": "First Name"
+                    },
+                    {
+                        "name": "last_name",
+                        "type": "text",
+                        "label": "Last Name"
+                    },
+                    {
+                        "name": "email",
+                        "type": "email",
+                        "label": "Email"
+                    },
+                    {
+                        "name": "password",
+                        "type": "text",
+                        "label": "Password"
+                    },
+                    {
+                        "name": "password_expired",
+                        "type": "boolean",
+                        "label": "Password Expired"
+                    },
+                    {
+                        "name": "gender",
+                        "type": "select",
+                        "label": "Gender",
+                        "validate": {
+                            "enum": [
+                                "Male",
+                                "Female"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "type": "select",
+                        "label": "Status",
+                        "validate": {
+                            "enum": [
+                                "pending",
+                                "approved",
+                                "invited",
+                                "rejected"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "date_of_birth",
+                        "time": false,
+                        "type": "date",
+                        "label": "Date of Birth"
+                    },
+                    {
+                        "name": "paypal_email",
+                        "type": "email",
+                        "label": "Paypal Email"
+                    },
+                    {
+                        "mode": "edit",
+                        "name": "parent_email",
+                        "type": "select",
+                        "label": "Parent Email"
+                    },
+                    {
+                        "name": "company_name",
+                        "type": "text",
+                        "label": "Company Name"
+                    },
+                    {
+                        "name": "ref_code",
+                        "type": "text",
+                        "label": "Referral Code"
+                    },
+                    {
+                        "name": "address_1",
+                        "type": "text",
+                        "label": "Address 1"
+                    },
+                    {
+                        "name": "address_2",
+                        "type": "text",
+                        "label": "Address 2"
+                    },
+                    {
+                        "name": "city",
+                        "type": "text",
+                        "label": "City"
+                    },
+                    {
+                        "name": "state",
+                        "type": "text",
+                        "label": "State"
+                    },
+                    {
+                        "name": "country",
+                        "type": "text",
+                        "label": "Country"
+                    },
+                    {
+                        "name": "phone",
+                        "type": "text",
+                        "label": "Phone"
+                    },
+                    {
+                        "name": "zip",
+                        "type": "text",
+                        "label": "ZIP"
+                    },
+                    {
+                        "name": "facebook",
+                        "type": "text",
+                        "label": "Facebook"
+                    },
+                    {
+                        "name": "instagram",
+                        "type": "text",
+                        "label": "Instagram"
+                    },
+                    {
+                        "name": "twitter",
+                        "type": "text",
+                        "label": "Twitter"
+                    },
+                    {
+                        "name": "snapchat",
+                        "type": "text",
+                        "label": "Snapchat"
+                    },
+                    {
+                        "name": "pinterest",
+                        "type": "text",
+                        "label": "Pinterest"
+                    },
+                    {
+                        "name": "website",
+                        "type": "url",
+                        "label": "Website"
+                    },
+                    {
+                        "name": "tax_identification_number",
+                        "type": "text",
+                        "label": "Tax Identification Number"
+                    },
+                    {
+                        "name": "personal_message",
+                        "type": "text",
+                        "label": "Personal Message"
+                    },
+                    {
+                        "name": "admin_note",
+                        "type": "text",
+                        "label": "Admin Note"
+                    },
+                    {
+                        "name": "extra_1",
+                        "type": "text",
+                        "label": "Extra 1"
+                    },
+                    {
+                        "name": "extra_2",
+                        "type": "text",
+                        "label": "Extra 2"
+                    },
+                    {
+                        "name": "extra_3",
+                        "type": "text",
+                        "label": "Extra 3"
+                    },
+                    {
+                        "name": "commission",
+                        "spec": [
+                            {
+                                "name": "type",
+                                "type": "select",
+                                "label": "Type",
+                                "validate": {
+                                    "enum": [
+                                        "percentage",
+                                        "flat_rate"
+                                    ]
+                                }
+                            },
+                            {
+                                "name": "amount",
+                                "type": "number",
+                                "label": "Amount"
+                            },
+                            {
+                                "name": "on",
+                                "type": "select",
+                                "label": "On",
+                                "validate": {
+                                    "enum": [
+                                        "product"
+                                    ]
+                                }
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Commission"
+                    },
+                    {
+                        "name": "coupon",
+                        "spec": [
+                            {
+                                "name": "code",
+                                "type": "text",
+                                "label": "Code"
+                            },
+                            {
+                                "name": "discount_type",
+                                "type": "text",
+                                "label": "Discount Type"
+                            },
+                            {
+                                "name": "discount_value",
+                                "type": "number",
+                                "label": "Discount Value"
+                            }
+                        ],
+                        "type": "collection",
+                        "label": "Coupon"
+                    }
+                ]
+            },
+            "onerror": [
+                {
+                    "id": 4,
+                    "module": "builtin:Ignore",
+                    "version": 1,
+                    "metadata": {
+                        "designer": {
+                            "x": 560,
+                            "y": -388
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "module": "builtin:BasicRouter",
+            "version": 1,
+            "parameters": {
+                "else": 0
+            },
+            "mapper": null,
+            "metadata": {
+                "designer": {
+                    "x": 1004,
+                    "y": -12
+                }
+            },
+            "routes": [
+                {
+                    "flow": [
+                        {
+                            "id": 11,
+                            "module": "gateway:WebhookRespond",
+                            "version": 1,
+                            "parameters": {},
+                            "filter": {
+                                "name": "Autres",
+                                "conditions": []
+                            },
+                            "mapper": {
+                                "body": "Redirection....",
+                                "status": "302",
+                                "headers": [
+                                    {
+                                        "key": "Location",
+                                        "value": "https://marketing.rabaislocal.com/page3-commercant.html"
+                                    }
+                                ]
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 2025,
+                                    "y": 181
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "headers": {
+                                            "mode": "chose",
+                                            "items": [
+                                                null
+                                            ]
+                                        }
+                                    }
+                                },
+                                "expect": [
+                                    {
+                                        "name": "status",
+                                        "type": "uinteger",
+                                        "label": "Status",
+                                        "required": true,
+                                        "validate": {
+                                            "min": 100
+                                        }
+                                    },
+                                    {
+                                        "name": "body",
+                                        "type": "any",
+                                        "label": "Body"
+                                    },
+                                    {
+                                        "name": "headers",
+                                        "spec": [
+                                            {
+                                                "name": "key",
+                                                "type": "text",
+                                                "label": "Key",
+                                                "required": true,
+                                                "validate": {
+                                                    "max": 256
+                                                }
+                                            },
+                                            {
+                                                "name": "value",
+                                                "type": "text",
+                                                "label": "Value",
+                                                "required": true,
+                                                "validate": {
+                                                    "max": 4096
+                                                }
+                                            }
+                                        ],
+                                        "type": "array",
+                                        "label": "Custom headers",
+                                        "validate": {
+                                            "maxItems": 16
+                                        }
+                                    }
+                                ],
+                                "advanced": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "flow": [
+                        {
+                            "id": 12,
+                            "module": "email:ActionSendEmail",
+                            "version": 7,
+                            "parameters": {
+                                "account": 2792085,
+                                "saveAfterSent": false
+                            },
+                            "filter": {
+                                "name": "consommateur",
+                                "conditions": [
+                                    [
+                                        {
+                                            "a": "{{2.group_id}}",
+                                            "b": "14143",
+                                            "o": "text:equal"
+                                        }
+                                    ]
+                                ]
+                            },
+                            "mapper": {
+                                "cc": [],
+                                "to": [
+                                    "{{1.email}}"
+                                ],
+                                "bcc": [],
+                                "from": "",
+                                "html": "<!DOCTYPE html>\r\n<html lang=\"fr\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>Bienvenue chez RabaisLocal - Ton inscription est confirmée !</title>\r\n    <style>\r\n        /* Réinitialisation de base */\r\n        body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }\r\n        table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }\r\n        img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }\r\n        a { text-decoration: none; }\r\n        /* Style des boutons pour Outlook */\r\n        .button {\r\n            background-color: #003366;\r\n            border: 1px solid #003366;\r\n            border-radius: 5px;\r\n            color: #ffffff;\r\n            display: inline-block;\r\n            font-family: Arial, sans-serif;\r\n            font-size: 16px;\r\n            font-weight: bold;\r\n            line-height: 1.2;\r\n            padding: 12px 25px;\r\n            text-align: center;\r\n            text-decoration: none;\r\n            mso-padding-alt: 0;\r\n        }\r\n        .button span {\r\n            mso-text-raise: 6pt;\r\n        }\r\n    </style>\r\n</head>\r\n<body style=\"margin: 0; padding: 0; background-color: #f4f4f4; font-family: Arial, sans-serif;\">\r\n\r\n<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"table-layout: fixed; background-color: #f4f4f4;\">\r\n    <tr>\r\n        <td align=\"center\" style=\"padding: 20px 0;\">\r\n            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"600\" style=\"background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.05);\">\r\n                \r\n                <tr>\r\n                    <td align=\"center\" style=\"padding: 30px 20px 10px 20px;\">\r\n                        <img src=\"https://statics.myclickfunnels.com/workspace/jklqVP/image/17823503/file/d5fb15091926d11524543af90a9a5e26.png\" alt=\"Logo RabaisLocal\" width=\"150\" style=\"display: block; border: 0;\">\r\n                    </td>\r\n                </tr>\r\n\r\n                <tr>\r\n                    <td style=\"padding: 0px 40px 10px 40px; color: #333333;\">\r\n                        <h1 style=\"font-size: 24px; color: #003366; text-align: center; margin-bottom: 5px;\">Bienvenue {{2.first_name}}, 🎉 Ton inscription est confirmée !</h1>\r\n                        <p style=\"font-size: 16px; line-height: 1.6; margin-top: 15px;\">🎉 Félicitations ! Tu fais partie des **5 000 premiers consommateurs inscrits** à RabaisLocal !</p>\r\n                        <p style=\"font-size: 16px; line-height: 1.6;\">Tu pourras **tester gratuitement et sans limite** toutes les fonctionnalités pendant les **3 premiers mois** après l'ouverture officielle le **19 mars 2026** 🚀</p>\r\n                        <p style=\"font-size: 16px; line-height: 1.6;\">Ton inscription est confirmée, et tu fais maintenant partie d'un mouvement local qui veut changer la façon dont les Québécois consomment, soutiennent et économisent. 💙</p>\r\n                    </td>\r\n                </tr>\r\n\r\n                <tr>\r\n                    <td style=\"padding: 20px 40px 10px 40px; color: #333333;\">\r\n                        <h2 style=\"font-size: 20px; color: #003366; border-bottom: 2px solid #003366; padding-bottom: 5px; margin-bottom: 15px;\">✅ Tes avantages immédiats</h2>\r\n                        \r\n                        <ul style=\"padding-left: 20px; font-size: 16px; line-height: 1.6; color: #555555;\">\r\n                            <li>**Carte RabaisLocal numérique** – simple, sans application à télécharger.</li>\r\n                            <li>**<s>25</s> Promo crédits illimités de bienvenue** – utilisables dès le lancement officiel. </li>\r\n                            <li>**Rabais exclusifs jusqu'à 95 %** – dans des commerces locaux près de chez toi.</li>\r\n                            <li>**Statut de Membre Fondateur** – accès anticipé, concours et avantages réservés.</li>\r\n                            <li>**Aucun engagement, zéro frais caché** – tu restes libre à 100 %.</li>\r\n                        </ul>\r\n                    </td>\r\n                </tr>\r\n\r\n                <tr>\r\n                    <td style=\"padding: 20px 40px 20px 40px; color: #333333; background-color: #f8f8f8; border-top: 1px solid #eeeeee;\">\r\n                        <h2 style=\"font-size: 20px; color: #003366; margin-bottom: 15px; text-align: center;\">🔑 Ta prochaine étape : Créer ton mot de passe et te connecter !</h2>\r\n                        \r\n                        <p style=\"font-size: 16px; font-weight: bold; margin-bottom: 5px;\">1. Ton identifiant pour le portail Membre :</p>\r\n                        <p style=\"font-size: 16px; font-weight: bold; color: #D32F2F; margin-top: 0; margin-bottom: 15px; text-align: center;\">{{1.email}}</p>\r\n                        \r\n                        <p style=\"font-size: 16px; font-weight: bold; margin-bottom: 10px;\">2. Créer ton mot de passe (OBLIGATOIRE ⚠️)</p>\r\n                        <p style=\"font-size: 16px; line-height: 1.6; margin-bottom: 20px;\">Puisque c'est ta première connexion, tu dois **créer ton propre mot de passe sécuritaire**. Clique sur le bouton ci-dessous pour le faire :</p>\r\n                        \r\n                        <p style=\"text-align: center; margin-bottom: 25px;\">\r\n                            <a href=\"https://partenaires.rabaislocal.com/forgot-password\" class=\"button\" style=\"background-color: #003366; border: 1px solid #003366; border-radius: 5px; color: #ffffff; display: inline-block; font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; line-height: 1.2; padding: 12px 30px; text-align: center; text-decoration: none;\">\r\n                                <span style=\"mso-text-raise: 6pt;\">🚀 Modifier mon mot de passe maintenant</span>\r\n                                </a>\r\n                        </p>\r\n                        \r\n                        <p style=\"font-size: 14px; line-height: 1.5; color: #555555; text-align: center; border-top: 1px solid #dddddd; padding-top: 15px;\">\r\n                            <span style=\"font-weight: bold;\">Le lien de connexion :</span> <a href=\"https://partenaires.rabaislocal.com/login\" style=\"color: #003366; text-decoration: underline;\">https://partenaires.rabaislocal.com/login</a><br>\r\n\r\n<p style=\"font-size: 14px; line-height: 1.5; color: #555555; text-align: center; border-top: 1px solid #dddddd; padding-top: 15px;\">\r\n                            <span style=\"font-weight: bold;\">Votre lien de référencement :</span><a href=\"https://partenaires.rabaislocal.com/login\" style=\"color: #003366; text-decoration: underline;\">https://marketing.rabaislocal.com?ref={{2.id}}</a>\r\n                        </p>\r\n                        \r\n                    </td>\r\n                </tr>\r\n                \r\n                <tr>\r\n                    <td style=\"padding: 20px 40px 10px 40px; color: #333333;\">\r\n                        <p style=\"font-size: 16px; font-weight: bold; margin-bottom: 15px;\">📅 Important : RabaisLocal est en pré-lancement jusqu'au **19 mars 2026**.</p>\r\n                        <p style=\"font-size: 16px; line-height: 1.6; margin-bottom: 15px;\">Ton espace membre est actif dès maintenant, et tous tes avantages seront disponibles dès le lancement officiel.</p>\r\n                        \r\n<p style=\"text-align: center;\">\r\n    Tu veux suivre les coulisses du projet ? \r\n    <a href=\"https://www.facebook.com/rabaislocal\" style=\"color: #003366; font-weight: bold; text-decoration: none;\">Suis-nous sur Facebook</a>\r\n</p>\r\n                    </td>\r\n                </tr>\r\n\r\n                <tr>\r\n                    <td style=\"padding: 20px 40px 30px 40px; background-color: #f8f8f8; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; border-top: 1px solid #dddddd;\">\r\n                        <p style=\"font-size: 16px; font-weight: bold; color: #003366; margin-bottom: 5px;\">Merci d'avoir rejoint cette aventure.</p>\r\n                        <p style=\"font-size: 16px; color: #333333; margin-top: 0;\">Ensemble, on prouve qu'il est possible de bâtir un Québec plus solidaire, un achat local à la fois.</p>\r\n\r\n                        <p style=\"font-size: 14px; color: #555555; margin-top: 20px; margin-bottom: 15px;\">— L'équipe RabaisLocal 💙</p>\r\n\r\n                        <p style=\"font-size: 12px; color: #888888; border-top: 1px solid #eeeeee; padding-top: 10px; margin-top: 15px;\">\r\n                            Vous recevez cet e-mail suite à votre inscription gratuite à RabaisLocal. | <a href=\"[LIEN_DESABONNEMENT]\" style=\"color: #003366;\">Se désabonner</a>\r\n                        </p>\r\n                    </td>\r\n                </tr>\r\n\r\n            </table>\r\n        </td>\r\n    </tr>\r\n</table>\r\n\r\n</body>\r\n</html>",
+                                "sender": "",
+                                "headers": [],
+                                "replyTo": "",
+                                "subject": "🎉 Bienvenue chez RabaisLocal – Tes avantages exclusifs sont déjà prêts !",
+                                "priority": "normal",
+                                "inReplyTo": "",
+                                "references": [],
+                                "attachments": [],
+                                "contentType": "html"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 1737,
+                                    "y": -284
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "cc": {
+                                            "mode": "chose"
+                                        },
+                                        "to": {
+                                            "mode": "chose",
+                                            "items": [
+                                                null
+                                            ]
+                                        },
+                                        "bcc": {
+                                            "mode": "chose"
+                                        },
+                                        "priority": {
+                                            "label": "Normal"
+                                        },
+                                        "references": {
+                                            "mode": "chose"
+                                        },
+                                        "attachments": {
+                                            "mode": "chose"
+                                        },
+                                        "contentType": {
+                                            "label": "HTML"
+                                        }
+                                    },
+                                    "parameters": {
+                                        "account": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "smtp"
+                                            },
+                                            "label": "likuid (SMTP envoi-form@rabaislocal.com)"
+                                        },
+                                        "saveAfterSent": {
+                                            "label": "No"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "account",
+                                        "type": "account:smtp,google-restricted,microsoft-smtp-imap",
+                                        "label": "Connection",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "saveAfterSent",
+                                        "type": "select",
+                                        "label": "Save message after sending",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                true,
+                                                false
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "type": "hidden"
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "to",
+                                        "spec": {
+                                            "name": "value",
+                                            "type": "email",
+                                            "label": "Email address",
+                                            "required": true
+                                        },
+                                        "type": "array",
+                                        "label": "To",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "subject",
+                                        "type": "text",
+                                        "label": "Subject"
+                                    },
+                                    {
+                                        "name": "contentType",
+                                        "type": "select",
+                                        "label": "Content Type",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                "html",
+                                                "text"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "attachments",
+                                        "spec": [
+                                            {
+                                                "name": "fileName",
+                                                "type": "filename",
+                                                "label": "File name",
+                                                "required": true,
+                                                "semantic": "file:name"
+                                            },
+                                            {
+                                                "name": "data",
+                                                "type": "buffer",
+                                                "label": "Data",
+                                                "required": true,
+                                                "semantic": "file:data"
+                                            },
+                                            {
+                                                "name": "cid",
+                                                "type": "text",
+                                                "label": "Content-ID"
+                                            }
+                                        ],
+                                        "type": "array",
+                                        "label": "Attachments"
+                                    },
+                                    {
+                                        "name": "cc",
+                                        "spec": {
+                                            "name": "value",
+                                            "type": "email",
+                                            "label": "Email address"
+                                        },
+                                        "type": "array",
+                                        "label": "Copy recipient"
+                                    },
+                                    {
+                                        "name": "bcc",
+                                        "spec": {
+                                            "name": "value",
+                                            "type": "email",
+                                            "label": "Email address"
+                                        },
+                                        "type": "array",
+                                        "label": "Blind copy recipient"
+                                    },
+                                    {
+                                        "name": "from",
+                                        "type": "text",
+                                        "label": "From"
+                                    },
+                                    {
+                                        "name": "sender",
+                                        "type": "text",
+                                        "label": "Sender"
+                                    },
+                                    {
+                                        "name": "replyTo",
+                                        "type": "text",
+                                        "label": "Reply-To"
+                                    },
+                                    {
+                                        "name": "inReplyTo",
+                                        "type": "text",
+                                        "label": "In-Reply-To"
+                                    },
+                                    {
+                                        "name": "references",
+                                        "spec": {
+                                            "name": "value",
+                                            "type": "text",
+                                            "label": "Reference",
+                                            "required": true
+                                        },
+                                        "type": "array",
+                                        "label": "References"
+                                    },
+                                    {
+                                        "name": "priority",
+                                        "type": "select",
+                                        "label": "Priority",
+                                        "validate": {
+                                            "enum": [
+                                                "high",
+                                                "normal",
+                                                "low"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "headers",
+                                        "spec": [
+                                            {
+                                                "name": "key",
+                                                "type": "text",
+                                                "label": "Key",
+                                                "required": true
+                                            },
+                                            {
+                                                "name": "value",
+                                                "type": "text",
+                                                "label": "Value",
+                                                "required": true
+                                            }
+                                        ],
+                                        "type": "array",
+                                        "label": "Headers"
+                                    },
+                                    {
+                                        "name": "html",
+                                        "type": "text",
+                                        "label": "Content"
+                                    }
+                                ]
+                            },
+                            "onerror": [
+                                {
+                                    "id": 18,
+                                    "module": "builtin:Ignore",
+                                    "version": 1,
+                                    "metadata": {
+                                        "designer": {
+                                            "x": 1999,
+                                            "y": -182
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": 20,
+                            "module": "gateway:WebhookRespond",
+                            "version": 1,
+                            "parameters": {},
+                            "mapper": {
+                                "body": "Redirection.....",
+                                "status": "302",
+                                "headers": [
+                                    {
+                                        "key": "Location",
+                                        "value": "https://marketing.rabaislocal.com/page3-consommateur.html"
+                                    }
+                                ]
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 2016,
+                                    "y": -582
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "headers": {
+                                            "mode": "chose",
+                                            "items": [
+                                                null
+                                            ]
+                                        }
+                                    }
+                                },
+                                "expect": [
+                                    {
+                                        "name": "status",
+                                        "type": "uinteger",
+                                        "label": "Status",
+                                        "required": true,
+                                        "validate": {
+                                            "min": 100
+                                        }
+                                    },
+                                    {
+                                        "name": "body",
+                                        "type": "any",
+                                        "label": "Body"
+                                    },
+                                    {
+                                        "name": "headers",
+                                        "spec": [
+                                            {
+                                                "name": "key",
+                                                "type": "text",
+                                                "label": "Key",
+                                                "required": true,
+                                                "validate": {
+                                                    "max": 256
+                                                }
+                                            },
+                                            {
+                                                "name": "value",
+                                                "type": "text",
+                                                "label": "Value",
+                                                "required": true,
+                                                "validate": {
+                                                    "max": 4096
+                                                }
+                                            }
+                                        ],
+                                        "type": "array",
+                                        "label": "Custom headers",
+                                        "validate": {
+                                            "maxItems": 16
+                                        }
+                                    }
+                                ],
+                                "advanced": true
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "metadata": {
+        "instant": true,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": false,
+            "slots": null,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false,
+            "freshVariables": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "us2.make.com",
+        "notes": []
+    }
+}
