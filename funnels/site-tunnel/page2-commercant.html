@@ -1,31 +1,29 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Merci et bienvenue – RabaisLocal Commerçant</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Confirme ton courriel - RabaisLocal Commerçant</title>
 
 <!-- Google Fonts - Poppins -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
+
 <style>
 /* ================================================
-   RABAISLOCAL - PAGE REMERCIEMENT COMMERÇANT
-   Variables & Reset
+   RABAISLOCAL - PAGE VALIDATION EMAIL COMMERÇANT
+   Variables CSS & Reset
    ================================================ */
 :root {
   --rl-blue: #3E53A5;
   --rl-blue-dark: #2E4191;
-  --rl-purple-start: #667eea;
-  --rl-purple-end: #764ba2;
-  --rl-red-start: #FF416C;
-  --rl-red-end: #FF4B2B;
-  --bg: #F5F8FF;
-  --card: #ffffff;
-  --border: #E5E7EB;
-  --text-muted: #6B7280;
+  --rl-orange: #FF8C42;
+  --rl-bg: #F5F8FF;
 }
 
 * {
@@ -36,7 +34,7 @@
 
 body {
   font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: var(--bg);
+  background: var(--rl-bg);
   color: #1B2240;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -47,40 +45,13 @@ h1, h2, h3 {
   font-weight: 700;
 }
 
-a {
-  color: var(--rl-blue);
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-a:hover {
-  color: var(--rl-blue-dark);
-}
-
 /* ================================================
    ANIMATIONS
    ================================================ */
-@keyframes pulseBox {
-  0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.6); }
-  70% { box-shadow: 0 0 0 12px rgba(255, 215, 0, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
-}
-
-@keyframes blink {
-  0%, 50%, 100% { opacity: 1; }
-  25%, 75% { opacity: 0.3; }
-}
-
-@keyframes shake {
-  0%, 90%, 100% { transform: translateX(0); }
-  92%, 96% { transform: translateX(-3px); }
-  94%, 98% { transform: translateX(3px); }
-}
-
-@keyframes fadeIn {
+@keyframes fadeSlideUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -88,361 +59,217 @@ a:hover {
   }
 }
 
-/* ================================================
-   SECTION PRINCIPALE
-   ================================================ */
-.rl-thankyou-commercant {
-  padding: 50px 0;
-  animation: fadeIn 0.8s ease-out;
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
 }
 
-.main-container {
-  width: min(940px, 92vw);
-  margin: 0 auto;
-  background: var(--card);
-  border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  padding: 55px 65px;
+.fade-up {
+  opacity: 0;
+  animation: fadeSlideUp 1s ease forwards;
+}
+
+.fade-delay-1 { animation-delay: 0.2s; }
+.fade-delay-2 { animation-delay: 0.4s; }
+.fade-delay-3 { animation-delay: 0.6s; }
+.fade-delay-4 { animation-delay: 0.8s; }
+
+.pulse-animation {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes flashRed {
+  0%, 100% { color: var(--rl-blue); }
+  50% { color: #ff2c2c; }
+}
+
+.flash-text {
+  animation: flashRed 1.2s infinite;
+  transition: color 0.3s ease;
 }
 
 /* ================================================
-   HEADER
+   HEADER - LOGO
    ================================================ */
-.header-section {
+.header {
   text-align: center;
-  margin-bottom: 35px;
+  padding: 25px 15px 15px;
+  background: #ffffff;
 }
 
-.logo-img {
-  height: 65px;
-  width: auto;
-  margin-bottom: 22px;
-}
-
-.main-title {
-  font-size: clamp(1.7rem, 4vw, 2.2rem);
-  color: var(--rl-blue);
-  font-weight: 800;
-  margin-bottom: 14px;
-  line-height: 1.3;
-}
-
-.subtitle-text {
-  font-size: 1.05rem;
-  margin-top: 14px;
-  line-height: 1.7;
-  color: #1B2240;
-}
-
-.highlight-badge {
-  background: #FFF8E1;
-  padding: 3px 8px;
-  border-radius: 5px;
-  font-weight: 700;
-  color: #1B2240;
-}
-
-/* ================================================
-   VIDÉO
-   ================================================ */
-.video-section {
-  margin-bottom: 50px;
-}
-
-.video-wrapper {
-  position: relative;
-  width: 100%;
-  padding-top: 56.25%; /* Ratio 16:9 */
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
-  background: #000;
-}
-
-.video-wrapper iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-  border-radius: 14px;
-}
-
-/* ================================================
-   BLOC PRÉ-LANCEMENT
-   ================================================ */
-.prelancement-bloc {
-  background: #EEF2FF;
-  border: 2px solid var(--rl-blue);
-  border-radius: 14px;
-  padding: 38px 40px;
-  box-shadow: 0 6px 16px rgba(62, 83, 165, 0.1);
-  margin-bottom: 50px;
-}
-
-.info-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  margin-bottom: 20px;
-}
-
-.info-item:last-child {
-  margin-bottom: 0;
-}
-
-.info-icon {
-  font-size: 1.3rem;
-  flex-shrink: 0;
-}
-
-.info-text {
-  font-size: 1rem;
-  line-height: 1.7;
-}
-
-.info-text strong {
-  font-weight: 700;
-  color: #0B1220;
-}
-
-/* ================================================
-   BLOC EMAIL IMPORTANT
-   ================================================ */
-.email-bloc {
-  position: relative;
-  background: linear-gradient(135deg, var(--rl-purple-start) 0%, var(--rl-purple-end) 100%);
-  border-radius: 16px;
-  color: #ffffff;
-  padding: 40px 45px;
-  margin-bottom: 55px;
-  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.35);
-  border: 3px solid #FFD700;
-  animation: pulseBox 2s infinite;
-}
-
-.important-badge {
-  position: absolute;
-  top: -15px;
-  right: 22px;
-  background: linear-gradient(135deg, var(--rl-red-start) 0%, var(--rl-red-end) 100%);
-  color: #fff;
-  padding: 9px 22px;
-  border-radius: 20px;
-  font-weight: 700;
-  font-size: 0.88rem;
-  box-shadow: 0 5px 14px rgba(255, 65, 108, 0.45);
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
-  animation: shake 3s infinite;
-}
-
-.email-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  margin-bottom: 18px;
-}
-
-.email-item:last-child {
-  margin-bottom: 0;
-}
-
-.email-icon {
-  font-size: 1.4rem;
-  flex-shrink: 0;
-}
-
-.email-text {
-  font-size: 1.05rem;
-  line-height: 1.7;
-}
-
-.email-text strong {
-  font-weight: 700;
-}
-
-.blink-star {
-  animation: blink 1.5s infinite;
-  margin-left: 6px;
-}
-
-/* ================================================
-   BLOC EN ATTENDANT
-   ================================================ */
-.waiting-bloc {
-  text-align: center;
-  background: var(--card);
-  border: 2px solid var(--rl-blue);
-  border-radius: 14px;
-  padding: 45px 40px;
-  box-shadow: 0 8px 20px rgba(62, 83, 165, 0.12);
-}
-
-.waiting-title {
-  font-size: 1.7rem;
-  color: var(--rl-blue);
-  margin-bottom: 18px;
-  font-weight: 800;
-}
-
-.waiting-text {
-  font-size: 1.05rem;
-  line-height: 1.7;
-  margin-bottom: 20px;
-  color: #1B2240;
-}
-
-.waiting-text strong {
-  font-weight: 700;
-  color: #0B1220;
-}
-
-.cta-button {
+.header .logo {
+  max-width: 240px;
+  height: auto;
   display: inline-block;
+}
+
+/* ================================================
+   TOPBAR
+   ================================================ */
+.topbar {
   background: var(--rl-blue);
   color: #fff;
-  padding: 17px 42px;
-  border-radius: 12px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 1.08rem;
-  box-shadow: 0 8px 18px rgba(62, 83, 165, 0.35);
-  transition: all 0.3s ease;
-  border: none;
-  cursor: pointer;
+  text-align: center;
+  padding: 12px 15px;
+  font-weight: 600;
+  font-size: 0.95rem;
 }
 
-.cta-button:hover {
-  background: var(--rl-blue-dark);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 22px rgba(62, 83, 165, 0.45);
-  color: #fff;
+/* ================================================
+   CONTENEUR PRINCIPAL
+   ================================================ */
+.container {
+  max-width: 1040px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.video-block {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 0 auto;
+}
+
+/* ================================================
+   TITRE PRINCIPAL
+   ================================================ */
+.hero-title {
+  text-align: center;
+  font-size: clamp(1.7rem, 4vw, 2.2rem);
+  font-weight: 800;
+  margin-bottom: 18px;
+  line-height: 1.3;
+  color: #1B2240;
+}
+
+.hero-title span {
+  color: var(--rl-blue);
+}
+
+/* ================================================
+   SECTION POURQUOI
+   ================================================ */
+.why-section {
+  max-width: 820px;
+  margin: 0 auto 40px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.why-section h2 {
+  color: var(--rl-blue);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3vw, 1.8rem);
+  margin-bottom: 30px;
+}
+
+.why-list {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  display: inline-block;
+  max-width: 700px;
+}
+
+.why-list li {
+  background: #ffffff;
+  padding: 18px 22px;
+  margin-bottom: 14px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.why-list li:hover {
+  transform: translateX(5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.why-list li strong {
+  color: var(--rl-blue);
+  font-weight: 700;
+}
+
+.emoji {
+  font-size: 1.3rem;
 }
 
 /* ================================================
    FOOTER
    ================================================ */
-.footer-section {
+.footer {
+  background: var(--rl-blue);
+  color: rgba(255, 255, 255, 0.9);
+  padding: 40px 20px 30px;
   text-align: center;
-  padding-top: 35px;
-  border-top: 1px solid var(--border);
-  margin-top: 45px;
+  margin-top: 10px;
 }
 
-.footer-text {
+.footer .logo {
+  max-width: 160px;
+  margin: 0 auto 15px;
+}
+
+.footer p {
   font-size: 0.95rem;
-  color: var(--text-muted);
-  margin-bottom: 10px;
-  line-height: 1.6;
-}
-
-.footer-copyright {
-  font-size: 0.88rem;
-  color: var(--text-muted);
-  margin-top: 8px;
+  margin: 0;
 }
 
 /* ================================================
-   RESPONSIVE - MOBILE
+   RESPONSIVE
    ================================================ */
 @media (max-width: 768px) {
-  .main-container {
-    padding: 40px 30px;
+  .container {
+    margin: 25px auto;
+    padding: 0 15px;
   }
 
-  .main-title {
-    font-size: 1.65rem;
+  .main-content {
+    gap: 20px;
   }
 
-  .subtitle-text {
-    font-size: 1rem;
+  .header {
+    padding: 18px 10px 10px;
   }
 
-  .prelancement-bloc {
-    padding: 30px 25px;
+  .header .logo {
+    max-width: 200px;
   }
 
-  .email-bloc {
-    padding: 32px 28px;
+  .hero-title {
+    font-size: 1.45rem;
   }
 
-  .important-badge {
-    top: -12px;
-    right: 15px;
-    font-size: 0.8rem;
-    padding: 7px 16px;
-  }
-
-  .waiting-bloc {
-    padding: 35px 25px;
-  }
-
-  .waiting-title {
-    font-size: 1.5rem;
-  }
-
-  .cta-button {
-    font-size: 1rem;
-    padding: 14px 32px;
+  .why-list li {
+    padding: 14px 16px;
+    font-size: 0.98rem;
   }
 }
 
 @media (max-width: 480px) {
-  .main-container {
-    padding: 32px 22px;
+  .topbar {
+    font-size: 0.85rem;
+    padding: 10px 12px;
   }
 
-  .logo-img {
-    height: 55px;
+  .hero-title {
+    font-size: 1.3rem;
   }
 
-  .main-title {
-    font-size: 1.5rem;
-  }
-
-  .subtitle-text {
-    font-size: 0.95rem;
-  }
-
-  .info-text {
-    font-size: 0.95rem;
-  }
-
-  .email-text {
-    font-size: 0.98rem;
-  }
-
-  .waiting-text {
-    font-size: 1rem;
-  }
-
-  .prelancement-bloc {
-    padding: 25px 20px;
-  }
-
-  .email-bloc {
-    padding: 28px 22px;
-  }
-}
-
-/* ================================================
-   ACCESSIBILITÉ
-   ================================================ */
-a:focus,
-button:focus {
-  outline: 2px solid var(--rl-blue);
-  outline-offset: 3px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+  .why-section h2 {
+    font-size: 1.4rem;
   }
 }
 </style>
@@ -451,139 +278,81 @@ button:focus {
 <body>
 
 <!-- ================================================
-     SECTION PRINCIPALE
+     HEADER
      ================================================ -->
-<section class="rl-thankyou-commercant">
-  <div class="main-container">
+<div class="header">
+  <img src="assets/images/logo rabaislocal-2025-2.png"
+       alt="Logo RabaisLocal"
+       class="logo">
+</div>
 
-    <!-- ================================================
-         HEADER
-         ================================================ -->
-    <div class="header-section">
-      <img src="assets/images/logo rabaislocal-2025-2.png"
-           alt="Logo RabaisLocal"
-           class="logo-img">
+<!-- ================================================
+     TOPBAR
+     ================================================ -->
+<div class="topbar fade-up">
+  🚀 Pré-lancement RabaisLocal — Active ton compte commerçant maintenant
+</div>
 
-      <h1 class="main-title">
-        🎁 Merci et bienvenue dans la communauté RabaisLocal !
-      </h1>
+<!-- ================================================
+     CONTENU PRINCIPAL
+     ================================================ -->
+<div class="container fade-up fade-delay-1 main-content">
 
-      <p class="subtitle-text">
-        Tu viens de franchir une étape importante :
-        <span class="highlight-badge">ton commerce est maintenant inscrit gratuitement</span>
-        sur la plateforme québécoise la plus innovante dédiée à la promotion locale.
-      </p>
+  <!-- Titre principal -->
+  <h1 class="hero-title">
+    📩 Confirme ton courriel pour activer<br>ton compte <span>Commerçant RabaisLocal</span>
+  </h1>
+
+  <!-- ================================================
+       SECTION VIDÉO
+       ================================================ -->
+  <div class="video-block">
+    <p style="margin-bottom: 15px; color: #333; font-size: 1rem; font-weight: 600;">
+      🎬 Découvre RabaisLocal en action
+    </p>
+
+    <p class="flash-text" style="margin-bottom: 15px; color: var(--rl-blue); font-size: 1.1rem; font-weight: 700;">
+      Clic ici ⬇
+    </p>
+
+    <div style="position: relative; width: 100%; max-width: 400px; margin: 0 auto; aspect-ratio: 9/16; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);">
+      <iframe
+        src="https://www.youtube.com/embed/ndtszA86XVk?loop=1&playlist=ndtszA86XVk&controls=1"
+        title="RabaisLocal - Découvre la plateforme"
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
     </div>
-
-    <!-- ================================================
-         VIDÉO
-         ================================================ -->
-    <div class="video-section">
-      <div class="video-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/vJYb6d8I0iY"
-          title="Vidéo de remerciement RabaisLocal - Commerçants"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
-      </div>
-    </div>
-
-    <!-- ================================================
-         BLOC PÉRIODE DE PRÉ-LANCEMENT
-         ================================================ -->
-    <div class="prelancement-bloc">
-      <div class="info-item">
-        <span class="info-icon">🚀</span>
-        <span class="info-text">
-          <strong>Période de pré-lancement :</strong> tu fais partie des premiers commerçants à utiliser RabaisLocal et à nous revenir avec tes commentaires.
-          D'ici le lancement officiel, nous peaufinons la plateforme grâce à vos retours de commentaires pour offrir une expérience optimale à tous les commerces du Québec.
-        </span>
-      </div>
-
-      <div class="info-item">
-        <span class="info-icon">🤖</span>
-        <span class="info-text">
-          <strong>Tests IA et outils novateurs :</strong> tu auras la chance d'essayer certaines fonctionnalités de notre <strong>assistant intelligent RabaisLocal</strong>
-          (création automatique de promotions, recommandations, statistiques locales, etc.) avant tout le monde.
-        </span>
-      </div>
-
-      <div class="info-item">
-        <span class="info-icon">🎁</span>
-        <span class="info-text">
-          <strong>Bonus spécial commerçant :</strong> tous les commerces inscrits avant le lancement officiel recevront automatiquement
-          <strong>3 mois d'accès Privilège gratuits</strong> après le lancement de janvier 2026, incluant IA, page vitrine gratuite, visibilité accru et statistiques détaillées.
-        </span>
-      </div>
-
-      <div class="info-item">
-        <span class="info-icon">💬</span>
-        <span class="info-text">
-          <strong>Ton avis compte :</strong> tu recevras des sondages simples pour partager ton expérience et contribuer activement à la version finale de RabaisLocal.
-        </span>
-      </div>
-    </div>
-
-    <!-- ================================================
-         BLOC EMAIL IMPORTANT
-         ================================================ -->
-    <div class="email-bloc">
-      <div class="important-badge">⚠️ Important</div>
-
-      <div class="email-item">
-        <span class="email-icon">📧</span>
-        <span class="email-text">
-          <strong>Vérifie ton courriel dès maintenant :</strong> tu vas recevoir un message de confirmation avec les prochaines étapes à suivre.
-        </span>
-      </div>
-
-      <div class="email-item">
-        <span class="email-icon">📩</span>
-        <span class="email-text">
-          Si tu ne vois pas notre message, <strong>regarde dans ton dossier "courriers indésirables"</strong> ou l'onglet <strong>"Promotions"</strong>.<span class="blink-star">✨</span>
-        </span>
-      </div>
-    </div>
-
-    <!-- ================================================
-         BLOC EN ATTENDANT
-         ================================================ -->
-    <div class="waiting-bloc">
-      <h3 class="waiting-title">
-        💙 En attendant le grand lancement...
-      </h3>
-
-      <p class="waiting-text">
-        Reste à l'affût ! Tu recevras prochainement des <strong>mises à jour exclusives</strong> sur l'évolution de la plateforme,
-        les premiers tests IA et les nouvelles fonctionnalités disponibles pour ton commerce.
-      </p>
-
-      <p class="waiting-text">
-        En attendant, découvre RabaisLocal <strong>du point de vue des consommateurs</strong> : inscris-toi gratuitement dès maintenant.
-      </p>
-
-      <a href="https://www.rabaislocal.net/page-1-inscription-client"
-         class="cta-button"
-         id="cta-consommateur">
-        👀 Voir le parcours consommateur gratuit
-      </a>
-    </div>
-
-    <!-- ================================================
-         FOOTER
-         ================================================ -->
-    <div class="footer-section">
-      <p class="footer-text">
-        RabaisLocal aide les commerçants d'ici à se faire découvrir, sans payer de commission, grâce à des promotions locales propulsées par l'IA.
-      </p>
-      <p class="footer-copyright">
-        © 2025 <strong>RabaisLocal</strong> — Une initiative locale pour soutenir l'économie d'ici.
-      </p>
-    </div>
-
   </div>
-</section>
+
+  <!-- Section Pourquoi valider -->
+  <div class="why-section fade-up fade-delay-2">
+    <h2>
+      💡 Pourquoi tu dois valider ton courriel ?
+    </h2>
+
+    <ul class="why-list">
+      <li>🏪 Pour activer ton <strong>profil commerçant gratuit</strong> et accéder à ton tableau de bord</li>
+      <li>📊 Pour créer tes premières <strong>promotions locales</strong> et commencer à attirer des clients</li>
+      <li>🎁 Pour recevoir ton <strong>bonus pré-lancement : 3 mois Privilège gratuits</strong> après janvier 2026</li>
+      <li>🤖 Pour tester l'<strong>assistant IA RabaisLocal</strong> qui t'aide à créer des promotions automatiquement</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- ================================================
+     FOOTER
+     ================================================ -->
+<div class="footer">
+  <img src="assets/images/logo rabaislocal-2025-2.png"
+       alt="RabaisLocal"
+       class="logo">
+  <p>
+    © 2025 RabaisLocal — Une initiative 100 % québécoise propulsée par l'IA 🤖
+  </p>
+</div>
 
 <!-- ================================================
      JAVASCRIPT - TRACKING REF & PROPAGATION
@@ -642,27 +411,22 @@ button:focus {
   /* ====================================================
      CAPTURE ET GESTION DU REF
      ==================================================== */
-
-  // Récupération du ref depuis URL, cookies ou localStorage
   const refFromURL = getParam('ref') || getParam('rl_ref') || getParam('referred_by');
   const refFromCookie = getCookie('rl_ref');
   const refFromLS = getLS('rl_ref');
 
-  // Priorité: URL > localStorage > Cookie
   let REF = sanitize(refFromURL || refFromLS || refFromCookie);
 
-  // Persistance du REF
   if (refFromURL) {
     REF = sanitize(refFromURL);
     setCookie('rl_ref', REF, 180);
     setLS('rl_ref', REF);
   } else if (REF) {
-    // Rafraîchir la durée
     setCookie('rl_ref', REF, 180);
     setLS('rl_ref', REF);
   }
 
-  console.log('✅ REF capturé sur page remerciement commerçant:', REF || '(aucun parrain)');
+  console.log('✅ REF capturé sur page validation email commerçant:', REF || '(aucun parrain)');
 
   /* ====================================================
      PROPAGATION DU REF DANS TOUS LES LIENS
@@ -673,7 +437,6 @@ button:focus {
     document.querySelectorAll('a[href]').forEach(function(link) {
       const href = link.getAttribute('href');
 
-      // Ignorer les liens spéciaux
       if (!href ||
           href.startsWith('mailto:') ||
           href.startsWith('tel:') ||
@@ -684,14 +447,11 @@ button:focus {
 
       try {
         const url = new URL(href, window.location.origin);
-
-        // Ajouter le ref si pas déjà présent
         if (!url.searchParams.get('ref') && !url.searchParams.get('rl_ref')) {
           url.searchParams.set('ref', REF);
           link.setAttribute('href', url.toString());
         }
       } catch(e) {
-        // Fallback pour URLs relatives
         if (href.indexOf('?') === -1) {
           link.setAttribute('href', href + '?ref=' + encodeURIComponent(REF));
         } else if (!/[?&](ref|rl_ref)=/i.test(href)) {
@@ -701,31 +461,7 @@ button:focus {
     });
   }
 
-  /* ====================================================
-     EXÉCUTION AU CHARGEMENT
-     ==================================================== */
   window.addEventListener('load', propagateLinks);
-
-  // Observer les changements du DOM
-  const observer = new MutationObserver(propagateLinks);
-  observer.observe(document.documentElement, {
-    childList: true,
-    subtree: true
-  });
-
-  /* ====================================================
-     SAUVEGARDE DU REF AVANT CHAQUE CLIC
-     ==================================================== */
-  document.addEventListener('click', function(e) {
-    if (e.target.closest('button, [type="submit"], a')) {
-      try {
-        if (REF) {
-          setLS('rl_ref', REF);
-          setCookie('rl_ref', REF, 180);
-        }
-      } catch(err) {}
-    }
-  });
 
 })();
 </script>

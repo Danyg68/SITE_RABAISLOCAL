@@ -1,0 +1,3239 @@
+{
+    "name": "2025 Consommateur_signup__v2.0",
+    "flow": [
+        {
+            "id": 1,
+            "module": "gateway:CustomWebHook",
+            "version": 1,
+            "parameters": {
+                "hook": 1127941,
+                "maxResults": 1
+            },
+            "mapper": {},
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 750
+                },
+                "restore": {
+                    "parameters": {
+                        "hook": {
+                            "data": {
+                                "editable": "true"
+                            },
+                            "label": "inscription consommateur version 3"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "hook",
+                        "type": "hook:gateway-webhook",
+                        "label": "Webhook",
+                        "required": true
+                    },
+                    {
+                        "name": "maxResults",
+                        "type": "number",
+                        "label": "Maximum number of results"
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "source",
+                        "type": "text"
+                    },
+                    {
+                        "name": "submitted_at",
+                        "type": "text"
+                    },
+                    {
+                        "name": "rl_ref",
+                        "type": "text"
+                    },
+                    {
+                        "name": "role",
+                        "type": "text"
+                    },
+                    {
+                        "name": "first_name",
+                        "type": "text"
+                    },
+                    {
+                        "name": "last_name",
+                        "type": "text"
+                    },
+                    {
+                        "name": "postal_code",
+                        "type": "text"
+                    },
+                    {
+                        "name": "email",
+                        "type": "text"
+                    },
+                    {
+                        "name": "page",
+                        "spec": [
+                            {
+                                "name": "url",
+                                "type": "text"
+                            },
+                            {
+                                "name": "title",
+                                "type": "text"
+                            }
+                        ],
+                        "type": "collection"
+                    },
+                    {
+                        "name": "utm",
+                        "spec": [
+                            {
+                                "name": "source",
+                                "type": "text"
+                            },
+                            {
+                                "name": "medium",
+                                "type": "text"
+                            },
+                            {
+                                "name": "campaign",
+                                "type": "text"
+                            },
+                            {
+                                "name": "term",
+                                "type": "text"
+                            },
+                            {
+                                "name": "content",
+                                "type": "text"
+                            }
+                        ],
+                        "type": "collection"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 2,
+            "module": "util:SetVariable2",
+            "version": 1,
+            "parameters": {},
+            "mapper": {
+                "name": "CodeParrainFinal",
+                "scope": "roundtrip",
+                "value": "{{if(length(1.ref) = 0; 0; 1.ref)}}"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 300,
+                    "y": 750,
+                    "name": "Module 2 : Tools (Set Variable)"
+                },
+                "restore": {
+                    "expect": {
+                        "scope": {
+                            "label": "One cycle"
+                        }
+                    }
+                },
+                "expect": [
+                    {
+                        "name": "name",
+                        "type": "text",
+                        "label": "Variable name",
+                        "required": true
+                    },
+                    {
+                        "name": "scope",
+                        "type": "select",
+                        "label": "Variable lifetime",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "roundtrip",
+                                "execution"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "value",
+                        "type": "any",
+                        "label": "Variable value"
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "CodeParrainFinal",
+                        "type": "any",
+                        "label": "CodeParrainFinal"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 3,
+            "module": "goaffpro:ActionGetAffiliate",
+            "version": 1,
+            "parameters": {
+                "__IMTCONN__": 5299091
+            },
+            "mapper": {
+                "in": [
+                    "ref_code"
+                ],
+                "limit": "10",
+                "fields": [
+                    "id",
+                    "first_name",
+                    "last_name",
+                    "email",
+                    "ref_code",
+                    "company_name",
+                    "ref_codes",
+                    "zip"
+                ],
+                "keyword": "{{2.CodeParrainFinal}}"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 600,
+                    "y": 750,
+                    "name": "Module 3 : GoAffPro (Get Affiliate)"
+                },
+                "restore": {
+                    "expect": {
+                        "in": {
+                            "mode": "chose",
+                            "label": [
+                                "Referral Code"
+                            ]
+                        },
+                        "fields": {
+                            "mode": "chose",
+                            "label": [
+                                "ID",
+                                "First Name",
+                                "Last Name",
+                                "Email",
+                                "Referral Code",
+                                "Company Name",
+                                "Ref Codes",
+                                "Zip"
+                            ]
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "goaffpro"
+                            },
+                            "label": "Groupe_conso"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:goaffpro",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "in",
+                        "type": "select",
+                        "label": "In",
+                        "multiple": true,
+                        "required": true
+                    },
+                    {
+                        "name": "keyword",
+                        "type": "text",
+                        "label": "Keyword",
+                        "required": true
+                    },
+                    {
+                        "name": "fields",
+                        "type": "select",
+                        "label": "Fields",
+                        "multiple": true,
+                        "required": true
+                    },
+                    {
+                        "name": "limit",
+                        "type": "uinteger",
+                        "label": "Limit"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 4,
+            "module": "goaffpro:ActionGetAffiliate",
+            "version": 1,
+            "parameters": {
+                "__IMTCONN__": 5299091
+            },
+            "mapper": {
+                "in": [
+                    "email"
+                ],
+                "limit": "10",
+                "fields": [
+                    "id",
+                    "first_name",
+                    "last_name",
+                    "email",
+                    "ref_code",
+                    "company_name",
+                    "ref_codes"
+                ],
+                "keyword": "{{1.email}}"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 900,
+                    "y": 750,
+                    "name": "Module 4 : GoAffPro (Get Affiliate)"
+                },
+                "restore": {
+                    "expect": {
+                        "in": {
+                            "mode": "chose",
+                            "label": [
+                                "Email"
+                            ]
+                        },
+                        "fields": {
+                            "mode": "chose",
+                            "label": [
+                                "ID",
+                                "First Name",
+                                "Last Name",
+                                "Email",
+                                "Referral Code",
+                                "Company Name",
+                                "Ref Codes"
+                            ]
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "goaffpro"
+                            },
+                            "label": "Groupe_conso"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:goaffpro",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "in",
+                        "type": "select",
+                        "label": "In",
+                        "multiple": true,
+                        "required": true
+                    },
+                    {
+                        "name": "keyword",
+                        "type": "text",
+                        "label": "Keyword",
+                        "required": true
+                    },
+                    {
+                        "name": "fields",
+                        "type": "select",
+                        "label": "Fields",
+                        "multiple": true,
+                        "required": true
+                    },
+                    {
+                        "name": "limit",
+                        "type": "uinteger",
+                        "label": "Limit"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 5,
+            "module": "builtin:BasicRouter",
+            "version": 1,
+            "mapper": null,
+            "metadata": {
+                "designer": {
+                    "x": 1200,
+                    "y": 750
+                }
+            },
+            "routes": [
+                {
+                    "flow": [
+                        {
+                            "id": 6,
+                            "module": "email:ActionSendEmail",
+                            "version": 7,
+                            "parameters": {
+                                "account": 2792085,
+                                "saveAfterSent": false
+                            },
+                            "filter": {
+                                "name": "Déjà Inscrit",
+                                "conditions": [
+                                    [
+                                        {
+                                            "a": "{{4.id}}",
+                                            "o": "exist"
+                                        }
+                                    ]
+                                ]
+                            },
+                            "mapper": {
+                                "cc": [],
+                                "to": [
+                                    "{{1.email}}"
+                                ],
+                                "bcc": [],
+                                "from": "",
+                                "html": "<div style=\"font-family:Poppins,Arial,sans-serif; background:#F5F8FF; color:#1B2240; padding:40px 25px; border-radius:14px; max-width:600px; margin:auto; box-shadow:0 4px 12px rgba(62,83,165,0.1);\">\r\n\r\n  <!-- LOGO -->\r\n  <div style=\"text-align:center; margin-bottom:20px;\">\r\n    <img src=\"https://statics.myclickfunnels.com/workspace/jklqVP/image/17823503/file/d5fb15091926d11524543af90a9a5e26.png\" alt=\"RabaisLocal\" style=\"max-width:160px;\"/>\r\n  </div>\r\n\r\n  <!-- TITRE -->\r\n  <h2 style=\"text-align:center; color:#3E53A5; font-weight:700; font-size:1.7rem; margin-bottom:10px;\">\r\n    Ton adresse courriel est déjà utilisée 🔐\r\n  </h2>\r\n\r\n  <p style=\"font-size:1rem; line-height:1.7; margin-bottom:20px;\">\r\n    Bonjour <strong>{{1.first_name}}</strong>,  \r\n    ton adresse <strong>{{1.email}}</strong> est déjà associée à un compte RabaisLocal.\r\n  </p>\r\n\r\n  <p style=\"font-size:1rem; line-height:1.7; margin-bottom:20px;\">\r\n    Pas de panique 💙 Cela veut simplement dire que tu fais déjà partie de la grande communauté RabaisLocal — que ce soit comme consommateur, commerçant ou affilié.\r\n  </p>\r\n\r\n  <!-- SECTION 1 : Se connecter -->\r\n  <div style=\"background:#ffffff; border:2px solid #3E53A5; border-radius:10px; padding:18px 20px; margin-bottom:25px;\">\r\n    <p style=\"margin:0; font-size:1rem; line-height:1.6;\">\r\n      🟦 <strong>Étape 1 – Se connecter à ton compte existant :</strong><br/><br/>\r\n      🔗 Clique ici pour accéder à ton espace :<br/>\r\n      <a href=\"https://partenaires.rabaislocal.com/login\" style=\"color:#3E53A5; font-weight:600;\">https://partenaires.rabaislocal.com/login</a><br/><br/>\r\n      🔑 Si tu ne connais pas ton mot de passe, clique sur  \r\n      <a href=\"https://partenaires.rabaislocal.com/forgot-password\" style=\"color:#3E53A5; font-weight:600;\">« Mot de passe oublié »</a>  \r\n      et suis les instructions pour en créer un nouveau.\r\n    </p>\r\n  </div>\r\n\r\n  <!-- SECTION 2 : Cas du commerçant -->\r\n  <div style=\"background:#FFF1F0; border:2px solid #E94D4C; border-radius:10px; padding:18px 20px; margin-bottom:25px;\">\r\n    <p style=\"margin:0; font-size:1rem; line-height:1.6;\">\r\n      🚨 <strong>Important :</strong><br/><br/>\r\n      Si tu es <strong>déjà inscrit comme commerçant</strong>,  \r\n      tu dois utiliser <u>une autre adresse courriel</u> pour créer ton compte consommateur.<br/><br/>\r\n      Exemple :  \r\n      ➤ ton adresse du commerce → pour ton compte commerçant  \r\n      ➤ ton adresse personnelle → pour ton compte consommateur<br/><br/>\r\n      Si tu n’as pas encore de mot de passe pour ton compte commerçant, clique ici :  \r\n      <a href=\"https://partenaires.rabaislocal.com/forgot-password\" style=\"color:#E94D4C; font-weight:600;\">Mot de passe oublié</a>\r\n    </p>\r\n  </div>\r\n\r\n  <!-- SECTION 3 : Suivi -->\r\n  <p style=\"font-size:1rem; line-height:1.7;\">\r\n    Une fois connecté, tu pourras accéder à ton profil, à tes rabais et à tes informations selon ton rôle (consommateur ou commerçant).\r\n  </p>\r\n\r\n  <p style=\"font-size:1rem; line-height:1.7;\">\r\n    Si tu crois qu’il s’agit d’une erreur ou si tu veux changer d’adresse, écris-nous à  \r\n    <a href=\"mailto:support@rabaislocal.com\" style=\"color:#3E53A5; font-weight:600;\">support@rabaislocal.com</a> — notre équipe t’aidera rapidement.\r\n  </p>\r\n\r\n  <!-- BOUTON -->\r\n  <div style=\"text-align:center; margin-top:30px;\">\r\n    <a href=\"https://partenaires.rabaislocal.com/login\" style=\"background:#3E53A5; color:#fff; text-decoration:none; padding:14px 28px; border-radius:50px; font-weight:600; font-size:1.05rem; display:inline-block;\">\r\n      🔓 Se connecter à mon compte\r\n    </a>\r\n  </div>\r\n\r\n  <!-- PIED DE PAGE -->\r\n  <p style=\"font-size:0.9rem; color:#555; margin-top:30px; text-align:center;\">\r\n    Merci de faire partie du mouvement RabaisLocal 💙<br/>\r\n    Ensemble, on fait grandir l’économie locale !\r\n  </p>\r\n\r\n</div>",
+                                "sender": "",
+                                "headers": [],
+                                "replyTo": "",
+                                "subject": "Oups 😅 Ton compte RabaisLocal existe déjà (voici tes accès)",
+                                "priority": "normal",
+                                "inReplyTo": "",
+                                "references": [],
+                                "attachments": [],
+                                "contentType": "html"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 1500,
+                                    "y": 150,
+                                    "name": "Module 5 : Email (Send Email)"
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "cc": {
+                                            "mode": "chose"
+                                        },
+                                        "to": {
+                                            "mode": "chose",
+                                            "items": [
+                                                null
+                                            ]
+                                        },
+                                        "bcc": {
+                                            "mode": "chose"
+                                        },
+                                        "priority": {
+                                            "label": "Normal"
+                                        },
+                                        "references": {
+                                            "mode": "chose"
+                                        },
+                                        "attachments": {
+                                            "mode": "chose"
+                                        },
+                                        "contentType": {
+                                            "label": "HTML"
+                                        }
+                                    },
+                                    "parameters": {
+                                        "account": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "smtp"
+                                            },
+                                            "label": "likuid (SMTP envoi-form@rabaislocal.com)"
+                                        },
+                                        "saveAfterSent": {
+                                            "label": "No"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "account",
+                                        "type": "account:smtp,google-restricted,microsoft-smtp-imap",
+                                        "label": "Connection",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "saveAfterSent",
+                                        "type": "select",
+                                        "label": "Save message after sending",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                true,
+                                                false
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "type": "hidden"
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "to",
+                                        "spec": {
+                                            "name": "value",
+                                            "type": "email",
+                                            "label": "Email address",
+                                            "required": true
+                                        },
+                                        "type": "array",
+                                        "label": "To",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "subject",
+                                        "type": "text",
+                                        "label": "Subject"
+                                    },
+                                    {
+                                        "name": "contentType",
+                                        "type": "select",
+                                        "label": "Content Type",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                "html",
+                                                "text"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "attachments",
+                                        "spec": [
+                                            {
+                                                "name": "fileName",
+                                                "type": "filename",
+                                                "label": "File name",
+                                                "required": true,
+                                                "semantic": "file:name"
+                                            },
+                                            {
+                                                "name": "data",
+                                                "type": "buffer",
+                                                "label": "Data",
+                                                "required": true,
+                                                "semantic": "file:data"
+                                            },
+                                            {
+                                                "name": "cid",
+                                                "type": "text",
+                                                "label": "Content-ID"
+                                            }
+                                        ],
+                                        "type": "array",
+                                        "label": "Attachments"
+                                    },
+                                    {
+                                        "name": "cc",
+                                        "spec": {
+                                            "name": "value",
+                                            "type": "email",
+                                            "label": "Email address"
+                                        },
+                                        "type": "array",
+                                        "label": "Copy recipient"
+                                    },
+                                    {
+                                        "name": "bcc",
+                                        "spec": {
+                                            "name": "value",
+                                            "type": "email",
+                                            "label": "Email address"
+                                        },
+                                        "type": "array",
+                                        "label": "Blind copy recipient"
+                                    },
+                                    {
+                                        "name": "from",
+                                        "type": "text",
+                                        "label": "From"
+                                    },
+                                    {
+                                        "name": "sender",
+                                        "type": "text",
+                                        "label": "Sender"
+                                    },
+                                    {
+                                        "name": "replyTo",
+                                        "type": "text",
+                                        "label": "Reply-To"
+                                    },
+                                    {
+                                        "name": "inReplyTo",
+                                        "type": "text",
+                                        "label": "In-Reply-To"
+                                    },
+                                    {
+                                        "name": "references",
+                                        "spec": {
+                                            "name": "value",
+                                            "type": "text",
+                                            "label": "Reference",
+                                            "required": true
+                                        },
+                                        "type": "array",
+                                        "label": "References"
+                                    },
+                                    {
+                                        "name": "priority",
+                                        "type": "select",
+                                        "label": "Priority",
+                                        "validate": {
+                                            "enum": [
+                                                "high",
+                                                "normal",
+                                                "low"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "headers",
+                                        "spec": [
+                                            {
+                                                "name": "key",
+                                                "type": "text",
+                                                "label": "Key",
+                                                "required": true
+                                            },
+                                            {
+                                                "name": "value",
+                                                "type": "text",
+                                                "label": "Value",
+                                                "required": true
+                                            }
+                                        ],
+                                        "type": "array",
+                                        "label": "Headers"
+                                    },
+                                    {
+                                        "name": "html",
+                                        "type": "text",
+                                        "label": "Content"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 7,
+                            "module": "google-sheets:addRow",
+                            "version": 2,
+                            "parameters": {
+                                "__IMTCONN__": 2613380
+                            },
+                            "mapper": {
+                                "from": "drive",
+                                "mode": "select",
+                                "values": {
+                                    "0": "'{{formatDate(now; \"YYYY-MM-DD HH:mm:ss\"; \"America/Toronto\")}}'",
+                                    "1": "{{4.id}}",
+                                    "2": "{{1.email}}",
+                                    "3": "{{1.first_name}}",
+                                    "4": "{{1.last_name}}",
+                                    "5": "{{2.CodeParrainFinal}}",
+                                    "8": "{{1.rl_ref}}"
+                                },
+                                "sheetId": "Deja_inscrit",
+                                "spreadsheetId": "/1a4GtWilLsU2Hcrt-pK-w5wDr-eVS4o4D/1kqTIiEY0TjnJSmSIdpbjVcSmvcFiRnHG/1KE4fx9ivUXBpQQIpcpfLmSHgGCiRbbxbdDWsip8Wk4I",
+                                "includesHeaders": true,
+                                "insertDataOption": "INSERT_ROWS",
+                                "valueInputOption": "USER_ENTERED",
+                                "insertUnformatted": false
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 1800,
+                                    "y": 150,
+                                    "name": "Module 6 : Google Sheets (Add a Row)"
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "from": {
+                                            "label": "My Drive"
+                                        },
+                                        "mode": {
+                                            "label": "Search by path"
+                                        },
+                                        "sheetId": {
+                                            "label": "Deja_inscrit"
+                                        },
+                                        "spreadsheetId": {
+                                            "path": [
+                                                "RabaisLocal",
+                                                "Backup formulaire inscription ",
+                                                "Consommateurs"
+                                            ]
+                                        },
+                                        "includesHeaders": {
+                                            "label": "Yes",
+                                            "nested": [
+                                                {
+                                                    "name": "values",
+                                                    "spec": [
+                                                        {
+                                                            "name": "0",
+                                                            "type": "text",
+                                                            "label": "timestamp (A)"
+                                                        },
+                                                        {
+                                                            "name": "1",
+                                                            "type": "text",
+                                                            "label": "Affiliate_id (B)"
+                                                        },
+                                                        {
+                                                            "name": "2",
+                                                            "type": "text",
+                                                            "label": "email (C)"
+                                                        },
+                                                        {
+                                                            "name": "3",
+                                                            "type": "text",
+                                                            "label": "first_name (D)"
+                                                        },
+                                                        {
+                                                            "name": "4",
+                                                            "type": "text",
+                                                            "label": "last_name (E)"
+                                                        },
+                                                        {
+                                                            "name": "5",
+                                                            "type": "text",
+                                                            "label": "ref_id (F)"
+                                                        },
+                                                        {
+                                                            "name": "6",
+                                                            "type": "text",
+                                                            "label": "Groupe (G)"
+                                                        },
+                                                        {
+                                                            "name": "7",
+                                                            "type": "text",
+                                                            "label": "status (H)"
+                                                        },
+                                                        {
+                                                            "name": "8",
+                                                            "type": "text",
+                                                            "label": "ref_id formulaire (I)"
+                                                        },
+                                                        {
+                                                            "name": "9",
+                                                            "type": "text",
+                                                            "label": "note (J)"
+                                                        },
+                                                        {
+                                                            "name": "10",
+                                                            "type": "text",
+                                                            "label": "(K)"
+                                                        },
+                                                        {
+                                                            "name": "11",
+                                                            "type": "text",
+                                                            "label": "(L)"
+                                                        },
+                                                        {
+                                                            "name": "12",
+                                                            "type": "text",
+                                                            "label": "(M)"
+                                                        },
+                                                        {
+                                                            "name": "13",
+                                                            "type": "text",
+                                                            "label": "(N)"
+                                                        },
+                                                        {
+                                                            "name": "14",
+                                                            "type": "text",
+                                                            "label": "(O)"
+                                                        },
+                                                        {
+                                                            "name": "15",
+                                                            "type": "text",
+                                                            "label": "(P)"
+                                                        },
+                                                        {
+                                                            "name": "16",
+                                                            "type": "text",
+                                                            "label": "(Q)"
+                                                        },
+                                                        {
+                                                            "name": "17",
+                                                            "type": "text",
+                                                            "label": "(R)"
+                                                        },
+                                                        {
+                                                            "name": "18",
+                                                            "type": "text",
+                                                            "label": "(S)"
+                                                        },
+                                                        {
+                                                            "name": "19",
+                                                            "type": "text",
+                                                            "label": "(T)"
+                                                        },
+                                                        {
+                                                            "name": "20",
+                                                            "type": "text",
+                                                            "label": "(U)"
+                                                        },
+                                                        {
+                                                            "name": "21",
+                                                            "type": "text",
+                                                            "label": "(V)"
+                                                        },
+                                                        {
+                                                            "name": "22",
+                                                            "type": "text",
+                                                            "label": "(W)"
+                                                        },
+                                                        {
+                                                            "name": "23",
+                                                            "type": "text",
+                                                            "label": "(X)"
+                                                        },
+                                                        {
+                                                            "name": "24",
+                                                            "type": "text",
+                                                            "label": "(Y)"
+                                                        },
+                                                        {
+                                                            "name": "25",
+                                                            "type": "text",
+                                                            "label": "(Z)"
+                                                        },
+                                                        {
+                                                            "name": "26",
+                                                            "type": "text",
+                                                            "label": "(AA)"
+                                                        },
+                                                        {
+                                                            "name": "27",
+                                                            "type": "text",
+                                                            "label": "(AB)"
+                                                        }
+                                                    ],
+                                                    "type": "collection",
+                                                    "label": "Values"
+                                                }
+                                            ]
+                                        },
+                                        "insertDataOption": {
+                                            "mode": "chose",
+                                            "label": "Insert rows"
+                                        },
+                                        "valueInputOption": {
+                                            "mode": "chose",
+                                            "label": "User entered"
+                                        },
+                                        "insertUnformatted": {
+                                            "mode": "chose"
+                                        }
+                                    },
+                                    "parameters": {
+                                        "__IMTCONN__": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "google"
+                                            },
+                                            "label": "My Google connection (rabaislocal@gmail.com)"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "__IMTCONN__",
+                                        "type": "account:google",
+                                        "label": "Connection",
+                                        "required": true
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "mode",
+                                        "type": "select",
+                                        "label": "Search Method",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                "select",
+                                                "fromAll",
+                                                "map"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "insertUnformatted",
+                                        "type": "boolean",
+                                        "label": "Unformatted",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "valueInputOption",
+                                        "type": "select",
+                                        "label": "Value input option",
+                                        "validate": {
+                                            "enum": [
+                                                "USER_ENTERED",
+                                                "RAW"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "insertDataOption",
+                                        "type": "select",
+                                        "label": "Insert data option",
+                                        "validate": {
+                                            "enum": [
+                                                "INSERT_ROWS",
+                                                "OVERWRITE"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "from",
+                                        "type": "select",
+                                        "label": "Drive",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                "drive",
+                                                "share",
+                                                "team"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "spreadsheetId",
+                                        "type": "file",
+                                        "label": "Spreadsheet ID",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "sheetId",
+                                        "type": "select",
+                                        "label": "Sheet Name",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "includesHeaders",
+                                        "type": "select",
+                                        "label": "Table contains headers",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                true,
+                                                false
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "values",
+                                        "spec": [
+                                            {
+                                                "name": "0",
+                                                "type": "text",
+                                                "label": "timestamp (A)"
+                                            },
+                                            {
+                                                "name": "1",
+                                                "type": "text",
+                                                "label": "Affiliate_id (B)"
+                                            },
+                                            {
+                                                "name": "2",
+                                                "type": "text",
+                                                "label": "email (C)"
+                                            },
+                                            {
+                                                "name": "3",
+                                                "type": "text",
+                                                "label": "first_name (D)"
+                                            },
+                                            {
+                                                "name": "4",
+                                                "type": "text",
+                                                "label": "last_name (E)"
+                                            },
+                                            {
+                                                "name": "5",
+                                                "type": "text",
+                                                "label": "ref_id (F)"
+                                            },
+                                            {
+                                                "name": "6",
+                                                "type": "text",
+                                                "label": "Groupe (G)"
+                                            },
+                                            {
+                                                "name": "7",
+                                                "type": "text",
+                                                "label": "status (H)"
+                                            },
+                                            {
+                                                "name": "8",
+                                                "type": "text",
+                                                "label": "ref_id formulaire (I)"
+                                            },
+                                            {
+                                                "name": "9",
+                                                "type": "text",
+                                                "label": "note (J)"
+                                            },
+                                            {
+                                                "name": "10",
+                                                "type": "text",
+                                                "label": "(K)"
+                                            },
+                                            {
+                                                "name": "11",
+                                                "type": "text",
+                                                "label": "(L)"
+                                            },
+                                            {
+                                                "name": "12",
+                                                "type": "text",
+                                                "label": "(M)"
+                                            },
+                                            {
+                                                "name": "13",
+                                                "type": "text",
+                                                "label": "(N)"
+                                            },
+                                            {
+                                                "name": "14",
+                                                "type": "text",
+                                                "label": "(O)"
+                                            },
+                                            {
+                                                "name": "15",
+                                                "type": "text",
+                                                "label": "(P)"
+                                            },
+                                            {
+                                                "name": "16",
+                                                "type": "text",
+                                                "label": "(Q)"
+                                            },
+                                            {
+                                                "name": "17",
+                                                "type": "text",
+                                                "label": "(R)"
+                                            },
+                                            {
+                                                "name": "18",
+                                                "type": "text",
+                                                "label": "(S)"
+                                            },
+                                            {
+                                                "name": "19",
+                                                "type": "text",
+                                                "label": "(T)"
+                                            },
+                                            {
+                                                "name": "20",
+                                                "type": "text",
+                                                "label": "(U)"
+                                            },
+                                            {
+                                                "name": "21",
+                                                "type": "text",
+                                                "label": "(V)"
+                                            },
+                                            {
+                                                "name": "22",
+                                                "type": "text",
+                                                "label": "(W)"
+                                            },
+                                            {
+                                                "name": "23",
+                                                "type": "text",
+                                                "label": "(X)"
+                                            },
+                                            {
+                                                "name": "24",
+                                                "type": "text",
+                                                "label": "(Y)"
+                                            },
+                                            {
+                                                "name": "25",
+                                                "type": "text",
+                                                "label": "(Z)"
+                                            },
+                                            {
+                                                "name": "26",
+                                                "type": "text",
+                                                "label": "(AA)"
+                                            },
+                                            {
+                                                "name": "27",
+                                                "type": "text",
+                                                "label": "(AB)"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Values"
+                                    }
+                                ]
+                            },
+                            "onerror": [
+                                {
+                                    "id": 8,
+                                    "module": "builtin:Ignore",
+                                    "version": 1,
+                                    "metadata": {
+                                        "designer": {
+                                            "x": 2100,
+                                            "y": 300
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": 20,
+                            "module": "email:ActionSendEmail",
+                            "version": 7,
+                            "parameters": {
+                                "account": 2792085,
+                                "saveAfterSent": false
+                            },
+                            "mapper": {
+                                "cc": [],
+                                "to": [
+                                    "inscription@rabaislocal.com"
+                                ],
+                                "bcc": [],
+                                "from": "",
+                                "html": "Nouevau\n\nprénom : {{3.first_name}}\nNom : {{3.last_name}}\nCie : \nCP : \ncourriel : {{3.email}}\nParrain :\n\nFormulaire\n\nPrenom = {{1.first_name}}\nNom : {{1.last_name}}\nCP : {{1.postal_code}}\nCourriel : {{1.email}}\nParrain : {{1.rl_ref}}",
+                                "sender": "",
+                                "headers": [],
+                                "replyTo": "",
+                                "subject": "tentative inscription nouvelle consommateur",
+                                "priority": "normal",
+                                "inReplyTo": "",
+                                "references": [],
+                                "attachments": [],
+                                "contentType": "html"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 2100,
+                                    "y": 0
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "cc": {
+                                            "mode": "chose"
+                                        },
+                                        "to": {
+                                            "mode": "chose",
+                                            "items": [
+                                                null
+                                            ]
+                                        },
+                                        "bcc": {
+                                            "mode": "chose"
+                                        },
+                                        "priority": {
+                                            "label": "Normal"
+                                        },
+                                        "references": {
+                                            "mode": "chose"
+                                        },
+                                        "attachments": {
+                                            "mode": "chose"
+                                        },
+                                        "contentType": {
+                                            "label": "HTML"
+                                        }
+                                    },
+                                    "parameters": {
+                                        "account": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "smtp"
+                                            },
+                                            "label": "likuid (SMTP envoi-form@rabaislocal.com)"
+                                        },
+                                        "saveAfterSent": {
+                                            "label": "No"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "account",
+                                        "type": "account:smtp,google-restricted,microsoft-smtp-imap",
+                                        "label": "Connection",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "saveAfterSent",
+                                        "type": "select",
+                                        "label": "Save message after sending",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                true,
+                                                false
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "type": "hidden"
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "to",
+                                        "spec": {
+                                            "name": "value",
+                                            "type": "email",
+                                            "label": "Email address",
+                                            "required": true
+                                        },
+                                        "type": "array",
+                                        "label": "To",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "subject",
+                                        "type": "text",
+                                        "label": "Subject"
+                                    },
+                                    {
+                                        "name": "contentType",
+                                        "type": "select",
+                                        "label": "Content Type",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                "html",
+                                                "text"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "attachments",
+                                        "spec": [
+                                            {
+                                                "name": "fileName",
+                                                "type": "filename",
+                                                "label": "File name",
+                                                "required": true,
+                                                "semantic": "file:name"
+                                            },
+                                            {
+                                                "name": "data",
+                                                "type": "buffer",
+                                                "label": "Data",
+                                                "required": true,
+                                                "semantic": "file:data"
+                                            },
+                                            {
+                                                "name": "cid",
+                                                "type": "text",
+                                                "label": "Content-ID"
+                                            }
+                                        ],
+                                        "type": "array",
+                                        "label": "Attachments"
+                                    },
+                                    {
+                                        "name": "cc",
+                                        "spec": {
+                                            "name": "value",
+                                            "type": "email",
+                                            "label": "Email address"
+                                        },
+                                        "type": "array",
+                                        "label": "Copy recipient"
+                                    },
+                                    {
+                                        "name": "bcc",
+                                        "spec": {
+                                            "name": "value",
+                                            "type": "email",
+                                            "label": "Email address"
+                                        },
+                                        "type": "array",
+                                        "label": "Blind copy recipient"
+                                    },
+                                    {
+                                        "name": "from",
+                                        "type": "text",
+                                        "label": "From"
+                                    },
+                                    {
+                                        "name": "sender",
+                                        "type": "text",
+                                        "label": "Sender"
+                                    },
+                                    {
+                                        "name": "replyTo",
+                                        "type": "text",
+                                        "label": "Reply-To"
+                                    },
+                                    {
+                                        "name": "inReplyTo",
+                                        "type": "text",
+                                        "label": "In-Reply-To"
+                                    },
+                                    {
+                                        "name": "references",
+                                        "spec": {
+                                            "name": "value",
+                                            "type": "text",
+                                            "label": "Reference",
+                                            "required": true
+                                        },
+                                        "type": "array",
+                                        "label": "References"
+                                    },
+                                    {
+                                        "name": "priority",
+                                        "type": "select",
+                                        "label": "Priority",
+                                        "validate": {
+                                            "enum": [
+                                                "high",
+                                                "normal",
+                                                "low"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "headers",
+                                        "spec": [
+                                            {
+                                                "name": "key",
+                                                "type": "text",
+                                                "label": "Key",
+                                                "required": true
+                                            },
+                                            {
+                                                "name": "value",
+                                                "type": "text",
+                                                "label": "Value",
+                                                "required": true
+                                            }
+                                        ],
+                                        "type": "array",
+                                        "label": "Headers"
+                                    },
+                                    {
+                                        "name": "html",
+                                        "type": "text",
+                                        "label": "Content"
+                                    }
+                                ]
+                            },
+                            "onerror": [
+                                {
+                                    "id": 21,
+                                    "module": "builtin:Ignore",
+                                    "version": 1,
+                                    "metadata": {
+                                        "designer": {
+                                            "x": 2400,
+                                            "y": 0
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "flow": [
+                        {
+                            "id": 9,
+                            "module": "goaffpro:ActionCreateAffiliate",
+                            "version": 1,
+                            "parameters": {
+                                "__IMTCONN__": 5299091
+                            },
+                            "filter": {
+                                "name": "Nouvelle Inscription",
+                                "conditions": [
+                                    [
+                                        {
+                                            "a": "{{4.id}}",
+                                            "o": "notexist"
+                                        }
+                                    ]
+                                ]
+                            },
+                            "mapper": {
+                                "zip": "{{1.code_postal}}",
+                                "email": "{{1.email}}",
+                                "coupon": {},
+                                "status": "pending",
+                                "password": "{{1.nom}}",
+                                "last_name": "{{1.nom}}",
+                                "commission": {
+                                    "on": "product"
+                                },
+                                "first_name": "{{1.prenom}}",
+                                "company_name": "{{1.commerce}}",
+                                "parent_email": "{{ifempty(3.email; empty)}}",
+                                "password_expired": true
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 1500,
+                                    "y": 1050,
+                                    "name": "Module 7 : GoAffPro (Create Affiliate)"
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "gender": {
+                                            "mode": "chose",
+                                            "label": "Empty"
+                                        },
+                                        "status": {
+                                            "mode": "chose",
+                                            "label": "Pending"
+                                        },
+                                        "commission": {
+                                            "nested": {
+                                                "on": {
+                                                    "mode": "chose",
+                                                    "label": "Product"
+                                                },
+                                                "type": {
+                                                    "mode": "chose",
+                                                    "label": "Empty"
+                                                }
+                                            }
+                                        },
+                                        "parent_email": {
+                                            "mode": "edit"
+                                        },
+                                        "password_expired": {
+                                            "mode": "chose"
+                                        }
+                                    },
+                                    "parameters": {
+                                        "__IMTCONN__": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "goaffpro"
+                                            },
+                                            "label": "Groupe_conso"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "__IMTCONN__",
+                                        "type": "account:goaffpro",
+                                        "label": "Connection",
+                                        "required": true
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "email",
+                                        "type": "email",
+                                        "label": "Email",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "password",
+                                        "type": "text",
+                                        "label": "Password"
+                                    },
+                                    {
+                                        "name": "password_expired",
+                                        "type": "boolean",
+                                        "label": "Password Expired"
+                                    },
+                                    {
+                                        "name": "honorific",
+                                        "type": "text",
+                                        "label": "Honorific"
+                                    },
+                                    {
+                                        "name": "name",
+                                        "type": "text",
+                                        "label": "Name"
+                                    },
+                                    {
+                                        "name": "first_name",
+                                        "type": "text",
+                                        "label": "First Name"
+                                    },
+                                    {
+                                        "name": "last_name",
+                                        "type": "text",
+                                        "label": "Last Name"
+                                    },
+                                    {
+                                        "name": "personal_message",
+                                        "type": "text",
+                                        "label": "Personal Message"
+                                    },
+                                    {
+                                        "name": "admin_note",
+                                        "type": "text",
+                                        "label": "Admin Note"
+                                    },
+                                    {
+                                        "name": "extra_1",
+                                        "type": "text",
+                                        "label": "Extra 1"
+                                    },
+                                    {
+                                        "name": "extra_2",
+                                        "type": "text",
+                                        "label": "Extra 2"
+                                    },
+                                    {
+                                        "name": "extra_3",
+                                        "type": "text",
+                                        "label": "Extra 3"
+                                    },
+                                    {
+                                        "name": "gender",
+                                        "type": "select",
+                                        "label": "Gender",
+                                        "validate": {
+                                            "enum": [
+                                                "Male",
+                                                "Female"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "date_of_birth",
+                                        "time": false,
+                                        "type": "date",
+                                        "label": "Date of Birth"
+                                    },
+                                    {
+                                        "name": "phone",
+                                        "type": "text",
+                                        "label": "Phone"
+                                    },
+                                    {
+                                        "name": "company_name",
+                                        "type": "text",
+                                        "label": "Company Name"
+                                    },
+                                    {
+                                        "name": "status",
+                                        "type": "select",
+                                        "label": "Status",
+                                        "validate": {
+                                            "enum": [
+                                                "pending",
+                                                "approved",
+                                                "invited",
+                                                "rejected"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "commission",
+                                        "spec": [
+                                            {
+                                                "name": "type",
+                                                "type": "select",
+                                                "label": "Type",
+                                                "validate": {
+                                                    "enum": [
+                                                        "percentage",
+                                                        "flat_rate"
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "name": "amount",
+                                                "type": "number",
+                                                "label": "Amount"
+                                            },
+                                            {
+                                                "name": "on",
+                                                "type": "select",
+                                                "label": "On",
+                                                "validate": {
+                                                    "enum": [
+                                                        "product"
+                                                    ]
+                                                }
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Commission"
+                                    },
+                                    {
+                                        "name": "ref_code",
+                                        "type": "text",
+                                        "label": "Referral Code"
+                                    },
+                                    {
+                                        "name": "coupon",
+                                        "spec": [
+                                            {
+                                                "name": "code",
+                                                "type": "text",
+                                                "label": "Code"
+                                            },
+                                            {
+                                                "name": "discount_type",
+                                                "type": "text",
+                                                "label": "Discount Type"
+                                            },
+                                            {
+                                                "name": "discount_value",
+                                                "type": "number",
+                                                "label": "Discount Value"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Coupon"
+                                    },
+                                    {
+                                        "name": "address_1",
+                                        "type": "text",
+                                        "label": "Address 1"
+                                    },
+                                    {
+                                        "name": "address_2",
+                                        "type": "text",
+                                        "label": "Address 2"
+                                    },
+                                    {
+                                        "name": "city",
+                                        "type": "text",
+                                        "label": "City"
+                                    },
+                                    {
+                                        "name": "state",
+                                        "type": "text",
+                                        "label": "State"
+                                    },
+                                    {
+                                        "name": "zip",
+                                        "type": "text",
+                                        "label": "ZIP"
+                                    },
+                                    {
+                                        "name": "country",
+                                        "type": "text",
+                                        "label": "Country"
+                                    },
+                                    {
+                                        "name": "website",
+                                        "type": "url",
+                                        "label": "Website"
+                                    },
+                                    {
+                                        "name": "facebook",
+                                        "type": "text",
+                                        "label": "Facebook"
+                                    },
+                                    {
+                                        "name": "instagram",
+                                        "type": "text",
+                                        "label": "Instagram"
+                                    },
+                                    {
+                                        "name": "twitter",
+                                        "type": "text",
+                                        "label": "Twitter"
+                                    },
+                                    {
+                                        "name": "snapchat",
+                                        "type": "text",
+                                        "label": "Snapchat"
+                                    },
+                                    {
+                                        "name": "pinterest",
+                                        "type": "text",
+                                        "label": "Pinterest"
+                                    },
+                                    {
+                                        "name": "tax_identification_number",
+                                        "type": "text",
+                                        "label": "Tax Identification Number"
+                                    },
+                                    {
+                                        "name": "paypal_email",
+                                        "type": "email",
+                                        "label": "Paypal Email"
+                                    },
+                                    {
+                                        "name": "parent_email",
+                                        "type": "select",
+                                        "label": "Parent Email"
+                                    }
+                                ],
+                                "advanced": true
+                            },
+                            "onerror": [
+                                {
+                                    "id": 10,
+                                    "module": "builtin:Break",
+                                    "version": 1,
+                                    "parameters": {},
+                                    "mapper": {
+                                        "count": "3",
+                                        "retry": true,
+                                        "interval": "15"
+                                    },
+                                    "metadata": {
+                                        "designer": {
+                                            "x": 1800,
+                                            "y": 1500
+                                        },
+                                        "restore": {
+                                            "expect": {
+                                                "retry": {
+                                                    "mode": "chose"
+                                                }
+                                            }
+                                        },
+                                        "expect": [
+                                            {
+                                                "name": "retry",
+                                                "type": "boolean",
+                                                "label": "Automatically complete execution",
+                                                "required": true
+                                            },
+                                            {
+                                                "name": "count",
+                                                "type": "uinteger",
+                                                "label": "Number of attempts",
+                                                "required": true,
+                                                "validate": {
+                                                    "max": 10000,
+                                                    "min": 1
+                                                }
+                                            },
+                                            {
+                                                "name": "interval",
+                                                "type": "uinteger",
+                                                "label": "Interval between attempts",
+                                                "required": true,
+                                                "validate": {
+                                                    "max": 44640,
+                                                    "min": 1
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": 11,
+                            "module": "http:ActionSendData",
+                            "version": 3,
+                            "parameters": {
+                                "handleErrors": true,
+                                "useNewZLibDeCompress": true
+                            },
+                            "mapper": {
+                                "ca": "",
+                                "qs": [],
+                                "url": "https://api.goaffpro.com/v1/admin/affiliates/{{9.affiliate_id}}",
+                                "data": "{\r\n  \"group_id\": 14143\n}",
+                                "gzip": true,
+                                "method": "patch",
+                                "headers": [
+                                    {
+                                        "name": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "name": "X-GOAFFPRO-ACCESS-TOKEN",
+                                        "value": "187f764954d3b07e32f8e16d0ac3331d446f247bc50c57243d5eb58b66ec7c11"
+                                    }
+                                ],
+                                "timeout": "",
+                                "useMtls": false,
+                                "authPass": "",
+                                "authUser": "",
+                                "bodyType": "raw",
+                                "contentType": "application/json",
+                                "serializeUrl": false,
+                                "shareCookies": false,
+                                "parseResponse": false,
+                                "followRedirect": true,
+                                "useQuerystring": false,
+                                "followAllRedirects": false,
+                                "rejectUnauthorized": true
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 1800,
+                                    "y": 900,
+                                    "name": "Module 8 : HTTP (Make a request)"
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "qs": {
+                                            "mode": "chose"
+                                        },
+                                        "method": {
+                                            "mode": "chose",
+                                            "label": "PATCH"
+                                        },
+                                        "headers": {
+                                            "mode": "chose",
+                                            "items": [
+                                                null,
+                                                null
+                                            ]
+                                        },
+                                        "bodyType": {
+                                            "label": "Raw"
+                                        },
+                                        "contentType": {
+                                            "label": "JSON (application/json)"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "handleErrors",
+                                        "type": "boolean",
+                                        "label": "Evaluate all states as errors (except for 2xx and 3xx )",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "useNewZLibDeCompress",
+                                        "type": "hidden"
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "url",
+                                        "type": "url",
+                                        "label": "URL",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "serializeUrl",
+                                        "type": "boolean",
+                                        "label": "Serialize URL",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "method",
+                                        "type": "select",
+                                        "label": "Method",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                "get",
+                                                "head",
+                                                "post",
+                                                "put",
+                                                "patch",
+                                                "delete",
+                                                "options"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "headers",
+                                        "spec": [
+                                            {
+                                                "name": "name",
+                                                "type": "text",
+                                                "label": "Name",
+                                                "required": true
+                                            },
+                                            {
+                                                "name": "value",
+                                                "type": "text",
+                                                "label": "Value"
+                                            }
+                                        ],
+                                        "type": "array",
+                                        "label": "Headers"
+                                    },
+                                    {
+                                        "name": "qs",
+                                        "spec": [
+                                            {
+                                                "name": "name",
+                                                "type": "text",
+                                                "label": "Name",
+                                                "required": true
+                                            },
+                                            {
+                                                "name": "value",
+                                                "type": "text",
+                                                "label": "Value"
+                                            }
+                                        ],
+                                        "type": "array",
+                                        "label": "Query String"
+                                    },
+                                    {
+                                        "name": "bodyType",
+                                        "type": "select",
+                                        "label": "Body type",
+                                        "validate": {
+                                            "enum": [
+                                                "raw",
+                                                "x_www_form_urlencoded",
+                                                "multipart_form_data"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "parseResponse",
+                                        "type": "boolean",
+                                        "label": "Parse response",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "authUser",
+                                        "type": "text",
+                                        "label": "User name"
+                                    },
+                                    {
+                                        "name": "authPass",
+                                        "type": "password",
+                                        "label": "Password"
+                                    },
+                                    {
+                                        "name": "timeout",
+                                        "type": "uinteger",
+                                        "label": "Timeout",
+                                        "validate": {
+                                            "max": 300,
+                                            "min": 1
+                                        }
+                                    },
+                                    {
+                                        "name": "shareCookies",
+                                        "type": "boolean",
+                                        "label": "Share cookies with other HTTP modules",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "ca",
+                                        "type": "cert",
+                                        "label": "Self-signed certificate"
+                                    },
+                                    {
+                                        "name": "rejectUnauthorized",
+                                        "type": "boolean",
+                                        "label": "Reject connections that are using unverified (self-signed) certificates",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "followRedirect",
+                                        "type": "boolean",
+                                        "label": "Follow redirect",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "useQuerystring",
+                                        "type": "boolean",
+                                        "label": "Disable serialization of multiple same query string keys as arrays",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "gzip",
+                                        "type": "boolean",
+                                        "label": "Request compressed content",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "useMtls",
+                                        "type": "boolean",
+                                        "label": "Use Mutual TLS",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "contentType",
+                                        "type": "select",
+                                        "label": "Content type",
+                                        "validate": {
+                                            "enum": [
+                                                "text/plain",
+                                                "application/json",
+                                                "application/xml",
+                                                "text/xml",
+                                                "text/html",
+                                                "custom"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "data",
+                                        "type": "buffer",
+                                        "label": "Request content"
+                                    },
+                                    {
+                                        "name": "followAllRedirects",
+                                        "type": "boolean",
+                                        "label": "Follow all redirect",
+                                        "required": true
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 13,
+                            "module": "email:ActionSendEmail",
+                            "version": 7,
+                            "parameters": {
+                                "account": 2792085,
+                                "saveAfterSent": false
+                            },
+                            "mapper": {
+                                "cc": [],
+                                "to": [
+                                    "{{1.email}}"
+                                ],
+                                "bcc": [],
+                                "from": "",
+                                "html": "<!DOCTYPE html>\r\n<html lang=\"fr\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Activation requise – RabaisLocal</title>\r\n  <style>\r\n    /* Reset de base pour les clients mail */\r\n    body, table, td, p, a, li, blockquote { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }\r\n    body {\r\n      font-family: 'Poppins', Arial, sans-serif;\r\n      background-color: #F5F8FF;\r\n      margin: 0;\r\n      padding: 0;\r\n      width: 100% !important;\r\n    }\r\n\r\n    /* Styles des conteneurs */\r\n    .container {\r\n      max-width: 600px;\r\n      margin: 30px auto;\r\n      background: #ffffff;\r\n      border-radius: 16px;\r\n      overflow: hidden;\r\n      box-shadow: 0 4px 20px rgba(62, 83, 165, 0.12);\r\n    }\r\n\r\n    .logo-section {\r\n      background: linear-gradient(135deg, #3E53A5 0%, #5068C4 100%);\r\n      padding: 30px 20px;\r\n      text-align: center;\r\n    }\r\n\r\n    .logo-section img {\r\n      max-width: 180px;\r\n      height: auto;\r\n    }\r\n\r\n    .header {\r\n      background-color: #E8EDFF;\r\n      padding: 25px 20px;\r\n      text-align: center;\r\n      border-bottom: 3px solid #3E53A5;\r\n    }\r\n\r\n    .header h1 {\r\n      color: #3E53A5;\r\n      margin: 0;\r\n      font-size: 26px;\r\n      font-weight: 700;\r\n    }\r\n\r\n    /* Styles du contenu */\r\n    .content {\r\n      padding: 35px 30px;\r\n      color: #1B2240;\r\n      line-height: 1.7;\r\n      font-size: 16px;\r\n    }\r\n\r\n    .highlight {\r\n      color: #3E53A5;\r\n      font-weight: 600;\r\n    }\r\n\r\n    /* Style du bouton */\r\n    .btn-container {\r\n      text-align: center;\r\n      margin: 35px 0;\r\n    }\r\n\r\n    .btn {\r\n      background: linear-gradient(135deg, #10b981 0%, #059669 100%);\r\n      color: #ffffff !important;\r\n      text-decoration: none;\r\n      padding: 16px 35px;\r\n      border-radius: 10px;\r\n      font-weight: 700;\r\n      font-size: 16px;\r\n      display: inline-block;\r\n      box-shadow: 0 6px 16px rgba(16, 185, 129, 0.3);\r\n      transition: all 0.3s ease;\r\n    }\r\n\r\n    .info-box {\r\n      background: #FFF4E6;\r\n      border-left: 4px solid #FF8C42;\r\n      padding: 16px;\r\n      border-radius: 8px;\r\n      margin: 25px 0;\r\n      font-size: 15px;\r\n    }\r\n\r\n    .backup-link {\r\n      background: #F5F8FF;\r\n      padding: 15px;\r\n      border-radius: 8px;\r\n      margin-top: 25px;\r\n      font-size: 13px;\r\n      color: #5B6385;\r\n    }\r\n\r\n    .backup-link a {\r\n      color: #3E53A5;\r\n      word-break: break-all;\r\n      text-decoration: none;\r\n      font-weight: 600;\r\n    }\r\n\r\n    /* Style du pied de page */\r\n    .footer {\r\n      background: linear-gradient(135deg, #3E53A5 0%, #2E4395 100%);\r\n      padding: 25px 20px;\r\n      text-align: center;\r\n      font-size: 13px;\r\n      color: #E3E8FF;\r\n      line-height: 1.6;\r\n    }\r\n\r\n    .footer a {\r\n      color: #ffffff;\r\n      text-decoration: none;\r\n      font-weight: 600;\r\n    }\r\n\r\n    .footer .tagline {\r\n      font-size: 14px;\r\n      font-weight: 600;\r\n      color: #ffffff;\r\n      margin-top: 12px;\r\n    }\r\n\r\n    .divider {\r\n      border: 0;\r\n      border-top: 2px solid #E3E8FF;\r\n      margin: 30px 0;\r\n    }\r\n\r\n    /* Responsive */\r\n    @media screen and (max-width: 600px) {\r\n      .container {\r\n        margin: 10px;\r\n        border-radius: 12px;\r\n      }\r\n      .content {\r\n        padding: 25px 20px;\r\n      }\r\n      .btn {\r\n        display: block;\r\n        width: auto;\r\n        padding: 14px 25px;\r\n        font-size: 15px;\r\n      }\r\n      .header h1 {\r\n        font-size: 22px;\r\n      }\r\n    }\r\n  </style>\r\n</head>\r\n<body>\r\n  <div class=\"container\">\r\n\r\n    <!-- Logo Section -->\r\n    <div class=\"logo-section\">\r\n      <img src=\"https://statics.myclickfunnels.com/workspace/jklqVP/image/17823503/file/d5fb15091926d11524543af90a9a5e26.png\" alt=\"RabaisLocal Logo\">\r\n    </div>\r\n\r\n    <!-- En-tête -->\r\n    <div class=\"header\">\r\n      <h1>🚀 Dernière étape !</h1>\r\n    </div>\r\n\r\n    <!-- Contenu principal -->\r\n    <div class=\"content\">\r\n      <p style=\"font-size: 17px;\">Bonjour <strong class=\"highlight\">{{1.prenom}}</strong>,</p>\r\n\r\n      <p>Merci d'avoir inscrit <strong class=\"highlight\">{{1.commerce}}</strong> sur RabaisLocal !</p>\r\n\r\n      <p>Pour garantir la sécurité de notre réseau et activer vos accès commerçant, nous devons valider votre adresse courriel.</p>\r\n\r\n      <div class=\"info-box\">\r\n        <strong>⚡ Action requise :</strong> Cliquez sur le bouton ci-dessous pour confirmer votre adresse courriel et activer votre compte consommateur immédiatement.\r\n      </div>\r\n\r\n      <!-- BOUTON D'ACTION -->\r\n      <div class=\"btn-container\">\r\n        <a href=\"https://hook.us2.make.com/hzwartzb93oerpfwggysogyjw8nklj1h?email={{1.email}}\" class=\"btn\">\r\n          ✅ ACTIVER MON COMPTE CONSOMMATEUR        </a>\r\n      </div>\r\n\r\n      <p style=\"text-align: center; color: #5B6385; font-size: 14px; margin-top: 20px;\">\r\n        <em>Activation en un seul clic • Aucun mot de passe requis</em>\r\n      </p>\r\n\r\n      <!-- Lien de secours -->\r\n      <div class=\"backup-link\">\r\n        <strong>⚙️ Le bouton ne fonctionne pas ?</strong><br>\r\n        Copiez ce lien dans votre navigateur :<br>\r\n        <a href=\"https://hook.us2.make.com/hzwartzb93oerpfwggysogyjw8nklj1h?email={{1.email}}\">\r\n          https://hook.us2.make.com/hzwartzb93oerpfwggysogyjw8nklj1h?email={{1.email}}\r\n        </a>\r\n      </div>\r\n\r\n      <hr class=\"divider\">\r\n\r\n      <p style=\"font-size: 14px; color: #5B6385; line-height: 1.6;\">\r\n        <strong>💡 Ce qui vous attend après l'activation :</strong><br>\r\n        • Accès à votre tableau de bord commerçant<br>\r\n        • Création de vos premières offres locales<br>\r\n        • Visibilité auprès de 2 600+ membres pré-inscrits<br>\r\n        • Outils marketing et rapports en temps réel\r\n      </p>\r\n\r\n      <hr class=\"divider\">\r\n\r\n      <p style=\"font-size: 13px; color: #888; font-style: italic;\">\r\n        Si vous n'êtes pas à l'origine de cette demande, ignorez simplement ce courriel. Aucune action ne sera prise sur votre compte.\r\n      </p>\r\n\r\n      <p style=\"margin-top: 25px;\">\r\n        À bientôt sur RabaisLocal,<br>\r\n        <strong style=\"color: #3E53A5;\">L'équipe RabaisLocal</strong><br>\r\n        <span style=\"font-size: 14px; color: #5B6385;\">📧 <a href=\"mailto:support@rabaislocal.com\" style=\"color: #3E53A5; text-decoration: none;\">support@rabaislocal.com</a> • 📞 819-944-2199</span>\r\n      </p>\r\n    </div>\r\n\r\n    <!-- Pied de page -->\r\n    <div class=\"footer\">\r\n      <div class=\"tagline\">💙 Ensemble, on fait gagner tout le monde.</div>\r\n\r\n      <p style=\"margin: 15px 0 5px;\">\r\n        © 2025 RabaisLocal – Tous droits réservés<br>\r\n        8-444 boul. Sainte-Madeleine, Trois-Rivières (QC) G8T 3N4<br>\r\n        NEQ : 2240032849\r\n      </p>\r\n\r\n      <p style=\"margin: 12px 0 0; font-size: 12px; opacity: 0.9;\">\r\n        <a href=\"https://www.rabaislocal.com/politique-confidentialite\">Politique de confidentialité</a> •\r\n        <a href=\"https://www.rabaislocal.com/conditions-utilisation\">Conditions d'utilisation</a>\r\n      </p>\r\n\r\n      <p style=\"margin-top: 15px; font-size: 11px; opacity: 0.8;\">\r\n        Ceci est un message automatique, merci de ne pas y répondre directement.<br>\r\n        Pour toute question, contactez <a href=\"mailto:support@rabaislocal.com\">support@rabaislocal.com</a>\r\n      </p>\r\n    </div>\r\n  </div>\r\n</body>\r\n</html>\r\n",
+                                "sender": "",
+                                "headers": [],
+                                "replyTo": "",
+                                "subject": "⚠️ Action requise : Activez votre compte commerçant RabaisLocal",
+                                "priority": "normal",
+                                "inReplyTo": "",
+                                "references": [],
+                                "attachments": [],
+                                "contentType": "html"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 2100,
+                                    "y": 900
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "cc": {
+                                            "mode": "chose"
+                                        },
+                                        "to": {
+                                            "mode": "chose",
+                                            "items": [
+                                                null
+                                            ]
+                                        },
+                                        "bcc": {
+                                            "mode": "chose"
+                                        },
+                                        "priority": {
+                                            "label": "Normal"
+                                        },
+                                        "references": {
+                                            "mode": "chose"
+                                        },
+                                        "attachments": {
+                                            "mode": "chose"
+                                        },
+                                        "contentType": {
+                                            "label": "HTML"
+                                        }
+                                    },
+                                    "parameters": {
+                                        "account": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "smtp"
+                                            },
+                                            "label": "likuid (SMTP envoi-form@rabaislocal.com)"
+                                        },
+                                        "saveAfterSent": {
+                                            "label": "No"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "account",
+                                        "type": "account:smtp,google-restricted,microsoft-smtp-imap",
+                                        "label": "Connection",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "saveAfterSent",
+                                        "type": "select",
+                                        "label": "Save message after sending",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                true,
+                                                false
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "type": "hidden"
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "to",
+                                        "spec": {
+                                            "name": "value",
+                                            "type": "email",
+                                            "label": "Email address",
+                                            "required": true
+                                        },
+                                        "type": "array",
+                                        "label": "To",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "subject",
+                                        "type": "text",
+                                        "label": "Subject"
+                                    },
+                                    {
+                                        "name": "contentType",
+                                        "type": "select",
+                                        "label": "Content Type",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                "html",
+                                                "text"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "attachments",
+                                        "spec": [
+                                            {
+                                                "name": "fileName",
+                                                "type": "filename",
+                                                "label": "File name",
+                                                "required": true,
+                                                "semantic": "file:name"
+                                            },
+                                            {
+                                                "name": "data",
+                                                "type": "buffer",
+                                                "label": "Data",
+                                                "required": true,
+                                                "semantic": "file:data"
+                                            },
+                                            {
+                                                "name": "cid",
+                                                "type": "text",
+                                                "label": "Content-ID"
+                                            }
+                                        ],
+                                        "type": "array",
+                                        "label": "Attachments"
+                                    },
+                                    {
+                                        "name": "cc",
+                                        "spec": {
+                                            "name": "value",
+                                            "type": "email",
+                                            "label": "Email address"
+                                        },
+                                        "type": "array",
+                                        "label": "Copy recipient"
+                                    },
+                                    {
+                                        "name": "bcc",
+                                        "spec": {
+                                            "name": "value",
+                                            "type": "email",
+                                            "label": "Email address"
+                                        },
+                                        "type": "array",
+                                        "label": "Blind copy recipient"
+                                    },
+                                    {
+                                        "name": "from",
+                                        "type": "text",
+                                        "label": "From"
+                                    },
+                                    {
+                                        "name": "sender",
+                                        "type": "text",
+                                        "label": "Sender"
+                                    },
+                                    {
+                                        "name": "replyTo",
+                                        "type": "text",
+                                        "label": "Reply-To"
+                                    },
+                                    {
+                                        "name": "inReplyTo",
+                                        "type": "text",
+                                        "label": "In-Reply-To"
+                                    },
+                                    {
+                                        "name": "references",
+                                        "spec": {
+                                            "name": "value",
+                                            "type": "text",
+                                            "label": "Reference",
+                                            "required": true
+                                        },
+                                        "type": "array",
+                                        "label": "References"
+                                    },
+                                    {
+                                        "name": "priority",
+                                        "type": "select",
+                                        "label": "Priority",
+                                        "validate": {
+                                            "enum": [
+                                                "high",
+                                                "normal",
+                                                "low"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "headers",
+                                        "spec": [
+                                            {
+                                                "name": "key",
+                                                "type": "text",
+                                                "label": "Key",
+                                                "required": true
+                                            },
+                                            {
+                                                "name": "value",
+                                                "type": "text",
+                                                "label": "Value",
+                                                "required": true
+                                            }
+                                        ],
+                                        "type": "array",
+                                        "label": "Headers"
+                                    },
+                                    {
+                                        "name": "html",
+                                        "type": "text",
+                                        "label": "Content"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "id": 14,
+                            "module": "google-sheets:addRow",
+                            "version": 2,
+                            "parameters": {
+                                "__IMTCONN__": 2613380
+                            },
+                            "mapper": {
+                                "from": "drive",
+                                "mode": "select",
+                                "values": {
+                                    "0": "'{{formatDate(now; \"YYYY-MM-DD HH:mm:ss\"; \"America/Toronto\")}}'",
+                                    "1": "{{9.affiliate_id}}",
+                                    "2": "{{1.email}}",
+                                    "3": "{{1.first_name}}",
+                                    "4": "{{1.last_name}}",
+                                    "5": "{{2.CodeParrainFinal}}",
+                                    "6": "{{1.postal_code}}",
+                                    "7": "{{1.rl_ref}}",
+                                    "8": "Consomamteur"
+                                },
+                                "sheetId": "nouvelle_inscription",
+                                "spreadsheetId": "/1a4GtWilLsU2Hcrt-pK-w5wDr-eVS4o4D/1kqTIiEY0TjnJSmSIdpbjVcSmvcFiRnHG/1KE4fx9ivUXBpQQIpcpfLmSHgGCiRbbxbdDWsip8Wk4I",
+                                "includesHeaders": true,
+                                "insertDataOption": "INSERT_ROWS",
+                                "valueInputOption": "USER_ENTERED",
+                                "insertUnformatted": false
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 2400,
+                                    "y": 900
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "from": {
+                                            "label": "My Drive"
+                                        },
+                                        "mode": {
+                                            "label": "Search by path"
+                                        },
+                                        "sheetId": {
+                                            "label": "nouvelle_inscription"
+                                        },
+                                        "spreadsheetId": {
+                                            "path": [
+                                                "RabaisLocal",
+                                                "Backup formulaire inscription ",
+                                                "Consommateurs"
+                                            ]
+                                        },
+                                        "includesHeaders": {
+                                            "label": "Yes",
+                                            "nested": [
+                                                {
+                                                    "name": "values",
+                                                    "spec": [
+                                                        {
+                                                            "name": "0",
+                                                            "type": "text",
+                                                            "label": "timestamp (A)"
+                                                        },
+                                                        {
+                                                            "name": "1",
+                                                            "type": "text",
+                                                            "label": "Affiliate_id (B)"
+                                                        },
+                                                        {
+                                                            "name": "2",
+                                                            "type": "text",
+                                                            "label": "email (C)"
+                                                        },
+                                                        {
+                                                            "name": "3",
+                                                            "type": "text",
+                                                            "label": "first_name (D)"
+                                                        },
+                                                        {
+                                                            "name": "4",
+                                                            "type": "text",
+                                                            "label": "last_name (E)"
+                                                        },
+                                                        {
+                                                            "name": "5",
+                                                            "type": "text",
+                                                            "label": "ref_id (F)"
+                                                        },
+                                                        {
+                                                            "name": "6",
+                                                            "type": "text",
+                                                            "label": "Groupe (G)"
+                                                        },
+                                                        {
+                                                            "name": "7",
+                                                            "type": "text",
+                                                            "label": "status (H)"
+                                                        },
+                                                        {
+                                                            "name": "8",
+                                                            "type": "text",
+                                                            "label": "note (I)"
+                                                        },
+                                                        {
+                                                            "name": "9",
+                                                            "type": "text",
+                                                            "label": "(J)"
+                                                        },
+                                                        {
+                                                            "name": "10",
+                                                            "type": "text",
+                                                            "label": "(K)"
+                                                        },
+                                                        {
+                                                            "name": "11",
+                                                            "type": "text",
+                                                            "label": "(L)"
+                                                        },
+                                                        {
+                                                            "name": "12",
+                                                            "type": "text",
+                                                            "label": "(M)"
+                                                        },
+                                                        {
+                                                            "name": "13",
+                                                            "type": "text",
+                                                            "label": "(N)"
+                                                        },
+                                                        {
+                                                            "name": "14",
+                                                            "type": "text",
+                                                            "label": "(O)"
+                                                        },
+                                                        {
+                                                            "name": "15",
+                                                            "type": "text",
+                                                            "label": "(P)"
+                                                        },
+                                                        {
+                                                            "name": "16",
+                                                            "type": "text",
+                                                            "label": "(Q)"
+                                                        },
+                                                        {
+                                                            "name": "17",
+                                                            "type": "text",
+                                                            "label": "(R)"
+                                                        },
+                                                        {
+                                                            "name": "18",
+                                                            "type": "text",
+                                                            "label": "(S)"
+                                                        },
+                                                        {
+                                                            "name": "19",
+                                                            "type": "text",
+                                                            "label": "(T)"
+                                                        },
+                                                        {
+                                                            "name": "20",
+                                                            "type": "text",
+                                                            "label": "(U)"
+                                                        },
+                                                        {
+                                                            "name": "21",
+                                                            "type": "text",
+                                                            "label": "(V)"
+                                                        },
+                                                        {
+                                                            "name": "22",
+                                                            "type": "text",
+                                                            "label": "(W)"
+                                                        },
+                                                        {
+                                                            "name": "23",
+                                                            "type": "text",
+                                                            "label": "(X)"
+                                                        },
+                                                        {
+                                                            "name": "24",
+                                                            "type": "text",
+                                                            "label": "(Y)"
+                                                        },
+                                                        {
+                                                            "name": "25",
+                                                            "type": "text",
+                                                            "label": "(Z)"
+                                                        },
+                                                        {
+                                                            "name": "26",
+                                                            "type": "text",
+                                                            "label": "(AA)"
+                                                        },
+                                                        {
+                                                            "name": "27",
+                                                            "type": "text",
+                                                            "label": "(AB)"
+                                                        }
+                                                    ],
+                                                    "type": "collection",
+                                                    "label": "Values"
+                                                }
+                                            ]
+                                        },
+                                        "insertDataOption": {
+                                            "mode": "chose",
+                                            "label": "Insert rows"
+                                        },
+                                        "valueInputOption": {
+                                            "mode": "chose",
+                                            "label": "User entered"
+                                        },
+                                        "insertUnformatted": {
+                                            "mode": "chose"
+                                        }
+                                    },
+                                    "parameters": {
+                                        "__IMTCONN__": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "google"
+                                            },
+                                            "label": "My Google connection (rabaislocal@gmail.com)"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "__IMTCONN__",
+                                        "type": "account:google",
+                                        "label": "Connection",
+                                        "required": true
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "mode",
+                                        "type": "select",
+                                        "label": "Search Method",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                "select",
+                                                "fromAll",
+                                                "map"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "insertUnformatted",
+                                        "type": "boolean",
+                                        "label": "Unformatted",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "valueInputOption",
+                                        "type": "select",
+                                        "label": "Value input option",
+                                        "validate": {
+                                            "enum": [
+                                                "USER_ENTERED",
+                                                "RAW"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "insertDataOption",
+                                        "type": "select",
+                                        "label": "Insert data option",
+                                        "validate": {
+                                            "enum": [
+                                                "INSERT_ROWS",
+                                                "OVERWRITE"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "from",
+                                        "type": "select",
+                                        "label": "Drive",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                "drive",
+                                                "share",
+                                                "team"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "spreadsheetId",
+                                        "type": "file",
+                                        "label": "Spreadsheet ID",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "sheetId",
+                                        "type": "select",
+                                        "label": "Sheet Name",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "includesHeaders",
+                                        "type": "select",
+                                        "label": "Table contains headers",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                true,
+                                                false
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "values",
+                                        "spec": [
+                                            {
+                                                "name": "0",
+                                                "type": "text",
+                                                "label": "timestamp (A)"
+                                            },
+                                            {
+                                                "name": "1",
+                                                "type": "text",
+                                                "label": "Affiliate_id (B)"
+                                            },
+                                            {
+                                                "name": "2",
+                                                "type": "text",
+                                                "label": "email (C)"
+                                            },
+                                            {
+                                                "name": "3",
+                                                "type": "text",
+                                                "label": "first_name (D)"
+                                            },
+                                            {
+                                                "name": "4",
+                                                "type": "text",
+                                                "label": "last_name (E)"
+                                            },
+                                            {
+                                                "name": "5",
+                                                "type": "text",
+                                                "label": "ref_id (F)"
+                                            },
+                                            {
+                                                "name": "6",
+                                                "type": "text",
+                                                "label": "Groupe (G)"
+                                            },
+                                            {
+                                                "name": "7",
+                                                "type": "text",
+                                                "label": "status (H)"
+                                            },
+                                            {
+                                                "name": "8",
+                                                "type": "text",
+                                                "label": "note (I)"
+                                            },
+                                            {
+                                                "name": "9",
+                                                "type": "text",
+                                                "label": "(J)"
+                                            },
+                                            {
+                                                "name": "10",
+                                                "type": "text",
+                                                "label": "(K)"
+                                            },
+                                            {
+                                                "name": "11",
+                                                "type": "text",
+                                                "label": "(L)"
+                                            },
+                                            {
+                                                "name": "12",
+                                                "type": "text",
+                                                "label": "(M)"
+                                            },
+                                            {
+                                                "name": "13",
+                                                "type": "text",
+                                                "label": "(N)"
+                                            },
+                                            {
+                                                "name": "14",
+                                                "type": "text",
+                                                "label": "(O)"
+                                            },
+                                            {
+                                                "name": "15",
+                                                "type": "text",
+                                                "label": "(P)"
+                                            },
+                                            {
+                                                "name": "16",
+                                                "type": "text",
+                                                "label": "(Q)"
+                                            },
+                                            {
+                                                "name": "17",
+                                                "type": "text",
+                                                "label": "(R)"
+                                            },
+                                            {
+                                                "name": "18",
+                                                "type": "text",
+                                                "label": "(S)"
+                                            },
+                                            {
+                                                "name": "19",
+                                                "type": "text",
+                                                "label": "(T)"
+                                            },
+                                            {
+                                                "name": "20",
+                                                "type": "text",
+                                                "label": "(U)"
+                                            },
+                                            {
+                                                "name": "21",
+                                                "type": "text",
+                                                "label": "(V)"
+                                            },
+                                            {
+                                                "name": "22",
+                                                "type": "text",
+                                                "label": "(W)"
+                                            },
+                                            {
+                                                "name": "23",
+                                                "type": "text",
+                                                "label": "(X)"
+                                            },
+                                            {
+                                                "name": "24",
+                                                "type": "text",
+                                                "label": "(Y)"
+                                            },
+                                            {
+                                                "name": "25",
+                                                "type": "text",
+                                                "label": "(Z)"
+                                            },
+                                            {
+                                                "name": "26",
+                                                "type": "text",
+                                                "label": "(AA)"
+                                            },
+                                            {
+                                                "name": "27",
+                                                "type": "text",
+                                                "label": "(AB)"
+                                            }
+                                        ],
+                                        "type": "collection",
+                                        "label": "Values"
+                                    }
+                                ]
+                            },
+                            "onerror": [
+                                {
+                                    "id": 15,
+                                    "module": "builtin:Ignore",
+                                    "version": 1,
+                                    "metadata": {
+                                        "designer": {
+                                            "x": 2700,
+                                            "y": 1200
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": 16,
+                            "module": "supabase:createARow",
+                            "version": 1,
+                            "parameters": {
+                                "__IMTCONN__": 5926029
+                            },
+                            "mapper": {
+                                "email": "{{1.email}}",
+                                "table": "Backup inscriptions_consommateur",
+                                "ref_id": "{{3.ref_codes[]}}",
+                                "last_name": "{{1.last_name}}",
+                                "timestamp": "'{{formatDate(now; \"YYYY-MM-DD HH:mm:ss\"; \"America/Toronto\")}}'",
+                                "first_name": "{{1.first_name}}",
+                                "ref_id_formulaire": "{{1.rl_ref}}"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 2700,
+                                    "y": 750
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "table": {
+                                            "mode": "chose",
+                                            "label": "Backup inscriptions_consommateur",
+                                            "nested": [
+                                                {
+                                                    "help": "Note:\nThis is a Primary Key.<pk/>",
+                                                    "name": "id",
+                                                    "type": "integer",
+                                                    "label": "id",
+                                                    "options": null,
+                                                    "required": false
+                                                },
+                                                {
+                                                    "help": "Defaults to now(). ",
+                                                    "name": "timestamp",
+                                                    "type": "text",
+                                                    "label": "timestamp",
+                                                    "options": null,
+                                                    "required": false
+                                                },
+                                                {
+                                                    "help": "",
+                                                    "name": "email",
+                                                    "type": "text",
+                                                    "label": "email",
+                                                    "options": null,
+                                                    "required": false
+                                                },
+                                                {
+                                                    "help": "",
+                                                    "name": "first_name",
+                                                    "type": "text",
+                                                    "label": "first_name",
+                                                    "options": null,
+                                                    "required": false
+                                                },
+                                                {
+                                                    "help": "",
+                                                    "name": "last_name",
+                                                    "type": "text",
+                                                    "label": "last_name",
+                                                    "options": null,
+                                                    "required": false
+                                                },
+                                                {
+                                                    "help": "",
+                                                    "name": "ref_id",
+                                                    "type": "text",
+                                                    "label": "ref_id",
+                                                    "options": null,
+                                                    "required": false
+                                                },
+                                                {
+                                                    "help": "",
+                                                    "name": "Groupe",
+                                                    "type": "text",
+                                                    "label": "Groupe",
+                                                    "options": null,
+                                                    "required": false
+                                                },
+                                                {
+                                                    "help": "",
+                                                    "name": "status",
+                                                    "type": "text",
+                                                    "label": "status",
+                                                    "options": null,
+                                                    "required": false
+                                                },
+                                                {
+                                                    "help": "",
+                                                    "name": "ref_id_formulaire",
+                                                    "type": "text",
+                                                    "label": "ref_id_formulaire",
+                                                    "options": null,
+                                                    "required": false
+                                                },
+                                                {
+                                                    "help": "",
+                                                    "name": "note",
+                                                    "type": "text",
+                                                    "label": "note",
+                                                    "options": null,
+                                                    "required": false
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "parameters": {
+                                        "__IMTCONN__": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "supabase"
+                                            },
+                                            "label": "RabaisLocal Supabase"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "__IMTCONN__",
+                                        "type": "account:supabase",
+                                        "label": "Connection",
+                                        "required": true
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "table",
+                                        "type": "select",
+                                        "label": "Table",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "id",
+                                        "type": "integer"
+                                    },
+                                    {
+                                        "name": "timestamp",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "email",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "first_name",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "last_name",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "ref_id",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "Groupe",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "status",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "ref_id_formulaire",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "name": "note",
+                                        "type": "text"
+                                    }
+                                ],
+                                "interface": [
+                                    {
+                                        "name": "id",
+                                        "type": "number",
+                                        "label": "id"
+                                    },
+                                    {
+                                        "name": "timestamp",
+                                        "type": "text",
+                                        "label": "timestamp"
+                                    },
+                                    {
+                                        "name": "email",
+                                        "type": "text",
+                                        "label": "email"
+                                    },
+                                    {
+                                        "name": "first_name",
+                                        "type": "text",
+                                        "label": "first_name"
+                                    },
+                                    {
+                                        "name": "last_name",
+                                        "type": "text",
+                                        "label": "last_name"
+                                    },
+                                    {
+                                        "name": "ref_id",
+                                        "type": "text",
+                                        "label": "ref_id"
+                                    },
+                                    {
+                                        "name": "Groupe",
+                                        "type": "text",
+                                        "label": "Groupe"
+                                    },
+                                    {
+                                        "name": "status",
+                                        "type": "text",
+                                        "label": "status"
+                                    },
+                                    {
+                                        "name": "ref_id_formulaire",
+                                        "type": "text",
+                                        "label": "ref_id_formulaire"
+                                    },
+                                    {
+                                        "name": "note",
+                                        "type": "text",
+                                        "label": "note"
+                                    }
+                                ]
+                            },
+                            "onerror": [
+                                {
+                                    "id": 17,
+                                    "module": "builtin:Ignore",
+                                    "version": 1,
+                                    "metadata": {
+                                        "designer": {
+                                            "x": 3000,
+                                            "y": 900
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": 18,
+                            "module": "email:ActionSendEmail",
+                            "version": 7,
+                            "parameters": {
+                                "account": 2792085,
+                                "saveAfterSent": false
+                            },
+                            "mapper": {
+                                "cc": [],
+                                "to": [
+                                    "inscription@rabaislocal.com"
+                                ],
+                                "bcc": [],
+                                "from": "",
+                                "html": "Nouevau\n\nprénom : \nNom : \nCie : \nCP : \ncourriel : \nParrain :\n\nFormulaire\n\nPrenom = {{1.first_name}}\nNom : {{1.last_name}}\nCP : {{1.postal_code}}\nCourriel : {{1.email}}\nParrain : {{1.rl_ref}}",
+                                "sender": "",
+                                "headers": [],
+                                "replyTo": "",
+                                "subject": "nouveau parain pas de  parrain",
+                                "priority": "normal",
+                                "inReplyTo": "",
+                                "references": [],
+                                "attachments": [],
+                                "contentType": "html"
+                            },
+                            "metadata": {
+                                "designer": {
+                                    "x": 3000,
+                                    "y": 600
+                                },
+                                "restore": {
+                                    "expect": {
+                                        "cc": {
+                                            "mode": "chose"
+                                        },
+                                        "to": {
+                                            "mode": "chose",
+                                            "items": [
+                                                null
+                                            ]
+                                        },
+                                        "bcc": {
+                                            "mode": "chose"
+                                        },
+                                        "priority": {
+                                            "label": "Normal"
+                                        },
+                                        "references": {
+                                            "mode": "chose"
+                                        },
+                                        "attachments": {
+                                            "mode": "chose"
+                                        },
+                                        "contentType": {
+                                            "label": "HTML"
+                                        }
+                                    },
+                                    "parameters": {
+                                        "account": {
+                                            "data": {
+                                                "scoped": "true",
+                                                "connection": "smtp"
+                                            },
+                                            "label": "likuid (SMTP envoi-form@rabaislocal.com)"
+                                        },
+                                        "saveAfterSent": {
+                                            "label": "No"
+                                        }
+                                    }
+                                },
+                                "parameters": [
+                                    {
+                                        "name": "account",
+                                        "type": "account:smtp,google-restricted,microsoft-smtp-imap",
+                                        "label": "Connection",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "saveAfterSent",
+                                        "type": "select",
+                                        "label": "Save message after sending",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                true,
+                                                false
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "type": "hidden"
+                                    }
+                                ],
+                                "expect": [
+                                    {
+                                        "name": "to",
+                                        "spec": {
+                                            "name": "value",
+                                            "type": "email",
+                                            "label": "Email address",
+                                            "required": true
+                                        },
+                                        "type": "array",
+                                        "label": "To",
+                                        "required": true
+                                    },
+                                    {
+                                        "name": "subject",
+                                        "type": "text",
+                                        "label": "Subject"
+                                    },
+                                    {
+                                        "name": "contentType",
+                                        "type": "select",
+                                        "label": "Content Type",
+                                        "required": true,
+                                        "validate": {
+                                            "enum": [
+                                                "html",
+                                                "text"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "attachments",
+                                        "spec": [
+                                            {
+                                                "name": "fileName",
+                                                "type": "filename",
+                                                "label": "File name",
+                                                "required": true,
+                                                "semantic": "file:name"
+                                            },
+                                            {
+                                                "name": "data",
+                                                "type": "buffer",
+                                                "label": "Data",
+                                                "required": true,
+                                                "semantic": "file:data"
+                                            },
+                                            {
+                                                "name": "cid",
+                                                "type": "text",
+                                                "label": "Content-ID"
+                                            }
+                                        ],
+                                        "type": "array",
+                                        "label": "Attachments"
+                                    },
+                                    {
+                                        "name": "cc",
+                                        "spec": {
+                                            "name": "value",
+                                            "type": "email",
+                                            "label": "Email address"
+                                        },
+                                        "type": "array",
+                                        "label": "Copy recipient"
+                                    },
+                                    {
+                                        "name": "bcc",
+                                        "spec": {
+                                            "name": "value",
+                                            "type": "email",
+                                            "label": "Email address"
+                                        },
+                                        "type": "array",
+                                        "label": "Blind copy recipient"
+                                    },
+                                    {
+                                        "name": "from",
+                                        "type": "text",
+                                        "label": "From"
+                                    },
+                                    {
+                                        "name": "sender",
+                                        "type": "text",
+                                        "label": "Sender"
+                                    },
+                                    {
+                                        "name": "replyTo",
+                                        "type": "text",
+                                        "label": "Reply-To"
+                                    },
+                                    {
+                                        "name": "inReplyTo",
+                                        "type": "text",
+                                        "label": "In-Reply-To"
+                                    },
+                                    {
+                                        "name": "references",
+                                        "spec": {
+                                            "name": "value",
+                                            "type": "text",
+                                            "label": "Reference",
+                                            "required": true
+                                        },
+                                        "type": "array",
+                                        "label": "References"
+                                    },
+                                    {
+                                        "name": "priority",
+                                        "type": "select",
+                                        "label": "Priority",
+                                        "validate": {
+                                            "enum": [
+                                                "high",
+                                                "normal",
+                                                "low"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "headers",
+                                        "spec": [
+                                            {
+                                                "name": "key",
+                                                "type": "text",
+                                                "label": "Key",
+                                                "required": true
+                                            },
+                                            {
+                                                "name": "value",
+                                                "type": "text",
+                                                "label": "Value",
+                                                "required": true
+                                            }
+                                        ],
+                                        "type": "array",
+                                        "label": "Headers"
+                                    },
+                                    {
+                                        "name": "html",
+                                        "type": "text",
+                                        "label": "Content"
+                                    }
+                                ]
+                            },
+                            "onerror": [
+                                {
+                                    "id": 19,
+                                    "module": "builtin:Ignore",
+                                    "version": 1,
+                                    "metadata": {
+                                        "designer": {
+                                            "x": 3300,
+                                            "y": 600
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "metadata": {
+        "instant": true,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": false,
+            "slots": null,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": true,
+            "freshVariables": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "us2.make.com",
+        "notes": []
+    }
+}

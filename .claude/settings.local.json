@@ -16,7 +16,13 @@
       "Bash(cp:*)",
       "Bash(git checkout:*)",
       "Bash(dir:*)",
-      "Bash(node -e:*)"
+      "Bash(node -e:*)",
+      "Bash(nul)",
+      "Bash(Select-Object Mode, LastWriteTime, Length, Name)",
+      "Bash(done)",
+      "Bash(code:*)",
+      "Bash(cat:*)",
+      "Bash(python3:*)"
     ],
     "deny": [],
     "ask": []

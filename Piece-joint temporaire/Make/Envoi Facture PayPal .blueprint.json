@@ -1,0 +1,691 @@
+{
+    "name": "Envoi Facture PayPal ",
+    "flow": [
+        {
+            "id": 2,
+            "module": "gateway:CustomWebHook",
+            "version": 1,
+            "parameters": {
+                "hook": 1596205,
+                "maxResults": 1
+            },
+            "mapper": {},
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 0
+                },
+                "restore": {
+                    "parameters": {
+                        "hook": {
+                            "data": {
+                                "editable": "true"
+                            },
+                            "label": "Paiement_PayPal_recu"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "hook",
+                        "type": "hook:gateway-webhook",
+                        "label": "Webhook",
+                        "required": true
+                    },
+                    {
+                        "name": "maxResults",
+                        "type": "number",
+                        "label": "Maximum number of results"
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "mc_gross",
+                        "type": "text"
+                    },
+                    {
+                        "name": "protection_eligibility",
+                        "type": "text"
+                    },
+                    {
+                        "name": "item_number1",
+                        "type": "text"
+                    },
+                    {
+                        "name": "payer_id",
+                        "type": "text"
+                    },
+                    {
+                        "name": "tax",
+                        "type": "text"
+                    },
+                    {
+                        "name": "payment_date",
+                        "type": "text"
+                    },
+                    {
+                        "name": "payment_status",
+                        "type": "text"
+                    },
+                    {
+                        "name": "charset",
+                        "type": "text"
+                    },
+                    {
+                        "name": "mc_shipping",
+                        "type": "text"
+                    },
+                    {
+                        "name": "first_name",
+                        "type": "text"
+                    },
+                    {
+                        "name": "mc_fee",
+                        "type": "text"
+                    },
+                    {
+                        "name": "notify_version",
+                        "type": "text"
+                    },
+                    {
+                        "name": "custom",
+                        "type": "text"
+                    },
+                    {
+                        "name": "payer_status",
+                        "type": "text"
+                    },
+                    {
+                        "name": "business",
+                        "type": "text"
+                    },
+                    {
+                        "name": "num_cart_items",
+                        "type": "text"
+                    },
+                    {
+                        "name": "verify_sign",
+                        "type": "text"
+                    },
+                    {
+                        "name": "payer_email",
+                        "type": "text"
+                    },
+                    {
+                        "name": "txn_id",
+                        "type": "text"
+                    },
+                    {
+                        "name": "payment_type",
+                        "type": "text"
+                    },
+                    {
+                        "name": "last_name",
+                        "type": "text"
+                    },
+                    {
+                        "name": "item_name1",
+                        "type": "text"
+                    },
+                    {
+                        "name": "receiver_email",
+                        "type": "text"
+                    },
+                    {
+                        "name": "payment_fee",
+                        "type": "text"
+                    },
+                    {
+                        "name": "shipping_discount",
+                        "type": "text"
+                    },
+                    {
+                        "name": "quantity1",
+                        "type": "text"
+                    },
+                    {
+                        "name": "insurance_amount",
+                        "type": "text"
+                    },
+                    {
+                        "name": "receiver_id",
+                        "type": "text"
+                    },
+                    {
+                        "name": "txn_type",
+                        "type": "text"
+                    },
+                    {
+                        "name": "discount",
+                        "type": "text"
+                    },
+                    {
+                        "name": "mc_gross_1",
+                        "type": "text"
+                    },
+                    {
+                        "name": "mc_currency",
+                        "type": "text"
+                    },
+                    {
+                        "name": "residence_country",
+                        "type": "text"
+                    },
+                    {
+                        "name": "receipt_id",
+                        "type": "text"
+                    },
+                    {
+                        "name": "shipping_method",
+                        "type": "text"
+                    },
+                    {
+                        "name": "transaction_subject",
+                        "type": "text"
+                    },
+                    {
+                        "name": "payment_gross",
+                        "type": "text"
+                    },
+                    {
+                        "name": "ipn_track_id",
+                        "type": "text"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 3,
+            "module": "supabase:createARow",
+            "version": 1,
+            "parameters": {
+                "__IMTCONN__": 5926029
+            },
+            "mapper": {
+                "nom": "{{2.last_name}}",
+                "email": "{{2.payer_email}}",
+                "table": "Paiement_recu_PayPal",
+                "prenom": "{{2.first_name}}",
+                "montant": "{{2.mc_gross}}",
+                "created_at": "{{2.payment_date}}",
+                "statut_dossier": "Payé",
+                "paypal_trans_id": "{{2.payer_id}}",
+                "statut_transaction": "{{2.payment_status}}"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 300,
+                    "y": 0
+                },
+                "restore": {
+                    "expect": {
+                        "table": {
+                            "mode": "chose",
+                            "label": "Paiement_recu_PayPal",
+                            "nested": [
+                                {
+                                    "help": "Note:\nThis is a Primary Key.<pk/>",
+                                    "name": "id",
+                                    "type": "integer",
+                                    "label": "id",
+                                    "options": null,
+                                    "required": false
+                                },
+                                {
+                                    "help": "Defaults to timezone('utc'::text, now()). ",
+                                    "name": "created_at",
+                                    "type": "text",
+                                    "label": "created_at",
+                                    "options": null,
+                                    "required": false
+                                },
+                                {
+                                    "help": "",
+                                    "name": "email",
+                                    "type": "text",
+                                    "label": "email",
+                                    "options": null,
+                                    "required": false
+                                },
+                                {
+                                    "help": "",
+                                    "name": "prenom",
+                                    "type": "text",
+                                    "label": "prenom",
+                                    "options": null,
+                                    "required": false
+                                },
+                                {
+                                    "help": "",
+                                    "name": "nom",
+                                    "type": "text",
+                                    "label": "nom",
+                                    "options": null,
+                                    "required": false
+                                },
+                                {
+                                    "help": "",
+                                    "name": "paypal_trans_id",
+                                    "type": "text",
+                                    "label": "paypal_trans_id",
+                                    "options": null,
+                                    "required": false
+                                },
+                                {
+                                    "help": "",
+                                    "name": "telephone",
+                                    "type": "text",
+                                    "label": "telephone",
+                                    "options": null,
+                                    "required": false
+                                },
+                                {
+                                    "help": "Defaults to attente_formulaire. ",
+                                    "name": "statut_dossier",
+                                    "type": "text",
+                                    "label": "statut_dossier",
+                                    "options": null,
+                                    "required": false
+                                },
+                                {
+                                    "help": "",
+                                    "name": "montant",
+                                    "type": "text",
+                                    "label": "montant",
+                                    "options": null,
+                                    "required": false
+                                },
+                                {
+                                    "help": "",
+                                    "name": "statut_transaction",
+                                    "type": "text",
+                                    "label": "statut_transaction",
+                                    "options": null,
+                                    "required": false
+                                }
+                            ]
+                        }
+                    },
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "supabase"
+                            },
+                            "label": "RabaisLocal Supabase"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:supabase",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "table",
+                        "type": "select",
+                        "label": "Table",
+                        "required": true
+                    },
+                    {
+                        "name": "id",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "created_at",
+                        "type": "text"
+                    },
+                    {
+                        "name": "email",
+                        "type": "text"
+                    },
+                    {
+                        "name": "prenom",
+                        "type": "text"
+                    },
+                    {
+                        "name": "nom",
+                        "type": "text"
+                    },
+                    {
+                        "name": "paypal_trans_id",
+                        "type": "text"
+                    },
+                    {
+                        "name": "telephone",
+                        "type": "text"
+                    },
+                    {
+                        "name": "statut_dossier",
+                        "type": "text"
+                    },
+                    {
+                        "name": "montant",
+                        "type": "text"
+                    },
+                    {
+                        "name": "statut_transaction",
+                        "type": "text"
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "id",
+                        "type": "number",
+                        "label": "id"
+                    },
+                    {
+                        "name": "created_at",
+                        "type": "text",
+                        "label": "created_at"
+                    },
+                    {
+                        "name": "email",
+                        "type": "text",
+                        "label": "email"
+                    },
+                    {
+                        "name": "prenom",
+                        "type": "text",
+                        "label": "prenom"
+                    },
+                    {
+                        "name": "nom",
+                        "type": "text",
+                        "label": "nom"
+                    },
+                    {
+                        "name": "paypal_trans_id",
+                        "type": "text",
+                        "label": "paypal_trans_id"
+                    },
+                    {
+                        "name": "telephone",
+                        "type": "text",
+                        "label": "telephone"
+                    },
+                    {
+                        "name": "statut_dossier",
+                        "type": "text",
+                        "label": "statut_dossier"
+                    },
+                    {
+                        "name": "montant",
+                        "type": "text",
+                        "label": "montant"
+                    },
+                    {
+                        "name": "statut_transaction",
+                        "type": "text",
+                        "label": "statut_transaction"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 4,
+            "module": "email:ActionSendEmail",
+            "version": 7,
+            "parameters": {
+                "account": 2792085,
+                "saveAfterSent": false
+            },
+            "mapper": {
+                "cc": [],
+                "to": [
+                    "{{2.payer_email}}"
+                ],
+                "bcc": [],
+                "from": "",
+                "html": "<div style=\"font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;\">\r\n  \r\n  <div style=\"background-color: #1a1a1a; padding: 20px; text-align: center;\">\r\n    <h1 style=\"color: #ffffff; margin: 0; font-size: 24px;\">RABAISLOCAL</h1>\r\n  </div>\r\n\r\n  <div style=\"padding: 30px;\">\r\n    <p style=\"font-size: 16px;\">Bonjour <strong>{{2.first_name}}</strong>,</p>\r\n    \r\n    <p>Nous vous confirmons la bonne réception de votre paiement. Bienvenue dans l'aventure RabaisLocal en tant qu'Affilié Fondateur !</p>\r\n    \r\n    <p>Voici votre reçu officiel :</p>\r\n\r\n    <div style=\"background-color: #f9f9f9; padding: 15px; border-radius: 5px; border: 1px solid #ddd; margin: 20px 0;\">\r\n      <table width=\"100%\" style=\"border-collapse: collapse;\">\r\n\r\n        <tr>\r\n          <td style=\"padding: 5px 0; color: #666;\">Date :</td>\r\n          <td style=\"padding: 5px 0; text-align: right; font-weight: bold;\">{{2.payment_date}}</td>\r\n        </tr>\r\n\r\n        <tr>\r\n          <td style=\"padding: 5px 0; color: #666;\">N° Transaction :</td>\r\n          <td style=\"padding: 5px 0; text-align: right; font-weight: bold;\">{{2.txn_id}}</td>\r\n        </tr>\r\n\r\n        <tr>\r\n          <td style=\"padding: 5px 0; color: #666;\">Produit :</td>\r\n          <td style=\"padding: 5px 0; text-align: right; font-weight: bold;\">Accès Affilié Fondateur</td>\r\n        </tr>\r\n\r\n        <tr>\r\n          <td style=\"padding: 10px 0; border-top: 1px solid #ccc; font-size: 18px;\"><strong>TOTAL PAYÉ :</strong></td>\r\n          <td style=\"padding: 10px 0; border-top: 1px solid #ccc; text-align: right; font-size: 18px; color: #27ae60;\">\r\n            <strong>{{2.mc_gross}} $ CAD</strong>\r\n          </td>\r\n        </tr>\r\n\r\n      </table>\r\n    </div>\r\n\r\n    <div style=\"background-color: #e8f4fd; padding: 15px; border-radius: 5px; border-left: 4px solid #3498db; margin-bottom: 20px;\">\r\n      <p style=\"margin: 0; font-size: 14px;\"><strong>⚠️ Action requise :</strong> Si vous n'avez pas encore finalisé votre inscription (mot de passe et téléphone), cliquez sur le bouton ci-dessous :</p>\r\n      <div style=\"text-align: center; margin-top: 15px;\">\r\n        <a href=\"https://marketing.rabaislocal.com/page2_form_affilie.html\" style=\"background-color: #3498db; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;\">Finaliser mon inscription</a>\r\n      </div>\r\n    </div>\r\n\r\n    <p style=\"font-size: 14px; color: #666;\">Merci de votre confiance,<br>L'équipe RabaisLocal</p>\r\n  </div>\r\n\r\n  <div style=\"background-color: #f1f1f1; padding: 15px; text-align: center; font-size: 12px; color: #888;\">\r\n    © 2025 RabaisLocal - Tous droits réservés.<br>\r\n    Ceci est un courriel automatique.\r\n  </div>\r\n\r\n</div>\r\n",
+                "sender": "",
+                "headers": [],
+                "replyTo": "",
+                "subject": "🧾 Reçu de paiement : Votre accès Affilié Fondateur",
+                "priority": "normal",
+                "inReplyTo": "",
+                "references": [],
+                "attachments": [],
+                "contentType": "html"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 600,
+                    "y": 0
+                },
+                "restore": {
+                    "expect": {
+                        "cc": {
+                            "mode": "chose"
+                        },
+                        "to": {
+                            "mode": "chose",
+                            "items": [
+                                null
+                            ]
+                        },
+                        "bcc": {
+                            "mode": "chose"
+                        },
+                        "priority": {
+                            "label": "Normal"
+                        },
+                        "references": {
+                            "mode": "chose"
+                        },
+                        "attachments": {
+                            "mode": "chose"
+                        },
+                        "contentType": {
+                            "label": "HTML"
+                        }
+                    },
+                    "parameters": {
+                        "account": {
+                            "data": {
+                                "scoped": "true",
+                                "connection": "smtp"
+                            },
+                            "label": "likuid (SMTP envoi-form@rabaislocal.com)"
+                        },
+                        "saveAfterSent": {
+                            "label": "No"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "account",
+                        "type": "account:smtp,google-restricted,microsoft-smtp-imap",
+                        "label": "Connection",
+                        "required": true
+                    },
+                    {
+                        "name": "saveAfterSent",
+                        "type": "select",
+                        "label": "Save message after sending",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                true,
+                                false
+                            ]
+                        }
+                    },
+                    {
+                        "type": "hidden"
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "to",
+                        "spec": {
+                            "name": "value",
+                            "type": "email",
+                            "label": "Email address",
+                            "required": true
+                        },
+                        "type": "array",
+                        "label": "To",
+                        "required": true
+                    },
+                    {
+                        "name": "subject",
+                        "type": "text",
+                        "label": "Subject"
+                    },
+                    {
+                        "name": "contentType",
+                        "type": "select",
+                        "label": "Content Type",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "html",
+                                "text"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "attachments",
+                        "spec": [
+                            {
+                                "name": "fileName",
+                                "type": "filename",
+                                "label": "File name",
+                                "required": true,
+                                "semantic": "file:name"
+                            },
+                            {
+                                "name": "data",
+                                "type": "buffer",
+                                "label": "Data",
+                                "required": true,
+                                "semantic": "file:data"
+                            },
+                            {
+                                "name": "cid",
+                                "type": "text",
+                                "label": "Content-ID"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Attachments"
+                    },
+                    {
+                        "name": "cc",
+                        "spec": {
+                            "name": "value",
+                            "type": "email",
+                            "label": "Email address"
+                        },
+                        "type": "array",
+                        "label": "Copy recipient"
+                    },
+                    {
+                        "name": "bcc",
+                        "spec": {
+                            "name": "value",
+                            "type": "email",
+                            "label": "Email address"
+                        },
+                        "type": "array",
+                        "label": "Blind copy recipient"
+                    },
+                    {
+                        "name": "from",
+                        "type": "text",
+                        "label": "From"
+                    },
+                    {
+                        "name": "sender",
+                        "type": "text",
+                        "label": "Sender"
+                    },
+                    {
+                        "name": "replyTo",
+                        "type": "text",
+                        "label": "Reply-To"
+                    },
+                    {
+                        "name": "inReplyTo",
+                        "type": "text",
+                        "label": "In-Reply-To"
+                    },
+                    {
+                        "name": "references",
+                        "spec": {
+                            "name": "value",
+                            "type": "text",
+                            "label": "Reference",
+                            "required": true
+                        },
+                        "type": "array",
+                        "label": "References"
+                    },
+                    {
+                        "name": "priority",
+                        "type": "select",
+                        "label": "Priority",
+                        "validate": {
+                            "enum": [
+                                "high",
+                                "normal",
+                                "low"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "headers",
+                        "spec": [
+                            {
+                                "name": "key",
+                                "type": "text",
+                                "label": "Key",
+                                "required": true
+                            },
+                            {
+                                "name": "value",
+                                "type": "text",
+                                "label": "Value",
+                                "required": true
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Headers"
+                    },
+                    {
+                        "name": "html",
+                        "type": "text",
+                        "label": "Content"
+                    }
+                ]
+            }
+        }
+    ],
+    "metadata": {
+        "instant": true,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": false,
+            "slots": null,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false,
+            "freshVariables": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "us2.make.com",
+        "notes": []
+    }
+}
