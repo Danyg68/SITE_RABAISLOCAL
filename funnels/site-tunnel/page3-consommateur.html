@@ -217,6 +217,51 @@ section {
 }
 
 /* ================================================
+   TITRE "EN BONUS"
+   ================================================ */
+.bonus-title {
+  text-align: center;
+  font-size: clamp(1.8rem, 4vw, 2.3rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--rl-blue) 0%, #5068C4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 40px 0 35px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  position: relative;
+  padding: 0 20px;
+}
+
+.bonus-title::before,
+.bonus-title::after {
+  content: '🎁';
+  position: absolute;
+  font-size: clamp(1.5rem, 3vw, 1.8rem);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.bonus-title::before {
+  left: 0;
+}
+
+.bonus-title::after {
+  right: 0;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.8;
+  }
+}
+
+/* ================================================
    LISTE D'INSTRUCTIONS
    ================================================ */
 .instructions {
@@ -289,14 +334,32 @@ section {
 /* ================================================
    CARTES (GRID)
    ================================================ */
+.subtitle-cards {
+  text-align: center;
+  color: var(--rl-blue);
+  font-weight: 700;
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  margin: 40px 0 25px;
+  line-height: 1.3;
+}
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 25px;
-  margin: 35px 0 45px;
+  margin: 25px 0 20px;
   max-width: 860px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.more-benefits {
+  text-align: center;
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  font-weight: 600;
+  color: var(--rl-blue);
+  margin: 20px 0 40px;
+  font-style: italic;
 }
 
 .card {
@@ -544,10 +607,15 @@ button:focus {
     </p>
   </div>
 
+  <!-- Titre EN BONUS -->
+  <div class="bonus-title fade-up fade-delay-3">
+    EN BONUS
+  </div>
+
   <!-- ================================================
        BLOC 5000 PREMIERS
        ================================================ -->
-  <div class="highlight fade-up fade-delay-3">
+  <div class="highlight fade-up fade-delay-4">
     <p style="color:var(--rl-danger);font-weight:700;font-size:1.15rem;">
       🎉 Félicitations ! Tu fais partie des <strong>5,000 premiers consommateurs inscrits</strong> à RabaisLocal !
     </p>
@@ -591,9 +659,15 @@ button:focus {
   <!-- ================================================
        CARTES INFORMATIVES
        ================================================ -->
+  <h2 class="subtitle-cards fade-up fade-delay-4">Tu obtiens en autres....</h2>
+
   <div class="card-grid fade-up fade-delay-4">
     <div class="card">
-      <strong>💳 Carte membre gratuite lors du lancement</strong>
+      <strong>🎯 Rabais simples et variés (au lancement)</strong>
+      Accède facilement à plusieurs types de promotions : rabais instantanés, forfaits exclusifs, coupons et offres spéciales.
+    </div>
+    <div class="card">
+      <strong>💳 Carte de membre gratuite (au lancement)</strong>
       Accès immédiat à ton espace membre avec tous les rabais exclusifs.
     </div>
     <div class="card">
@@ -604,11 +678,9 @@ button:focus {
       <strong>💰 Opportunité de revenu passif</strong>
       Transforme ton inscription gratuite en source de revenus récurrents.
     </div>
-    <div class="card">
-      <strong>🎯 Rabais simples et variés</strong>
-      Accède facilement à plusieurs types de promotions : rabais instantanés, forfaits exclusifs, coupons et offres spéciales.
-    </div>
   </div>
+
+  <p class="more-benefits fade-up fade-delay-4">...et beaucoup plus !</p>
 
   <!-- ================================================
        CTA - DEVENIR AFFILIÉ
