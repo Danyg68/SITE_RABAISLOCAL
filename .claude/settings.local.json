@@ -22,7 +22,10 @@
       "Bash(done)",
       "Bash(code:*)",
       "Bash(cat:*)",
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "Bash(export NEXT_PUBLIC_API_URL=http://localhost:3001/api/v1)",
+      "Bash(npm run lint)",
+      "Bash(npm run typecheck:*)"
     ],
     "deny": [],
     "ask": []

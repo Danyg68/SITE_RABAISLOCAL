@@ -208,6 +208,22 @@ SECTION PAIEMENT - BOUTON PAYPAL HÉBERGÉ
         </p>
       </div>
 
+      <!-- Vérification de la localisation -->
+      <div id="location-warning" style="background: #FFE5E5; border-left: 4px solid #D32F2F; padding: 16px 18px; border-radius: 8px; margin-bottom: 20px; display: none;">
+        <p style="font-size: 15px; color: #1B2240; margin: 0; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 20px;">🌍</span>
+          <strong>Attention : Localisation détectée hors Canada</strong>
+        </p>
+        <p style="font-size: 14px; color: #5A5A5A; margin: 8px 0 0 0; line-height: 1.6;">
+          Nous détectons que vous n'êtes pas au Canada (<strong id="detected-country"></strong>).
+          Veuillez <strong>désactiver votre VPN</strong> ou vérifier votre connexion Internet avant de continuer vers PayPal.
+        </p>
+        <p style="font-size: 14px; color: #D32F2F; margin: 8px 0 0 0; line-height: 1.6; font-weight: 600;">
+          ✓ PayPal doit afficher "Canada" comme pays<br>
+          ✓ La devise doit être en dollars canadiens (CAD)
+        </p>
+      </div>
+
       <!-- Email -->
       <div style="margin-bottom: 20px;">
         <label for="email" style="display: block; font-family: 'Poppins', sans-serif; font-weight: 600; color: #1B2240; margin-bottom: 8px; font-size: 15px;">
@@ -258,8 +274,8 @@ SECTION PAIEMENT - BOUTON PAYPAL HÉBERGÉ
           <input type="hidden" name="currency_code" value="CAD" />
           <input type="hidden" name="lc" value="CA" />
           <input class="pp-UEB6T5RGU53K2" type="submit" value="Acheter" />
-          <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
-          <section style="font-size: 0.75rem;">Optimisé par <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
+          <img src="assets/images/Debit_Credit_APM_0478fd3e.svg" alt="cards" />
+          <section style="font-size: 0.75rem;">Optimisé par <img src="assets/images/paypal-wordmark-color_9bf7b654.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
         </form>
       </div>
     </div>
@@ -468,10 +484,50 @@ localStorage.setItem("rl_ref", ref);
 document.addEventListener("DOMContentLoaded", function() {
   document.getElementById('ref').value = ref;
   document.getElementById('referer').value = ref; // Remplir automatiquement avec le code ref de l'URL
+
+  // Vérifier la localisation de l'utilisateur
+  checkUserLocation();
 });
 
 // Log pour debug
 console.log("Référence du parrain :", ref);
+
+// ===== DÉTECTION DE LA LOCALISATION =====
+let userCountry = null;
+
+function checkUserLocation() {
+  console.log('🌍 Vérification de la localisation...');
+
+  // Utiliser ipapi.co pour détecter le pays (gratuit, pas besoin de clé API)
+  fetch('https://ipapi.co/json/')
+    .then(response => response.json())
+    .then(data => {
+      userCountry = data.country_code;
+      const countryName = data.country_name;
+
+      console.log('📍 Pays détecté:', countryName, '(' + userCountry + ')');
+
+      if (userCountry !== 'CA') {
+        // Afficher l'avertissement visuel
+        const warningBox = document.getElementById('location-warning');
+        const detectedCountrySpan = document.getElementById('detected-country');
+
+        if (warningBox && detectedCountrySpan) {
+          detectedCountrySpan.textContent = countryName;
+          warningBox.style.display = 'block';
+
+          // Faire défiler jusqu'à l'avertissement
+          setTimeout(() => {
+            warningBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }, 500);
+        }
+      }
+    })
+    .catch(err => {
+      console.warn('⚠️ Impossible de vérifier la localisation:', err);
+      // En cas d'erreur, on continue quand même (pas bloquant)
+    });
+}
 
 // ===== PROPAGATION DU REF SUR LES LIENS =====
 function propagateRef() {
@@ -558,27 +614,55 @@ document.addEventListener("DOMContentLoaded", function() {
         cancelUrlInput.value = 'https://marketing.rabaislocal.com/page2-affilie.html?ref=' + encodeURIComponent(ref);
       }
 
+      // Vérifier la localisation avant d'ouvrir PayPal
+      if (userCountry && userCountry !== 'CA') {
+        const confirmPayment = confirm(
+          '⚠️ ATTENTION\n\n' +
+          'Nous détectons que vous n\'êtes pas au Canada (pays détecté: ' + userCountry + ').\n\n' +
+          'Si vous utilisez un VPN, veuillez le DÉSACTIVER avant de continuer.\n\n' +
+          'PayPal doit afficher "Canada" comme pays et "CAD" comme devise.\n\n' +
+          'Voulez-vous quand même continuer vers PayPal ?'
+        );
+
+        if (!confirmPayment) {
+          console.log('❌ Paiement annulé par l\'utilisateur (localisation hors Canada)');
+          return; // Arrêter le processus
+        }
+      }
+
       // Désactiver le bouton pour éviter les doubles clics
       btnSubmitInscription.disabled = true;
       btnSubmitInscription.textContent = 'Ouverture de PayPal...';
       btnSubmitInscription.style.opacity = '0.6';
       btnSubmitInscription.style.cursor = 'not-allowed';
 
-      // Ouvrir PayPal dans un popup centré
-      const width = 800;
-      const height = 700;
-      const left = (screen.width - width) / 2;
-      const top = (screen.height - height) / 2;
+      // Détecter les navigateurs intégrés (Messenger, Facebook, Instagram, TikTok, etc.)
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      const isInAppBrowser = /FBAN|FBAV|Instagram|Messenger|FB_IAB|TikTok|Line|Snapchat|WhatsApp/i.test(userAgent);
 
-      window.open('', 'paypal_popup',
-        'width=' + width +
-        ',height=' + height +
-        ',top=' + top +
-        ',left=' + left +
-        ',resizable=yes,scrollbars=yes,status=yes'
-      );
+      if (isInAppBrowser) {
+        // Dans un navigateur intégré : ouvrir PayPal dans la même fenêtre
+        console.log('📱 Navigateur intégré détecté - Ouverture PayPal dans la même fenêtre');
+        paypalHostedForm.target = '_top';
+      } else {
+        // Navigateur normal : ouvrir PayPal dans un popup centré
+        console.log('🖥️ Navigateur standard - Ouverture PayPal dans un popup');
+        const width = 800;
+        const height = 700;
+        const left = (screen.width - width) / 2;
+        const top = (screen.height - height) / 2;
 
-      // Soumettre le formulaire PayPal dans le popup
+        window.open('', 'paypal_popup',
+          'width=' + width +
+          ',height=' + height +
+          ',top=' + top +
+          ',left=' + left +
+          ',resizable=yes,scrollbars=yes,status=yes'
+        );
+        paypalHostedForm.target = 'paypal_popup';
+      }
+
+      // Soumettre le formulaire PayPal
       paypalHostedForm.submit();
 
       // Réactiver le bouton après 3 secondes (au cas où l'utilisateur revient)

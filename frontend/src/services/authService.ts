@@ -3,6 +3,8 @@
 // ============================================================================
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api/v1';
+const SESSION_COOKIE_NAME = process.env.SESSION_COOKIE_NAME || 'auth_token';
+const CSRF_COOKIE_NAME = process.env.CSRF_COOKIE_NAME || 'csrf_token';
 
 export interface RegisterData {
   nom: string;
@@ -17,45 +19,57 @@ export interface LoginData {
   password: string;
 }
 
+export interface AuthUser {
+  id: string;
+  email: string;
+  prenom: string;
+  nom: string;
+  role: string;
+}
+
 export interface AuthResponse {
   success: boolean;
   message?: string;
   data?: {
-    user: {
-      id: string;
-      email: string;
-      prenom: string;
-      nom: string;
-      role: string;
-    };
-    token: string;
+    user?: AuthUser;
+    token?: string;
   };
   error?: string;
 }
 
+const defaultJsonHeaders = {
+  'Content-Type': 'application/json',
+};
+
+// Récupère un cookie non-httpOnly (utile pour un schéma double-submit CSRF)
+function getCookieValue(name: string): string | null {
+  if (typeof document === 'undefined') return null;
+  const cookies = document.cookie.split(';').map((c) => c.trim());
+  const entry = cookies.find((cookie) => cookie.startsWith(`${name}=`));
+  return entry ? entry.split('=')[1] : null;
+}
+
+function withCsrf(headers: Record<string, string>) {
+  const csrfToken = getCookieValue(CSRF_COOKIE_NAME);
+  return csrfToken ? { ...headers, 'X-CSRF-Token': csrfToken } : headers;
+}
+
 /**
- * Inscription d'un nouvel utilisateur
+ * Inscription d'un nouvel utilisateur (le backend doit définir un cookie httpOnly + secure)
  */
 export async function register(data: RegisterData): Promise<AuthResponse> {
   try {
     const response = await fetch(`${API_URL}/auth/register`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: withCsrf(defaultJsonHeaders),
+      credentials: 'include',
       body: JSON.stringify(data),
     });
 
     const result = await response.json();
 
     if (!response.ok) {
-      throw new Error(result.error || 'Erreur lors de l\'inscription');
-    }
-
-    // Sauvegarder le token dans localStorage
-    if (result.data?.token) {
-      localStorage.setItem('auth_token', result.data.token);
-      localStorage.setItem('user', JSON.stringify(result.data.user));
+      throw new Error(result.error || "Erreur lors de l'inscription");
     }
 
     return result;
@@ -69,15 +83,14 @@ export async function register(data: RegisterData): Promise<AuthResponse> {
 }
 
 /**
- * Connexion d'un utilisateur
+ * Connexion d'un utilisateur (le backend doit définir un cookie httpOnly + secure)
  */
 export async function login(data: LoginData): Promise<AuthResponse> {
   try {
     const response = await fetch(`${API_URL}/auth/login`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: withCsrf(defaultJsonHeaders),
+      credentials: 'include',
       body: JSON.stringify(data),
     });
 
@@ -85,12 +98,6 @@ export async function login(data: LoginData): Promise<AuthResponse> {
 
     if (!response.ok) {
       throw new Error(result.error || 'Erreur lors de la connexion');
-    }
-
-    // Sauvegarder le token dans localStorage
-    if (result.data?.token) {
-      localStorage.setItem('auth_token', result.data.token);
-      localStorage.setItem('user', JSON.stringify(result.data.user));
     }
 
     return result;
@@ -104,45 +111,58 @@ export async function login(data: LoginData): Promise<AuthResponse> {
 }
 
 /**
- * Déconnexion
+ * Déconnexion (attend que l'API supprime le cookie de session)
  */
 export function logout(): void {
-  localStorage.removeItem('auth_token');
-  localStorage.removeItem('user');
-  window.location.href = '/connexion';
+  fetch(`${API_URL}/auth/logout`, {
+    method: 'POST',
+    credentials: 'include',
+  }).finally(() => {
+    window.location.href = '/connexion';
+  });
 }
 
 /**
- * Récupérer l'utilisateur connecté
+ * Récupérer l'utilisateur connecté via l'API (session basée cookie)
  */
-export function getCurrentUser() {
+export async function getCurrentUser(): Promise<AuthUser | null> {
   if (typeof window === 'undefined') return null;
 
-  const userStr = localStorage.getItem('user');
-  if (!userStr) return null;
-
   try {
-    return JSON.parse(userStr);
-  } catch {
+    const response = await fetch(`${API_URL}/auth/me`, {
+      method: 'GET',
+      credentials: 'include',
+      headers: withCsrf(defaultJsonHeaders),
+      cache: 'no-store',
+    });
+
+    if (!response.ok) {
+      return null;
+    }
+
+    const result = await response.json();
+    return (result?.data?.user as AuthUser) || null;
+  } catch (error) {
+    console.error("Erreur lors de la récupération de l'utilisateur", error);
     return null;
   }
 }
 
 /**
- * Vérifier si l'utilisateur est connecté
+ * Vérifier si l'utilisateur est connecté en s'appuyant sur la session serveur
  */
-export function isAuthenticated(): boolean {
-  if (typeof window === 'undefined') return false;
-
-  const token = localStorage.getItem('auth_token');
-  return !!token;
+export async function isAuthenticated(): Promise<boolean> {
+  const user = await getCurrentUser();
+  return Boolean(user);
 }
 
 /**
- * Récupérer le token d'authentification
+ * (Optionnel) Récupérer le token si le cookie n'est pas httpOnly
  */
 export function getAuthToken(): string | null {
-  if (typeof window === 'undefined') return null;
+  if (typeof document === 'undefined') return null;
 
-  return localStorage.getItem('auth_token');
+  const cookies = document.cookie.split(';').map((c) => c.trim());
+  const sessionCookie = cookies.find((cookie) => cookie.startsWith(`${SESSION_COOKIE_NAME}=`));
+  return sessionCookie ? sessionCookie.split('=')[1] : null;
 }
