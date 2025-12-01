@@ -6,35 +6,34 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { getCurrentUser, logout, isAuthenticated } from '@/services/authService';
-
-interface User {
-  id: string;
-  email: string;
-  prenom: string;
-  nom: string;
-  role: string;
-}
+import { getCurrentUser, logout, type AuthUser } from '@/services/authService';
 
 export default function DashboardLayout() {
   const router = useRouter();
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<AuthUser | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Vérifier si l'utilisateur est connecté
-    if (!isAuthenticated()) {
-      router.push('/connexion');
-      return;
-    }
+    let isMounted = true;
 
-    // Récupérer les informations de l'utilisateur
-    const currentUser = getCurrentUser();
-    if (currentUser) {
-      setUser(currentUser);
-    }
+    const hydrateUser = async () => {
+      const currentUser = await getCurrentUser();
 
-    setIsLoading(false);
+      if (!isMounted) return;
+
+      if (currentUser) {
+        setUser(currentUser);
+        setIsLoading(false);
+      } else {
+        router.push('/connexion');
+      }
+    };
+
+    hydrateUser();
+
+    return () => {
+      isMounted = false;
+    };
   }, [router]);
 
   const handleLogout = () => {
