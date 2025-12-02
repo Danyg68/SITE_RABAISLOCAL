@@ -217,6 +217,31 @@ section {
 }
 
 /* ================================================
+   BLOC PORTAIL MEMBRE
+   ================================================ */
+.member-portal-box {
+  background: linear-gradient(135deg, #E3E8FF, #D1D9FF);
+  border: 2px solid var(--rl-blue);
+  border-radius: 14px;
+  padding: 28px 30px;
+  margin: 35px auto;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(62, 83, 165, 0.2);
+  max-width: 750px;
+}
+
+.member-portal-box p {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #1A1A1A;
+}
+
+.member-portal-box strong {
+  color: var(--rl-blue);
+  font-weight: 700;
+}
+
+/* ================================================
    TITRE "EN BONUS"
    ================================================ */
 .bonus-title {
@@ -514,6 +539,14 @@ section {
     padding: 18px 20px;
     font-size: 0.95rem;
   }
+
+  .member-portal-box {
+    padding: 22px 24px;
+  }
+
+  .member-portal-box p {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -544,6 +577,18 @@ section {
   }
 
   .instructions {
+    font-size: 0.95rem;
+  }
+
+  .member-portal-box {
+    padding: 18px 20px;
+  }
+
+  .member-portal-box h3 {
+    font-size: 1.15rem;
+  }
+
+  .member-portal-box p {
     font-size: 0.95rem;
   }
 }
@@ -648,13 +693,38 @@ button:focus {
 
     <div class="video-wrapper">
       <iframe
-        src="https://www.youtube.com/embed/f0ERVBcRIew"
+        src="https://www.youtube.com/embed/4TUQPWo3JJw"
         title="Vidéo de remerciement RabaisLocal - Bienvenue dans la famille"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen>
       </iframe>
     </div>
   </section>
+
+  <!-- ================================================
+       ACCÈS AU PORTAIL MEMBRE
+       ================================================ -->
+  <div class="member-portal-box fade-up fade-delay-4">
+    <h3 style="color: var(--rl-blue); font-size: 1.3rem; font-weight: 700; margin-bottom: 15px; text-align: center;">
+      🔐 Accès à ton espace membre
+    </h3>
+    <p style="margin-bottom: 18px; text-align: center; line-height: 1.7;">
+      Pour accéder à ton espace membre, tu y trouveras ton lien d'accès et toutes les informations pour te connecter ci-dessous.
+    </p>
+    <p style="margin-bottom: 22px; text-align: center; line-height: 1.7;">
+      <strong>Ton identifiant :</strong> ton adresse courriel<br>
+      <strong>Première connexion :</strong> clique sur « Mot de passe oublié » afin de créer ton propre mot de passe personnel.
+    </p>
+    <div style="text-align: center;">
+      <a href="https://partenaires.rabaislocal.com/login"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="cta-btn"
+         style="display: inline-block;">
+        🚪 Accéder à mon portail membre
+      </a>
+    </div>
+  </div>
 
   <!-- ================================================
        CARTES INFORMATIVES
