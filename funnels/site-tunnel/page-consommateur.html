@@ -324,6 +324,17 @@ a:hover {
   color: #999;
 }
 
+/* Validation visuelle en temps réel */
+.rl-input.valid {
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.rl-input.invalid {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
 /* Checkbox */
 .rl-checkbox {
   display: flex;
@@ -671,14 +682,18 @@ a:hover {
               <input class="rl-input"
                      type="text"
                      name="postal_code"
-                     placeholder="Code postal"
+                     placeholder="A1A 1A1"
+                     style="text-transform: uppercase;"
+                     maxlength="7"
+                     pattern="^[A-Za-z]\d[A-Za-z] \d[A-Za-z]\d$"
+                     title="Format requis : A1A 1A1"
                      required
                      autocomplete="postal-code">
 
               <input class="rl-input"
                      type="email"
                      name="email"
-                     placeholder="Ton courriel"
+                     placeholder="ton.email@exemple.com"
                      required
                      autocomplete="email">
 
@@ -927,6 +942,13 @@ a:hover {
         return;
       }
 
+      // Validation stricte du format canadien (L1L 1L1)
+      const postalCodeRegex = /^[A-Za-z]\d[A-Za-z] \d[A-Za-z]\d$/;
+      if (!postalCodeRegex.test(data.postal_code.trim())) {
+        setAlert('error', 'Format du code postal invalide. Format requis : A1A 1A1 (ex: H2X 1Y4)');
+        return;
+      }
+
       if (!data.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
         setAlert('error', 'Adresse courriel invalide.');
         return;
@@ -996,6 +1018,72 @@ a:hover {
         // Réactiver le bouton
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalText;
+      }
+    });
+  }
+
+  /* ====================================================
+     AUTO-FORMATAGE ET VALIDATION DU CODE POSTAL (A1A 1A1)
+     ==================================================== */
+  const postalCodeInput = qs('input[name="postal_code"]');
+  if (postalCodeInput) {
+    postalCodeInput.addEventListener('input', function(e) {
+      // Extraire uniquement les caractères alphanumériques
+      let value = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+
+      // Limiter à 6 caractères (sans l'espace)
+      if (value.length > 6) {
+        value = value.substring(0, 6);
+      }
+
+      // Ajouter l'espace après le 3e caractère (A1A 1A1)
+      if (value.length > 3) {
+        value = value.substring(0, 3) + ' ' + value.substring(3);
+      }
+
+      e.target.value = value;
+
+      // Validation visuelle en temps réel
+      const postalCodeRegex = /^[A-Z]\d[A-Z] \d[A-Z]\d$/;
+      e.target.classList.remove('valid', 'invalid');
+
+      if (value.length === 0) {
+        // Champ vide : pas de couleur
+        return;
+      }
+
+      if (postalCodeRegex.test(value)) {
+        e.target.classList.add('valid');
+      } else {
+        e.target.classList.add('invalid');
+      }
+    });
+  }
+
+  /* ====================================================
+     AUTO-CORRECTION ET VALIDATION DE L'EMAIL
+     ==================================================== */
+  const emailInput = qs('input[name="email"]');
+  if (emailInput) {
+    emailInput.addEventListener('input', function(e) {
+      // Supprimer tous les espaces
+      let value = e.target.value.replace(/\s/g, '');
+      e.target.value = value;
+
+      // Validation visuelle en temps réel
+      // Doit contenir @ et un domaine valide (.com, .ca, .fr, etc.)
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+      e.target.classList.remove('valid', 'invalid');
+
+      if (value.length === 0) {
+        // Champ vide : pas de couleur
+        return;
+      }
+
+      if (emailRegex.test(value)) {
+        e.target.classList.add('valid');
+      } else {
+        e.target.classList.add('invalid');
       }
     });
   }

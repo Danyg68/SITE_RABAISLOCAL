@@ -221,6 +221,21 @@ h1, h2, h3 {
   box-shadow: 0 0 0 3px rgba(62, 83, 165, 0.1);
 }
 
+/* Validation visuelle en temps réel */
+input[name="code_postal"].valid,
+input[name="email"].valid,
+.rl-input.valid {
+  border-color: #10b981 !important;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1) !important;
+}
+
+input[name="code_postal"].invalid,
+input[name="email"].invalid,
+.rl-input.invalid {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+}
+
 .form-section label {
   font-size: 0.92rem;
   display: flex;
@@ -563,33 +578,42 @@ input:focus {
         <!-- Champ caché pour le numéro de parrain -->
         <input type="hidden" name="ref" id="ref" value="">
 
-        <input type="text"
+        <input class="rl-input"
+               type="text"
                name="prenom"
                placeholder="Prénom"
                required
                autocomplete="given-name">
 
-        <input type="text"
+        <input class="rl-input"
+               type="text"
                name="nom"
                placeholder="Nom"
                required
                autocomplete="family-name">
 
-        <input type="text"
+        <input class="rl-input"
+               type="text"
                name="commerce"
                placeholder="Nom du commerce"
                required
                autocomplete="organization">
 
-        <input type="text"
+        <input class="rl-input"
+               type="text"
                name="code_postal"
-               placeholder="Code postal"
+               placeholder="A1A 1A1"
+               style="text-transform: uppercase;"
+               maxlength="7"
+               pattern="^[A-Za-z]\d[A-Za-z] \d[A-Za-z]\d$"
+               title="Format requis : A1A 1A1"
                required
                autocomplete="postal-code">
 
-        <input type="email"
+        <input class="rl-input"
+               type="email"
                name="email"
-               placeholder="Votre courriel"
+               placeholder="ton.email@exemple.com"
                required
                autocomplete="email">
 
@@ -808,9 +832,45 @@ input:focus {
     form.addEventListener('submit', function(e) {
       e.preventDefault();
 
-      // Capturer l'email avant soumission
+      // ===== VALIDATION STRICTE =====
+
+      // Validation du code postal (format strict L1L 1L1)
+      const codePostalInput = form.querySelector('input[name="code_postal"]');
+      if (codePostalInput) {
+        const codePostal = codePostalInput.value.trim();
+        const postalCodeRegex = /^[A-Za-z]\d[A-Za-z] \d[A-Za-z]\d$/;
+
+        if (!codePostal) {
+          alert('❌ Veuillez entrer votre code postal.');
+          codePostalInput.focus();
+          return;
+        }
+
+        if (!postalCodeRegex.test(codePostal)) {
+          alert('❌ Format du code postal invalide. Format requis : A1A 1A1 (ex: H2X 1Y4)');
+          codePostalInput.focus();
+          return;
+        }
+      }
+
+      // Validation de l'email
       const emailInput = form.querySelector('input[name="email"]');
-      const userEmail = emailInput ? emailInput.value : '';
+      const userEmail = emailInput ? emailInput.value.trim() : '';
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!userEmail) {
+        alert('❌ Veuillez entrer votre adresse courriel.');
+        if (emailInput) emailInput.focus();
+        return;
+      }
+
+      if (!emailRegex.test(userEmail)) {
+        alert('❌ Format d\'adresse courriel invalide. Utilisez un format valide (ex: nom@exemple.com).');
+        if (emailInput) emailInput.focus();
+        return;
+      }
+
+      // ===== FIN DE LA VALIDATION =====
 
       // Sauvegarder le REF et l'email avant soumission
       if (REF) {
@@ -863,13 +923,17 @@ input:focus {
         const body = payload.body || {};
 
         // Priorité : champ JSON redirect -> header Location -> body texte -> fallback local
-        let nextUrl = (!isText && body.redirect) ? body.redirect
-                    : locationHeader
-                    : isText ? (typeof body === 'string' ? body.trim() : '') : ''
-                    || 'page2-commercant.html';
-
-        // Si le body est une URL relative ou absolue valide, on l'utilise
-        if (!nextUrl) nextUrl = 'page2-commercant.html';
+        let nextUrl = null;
+        if (!isText && body && body.redirect) {
+          nextUrl = body.redirect;
+        } else if (locationHeader) {
+          nextUrl = locationHeader;
+        } else if (isText && typeof body === 'string' && body.trim()) {
+          nextUrl = body.trim();
+        }
+        if (!nextUrl) {
+          nextUrl = 'page2-commercant.html';
+        }
 
         const params = [];
         if (REF) params.push('ref=' + encodeURIComponent(REF));
@@ -889,6 +953,69 @@ input:focus {
         overlay.style.display = 'none';
         alert('Une erreur est survenue lors de l\'inscription. Veuillez réessayer.');
       });
+    });
+  }
+
+  /* ====================================================
+     AUTO-FORMATAGE ET VALIDATION DU CODE POSTAL (A1A 1A1)
+     ==================================================== */
+  const codePostalInput = document.querySelector('input[name="code_postal"]');
+  if (codePostalInput) {
+    codePostalInput.addEventListener('input', function(e) {
+      // Extraire uniquement les caractères alphanumériques
+      let value = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+
+      // Limiter à 6 caractères (sans l'espace)
+      if (value.length > 6) {
+        value = value.substring(0, 6);
+      }
+
+      // Ajouter l'espace après le 3e caractère (A1A 1A1)
+      if (value.length > 3) {
+        value = value.substring(0, 3) + ' ' + value.substring(3);
+      }
+
+      e.target.value = value;
+
+      // Validation visuelle en temps réel
+      const postalCodeRegex = /^[A-Z]\d[A-Z] \d[A-Z]\d$/;
+      e.target.classList.remove('valid', 'invalid');
+
+      if (value.length === 0) {
+        return;
+      }
+
+      if (postalCodeRegex.test(value)) {
+        e.target.classList.add('valid');
+      } else {
+        e.target.classList.add('invalid');
+      }
+    });
+  }
+
+  /* ====================================================
+     AUTO-CORRECTION ET VALIDATION DE L'EMAIL
+     ==================================================== */
+  const emailInput = document.querySelector('input[name="email"]');
+  if (emailInput) {
+    emailInput.addEventListener('input', function(e) {
+      // Supprimer tous les espaces
+      let value = e.target.value.replace(/\s/g, '');
+      e.target.value = value;
+
+      // Validation visuelle en temps réel
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+      e.target.classList.remove('valid', 'invalid');
+
+      if (value.length === 0) {
+        return;
+      }
+
+      if (emailRegex.test(value)) {
+        e.target.classList.add('valid');
+      } else {
+        e.target.classList.add('invalid');
+      }
     });
   }
 
