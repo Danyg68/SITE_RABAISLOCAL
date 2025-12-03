@@ -164,6 +164,17 @@ SECTION PAIEMENT - BOUTON PAYPAL HÉBERGÉ
     color: #3E53A5;
   }
 
+  /* Validation visuelle du champ email */
+  #form-inscription-affilie input.valid {
+    border-color: #10b981 !important;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.12) !important;
+  }
+
+  #form-inscription-affilie input.invalid {
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12) !important;
+  }
+
   @media (max-width: 600px) {
     #section-paiement-affilie {
       padding: 40px 16px 50px;
@@ -550,6 +561,23 @@ document.addEventListener("DOMContentLoaded", function() {
   const btnSubmitInscription = document.getElementById('btn-submit-inscription');
   const formInscription = document.getElementById('form-inscription-affilie');
   const paypalHostedForm = document.getElementById('paypal-hosted-form');
+  const emailField = document.getElementById('email');
+
+  // Validation visuelle + suppression des espaces pour le courriel
+  if (emailField) {
+    emailField.addEventListener('input', function(e) {
+      const sanitized = (e.target.value || '').replace(/\s/g, '');
+      e.target.value = sanitized;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+      e.target.classList.remove('valid', 'invalid');
+      if (sanitized.length === 0) return;
+      if (emailRegex.test(sanitized)) {
+        e.target.classList.add('valid');
+      } else {
+        e.target.classList.add('invalid');
+      }
+    });
+  }
 
   if (btnSubmitInscription && formInscription && paypalHostedForm) {
     btnSubmitInscription.addEventListener('click', function(e) {
