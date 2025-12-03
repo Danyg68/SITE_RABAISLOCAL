@@ -172,6 +172,17 @@ SECTION FORMULAIRE COMPLET
     border-color: #3E53A5;
   }
 
+  /* Validation visuelle */
+  .form-group input.valid {
+    border-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.12);
+  }
+
+  .form-group input.invalid {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+  }
+
   .checkbox-group {
     margin-bottom: 18px;
   }
@@ -554,6 +565,15 @@ const provinceSelect = document.getElementById('province');
       }
 
       e.target.value = formatted;
+
+      // Couleur: vert uniquement si 10 chiffres complets
+      e.target.classList.remove('valid', 'invalid');
+      if (value.length === 0) return;
+      if (value.length === 10) {
+        e.target.classList.add('valid');
+      } else {
+        e.target.classList.add('invalid');
+      }
     });
   }
 
@@ -577,6 +597,56 @@ const provinceSelect = document.getElementById('province');
       }
 
       e.target.value = formatted;
+
+      // Couleur: vert si format complet A1A 1A1
+      const postalCodeRegex = /^[A-Z]\d[A-Z] \d[A-Z]\d$/;
+      e.target.classList.remove('valid', 'invalid');
+      if (formatted.length === 0) return;
+      if (postalCodeRegex.test(formatted)) {
+        e.target.classList.add('valid');
+      } else {
+        e.target.classList.add('invalid');
+      }
+    });
+  }
+
+  // 4b) Validation email (suppression des espaces + couleur)
+  if (emailInput) {
+    emailInput.addEventListener('input', function (e) {
+      const trimmed = (e.target.value || '').replace(/\s/g, '');
+      e.target.value = trimmed;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+      e.target.classList.remove('valid', 'invalid');
+      if (trimmed.length === 0) return;
+      if (emailRegex.test(trimmed)) {
+        e.target.classList.add('valid');
+      } else {
+        e.target.classList.add('invalid');
+      }
+    });
+  }
+
+  // 4c) Numéro civique : chiffres uniquement + couleur
+  const numeroInput = document.getElementById('adresse_numero');
+  if (numeroInput) {
+    numeroInput.addEventListener('input', function (e) {
+      const digits = e.target.value.replace(/\D/g, '');
+      e.target.value = digits;
+      e.target.classList.remove('valid', 'invalid');
+      if (digits.length === 0) return;
+      e.target.classList.add('valid');
+    });
+  }
+
+  // 4d) Appartement : lettres/chiffres seulement + couleur (optionnel)
+  const appartementInput = document.getElementById('adresse_appartement');
+  if (appartementInput) {
+    appartementInput.addEventListener('input', function (e) {
+      const cleaned = e.target.value.replace(/[^A-Za-z0-9 -]/g, '');
+      e.target.value = cleaned;
+      e.target.classList.remove('valid', 'invalid');
+      if (cleaned.length === 0) return; // optionnel, donc pas de rouge si vide
+      e.target.classList.add('valid');
     });
   }
 
