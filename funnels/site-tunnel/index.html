@@ -62,86 +62,34 @@
      SECTION - CHOIX DE PARCOURS
 ========================================= -->
 <section class="choice-section">
-  <h2 class="choice-title" style="margin-bottom: 15px;">Choisissez votre parcours</h2>
-
-  <!-- Flèche animée mobile uniquement -->
-  <div class="arrow-mobile" style="text-align: center; margin-bottom: 5px;">
-    <svg width="40" height="40" viewBox="0 0 24 24" style="animation: bounce 2s infinite;">
-      <path fill="#3E53A5" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
-      <path fill="#3E53A5" d="M7.41 12.59L12 17.17l4.59-4.58L18 14l-6 6-6-6 1.41-1.41z" opacity="0.6"/>
-    </svg>
-  </div>
-
-  <style>
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-      }
-      40% {
-        transform: translateY(-10px);
-      }
-      60% {
-        transform: translateY(-5px);
-      }
-    }
-
-    /* Flèche mobile seulement */
-    .arrow-mobile {
-      display: block;
-    }
-
-    /* Flèches desktop au-dessus de chaque carte */
-    .arrow-desktop {
-      display: none;
-      text-align: center;
-      margin-bottom: 10px;
-    }
-
-    @media (min-width: 768px) {
-      .arrow-mobile {
-        display: none;
-      }
-      .arrow-desktop {
-        display: block;
-      }
-    }
-  </style>
+  <h2 class="choice-title">Choisissez votre parcours</h2>
 
   <div class="choice-grid">
 
     <!-- Parcours 1 - Consommateur -->
     <div class="choice-item">
-      <div class="arrow-desktop">
-        <svg width="35" height="35" viewBox="0 0 24 24" style="animation: bounce 2s infinite;">
-          <path fill="#3E53A5" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
-          <path fill="#3E53A5" d="M7.41 12.59L12 17.17l4.59-4.58L18 14l-6 6-6-6 1.41-1.41z" opacity="0.6"/>
-        </svg>
-      </div>
       <a href="#consommateur" style="text-decoration: none; color: inherit;">
+        <p class="choice-label">
+          Cliquez ici <span class="arrow-emoji">⬇️</span>
+        </p>
       </a>
     </div>
 
     <!-- Parcours 2 - Commerçant -->
     <div class="choice-item">
-      <div class="arrow-desktop">
-        <svg width="35" height="35" viewBox="0 0 24 24" style="animation: bounce 2s infinite 0.2s;">
-          <path fill="#3E53A5" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
-          <path fill="#3E53A5" d="M7.41 12.59L12 17.17l4.59-4.58L18 14l-6 6-6-6 1.41-1.41z" opacity="0.6"/>
-        </svg>
-      </div>
       <a href="#commercant" style="text-decoration: none; color: inherit;">
+        <p class="choice-label">
+          Cliquez ici <span class="arrow-emoji">⬇️</span>
+        </p>
       </a>
     </div>
 
     <!-- Parcours 3 - Affilié -->
     <div class="choice-item">
-      <div class="arrow-desktop">
-        <svg width="35" height="35" viewBox="0 0 24 24" style="animation: bounce 2s infinite 0.4s;">
-          <path fill="#3E53A5" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
-          <path fill="#3E53A5" d="M7.41 12.59L12 17.17l4.59-4.58L18 14l-6 6-6-6 1.41-1.41z" opacity="0.6"/>
-        </svg>
-      </div>
       <a href="#affilie" style="text-decoration: none; color: inherit;">
+        <p class="choice-label">
+          Cliquez ici <span class="arrow-emoji">⬇️</span>
+        </p>
       </a>
     </div>
 
