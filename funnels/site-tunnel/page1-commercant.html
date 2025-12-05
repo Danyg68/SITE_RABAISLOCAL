@@ -891,13 +891,20 @@ input:focus {
       // Envoi vers Make.com
       fetch(form.action, {
         method: 'POST',
-        body: formData
+        body: formData,
+        redirect: 'manual'
       })
       .then(function(response) {
-        const locationHeader = response.headers.get('location');
+        console.log('📡 Réponse Make.com - Status:', response.status);
+
+        const locationHeader = response.headers.get('location') || response.headers.get('Location');
         const isRedirectStatus = response.status >= 300 && response.status < 400;
         const contentType = (response.headers.get('content-type') || '').toLowerCase();
         const isJSON = contentType.includes('application/json');
+
+        console.log('🔗 Header Location:', locationHeader);
+        console.log('📊 Content-Type:', contentType);
+        console.log('🔄 Status de redirection:', isRedirectStatus);
 
         // Accepter les 3xx avec header Location
         if (!response.ok && !isRedirectStatus) {
@@ -908,12 +915,14 @@ input:focus {
           return response.json().catch(function() {
             return { redirect: null };
           }).then(function(body) {
+            console.log('📦 Body JSON:', body);
             return { body: body, location: locationHeader, isText: false };
           });
         }
 
         // Texte brut (ex: URL de redirection dans le body)
         return response.text().catch(function() { return ''; }).then(function(txt) {
+          console.log('📝 Body texte:', txt);
           return { body: txt, location: locationHeader, isText: true };
         });
       })
@@ -926,13 +935,20 @@ input:focus {
         let nextUrl = null;
         if (!isText && body && body.redirect) {
           nextUrl = body.redirect;
+          console.log('✅ URL depuis JSON redirect:', nextUrl);
         } else if (locationHeader) {
           nextUrl = locationHeader;
+          console.log('✅ URL depuis header Location:', nextUrl);
         } else if (isText && typeof body === 'string' && body.trim()) {
-          nextUrl = body.trim();
+          const trimmedBody = body.trim();
+          if (trimmedBody.startsWith('http') || trimmedBody.includes('.html')) {
+            nextUrl = trimmedBody;
+            console.log('✅ URL depuis body texte:', nextUrl);
+          }
         }
         if (!nextUrl) {
           nextUrl = 'page2-commercant.html';
+          console.log('⚠️ Utilisation de la page par défaut:', nextUrl);
         }
 
         const params = [];
