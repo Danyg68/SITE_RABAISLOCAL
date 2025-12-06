@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guide de démarrage Affilié – RabaisLocal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+  <style>
+    :root {
+      --rl-blue: #3E53A5;
+      --rl-orange: #FF8C42;
+      --rl-bg: #F5F8FF;
+      --rl-ink: #1B2240;
+      --rl-muted: #5B6385;
+      --rl-line: #E3E8FF;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: var(--rl-bg);
+      color: var(--rl-ink);
+      line-height: 1.6;
+    }
+
+    /* Logo en haut */
+    .logo-header {
+      text-align: center;
+      padding: 30px 0 20px;
+      background: #fff;
+      border-bottom: 3px solid var(--rl-blue);
+    }
+
+    .logo-header img {
+      max-width: 260px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* Container principal */
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }
+
+    /* Titre principal */
+    h1 {
+      color: var(--rl-blue);
+      font-size: clamp(26px, 4vw, 36px);
+      margin-bottom: 12px;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    p.intro {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--rl-muted);
+    }
+
+    p.intro strong {
+      color: var(--rl-ink);
+      font-weight: 600;
+    }
+
+    /* Cards des étapes */
+    .step {
+      background: white;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      margin-bottom: 30px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .step:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    }
+
+    .step h2 {
+      font-size: 22px;
+      color: var(--rl-blue);
+      margin: 0 0 15px;
+      font-weight: 700;
+    }
+
+    .step ul {
+      padding-left: 24px;
+      margin: 0 0 16px;
+    }
+
+    .step ul li {
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    .step a {
+      color: var(--rl-blue);
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    .step a:hover {
+      color: var(--rl-orange);
+    }
+
+    .step img {
+      max-width: 100%;
+      max-height: 320px;
+      width: auto;
+      height: auto;
+      display: block;
+      margin: 20px auto 0;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    /* Boutons CTA */
+    .cta-section {
+      text-align: center;
+      margin-top: 50px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .cta {
+      display: inline-block;
+      background: var(--rl-blue);
+      color: #fff;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      text-align: center;
+      transition: 0.3s;
+      box-shadow: 0 4px 12px rgba(62, 83, 165, 0.3);
+      font-size: 15px;
+    }
+
+    .cta:hover {
+      background: #2E4395;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(62, 83, 165, 0.4);
+    }
+
+    .cta.secondary {
+      background: var(--rl-orange);
+    }
+
+    .cta.secondary:hover {
+      background: #E67A35;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 30px 15px 50px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .step {
+        padding: 20px;
+      }
+
+      .step h2 {
+        font-size: 19px;
+      }
+
+      .cta-section {
+        flex-direction: column;
+      }
+
+      .cta {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo en haut -->
+  <div class="logo-header">
+    <img src="assets/images/logo rabaislocal-2025-2.png" alt="RabaisLocal">
+  </div>
+
+  <!-- Contenu principal -->
+  <div class="container">
+    <h1>🧭 Guide de démarrage affilié</h1>
+    <p class="intro">
+      <strong>Bienvenue dans la grande famille RabaisLocal !</strong><br>
+      Voici les 5 étapes pour activer ta trousse, comprendre ton rôle et démarrer rapidement.
+    </p>
+
+    <!-- Étape 1 -->
+    <div class="step">
+      <h2>1️⃣ Active ta trousse affiliée</h2>
+      <ul>
+        <li>Signe ton contrat électronique RabaisLocal</li>
+        <li>Connecte-toi sur <a href="https://partenaires.rabaislocal.com/login" target="_blank">partenaires.rabaislocal.com</a></li>
+        <li>Première connexion ? Clique sur « Mot de passe oublié »</li>
+        <li>Remplis ton profil et tes infos de paiement (onglet Réglage)</li>
+        <li>Vérifie ton lien de parrainage unique</li>
+      </ul>
+      <img src="https://statics.myclickfunnels.com/workspace/jklqVP/image/18803378/file/1e4ba6ccc32468aa5ecce5e76e10fcec.jpg" alt="Connexion RabaisLocal">
+    </div>
+
+    <!-- Étape 2 -->
+    <div class="step">
+      <h2>2️⃣ Partage ton lien</h2>
+      <ul>
+        <li>Va dans « Documents utiles »</li>
+        <li>Partage à 5 amis, 2 commerçants et 1 curieux</li>
+        <li>Laisse RabaisLocal faire le reste (IA, tunnels, e-mails)</li>
+      </ul>
+      <img src="https://statics.myclickfunnels.com/workspace/jklqVP/image/18803276/file/66314fb79710606979aed4fc0bd5ced2.jpg" alt="Partage de lien">
+    </div>
+
+    <!-- Étape 3 -->
+    <div class="step">
+      <h2>3️⃣ Découvre tes outils</h2>
+      <ul>
+        <li>🎥 Vidéos & documents à partager</li>
+        <li>🧠 Agent IA personnel (disponible au lancement)</li>
+        <li>📊 Tableau de bord affilié</li>
+      </ul>
+      <img src="https://statics.myclickfunnels.com/workspace/jklqVP/image/18803280/file/eee4dc1c2cf75b887cda726e8794b9d5.jpg" alt="Outils affilié">
+    </div>
+
+    <!-- Étape 4 -->
+    <div class="step">
+      <h2>4️⃣ Suis ton évolution</h2>
+      <ul>
+        <li>Revenus en temps réel</li>
+        <li>Inscriptions via ton lien</li>
+        <li>Rang et progression</li>
+        <li>🎯 Objectif : atteindre "Bâtisseur" (5 affiliés ou 25 consommateurs)</li>
+      </ul>
+      <img src="https://statics.myclickfunnels.com/workspace/jklqVP/image/18803279/file/2910b40e6ef622fd2fdd2f8c097ebd1c.jpg" alt="Évolution">
+    </div>
+
+    <!-- Étape 5 -->
+    <div class="step">
+      <h2>5️⃣ Reste connecté</h2>
+      <ul>
+        <li>👉 Groupe Facebook RabaisLocal</li>
+        <li>👉 Infolettre hebdomadaire</li>
+        <li>👉 Contact ressource affilié</li>
+        <li>👉 Agent IA (bientôt disponible)</li>
+      </ul>
+      <img src="https://statics.myclickfunnels.com/workspace/jklqVP/image/18803278/file/447dc2c628f48c25a8c16b707fa03015.jpg" alt="Connexion communauté">
+    </div>
+
+    <!-- Boutons CTA -->
+    <div class="cta-section">
+      <a class="cta" href="plan-remuneration.html">📊 Voir le Plan de rémunération</a>
+      <a class="cta secondary" href="guide-comment-partager.html">📚 Guide : Comment partager</a>
+      <a class="cta" href="index.html">🏠 Retour au choix de parcours</a>
+    </div>
+  </div>
+
+  <!-- =======================
+       FOOTER RABAISLOCAL 2025 – VERSION PRO RESPONSIVE
+       ======================= -->
+
+  <!-- 1️⃣ VERSION PC / TABLETTE -->
+  <footer class="rl-footer-desktop" style="background:#F5F8FF;border-top:4px solid #3E53A5;padding:40px 0 30px;
+                 text-align:center;font-family:'Poppins',sans-serif;color:#1B2240;line-height:1.7;
+                 box-shadow:0 -3px 10px rgba(0,0,0,0.04);">
+
+    <!-- Logo + slogan -->
+    <div style="margin-bottom:22px;">
+      <img src="assets/images/logo rabaislocal-2025-2.png"
+           alt="Logo RabaisLocal"
+           style="width:160px;max-width:80%;height:auto;display:block;margin:0 auto 12px auto;">
+      <p style="font-size:15px;font-weight:600;color:#3E53A5;margin:0;">
+        💙 Ensemble, on fait gagner tout le monde.
+      </p>
+    </div>
+
+    <!-- Liens légaux -->
+    <div style="font-size:14px;margin-bottom:10px;">
+      <a href="conditions-utilisation.html" style="color:#1B2240;text-decoration:none;margin:0 8px;">Conditions d'utilisation</a> |
+      <a href="politique-confidentialite.html" style="color:#1B2240;text-decoration:none;margin:0 8px;">Confidentialité</a> |
+      <a href="politique-cookies.html" style="color:#1B2240;text-decoration:none;margin:0 8px;">Cookies</a> |
+      <a href="politique-remboursement.html" style="color:#1B2240;text-decoration:none;margin:0 8px;">Remboursement</a> |
+      <a href="utilisation-acceptable.html" style="color:#1B2240;text-decoration:none;margin:0 8px;">Utilisation acceptable</a> |
+      <a href="non-responsabilite.html" style="color:#1B2240;text-decoration:none;margin:0 8px;">Non-responsabilité</a> |
+      <a href="app-ia.html" style="color:#1B2240;text-decoration:none;margin:0 8px;">App & IA</a> |
+      <a href="mentions-legales.html" style="color:#1B2240;text-decoration:none;margin:0 8px;">Mentions légales</a>
+    </div>
+
+    <!-- Copyright -->
+    <div style="color:#5B6385;font-size:13px;margin-top:8px;">
+      © 2025 RabaisLocal – Tous droits réservés • Trois-Rivières (QC) •
+      <a href="mailto:support@rabaislocal.com" style="color:#3E53A5;text-decoration:none;">Contact</a> •
+      <a href="#" onclick="window.dispatchEvent(new CustomEvent('rl-open-prefs'));return false;"
+         style="color:#3E53A5;text-decoration:none;">Gérer mes cookies</a>
+    </div>
+
+    <!-- Preuve sociale -->
+    <div style="margin-top:15px;font-size:13px;color:#3E53A5;font-weight:500;">
+      Une initiative 100 % québécoise propulsée par l'IA 🤖
+    </div>
+  </footer>
+
+  <!-- 2️⃣ VERSION MOBILE ALLÉGÉE + "VOIR PLUS" -->
+  <div class="rl-footer-mobile" style="display:none;background:#F5F8FF;border-top:4px solid #3E53A5;
+              text-align:center;font-family:'Poppins',sans-serif;color:#1B2240;padding:35px 18px 30px;">
+
+    <!-- Logo -->
+    <img src="assets/images/logo rabaislocal-2025-2.png"
+         alt="RabaisLocal Logo"
+         style="width:140px;height:auto;margin:0 auto 12px auto;display:block;">
+
+    <!-- Slogan -->
+    <p style="margin:0;font-size:15px;font-weight:600;color:#3E53A5;">
+      💙 Ensemble, on fait gagner tout le monde.
+    </p>
+
+    <!-- CTA -->
+    <a href="index.html"
+       style="display:inline-block;margin-top:14px;background:#3E53A5;color:#fff;
+              font-weight:600;text-decoration:none;padding:12px 28px;border-radius:8px;">
+       🏠 Retour à l'accueil
+    </a>
+
+    <!-- Liens essentiels -->
+    <div style="margin-top:16px;font-size:13px;line-height:1.8;">
+      <a href="conditions-utilisation.html" style="color:#1B2240;text-decoration:none;">Conditions</a> |
+      <a href="politique-confidentialite.html" style="color:#1B2240;text-decoration:none;">Confidentialité</a> |
+      <a href="politique-cookies.html" style="color:#1B2240;text-decoration:none;">Cookies</a>
+    </div>
+
+    <!-- Bouton "Voir plus" -->
+    <div id="rl-more-links" style="margin-top:8px;">
+      <a href="#" onclick="document.getElementById('rl-extra-links').style.display='block'; this.style.display='none'; return false;"
+         style="color:#3E53A5;text-decoration:none;font-size:13px;font-weight:600;">
+         🔽 Voir plus de pages
+      </a>
+    </div>
+
+    <!-- Liens cachés (affichés après clic) -->
+    <div id="rl-extra-links" style="display:none;margin-top:8px;font-size:13px;line-height:1.8;">
+      <a href="politique-remboursement.html" style="color:#1B2240;text-decoration:none;">Remboursement</a> |
+      <a href="utilisation-acceptable.html" style="color:#1B2240;text-decoration:none;">Utilisation</a> |
+      <a href="non-responsabilite.html" style="color:#1B2240;text-decoration:none;">Non-responsabilité</a> |
+      <a href="app-ia.html" style="color:#1B2240;text-decoration:none;">App & IA</a> |
+      <a href="mentions-legales.html" style="color:#1B2240;text-decoration:none;">Mentions légales</a>
+    </div>
+
+    <!-- Copyright -->
+    <p style="margin-top:16px;font-size:12px;color:#5B6385;">
+      © 2025 RabaisLocal • Trois-Rivières (QC) •
+      <a href="mailto:support@rabaislocal.com" style="color:#3E53A5;text-decoration:none;">Contact</a>
+    </p>
+  </div>
+
+  <!-- 3️⃣ RESPONSIVE CSS -->
+  <style>
+  @media(max-width:768px){
+    .rl-footer-desktop{display:none !important;}
+    .rl-footer-mobile{display:block !important;}
+  }
+  @media(min-width:769px){
+    .rl-footer-desktop{display:block !important;}
+    .rl-footer-mobile{display:none !important;}
+  }
+  </style>
+
+  <!-- Script pour gestion du REF -->
+  <script>
+  (function() {
+    'use strict';
+
+    // Fonctions utilitaires
+    function getLS(key) {
+      try { return localStorage.getItem(key) || ''; } catch(e) { return ''; }
+    }
+
+    function setLS(key, val) {
+      try { localStorage.setItem(key, val); } catch(e) {}
+    }
+
+    function getCookie(name) {
+      const val = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+      return val ? decodeURIComponent(val.pop()) : '';
+    }
+
+    function setCookie(name, val, days) {
+      const d = new Date();
+      d.setTime(d.getTime() + days * 86400000);
+      document.cookie = name + '=' + encodeURIComponent(val) + ';expires=' + d.toUTCString() + ';path=/';
+    }
+
+    function sanitize(str) {
+      return (str || '').replace(/[^a-zA-Z0-9_-]/g, '');
+    }
+
+    // Récupérer le REF
+    const urlParams = new URLSearchParams(window.location.search);
+    let REF = sanitize(urlParams.get('ref') || urlParams.get('rl_ref') || getLS('rl_ref') || getCookie('rl_ref'));
+
+    if (REF) {
+      setLS('rl_ref', REF);
+      setCookie('rl_ref', REF, 180);
+      console.log('✅ REF capturé:', REF);
+    }
+
+    // Propager le REF sur tous les liens
+    function propagateLinks() {
+      if (!REF) return;
+
+      document.querySelectorAll('a[href]').forEach(function(link) {
+        const href = link.getAttribute('href');
+
+        if (!href ||
+            href.startsWith('mailto:') ||
+            href.startsWith('tel:') ||
+            href.startsWith('javascript:') ||
+            href.startsWith('#')) {
+          return;
+        }
+
+        try {
+          const url = new URL(href, window.location.origin);
+          if (!url.searchParams.get('ref') && !url.searchParams.get('rl_ref')) {
+            url.searchParams.set('ref', REF);
+            link.setAttribute('href', url.toString());
+          }
+        } catch(e) {
+          if (href.indexOf('?') === -1) {
+            link.setAttribute('href', href + '?ref=' + encodeURIComponent(REF));
+          } else if (!/[?&](ref|rl_ref)=/i.test(href)) {
+            link.setAttribute('href', href + '&ref=' + encodeURIComponent(REF));
+          }
+        }
+      });
+    }
+
+    // Exécution
+    window.addEventListener('load', propagateLinks);
+  })();
+  </script>
+
+</body>
+</html>
