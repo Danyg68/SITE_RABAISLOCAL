@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RabaisLocal - Activation Gratuite Consommateur</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+  <style>
+    /* ================================================
+   RABAISLOCAL - PAGE INSCRIPTION CONSOMMATEUR
+   Variables CSS & Reset
+   ================================================ */
+    :root {
+      --rl-blue: #3E53A5;
+      --rl-blue-dark: #2E4191;
+      --rl-accent: #3E53A5;
+      --muted: #5A6170;
+      --bg: #F5F8FF;
+      --card: #ffffff;
+      --danger: #E94D4C;
+      --success: #0f5132;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: #0B1220;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Poppins', sans-serif;
+      color: var(--rl-blue);
+      margin: 0 0 12px;
+      font-weight: 700;
+    }
+
+    a {
+      color: var(--rl-blue);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    a:hover {
+      color: var(--rl-blue-dark);
+    }
+
+    /* ================================================
+   LAYOUT & CONTAINER
+   ================================================ */
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ================================================
+   HEADER
+   ================================================ */
+    .header {
+      padding: 20px 0;
+      text-align: center;
+      background: #ffffff;
+    }
+
+    .header .logo {
+      max-width: 280px;
+      height: auto;
+      display: inline-block;
+    }
+
+    /* ================================================
+   BANDEAU D'URGENCE
+   ================================================ */
+    .urgency-banner {
+      background: var(--rl-blue);
+      color: #fff;
+      text-align: center;
+      padding: 10px 15px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.3px;
+    }
+
+    /* ================================================
+   SECTION HERO
+   ================================================ */
+    .hero {
+      background: #ffffff;
+      padding: 40px 0 30px;
+      border-radius: 0;
+      margin: 0;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      line-height: 1.2;
+      text-align: center;
+      color: var(--rl-blue);
+      margin-bottom: 16px;
+      font-weight: 800;
+    }
+
+    .subtitle {
+      color: #444;
+      text-align: center;
+      font-size: clamp(1rem, 2vw, 1.1rem);
+      margin: 12px auto;
+      font-weight: 500;
+      max-width: 800px;
+      line-height: 1.6;
+    }
+
+    .one-liner {
+      color: var(--rl-blue);
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin: 12px auto 25px;
+      max-width: 850px;
+    }
+
+    /* ================================================
+   HERO CONTENT - 2 COLONNES
+   ================================================ */
+    .hero-content {
+      display: flex;
+      gap: 35px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    /* Colonne vidéo */
+    .hero-video-column {
+      flex: 1 1 520px;
+      max-width: 600px;
+    }
+
+    .video-intro {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .video-intro h3 {
+      margin: 0 0 8px;
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+      font-weight: 800;
+      color: #0B1220;
+    }
+
+    .video-intro h3 .highlight {
+      color: var(--rl-blue);
+    }
+
+    .video-intro .sound-warning {
+      color: #E63946;
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin: 8px 0 0;
+    }
+
+    .hero-video-container {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      border-radius: 12px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+    }
+
+    .hero-video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Colonne formulaire */
+    .form-column {
+      flex: 1 1 450px;
+      max-width: 520px;
+    }
+
+    /* ================================================
+   BLOC AVANTAGES (BENEFITS BOX)
+   ================================================ */
+    .benefits-box {
+      background: linear-gradient(135deg, #F5F8FF, #EAF0FF);
+      border: 2px solid var(--rl-blue);
+      border-radius: 16px;
+      padding: 25px 28px;
+      margin-bottom: 25px;
+      box-shadow: 0 8px 24px rgba(62, 83, 165, 0.18);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .benefits-box::before {
+      content: "🎉";
+      font-size: 3rem;
+      position: absolute;
+      top: -12px;
+      right: 18px;
+      opacity: 0.12;
+    }
+
+    .benefits-box h3 {
+      color: var(--rl-blue-dark);
+      font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+      text-align: center;
+      margin-bottom: 16px;
+      font-weight: 800;
+    }
+
+    .benefits-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+
+    .benefits-list li {
+      margin: 10px 0;
+      padding-left: 28px;
+      position: relative;
+      color: #1B2240;
+    }
+
+    .benefits-list li::before {
+      content: "✔";
+      color: var(--rl-blue-dark);
+      font-weight: 700;
+      font-size: 1.1rem;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .benefits-list li strong {
+      font-weight: 700;
+      color: #0B1220;
+    }
+
+    .benefits-highlight {
+      background: #ffffff;
+      border: 2px dashed var(--danger);
+      padding: 12px 16px;
+      border-radius: 10px;
+      margin-top: 16px;
+      text-align: center;
+      font-weight: 700;
+      color: var(--danger);
+      font-size: 1rem;
+    }
+
+    /* ================================================
+   CARTE FORMULAIRE
+   ================================================ */
+    .form-card {
+      background: #F8F9FF;
+      padding: 28px 32px;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid #E3E8FF;
+    }
+
+    .form-card .kicker {
+      color: var(--rl-blue);
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-card h3 {
+      color: #0B1220;
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    /* ================================================
+   FORMULAIRE - INPUTS
+   ================================================ */
+    .rl-input {
+      padding: 13px 15px;
+      border: 1px solid #ccd2e3;
+      border-radius: 8px;
+      font-size: 1rem;
+      width: 100%;
+      font-family: 'Poppins', sans-serif;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .rl-input:focus {
+      outline: none;
+      border-color: var(--rl-blue);
+      box-shadow: 0 0 0 3px rgba(62, 83, 165, 0.1);
+    }
+
+    .rl-input::placeholder {
+      color: #999;
+    }
+
+    /* Validation visuelle en temps réel */
+    .rl-input.valid {
+      border-color: #10b981;
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+    }
+
+    .rl-input.invalid {
+      border-color: #ef4444;
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+    }
+
+    /* Checkbox */
+    .rl-checkbox {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.92rem;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    .rl-checkbox input[type="checkbox"] {
+      margin-top: 4px;
+      cursor: pointer;
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    .rl-checkbox a {
+      color: var(--rl-blue);
+      text-decoration: underline;
+    }
+
+    .rl-checkbox a:hover {
+      color: var(--rl-blue-dark);
+    }
+
+    /* ================================================
+   BOUTON CTA
+   ================================================ */
+    .rl-btn {
+      background: var(--danger);
+      color: #fff;
+      font-weight: 700;
+      padding: 15px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1.08rem;
+      transition: all 0.3s ease;
+      width: 100%;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.4;
+      box-shadow: 0 4px 12px rgba(233, 77, 76, 0.3);
+    }
+
+    .rl-btn:hover {
+      background: #c83b3a;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(233, 77, 76, 0.4);
+    }
+
+    .rl-btn:active {
+      transform: translateY(0);
+    }
+
+    .rl-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Note sous le bouton */
+    .rl-note {
+      display: block;
+      margin-top: 10px;
+      color: #777;
+      font-size: 0.88rem;
+      text-align: center;
+      font-style: italic;
+    }
+
+    /* ================================================
+   ALERTES
+   ================================================ */
+    .alert {
+      display: none;
+      margin-bottom: 15px;
+      padding: 12px 15px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .alert-success {
+      background: #e7f6ec;
+      border: 1px solid #b8e0c7;
+      color: var(--success);
+    }
+
+    .alert-error {
+      background: #fdeceb;
+      border: 1px solid #f5c2c0;
+      color: #842029;
+    }
+
+    /* ================================================
+   FOOTER
+   ================================================ */
+    .footer {
+      background: var(--rl-blue);
+      color: #fff;
+      padding: 25px 20px;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .footer .logo {
+      max-width: 160px;
+      display: block;
+      margin: 0 auto 12px;
+    }
+
+    .footer p {
+      margin: 8px 0 0;
+      font-size: 0.95rem;
+      font-weight: 400;
+    }
+
+    /* ================================================
+   RESPONSIVE - MOBILE
+   ================================================ */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 30px 0 25px;
+      }
+
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+      }
+
+      .hero-content {
+        gap: 25px;
+      }
+
+      .hero-video-column,
+      .form-column {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+
+      .benefits-box {
+        padding: 20px 22px;
+      }
+
+      .form-card {
+        padding: 22px 24px;
+      }
+
+      .rl-btn {
+        font-size: 1rem;
+        padding: 13px 18px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header .logo {
+        max-width: 220px;
+      }
+
+      .urgency-banner {
+        font-size: 0.88rem;
+        padding: 9px 12px;
+      }
+
+      .hero h1 {
+        font-size: 1.45rem;
+      }
+
+      .benefits-list {
+        font-size: 0.92rem;
+      }
+
+      .form-card {
+        padding: 20px;
+      }
+    }
+
+    /* ================================================
+   ANIMATIONS
+   ================================================ */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-content {
+      animation: fadeIn 0.6s ease-out;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================================================
+     HEADER
+     ================================================ -->
+  <header class="header">
+    <div class="container">
+      <img src="assets/images/logo rabaislocal-2025-2.png" alt="RabaisLocal" class="logo">
+    </div>
+  </header>
+
+  <!-- LANGUAGE SELECTOR -->
+  <div style="position:absolute; top:20px; right:20px; font-family:'Poppins',sans-serif; font-size:14px; z-index:100;">
+    <a href="en/consumer.html" style="text-decoration:none; color:#333; font-weight:600; margin:0 5px;">🇺🇸 EN</a> |
+    <a href="page-consommateur.html"
+      style="text-decoration:underline; color:#3E53A5; font-weight:600; margin:0 5px;">🇫🇷 FR</a>
+  </div>
+
+  <!-- ================================================
+     BANDEAU D'URGENCE
+     ================================================ -->
+  <div class="urgency-banner">
+    En pré-lancement — offres actives au lancement officiel le 19 mars 2026
+  </div>
+
+  <!-- ================================================
+     SECTION HERO PRINCIPALE
+     ================================================ -->
+  <main>
+    <section class="hero">
+      <div class="container">
+
+        <!-- Titre principal -->
+        <h1>Tu trouves que la vie coûte cher ?<br>Économise jusqu'à 95 % dans les commerces de ta région.</h1>
+
+        <!-- Bloc problème visuel -->
+        <div
+          style="background:linear-gradient(135deg, #fff5f5, #ffe8e8);border-left:5px solid #E94D4C;padding:20px 25px;border-radius:12px;margin:25px auto;max-width:850px;box-shadow:0 4px 12px rgba(233,77,76,0.12);">
+          <p style="font-size:1.15rem;font-weight:600;color:#E94D4C;margin:0 0 10px;">
+            😤 Marre de payer trop ?
+          </p>
+          <p style="font-size:1rem;line-height:1.7;color:#333;margin:0;">
+            Entre les rabais compliqués, ceux impossibles à trouver, et ceux qui tombent "par hasard"… c'est normal d'en
+            avoir assez.
+          </p>
+        </div>
+
+        <!-- Bloc solution visuel -->
+        <div
+          style="background:linear-gradient(135deg, #f0f7ff, #e3f2ff);border-left:5px solid #3E53A5;padding:20px 25px;border-radius:12px;margin:25px auto;max-width:850px;box-shadow:0 4px 12px rgba(62,83,165,0.15);">
+          <p style="font-size:1.15rem;font-weight:700;color:#3E53A5;margin:0 0 10px;">
+            👉 RabaisLocal simplifie tout
+          </p>
+          <p style="font-size:1rem;line-height:1.7;color:#333;margin:0;">
+            Des rabais <strong style="color:#3E53A5;">clairs, rapides et disponibles</strong> exactement quand tu en as
+            besoin.
+          </p>
+        </div>
+
+        <!-- Bloc CTA principal visuel -->
+        <div
+          style="background:linear-gradient(135deg, #fff9e6, #fff3cc);border:3px solid #FF8C42;padding:25px 30px;border-radius:14px;margin:30px auto;max-width:850px;box-shadow:0 6px 20px rgba(255,140,66,0.2);text-align:center;">
+          <p style="font-size:1.3rem;font-weight:800;color:#1B2240;margin:0 0 8px;line-height:1.4;">
+            💰 Économise jusqu'à <span style="color:#E94D4C;font-size:1.4rem;">95 %</span> dans ta région
+          </p>
+          <p style="font-size:1rem;color:#5B6385;margin:0;">
+            ⚡ Activation en moins de <strong>60 secondes</strong>
+          </p>
+        </div>
+
+        <!-- One-liner accrocheur -->
+        <p class="one-liner" style="font-size:1.1rem;font-weight:600;color:#3E53A5;margin:25px 0;">
+          🎯 Les meilleures offres près de chez toi ou en déplacement
+        </p>
+
+        <!-- ================================================
+           CONTENU HERO - 2 COLONNES
+           ================================================ -->
+        <div class="hero-content">
+
+          <!-- COLONNE 1: VIDÉO -->
+          <div class="hero-video-column">
+            <div class="video-intro">
+              <h3>
+                C'est quoi RabaisLocal ?
+                <span class="highlight">Regarde la vidéo de 2 minutes, ça va te faire économiser !</span>
+              </h3>
+              <p class="sound-warning">🔊 METTEZ LE SON</p>
+            </div>
+
+            <div class="hero-video-container">
+              <iframe src="https://www.youtube.com/embed/Nh9wiYxBVig"
+                title="Vidéo RabaisLocal - Présentation Consommateur"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+
+          <!-- COLONNE 2: FORMULAIRE -->
+          <div class="form-column" id="form-anchor">
+
+            <!-- ================================================
+               BLOC AVANTAGES
+               ================================================ -->
+            <div class="benefits-box">
+              <h3>🎁 Pourquoi devenir membre aujourd'hui ?</h3>
+              <ul class="benefits-list">
+                <li>Inscription <strong>GRATUITE</strong></li>
+                <li><strong>3 mois d'accès illimité</strong> à toutes les fonctionnalités dès le lancement officiel (19
+                  mars 2026)</li>
+                <li><strong>Test complet gratuit</strong> de la plateforme, de l'IA et du système de crédits</li>
+                <li><strong>Lien de référencement gratuit</strong> pour inviter tes amis et <strong>recevoir 10
+                    %</strong> sur leurs futurs achats</li>
+                <li><strong>Concours et promotions exclusifs</strong> réservés aux <strong>consommateurs
+                    fondateurs</strong> (crédits, cartes-cadeaux, voyages à gagner !)</li>
+                <li><strong>Statut "Membre Fondateur Consommateur"</strong> avec badge spécial dans ton profil</li>
+              </ul>
+              <div class="benefits-highlight">
+                🚀 Offre limitée aux <strong>5 000 premiers inscrits !</strong>
+              </div>
+            </div>
+
+            <!-- ================================================
+               CARTE FORMULAIRE D'INSCRIPTION
+               ================================================ -->
+            <div class="form-card">
+              <div class="kicker">Activation gratuite</div>
+              <h3>Active ton accès en moins de 60 s</h3>
+
+              <!-- Alerte dynamique -->
+              <div id="form-alert" class="alert"></div>
+
+              <!-- Formulaire -->
+              <form id="consumer-form" action="https://hook.us2.make.com/neut5attckdybdk594nocvo1gmyrov3k" method="POST"
+                novalidate style="display:flex;flex-direction:column;gap:15px">
+
+                <input class="rl-input" type="text" name="first_name" placeholder="Prénom" required
+                  autocomplete="given-name">
+
+                <input class="rl-input" type="text" name="last_name" placeholder="Nom" required
+                  autocomplete="family-name">
+
+                <input class="rl-input" type="text" name="postal_code" placeholder="A1A 1A1"
+                  style="text-transform: uppercase;" maxlength="7" pattern="^[A-Za-z]\d[A-Za-z] \d[A-Za-z]\d$"
+                  title="Format requis : A1A 1A1" required autocomplete="postal-code">
+
+                <input class="rl-input" type="email" name="email" placeholder="ton.email@exemple.com" required
+                  autocomplete="email">
+
+                <!-- Champ caché pour le numéro de parrain -->
+                <input type="hidden" name="rl_ref" id="rlRefField">
+
+                <!-- Notice de vérification email -->
+                <div
+                  style="background:#E8EDFF;border-left:4px solid #3E53A5;padding:14px;border-radius:8px;margin:20px 0;font-size:14px;line-height:1.6;">
+                  <strong style="color:#3E53A5;display:block;margin-bottom:6px;">📧 Étape importante après inscription
+                    :</strong>
+                  <p style="margin:0 0 8px;">Pour confirmer ton adresse courriel et activer ton compte, tu devras
+                    <strong>vérifier ta boîte de réception</strong>.</p>
+                  <p style="margin:0;font-size:13px;color:#5B6385;">
+                    💡 <strong>Astuce :</strong> Pense à vérifier tes <strong>courriels indésirables (spam)</strong> si
+                    tu ne vois pas notre message dans ta boîte principale. Autorise les courriels
+                    <strong>@rabaislocal.com</strong> dans ta liste blanche pour recevoir tous nos envois sans problème.
+                  </p>
+                </div>
+
+                <!-- Checkbox conditions générales -->
+                <label class="rl-checkbox">
+                  <input id="terms" type="checkbox" required>
+                  <span>
+                    J'accepte les
+                    <a href="conditions-utilisation.html" target="_blank" rel="noopener">conditions générales</a>.
+                  </span>
+                </label>
+
+                <!-- Bouton de soumission -->
+                <button id="submit-btn" type="submit" class="rl-btn">
+                  🎟️ Activer mon accès gratuit<br>
+                  <small style="font-size:0.85rem;font-weight:500;">Sans carte de crédit</small>
+                </button>
+
+                <small class="rl-note">Tu recevras nos infos de pré-lancement.</small>
+              </form>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================================================
+     FOOTER
+     ================================================ -->
+  <footer class="footer">
+    <div class="container">
+      <img src="assets/images/e5cab6b1bd46651f9eac704e82ff0f77_12f12a9e.png" alt="RabaisLocal" class="logo">
+      <p>© 2025 <strong>RabaisLocal</strong> — Fait avec 💙 au Québec</p>
+    </div>
+  </footer>
+
+  <!-- ================================================
+     JAVASCRIPT - GESTION FORMULAIRE & REF TRACKING
+     ================================================ -->
+  <script>
+    (function () {
+      "use strict";
+
+      /* ====================================================
+         UTILITAIRES
+         ==================================================== */
+      function qs(sel, root = document) {
+        return root.querySelector(sel);
+      }
+
+      function getParam(name) {
+        try {
+          const params = new URLSearchParams(window.location.search);
+          return params.get(name) || '';
+        } catch (e) {
+          return '';
+        }
+      }
+
+      function sanitize(value) {
+        return (value || '').toString().replace(/[^\w\-]/g, '').trim();
+      }
+
+      function setCookie(name, value, days) {
+        try {
+          const date = new Date();
+          date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+          document.cookie = name + "=" + encodeURIComponent(value) + ";expires=" + date.toUTCString() + ";path=/";
+        } catch (e) { }
+      }
+
+      function getCookie(name) {
+        try {
+          const match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
+          return match ? decodeURIComponent(match[2]) : '';
+        } catch (e) {
+          return '';
+        }
+      }
+
+      function setLS(key, value) {
+        try {
+          localStorage.setItem(key, value);
+        } catch (e) { }
+      }
+
+      function getLS(key) {
+        try {
+          return localStorage.getItem(key) || '';
+        } catch (e) {
+          return '';
+        }
+      }
+
+      /* ====================================================
+         GESTION DES ALERTES
+         ==================================================== */
+      function setAlert(type, message) {
+        const box = qs('#form-alert');
+        if (!box) return;
+        box.className = 'alert ' + (type === 'success' ? 'alert-success' : 'alert-error');
+        box.textContent = message;
+        box.style.display = 'block';
+
+        // Scroll vers l'alerte
+        setTimeout(() => {
+          box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
+      }
+
+      function clearAlert() {
+        const box = qs('#form-alert');
+        if (box) {
+          box.style.display = 'none';
+          box.textContent = '';
+          box.className = 'alert';
+        }
+      }
+
+      /* ====================================================
+         CAPTURE ET GESTION DU NUMÉRO DE PARRAIN (REF)
+         ==================================================== */
+
+      // Récupération du ref depuis l'URL, cookies ou localStorage
+      const refFromURL = getParam('ref') || getParam('rl_ref') || getParam('referred_by');
+      const refFromCookie = getCookie('rl_ref');
+      const refFromLS = getLS('rl_ref');
+
+      // Priorité: URL > localStorage > Cookie
+      let REF = sanitize(refFromURL || refFromLS || refFromCookie);
+
+      // Persistance du REF
+      if (refFromURL) {
+        REF = sanitize(refFromURL);
+        setCookie('rl_ref', REF, 180);
+        setLS('rl_ref', REF);
+      } else if (REF) {
+        // Réenregistrer pour rafraîchir la durée
+        setCookie('rl_ref', REF, 180);
+        setLS('rl_ref', REF);
+      }
+
+      // Injection du REF dans le champ caché du formulaire
+      const rlRefField = qs('#rlRefField');
+      if (rlRefField) {
+        rlRefField.value = REF || '';
+      }
+
+      console.log('✅ REF capturé:', REF || '(aucun parrain)');
+
+      /* ====================================================
+         PROPAGATION DU REF DANS TOUS LES LIENS
+         ==================================================== */
+      function propagateRefToLinks() {
+        if (!REF) return;
+
+        document.querySelectorAll('a[href]').forEach(function (link) {
+          const href = link.getAttribute('href');
+
+          // Ignorer les liens spéciaux
+          if (!href ||
+            href.startsWith('mailto:') ||
+            href.startsWith('tel:') ||
+            href.startsWith('javascript:') ||
+            href.startsWith('#')) {
+            return;
+          }
+
+          try {
+            const url = new URL(href, window.location.origin);
+
+            // Ne modifier que les liens internes
+            if (url.origin === window.location.origin) {
+              if (!url.searchParams.get('ref') && !url.searchParams.get('rl_ref')) {
+                url.searchParams.set('ref', REF);
+                link.setAttribute('href', url.toString());
+              }
+            }
+          } catch (e) {
+            // Fallback pour les URLs relatives
+            if (href.indexOf('?') === -1) {
+              link.setAttribute('href', href + '?ref=' + encodeURIComponent(REF));
+            } else if (!/[?&](ref|rl_ref)=/i.test(href)) {
+              link.setAttribute('href', href + '&ref=' + encodeURIComponent(REF));
+            }
+          }
+        });
+      }
+
+      // Exécuter la propagation au chargement
+      window.addEventListener('load', propagateRefToLinks);
+
+      // Observer les changements du DOM pour les liens ajoutés dynamiquement
+      const observer = new MutationObserver(propagateRefToLinks);
+      observer.observe(document.documentElement, { childList: true, subtree: true });
+
+      /* ====================================================
+         GESTION DU FORMULAIRE
+         ==================================================== */
+      const form = qs('#consumer-form');
+      const submitBtn = qs('#submit-btn');
+
+      if (form && submitBtn) {
+        form.addEventListener('submit', async function (e) {
+          e.preventDefault();
+          clearAlert();
+
+          // Récupération des données du formulaire
+          const formData = new FormData(form);
+          const data = Object.fromEntries(formData.entries());
+
+          // Validation basique
+          if (!data.first_name || !data.first_name.trim()) {
+            setAlert('error', 'Le prénom est requis.');
+            return;
+          }
+
+          if (!data.last_name || !data.last_name.trim()) {
+            setAlert('error', 'Le nom est requis.');
+            return;
+          }
+
+          if (!data.postal_code || !data.postal_code.trim()) {
+            setAlert('error', 'Le code postal est requis.');
+            return;
+          }
+
+          // Validation stricte du format canadien (L1L 1L1)
+          const postalCodeRegex = /^[A-Za-z]\d[A-Za-z] \d[A-Za-z]\d$/;
+          if (!postalCodeRegex.test(data.postal_code.trim())) {
+            setAlert('error', 'Format du code postal invalide. Format requis : A1A 1A1 (ex: H2X 1Y4)');
+            return;
+          }
+
+          if (!data.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+            setAlert('error', 'Adresse courriel invalide.');
+            return;
+          }
+
+          if (!qs('#terms')?.checked) {
+            setAlert('error', 'Tu dois accepter les conditions générales.');
+            return;
+          }
+
+          // Désactivation du bouton pendant l'envoi
+          const originalText = submitBtn.innerHTML;
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '⏳ Activation en cours...';
+
+          // Préparation du payload pour Make.com
+          const payload = {
+            source: 'cf2_page_consommateur_v2',
+            submitted_at: new Date().toISOString(),
+            rl_ref: data.rl_ref || REF || null,
+            role: 'consumer',
+            first_name: data.first_name.trim(),
+            last_name: data.last_name.trim(),
+            postal_code: data.postal_code.trim(),
+            email: data.email.trim(),
+            page: {
+              url: window.location.href,
+              title: document.title
+            },
+            utm: {
+              source: getParam('utm_source'),
+              medium: getParam('utm_medium'),
+              campaign: getParam('utm_campaign'),
+              term: getParam('utm_term'),
+              content: getParam('utm_content')
+            }
+          };
+
+          try {
+            // Sauvegarder REF / email avant soumission
+            const refToStore = payload.rl_ref || REF || getLS('rl_ref') || '';
+            if (refToStore) {
+              setLS('rl_ref', refToStore);
+              setCookie('rl_ref', refToStore, 180);
+              if (form.querySelector('#rlRefField')) {
+                form.querySelector('#rlRefField').value = refToStore;
+              }
+            }
+            if (payload.email) {
+              setLS('user_email', payload.email);
+              setCookie('user_email', payload.email, 7);
+            }
+
+            // Laisser le navigateur suivre la redirection Make (302 / Location)
+            form.submit();
+
+            // Sécurité : si rien ne se passe, réactiver le bouton après 6s
+            setTimeout(() => {
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = originalText;
+            }, 6000);
+
+          } catch (error) {
+            console.error('❌ Erreur soumission:', error);
+            setAlert('error', "Oups. Impossible d'activer ton accès pour l'instant. Réessaie dans quelques instants.");
+
+            // Réactiver le bouton
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
+          }
+        });
+      }
+
+      /* ====================================================
+         AUTO-FORMATAGE ET VALIDATION DU CODE POSTAL (A1A 1A1)
+         ==================================================== */
+      const postalCodeInput = qs('input[name="postal_code"]');
+      if (postalCodeInput) {
+        postalCodeInput.addEventListener('input', function (e) {
+          // Extraire uniquement les caractères alphanumériques
+          let value = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+
+          // Limiter à 6 caractères (sans l'espace)
+          if (value.length > 6) {
+            value = value.substring(0, 6);
+          }
+
+          // Ajouter l'espace après le 3e caractère (A1A 1A1)
+          if (value.length > 3) {
+            value = value.substring(0, 3) + ' ' + value.substring(3);
+          }
+
+          e.target.value = value;
+
+          // Validation visuelle en temps réel
+          const postalCodeRegex = /^[A-Z]\d[A-Z] \d[A-Z]\d$/;
+          e.target.classList.remove('valid', 'invalid');
+
+          if (value.length === 0) {
+            // Champ vide : pas de couleur
+            return;
+          }
+
+          if (postalCodeRegex.test(value)) {
+            e.target.classList.add('valid');
+          } else {
+            e.target.classList.add('invalid');
+          }
+        });
+      }
+
+      /* ====================================================
+         AUTO-CORRECTION ET VALIDATION DE L'EMAIL
+         ==================================================== */
+      const emailInput = qs('input[name="email"]');
+      if (emailInput) {
+        emailInput.addEventListener('input', function (e) {
+          // Supprimer tous les espaces
+          let value = e.target.value.replace(/\s/g, '');
+          e.target.value = value;
+
+          // Validation visuelle en temps réel
+          // Doit contenir @ et un domaine valide (.com, .ca, .fr, etc.)
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+          e.target.classList.remove('valid', 'invalid');
+
+          if (value.length === 0) {
+            // Champ vide : pas de couleur
+            return;
+          }
+
+          if (emailRegex.test(value)) {
+            e.target.classList.add('valid');
+          } else {
+            e.target.classList.add('invalid');
+          }
+        });
+      }
+
+      /* ====================================================
+         SAUVEGARDE DU REF AVANT TOUT CLIC
+         ==================================================== */
+      document.addEventListener('click', function (e) {
+        if (e.target.closest('button, [type="submit"], a')) {
+          try {
+            if (REF) {
+              setLS('rl_ref', REF);
+              setCookie('rl_ref', REF, 180);
+            }
+          } catch (err) { }
+        }
+      });
+
+    })();
+  </script>
+
+</body>
+
+</html>

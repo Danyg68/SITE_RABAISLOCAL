@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Déjà affilié - RabaisLocal</title>
+
+<!-- Google Fonts - Poppins -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+<style>
+/* ================================================
+   RABAISLOCAL - PAGE AFFILIÉ DÉJÀ INSCRIT
+   Variables CSS & Reset
+   ================================================ */
+:root {
+  --rl-blue: #3E53A5;
+  --rl-blue-dark: #2E4191;
+  --rl-bg: #F5F8FF;
+  --rl-green: #10b981;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--rl-bg);
+  color: #1B2240;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ================================================
+   HEADER - LOGO
+   ================================================ */
+.header {
+  text-align: center;
+  padding: 25px 15px 15px;
+  background: #ffffff;
+}
+
+.header .logo {
+  max-width: 240px;
+  height: auto;
+  display: inline-block;
+}
+
+/* ================================================
+   CONTENEUR PRINCIPAL
+   ================================================ */
+.container {
+  max-width: 1040px;
+  margin: 60px auto;
+  padding: 0 20px;
+  min-height: 400px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid rgba(62, 83, 165, 0.15);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.08);
+  text-align: left;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(16, 185, 129, 0.12);
+  color: #0f9b6b;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 18px;
+}
+
+.card h1 {
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  color: #1B2240;
+  margin-bottom: 14px;
+}
+
+.card p {
+  margin-bottom: 16px;
+  font-size: 1rem;
+  color: #2d2d2d;
+}
+
+.card h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+  color: var(--rl-blue);
+}
+
+.card .list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+}
+
+.card .list li {
+  margin-bottom: 10px;
+  padding-left: 14px;
+  position: relative;
+  color: #2d2d2d;
+}
+
+.card .list li::before {
+  content: "•";
+  color: var(--rl-blue);
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.highlight-box {
+  background: linear-gradient(135deg, rgba(62, 83, 165, 0.08) 0%, rgba(16, 185, 129, 0.08) 100%);
+  border-left: 4px solid var(--rl-green);
+  padding: 16px 18px;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.highlight-box strong {
+  color: var(--rl-blue);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--rl-blue);
+  color: #fff;
+  padding: 13px 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 10px 24px rgba(62, 83, 165, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.cta:hover {
+  background: var(--rl-blue-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(62, 83, 165, 0.35);
+}
+
+.cta.secondary {
+  background: var(--rl-green);
+  box-shadow: 0 10px 24px rgba(16, 185, 129, 0.3);
+}
+
+.cta.secondary:hover {
+  background: #059669;
+  box-shadow: 0 14px 28px rgba(16, 185, 129, 0.35);
+}
+
+.support {
+  margin-top: 22px;
+  background: rgba(62, 83, 165, 0.06);
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  color: #1B2240;
+}
+
+.support a {
+  color: var(--rl-blue);
+  font-weight: 700;
+}
+
+/* ================================================
+   FOOTER
+   ================================================ */
+.footer {
+  background: var(--rl-blue);
+  color: rgba(255, 255, 255, 0.9);
+  padding: 40px 20px 30px;
+  text-align: center;
+  margin-top: 80px;
+}
+
+.footer .logo {
+  max-width: 160px;
+  margin: 0 auto 15px;
+}
+
+.footer p {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* ================================================
+   RESPONSIVE
+   ================================================ */
+@media (max-width: 768px) {
+  .container {
+    margin: 40px auto;
+    padding: 0 15px;
+  }
+
+  .header {
+    padding: 18px 10px 10px;
+  }
+
+  .header .logo {
+    max-width: 200px;
+  }
+
+  .cta {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================================================
+     HEADER
+     ================================================ -->
+<div class="header">
+  <img src="assets/images/logo rabaislocal-2025-2.png"
+       alt="Logo RabaisLocal"
+       class="logo">
+</div>
+
+<!-- ================================================
+     CONTENU PRINCIPAL
+     ================================================ -->
+<div class="container">
+  <div class="card">
+    <div class="badge">🎉 Tu es déjà Affilié Fondateur !</div>
+    <h1>Bonne nouvelle ! Tu fais déjà partie des Affiliés RabaisLocal</h1>
+    <p>Ton inscription en tant qu'<strong>Affilié Fondateur</strong> est déjà active. Tu as accès à tous les avantages exclusifs du programme d'affiliation.</p>
+
+    <div class="highlight-box">
+      <strong>✨ Rappel :</strong> En tant qu'Affilié Fondateur, tu bénéficies d'un statut privilégié à vie, de commissions récursives sur jusqu'à 15 niveaux, et d'une trousse de lancement complète avec agent IA !
+    </div>
+
+    <h3>🔑 Accède à ton espace affilié :</h3>
+    <ul class="list">
+      <li>
+        <strong>Connecte-toi à ton espace membre :</strong>
+        <a href="https://partenaires.rabaislocal.com/login" style="color:var(--rl-blue);font-weight:700;">https://partenaires.rabaislocal.com/login</a>
+      </li>
+      <li>
+        <strong>Mot de passe oublié ?</strong> Récupère ton accès :
+        <a href="https://partenaires.rabaislocal.com/forgot-password" style="color:var(--rl-blue);font-weight:700;">Réinitialiser mon mot de passe</a>
+      </li>
+    </ul>
+
+    <a class="cta" href="https://partenaires.rabaislocal.com/login">🚀 Accéder à mon espace</a>
+    <a class="cta secondary" href="https://www.facebook.com/rabaislocal">📱 Suivre sur Facebook</a>
+
+    <h3 style="margin-top:30px;">💰 Tes avantages d'Affilié Fondateur :</h3>
+    <ul class="list">
+      <li><strong>Lien de parrainage unique</strong> - Partage ton lien et gagne des commissions sur chaque inscription</li>
+      <li><strong>Commissions récursives</strong> - Revenus sur les abonnements et crédits de ton réseau</li>
+      <li><strong>Trousse de lancement complète</strong> - Agent IA, outils d'automatisation, templates marketing</li>
+      <li><strong>Système multiniveau</strong> - Jusqu'à 15 niveaux de commissions selon ton rang</li>
+      <li><strong>Tous les privilèges consommateur</strong> - Rabais jusqu'à 95%, carte de membre, crédits illimités</li>
+      <li><strong>Support prioritaire</strong> - Accès direct à l'équipe et formations exclusives</li>
+    </ul>
+
+    <h3>📊 Prochaines étapes recommandées :</h3>
+    <ul class="list">
+      <li>Connecte-toi à ton <strong>espace membre</strong> pour accéder à ton tableau de bord</li>
+      <li>Récupère ton <strong>lien de parrainage unique</strong> dans ton profil</li>
+      <li>Télécharge ta <strong>trousse de lancement</strong> avec tous les outils marketing</li>
+      <li>Explore l'<strong>agent IA</strong> pour créer du contenu automatiquement</li>
+      <li>Consulte tes <strong>statistiques et commissions</strong> en temps réel</li>
+    </ul>
+
+    <div class="support" style="background: rgba(16, 185, 129, 0.1); border-left: 4px solid var(--rl-green); margin-top: 30px;">
+      <strong>🎯 Objectif :</strong> Continue de partager ton lien de parrainage pour développer ton réseau et maximiser tes revenus récurrents !
+    </div>
+
+    <div class="support">
+      📩 Besoin d'aide ? Écris-nous : <a href="mailto:support@rabaislocal.com">support@rabaislocal.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================
+     FOOTER
+     ================================================ -->
+<div class="footer">
+  <img src="assets/images/logo rabaislocal-2025-2.png"
+       alt="RabaisLocal"
+       class="logo">
+  <p>
+    © 2025 RabaisLocal — Une initiative 100 % québécoise propulsée par l'IA 🤖
+  </p>
+</div>
+
+</body>
+</html>

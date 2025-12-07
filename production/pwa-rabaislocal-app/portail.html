@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>RabaisLocal - Portail</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        html,
+        body {
+            margin: 0;
+            height: 100%;
+            overflow: hidden;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                Roboto, sans-serif;
+        }
+
+        .topbar {
+            height: 44px;
+            background: #0f172a;
+            color: #e5e7eb;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            font-size: 13px;
+        }
+
+        .topbar button {
+            border: none;
+            background: transparent;
+            color: #e5e7eb;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            padding: 4px 6px;
+        }
+
+        .topbar-title {
+            margin-left: 8px;
+            opacity: 0.9;
+        }
+
+        iframe {
+            width: 100%;
+            height: calc(100% - 44px);
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="topbar">
+        <button type="button" onclick="goHome()">
+            ⬅ Retour
+        </button>
+        <div class="topbar-title" id="portalLabel"></div>
+    </div>
+
+    <iframe id="portalFrame" src=""></iframe>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const type = params.get("type");
+
+        const labelEl = document.getElementById("portalLabel");
+        const frame = document.getElementById("portalFrame");
+
+        let url = "";
+        let label = "";
+
+        switch (type) {
+            case "conso":
+                url = "consommateur.html";
+                label = "Portail Consommateur";
+                break;
+            case "com":
+                url = "commercant.html";
+                label = "Portail Commerçant";
+                break;
+            case "aff":
+                // Si l'iframe est bloquée par X-Frame-Options, ouvrir dans un nouvel onglet
+                url = "https://rabaislocal.goaffpro.com/login";
+                label = "Portail Affilié (ouvre dans un nouvel onglet)";
+                try {
+                    frame.src = url;
+                } catch (e) {
+                    window.open(url, "_blank");
+                }
+                break;
+            default:
+                window.location.href = "index.html";
+        }
+
+        if (labelEl) labelEl.textContent = label || "";
+        if (type !== "aff" && frame && url) {
+            frame.src = url;
+        }
+
+        function goHome() {
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+
+</html>

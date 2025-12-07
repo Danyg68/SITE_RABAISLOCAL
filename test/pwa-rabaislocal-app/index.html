@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>RabaisLocal App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#3E53A5" />
+
+    <!-- iOS PWA -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="RabaisLocal" />
+    <link rel="apple-touch-icon" href="icon-192.png" />
+    <!-- Splash Screen Link (iOS) - approximated -->
+    <link rel="apple-touch-startup-image" href="splash-portrait.png" />
+
+    <style>
+        :root {
+            --bg: #F5F8FF;
+            --bg-card: #ffffff;
+            --text: #1f2933;
+            --primary: #3E53A5;
+            --primary-soft: #e3e7fb;
+            --button-radius: 14px;
+            --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.12);
+        }
+
+        [data-theme="dark"] {
+            --bg: #020617;
+            --bg-card: #0b1220;
+            --text: #e5e7eb;
+            --primary: #4f67ff;
+            --primary-soft: #1e293b;
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            display: flex;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .app-shell {
+            width: 100%;
+            max-width: 480px;
+            padding: 24px 16px 32px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: 24px;
+            box-shadow: var(--shadow-soft);
+            padding: 24px 20px 28px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-logo {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--primary-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .brand-logo img {
+            width: 40px;
+            height: auto;
+            display: block;
+        }
+
+        .brand-text-title {
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--primary);
+        }
+
+        .brand-text-sub {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .theme-toggle {
+            border: none;
+            background: var(--primary-soft);
+            color: var(--primary);
+            padding: 8px 10px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .theme-toggle span.icon {
+            font-size: 14px;
+        }
+
+        .intro {
+            margin: 12px 0 20px;
+        }
+
+        .intro-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .intro-text {
+            font-size: 13px;
+            opacity: 0.85;
+            line-height: 1.5;
+        }
+
+        .sections {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .portal-btn {
+            width: 100%;
+            border-radius: var(--button-radius);
+            padding: 14px 14px;
+            border: none;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 18px rgba(15, 23, 42, 0.2);
+            transform: translateY(0);
+            transition: transform 0.13s ease, box-shadow 0.13s ease,
+                opacity 0.13s ease;
+        }
+
+        .portal-btn span.label {
+            flex: 1;
+            text-align: center;
+        }
+
+        .portal-btn span.tag {
+            font-size: 11px;
+            opacity: 0.9;
+        }
+
+        .portal-btn span.icon {
+            font-size: 17px;
+            margin-right: 8px;
+        }
+
+        .portal-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 20px rgba(15, 23, 42, 0.28);
+            opacity: 0.96;
+        }
+
+        .portal-conso {
+            background: linear-gradient(135deg, #16a34a, #22c55e);
+        }
+
+        .portal-com {
+            background: linear-gradient(135deg, #a855f7, #ec4899);
+        }
+
+        .portal-aff {
+            background: linear-gradient(135deg, #f97316, #e11d48);
+        }
+
+        .footer-note {
+            margin-top: 16px;
+            font-size: 11px;
+            text-align: center;
+            opacity: 0.7;
+        }
+
+        @media (min-width: 768px) {
+            body {
+                background: radial-gradient(circle at top, #e5ecff 0, #0b1020 65%);
+            }
+
+            .app-shell {
+                padding: 40px 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-shell" id="app-root">
+        <div class="card">
+            <header class="header">
+                <div class="brand">
+                    <div class="brand-logo">
+                        <!-- Logo RabaisLocal (à fournir sous forme de fichier logo-rabaislocal.png) -->
+                        <img src="logo-rabaislocal.png" alt="RabaisLocal" />
+                    </div>
+                    <div class="brand-text">
+                        <div class="brand-text-title">RabaisLocal</div>
+                        <div class="brand-text-sub">
+                            Consommateurs · Commerçants · Affiliés
+                        </div>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="themeToggle" type="button">
+                    <span class="icon">🌙</span>
+                    <span class="label">Mode sombre</span>
+                </button>
+            </header>
+
+            <section class="intro">
+                <div class="intro-title">Choisissez votre portail</div>
+                <p class="intro-text">
+                    Accédez en un clic à votre espace RabaisLocal : découvrir des rabais,
+                    créer des promos locales ou développer votre réseau d’affiliés.
+                </p>
+            </section>
+
+            <section class="sections">
+                <button class="portal-btn portal-conso" type="button" onclick="go('conso')">
+                    <span class="icon">🛍️</span>
+                    <span class="label">Portail Consommateur</span>
+                </button>
+
+                <button class="portal-btn portal-com" type="button" onclick="go('com')">
+                    <span class="icon">🏪</span>
+                    <span class="label">Portail Commerçant</span>
+                </button>
+
+                <button class="portal-btn portal-aff" type="button" onclick="go('aff')">
+                    <span class="icon">🤝</span>
+                    <span class="label">Portail Affilié</span>
+                </button>
+            </section>
+
+            <div class="footer-note">
+                App RabaisLocal en pré-lancement · Les rabais seront actifs au
+                lancement officiel.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function go(type) {
+            window.location.href = "portail.html?type=" + encodeURIComponent(type);
+        }
+
+        // Gestion du mode sombre avec localStorage
+        const root = document.documentElement;
+        const toggleBtn = document.getElementById("themeToggle");
+
+        function applyTheme(theme) {
+            if (theme === "dark") {
+                root.setAttribute("data-theme", "dark");
+                if (toggleBtn) {
+                    toggleBtn.querySelector(".icon").textContent = "🌞";
+                    toggleBtn.querySelector(".label").textContent = "Mode clair";
+                }
+            } else {
+                root.removeAttribute("data-theme");
+                if (toggleBtn) {
+                    toggleBtn.querySelector(".icon").textContent = "🌙";
+                    toggleBtn.querySelector(".label").textContent = "Mode sombre";
+                }
+            }
+        }
+
+        const savedTheme = localStorage.getItem("rl-theme");
+        if (savedTheme) {
+            applyTheme(savedTheme);
+        } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            applyTheme("dark");
+        }
+
+        if (toggleBtn) {
+            toggleBtn.addEventListener("click", () => {
+                const current =
+                    root.getAttribute("data-theme") === "dark" ? "dark" : "light";
+                const next = current === "dark" ? "light" : "dark";
+                applyTheme(next);
+                localStorage.setItem("rl-theme", next);
+            });
+        }
+
+        // Enregistrer le service worker
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker
+                    .register("service-worker.js")
+                    .catch((err) => console.error("Service worker error", err));
+            });
+        }
+    </script>
+</body>
+
+</html>

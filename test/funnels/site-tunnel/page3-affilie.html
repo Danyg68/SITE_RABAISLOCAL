@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Félicitations Affilié Fondateur – RabaisLocal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', Arial, sans-serif;
+      background: #F5F8FF;
+      color: #1F2637;
+      line-height: 1.6;
+    }
+
+    @keyframes pulseBox {
+      0% { box-shadow: 0 0 0 0 rgba(62, 83, 165, 0.5); }
+      70% { box-shadow: 0 0 0 12px rgba(62, 83, 165, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(62, 83, 165, 0); }
+    }
+
+    .rl-header {
+      background: #F5F8FF;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    .rl-header img {
+      max-height: 60px;
+      width: auto;
+    }
+
+    .rl-divider {
+      height: 4px;
+      background: #3E53A5;
+      width: 100%;
+    }
+
+    .rl-hero {
+      max-width: 920px;
+      margin: 50px auto 30px;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .rl-hero h1 {
+      font-size: clamp(26px, 3vw, 34px);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .rl-hero h1 span {
+      color: #3E53A5;
+    }
+
+    .rl-hero p {
+      font-size: 18px;
+      max-width: 640px;
+      margin: 10px auto 30px;
+    }
+
+    .rl-steps-box {
+      max-width: 800px;
+      margin: 0 auto 60px;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      padding: 40px 30px;
+    }
+
+    .rl-steps-box h2 {
+      text-align: center;
+      font-size: 26px;
+      color: #3E53A5;
+      margin-bottom: 30px;
+    }
+
+    .rl-steps-box h2 span {
+      color: #1F2637;
+    }
+
+    .rl-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 20px;
+      font-size: 17px;
+    }
+
+    .rl-step:last-child {
+      margin-bottom: 0;
+    }
+
+    .rl-step-icon {
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .rl-important-box {
+      background: linear-gradient(135deg, #FFD700 0%, #FFED9A 100%);
+      border: 3px solid #3E53A5;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      padding: 22px 24px;
+      max-width: 680px;
+      margin: 40px auto;
+      animation: pulseBox 2s infinite;
+    }
+
+    .rl-important-box p:first-child {
+      font-size: 22px;
+      font-weight: 700;
+      color: #1B2240;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .rl-important-box .highlight {
+      color: #3E53A5;
+    }
+
+    .rl-important-box p:last-child {
+      font-size: 18px;
+      color: #1B2240;
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+
+    .rl-video-box {
+      max-width: 760px;
+      margin: 0 auto 40px;
+      background: #E9EEFF;
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .rl-video-box iframe {
+      width: 100%;
+      height: 360px;
+      border-radius: 12px;
+      border: none;
+    }
+
+    .rl-social-proof {
+      text-align: center;
+      margin: 50px auto 70px;
+      font-size: 16px;
+      color: #333;
+      padding: 0 20px;
+    }
+
+    .rl-footer {
+      background: #3E53A5;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .rl-footer img {
+      height: 40px;
+      width: auto;
+      margin-bottom: 15px;
+    }
+
+    .rl-footer p {
+      color: white;
+      margin: 0;
+      font-size: 14px;
+      font-weight: 400;
+      opacity: 0.9;
+    }
+
+    .rl-ref-badge {
+      background: #FFD700;
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-weight: 700;
+      color: #1B2240;
+      display: inline-block;
+    }
+
+    @media (max-width: 768px) {
+      .rl-hero h1 {
+        font-size: 24px;
+      }
+
+      .rl-hero p {
+        font-size: 16px;
+      }
+
+      .rl-steps-box {
+        padding: 30px 20px;
+      }
+
+      .rl-steps-box h2 {
+        font-size: 22px;
+      }
+
+      .rl-step {
+        font-size: 16px;
+      }
+
+      .rl-important-box {
+        padding: 18px 20px;
+      }
+
+      .rl-important-box p:first-child {
+        font-size: 19px;
+      }
+
+      .rl-important-box p:last-child {
+        font-size: 16px;
+      }
+
+      .rl-video-box iframe {
+        height: 240px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<section id="rl-thankyou">
+
+  <!-- HEADER -->
+  <div class="rl-header">
+    <img src="assets/images/logo rabaislocal-2025-2.png" alt="Logo RabaisLocal">
+  </div>
+  <div class="rl-divider"></div>
+
+  <!-- HERO -->
+  <div class="rl-hero">
+    <h1>
+      🎉 Félicitations ! Tu fais officiellement partie des <span>Affiliés Fondateurs RabaisLocal</span> !
+    </h1>
+    <p>
+      Tu viens d'activer ton accès exclusif et ta trousse de démarrage.<br>
+      Dans quelques minutes, tu recevras tes accès par courriel.
+    </p>
+    <p style="font-size:16px; color:#4B569A; margin-top:15px;">
+      Ton parrain (référence : <span class="rl-ref-badge" id="refDisplay">Chargement...</span>) a été crédité.
+    </p>
+  </div>
+
+  <!-- ÉTAPES VERS LE SUCCÈS -->
+  <div class="rl-steps-box">
+    <h2>🚀 Tes <span>5 Étapes</span> vers le succès</h2>
+
+    <div>
+      <div class="rl-step">
+        <div class="rl-step-icon">📩</div>
+        <div><strong>Vérifie tes courriels</strong> (principal + indésirables) pour <strong>signer ton contrat</strong> et <strong>débloquer ton portail d'Affilié Fondateur</strong>.</div>
+      </div>
+
+      <div class="rl-step">
+        <div class="rl-step-icon">🗒️</div>
+        <div><strong>Fais la liste</strong> de toutes les personnes que tu connais qui pourraient être intéressées à devenir membres gratuitement prêt à économiser. Ensuite, refais ce même exercice avec les <strong>commerçants</strong> que tu connais ou que tu aimerais recevoir des rabais.</div>
+      </div>
+
+      <div class="rl-step">
+        <div class="rl-step-icon">💬</div>
+        <div><strong>Envoie des messages</strong> (Messenger, texto ou courriel) à ta liste. Tu trouveras des <strong>modèles prêts à être utiliser</strong> dans ton portail, onglet <em>"Documents utiles"</em>.</div>
+      </div>
+
+      <div class="rl-step">
+        <div class="rl-step-icon">🧭</div>
+        <div><strong>Fais le tour de ton portail</strong> pour te familiariser avec les outils, ton tableau de bord et tes ressources de formation.</div>
+      </div>
+
+      <div class="rl-step">
+        <div class="rl-step-icon">📊</div>
+        <div><strong>Reprends tes tâches quotidiennes</strong> et <strong>suis tes résultats</strong> dans ton portail Affilié — ton succès se bâtit jour après jour !</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AVIS IMPORTANT -->
+  <div style="text-align:center; padding:0 20px;">
+    <div class="rl-important-box">
+      <p>
+        ⚠️ <span class="highlight">IMPORTANT :</span><br>
+        Regarde tes <strong>courriels (principal + indésirables)</strong> pour <strong>signer ton contrat</strong> et <strong>débloquer ton portail Affilié</strong> ✍️
+      </p>
+      <p>
+        📩 <em>Ton accès complet sera activé seulement après la signature — vérifie maintenant !</em> 👇
+      </p>
+    </div>
+  </div>
+
+  <!-- VIDÉO -->
+  <div class="rl-video-box">
+    <iframe
+      src="https://www.youtube.com/embed/aGwPIGjPBZI"
+      title="Message de bienvenue RabaisLocal"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <!-- PREUVE SOCIALE -->
+  <div class="rl-social-proof">
+    💬 Rejoins la communauté RabaisLocal dès maintenant.<br>
+    Tu n'es pas seul — tu fais partie du mouvement 💙
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="rl-footer">
+    <div>
+      <img src="assets/images/logo rabaislocal-2025-2.png" alt="RabaisLocal">
+    </div>
+    <p>© 2025 RabaisLocal. Tous droits réservés.</p>
+  </footer>
+
+</section>
+
+<!-- SCRIPT JS - RÉCUPÉRATION ET AFFICHAGE DU REF -->
+<script>
+(function() {
+  'use strict';
+
+  // Récupération du paramètre REF depuis l'URL
+  const params = new URLSearchParams(window.location.search);
+  const ref = params.get("ref") || "Non spécifié";
+
+  // Log pour debug
+  console.log("Page 3 — ref :", ref);
+
+  // Affichage dynamique dans la page
+  const refDisplay = document.getElementById("refDisplay");
+  if (refDisplay) {
+    refDisplay.textContent = ref;
+  }
+
+  // Sauvegarder dans localStorage pour continuité
+  if (ref !== "Non spécifié") {
+    try {
+      localStorage.setItem("rl_ref", ref);
+    } catch (e) {
+      console.error("Erreur localStorage:", e);
+    }
+  }
+
+})();
+</script>
+
+</body>
+</html>
