@@ -2,85 +2,45 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8" />
-    <title>RabaisLocal Affiliés</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <title>Redirection...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- PWA -->
-    <link rel="manifest" href="manifest.json" />
-    <meta name="theme-color" content="#3E53A5" />
-
-    <!-- iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-title" content="RabaisLocal Affiliés" />
-    <link rel="apple-touch-icon" href="icon-192.png" />
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#3E53A5">
+    <link rel="apple-touch-icon" href="icon-192.png">
 
     <style>
-        body,
-        html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            background: #F5F8FF;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        body {
             font-family: system-ui, sans-serif;
-        }
-
-        .splash {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #F5F8FF;
             text-align: center;
-            animation: fadeout 0.6s ease forwards;
-            animation-delay: 1.2s;
         }
 
-        .splash img {
-            width: 140px;
-        }
-
-        @keyframes fadeout {
-            to {
-                opacity: 0;
-                visibility: hidden;
-            }
-        }
-
-        iframe {
-            display: none;
-            width: 100%;
-            height: 100%;
-            border: none;
+        .message {
+            color: #3E53A5;
+            font-weight: 500;
         }
     </style>
+
+    <script>
+        // Simple Redirection
+        setTimeout(function () {
+            window.location.href = "https://partenaires.rabaislocal.com/login";
+        }, 100); 
+    </script>
 </head>
 
 <body>
-
-    <!-- SPLASH SCREEN  -->
-    <div class="splash" id="splash">
-        <img src="logo-rabaislocal.png" alt="RabaisLocal" />
-        <p style="margin-top:14px; opacity:0.7; font-size:14px;">Chargement…</p>
+    <div class="message">
+        <p>Redirection vers l'espace affilié...</p>
     </div>
-
-    <!-- PORTAIL AFFILIÉ  -->
-    <iframe id="frame" src=""></iframe>
-
-    <script>
-        const frame = document.getElementById("frame");
-        const splash = document.getElementById("splash");
-
-        setTimeout(() => {
-            splash.style.display = "none";
-            frame.style.display = "block";
-            frame.src = "https://rabaislocal.goaffpro.com/login";
-        }, 1300);
-
-        // Enregistrer le service worker
-        if ("serviceWorker" in navigator) {
-            navigator.serviceWorker.register("./service-worker.js");
-        }
-    </script>
-
 </body>
 
 </html>

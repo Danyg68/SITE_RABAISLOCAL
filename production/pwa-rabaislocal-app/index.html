@@ -2,326 +2,196 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8" />
-    <title>RabaisLocal App</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <title>Application RabaisLocal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- PWA -->
-    <link rel="manifest" href="manifest.json" />
-    <meta name="theme-color" content="#3E53A5" />
-
-    <!-- iOS PWA -->
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="RabaisLocal" />
-    <link rel="apple-touch-icon" href="icon-192.png" />
-    <!-- Splash Screen Link (iOS) - approximated -->
-    <link rel="apple-touch-startup-image" href="splash-portrait.png" />
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#3E53A5">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="apple-touch-startup-image" href="splash-portrait.png">
 
     <style>
-        :root {
-            --bg: #F5F8FF;
-            --bg-card: #ffffff;
-            --text: #1f2933;
-            --primary: #3E53A5;
-            --primary-soft: #e3e7fb;
-            --button-radius: 14px;
-            --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.12);
-        }
-
-        [data-theme="dark"] {
-            --bg: #020617;
-            --bg-card: #0b1220;
-            --text: #e5e7eb;
-            --primary: #4f67ff;
-            --primary-soft: #1e293b;
-            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.7);
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
         body {
-            margin: 0;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-                Roboto, sans-serif;
-            background: var(--bg);
-            color: var(--text);
+            font-family: system-ui, -apple-system, sans-serif;
             display: flex;
-            min-height: 100vh;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #F5F8FF;
+            text-align: center;
+            color: #1B2240;
+            padding: 20px;
         }
 
-        .app-shell {
-            width: 100%;
-            max-width: 480px;
-            padding: 24px 16px 32px;
+        .logo {
+            width: 120px;
+            margin-bottom: 20px;
         }
 
         .card {
-            background: var(--bg-card);
-            border-radius: 24px;
-            box-shadow: var(--shadow-soft);
-            padding: 24px 20px 28px;
-        }
-
-        .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .brand-logo {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: var(--primary-soft);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .brand-logo img {
-            width: 40px;
-            height: auto;
-            display: block;
-        }
-
-        .brand-text-title {
-            font-weight: 700;
-            font-size: 20px;
-            color: var(--primary);
-        }
-
-        .brand-text-sub {
-            font-size: 12px;
-            opacity: 0.8;
-        }
-
-        .theme-toggle {
-            border: none;
-            background: var(--primary-soft);
-            color: var(--primary);
-            padding: 8px 10px;
-            border-radius: 999px;
-            font-size: 11px;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            cursor: pointer;
-        }
-
-        .theme-toggle span.icon {
-            font-size: 14px;
-        }
-
-        .intro {
-            margin: 12px 0 20px;
-        }
-
-        .intro-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .intro-text {
-            font-size: 13px;
-            opacity: 0.85;
-            line-height: 1.5;
-        }
-
-        .sections {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 10px;
-        }
-
-        .portal-btn {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
             width: 100%;
-            border-radius: var(--button-radius);
-            padding: 14px 14px;
+        }
+
+        h1 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
             border: none;
-            font-size: 15px;
+            border-radius: 12px;
             font-weight: 600;
+            font-size: 1rem;
             cursor: pointer;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 6px 18px rgba(15, 23, 42, 0.2);
-            transform: translateY(0);
-            transition: transform 0.13s ease, box-shadow 0.13s ease,
-                opacity 0.13s ease;
+            text-decoration: none;
+            margin-bottom: 12px;
+            transition: transform 0.2s;
+            box-sizing: border-box;
         }
 
-        .portal-btn span.label {
-            flex: 1;
-            text-align: center;
+        .btn:active {
+            transform: scale(0.98);
         }
 
-        .portal-btn span.tag {
-            font-size: 11px;
-            opacity: 0.9;
+        .btn-primary {
+            background-color: #3E53A5;
+            color: white;
+            box-shadow: 0 4px 12px rgba(62, 83, 165, 0.3);
         }
 
-        .portal-btn span.icon {
-            font-size: 17px;
-            margin-right: 8px;
+        .btn-secondary {
+            background-color: #eef2ff;
+            color: #3E53A5;
         }
 
-        .portal-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 10px 20px rgba(15, 23, 42, 0.28);
-            opacity: 0.96;
-        }
-
-        .portal-conso {
-            background: linear-gradient(135deg, #16a34a, #22c55e);
-        }
-
-        .portal-com {
-            background: linear-gradient(135deg, #a855f7, #ec4899);
-        }
-
-        .portal-aff {
-            background: linear-gradient(135deg, #f97316, #e11d48);
-        }
-
-        .footer-note {
-            margin-top: 16px;
-            font-size: 11px;
-            text-align: center;
-            opacity: 0.7;
-        }
-
-        @media (min-width: 768px) {
-            body {
-                background: radial-gradient(circle at top, #e5ecff 0, #0b1020 65%);
-            }
-
-            .app-shell {
-                padding: 40px 16px;
-            }
+        /* Instructions manuelles (cachées par défaut) */
+        .manual-instruct {
+            display: none;
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: #666;
+            background: #f0f2f5;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: left;
         }
     </style>
 </head>
 
 <body>
-    <div class="app-shell" id="app-root">
-        <div class="card">
-            <header class="header">
-                <div class="brand">
-                    <div class="brand-logo">
-                        <!-- Logo RabaisLocal (à fournir sous forme de fichier logo-rabaislocal.png) -->
-                        <img src="logo-rabaislocal.png" alt="RabaisLocal" />
-                    </div>
-                    <div class="brand-text">
-                        <div class="brand-text-title">RabaisLocal</div>
-                        <div class="brand-text-sub">
-                            Consommateurs · Commerçants · Affiliés
-                        </div>
-                    </div>
-                </div>
-                <button class="theme-toggle" id="themeToggle" type="button">
-                    <span class="icon">🌙</span>
-                    <span class="label">Mode sombre</span>
-                </button>
-            </header>
 
-            <section class="intro">
-                <div class="intro-title">Choisissez votre portail</div>
-                <p class="intro-text">
-                    Accédez en un clic à votre espace RabaisLocal : découvrir des rabais,
-                    créer des promos locales ou développer votre réseau d’affiliés.
-                </p>
-            </section>
+    <div class="card">
+        <img src="logo-rabaislocal.png" alt="RabaisLocal" class="logo">
 
-            <section class="sections">
-                <button class="portal-btn portal-conso" type="button" onclick="go('conso')">
-                    <span class="icon">🛍️</span>
-                    <span class="label">Portail Consommateur</span>
-                </button>
+        <!-- Contenu browser -->
+        <div id="browserContent">
+            <h1>Installer l'application</h1>
+            <p>Accès direct à votre espace partenaire.</p>
 
-                <button class="portal-btn portal-com" type="button" onclick="go('com')">
-                    <span class="icon">🏪</span>
-                    <span class="label">Portail Commerçant</span>
-                </button>
+            <!-- Bouton "Installer" principal (affiché si supporté) -->
+            <button id="installBtn" class="btn btn-primary" style="display:none">
+                📲 Installer l'application
+            </button>
 
-                <button class="portal-btn portal-aff" type="button" onclick="go('aff')">
-                    <span class="icon">🤝</span>
-                    <span class="label">Portail Affilié</span>
-                </button>
-            </section>
+            <!-- Bouton "Ouvrir" si déjà installé (fallback) -->
+            <a href="https://partenaires.rabaislocal.com" class="btn btn-secondary">
+                Continuer vers le site ➔
+            </a>
 
-            <div class="footer-note">
-                App RabaisLocal en pré-lancement · Les rabais seront actifs au
-                lancement officiel.
+            <!-- Instructions iOS -->
+            <div id="iosInstruct" class="manual-instruct">
+                <strong>Sur iPhone / iPad :</strong><br>
+                1. Appuyez sur <img
+                    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMzRTUzQTUiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgM3YxMm0wLTlsNCA0bS00LTRsLTQgNE0yMCAyMXMyLTIgMi01LTItNS0yLTUtNC00LTQuNWwtMi0xWiIvPjxwYXRoIGQ9Ik00IDE3djJjMCAxLjEuOSAyIDIgMmgxMmMxLjEgMCAyLS45IDItMnYtMiIvPjwvc3ZnPg=="
+                    style="vertical-align:middle; width:18px"> <strong>Partager</strong><br>
+                2. Choisissez <strong>Sur l'écran d'accueil (+)</strong>
             </div>
+
+            <!-- Instructions Android (si bouton masqué) -->
+            <div id="androidInstruct" class="manual-instruct">
+                <strong>Installation manuelle :</strong><br>
+                Appuyez sur le menu du navigateur (⋮) puis sur <strong>Installer l'application</strong> ou "Ajouter à
+                l'écran d'accueil".
+            </div>
+        </div>
+
+        <!-- Contenu App (Redirection) -->
+        <div id="appContent" style="display:none;">
+            <p>Redirection en cours...</p>
         </div>
     </div>
 
     <script>
-        function go(type) {
-            window.location.href = "portail.html?type=" + encodeURIComponent(type);
-        }
+        const destination = "https://partenaires.rabaislocal.com";
+        const installBtn = document.getElementById('installBtn');
+        const iosInstruct = document.getElementById('iosInstruct');
+        const androidInstruct = document.getElementById('androidInstruct');
+        const browserContent = document.getElementById('browserContent');
+        const appContent = document.getElementById('appContent');
+        let deferredPrompt;
 
-        // Gestion du mode sombre avec localStorage
-        const root = document.documentElement;
-        const toggleBtn = document.getElementById("themeToggle");
+        // 1. Mode Standalone (App installée) -> Redirection instantanée
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
 
-        function applyTheme(theme) {
-            if (theme === "dark") {
-                root.setAttribute("data-theme", "dark");
-                if (toggleBtn) {
-                    toggleBtn.querySelector(".icon").textContent = "🌞";
-                    toggleBtn.querySelector(".label").textContent = "Mode clair";
-                }
+        if (isStandalone) {
+            browserContent.style.display = 'none';
+            appContent.style.display = 'block';
+            window.location.replace(destination);
+        } else {
+            // 2. Détection iOS
+            const isIos = /iPhone|iPad|iPod/.test(navigator.userAgent);
+
+            if (isIos) {
+                // Sur iOS, pas de bouton d'install auto -> on montre les instructions
+                iosInstruct.style.display = 'block';
             } else {
-                root.removeAttribute("data-theme");
-                if (toggleBtn) {
-                    toggleBtn.querySelector(".icon").textContent = "🌙";
-                    toggleBtn.querySelector(".label").textContent = "Mode sombre";
-                }
+                // Sur Android/Desktop, on espère l'événement beforeinstallprompt
+                // On affiche les instructions manuelles par défaut, au cas où le bouton n'apparait pas
+                androidInstruct.style.display = 'block';
             }
-        }
 
-        const savedTheme = localStorage.getItem("rl-theme");
-        if (savedTheme) {
-            applyTheme(savedTheme);
-        } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-            applyTheme("dark");
-        }
+            // 3. Gestion de l'événement d'installation (Chrome/Edge/Android)
+            window.addEventListener('beforeinstallprompt', (e) => {
+                // Empêcher la bannière native immédiate (on veut contrôler le clic)
+                e.preventDefault();
+                deferredPrompt = e;
 
-        if (toggleBtn) {
-            toggleBtn.addEventListener("click", () => {
-                const current =
-                    root.getAttribute("data-theme") === "dark" ? "dark" : "light";
-                const next = current === "dark" ? "light" : "dark";
-                applyTheme(next);
-                localStorage.setItem("rl-theme", next);
+                // On a la main -> on affiche le gros bouton et on masque les instructions manuelles
+                installBtn.style.display = 'block';
+                androidInstruct.style.display = 'none';
+            });
+
+            installBtn.addEventListener('click', async () => {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    deferredPrompt = null;
+                }
             });
         }
 
-        // Enregistrer le service worker
+        // Service Worker
         if ("serviceWorker" in navigator) {
             window.addEventListener("load", () => {
-                navigator.serviceWorker
-                    .register("service-worker.js")
-                    .catch((err) => console.error("Service worker error", err));
+                navigator.serviceWorker.register("service-worker.js");
             });
         }
     </script>

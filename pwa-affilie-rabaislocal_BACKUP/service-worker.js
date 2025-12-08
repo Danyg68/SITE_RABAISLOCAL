@@ -1,12 +1,11 @@
-const CACHE_NAME = "rabaislocal-app-prod-v5";
+const CACHE_NAME = "rl-affilie-v3";
 const FILES_TO_CACHE = [
     "./",
     "./index.html",
     "./manifest.json",
     "./icon-192.png",
     "./icon-512.png",
-    "./logo-rabaislocal.png",
-    "./splash-portrait.png"
+    "./logo-rabaislocal.png"
 ];
 
 self.addEventListener("install", (event) => {

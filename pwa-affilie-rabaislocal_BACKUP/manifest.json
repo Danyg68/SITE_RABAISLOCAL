@@ -1,6 +1,6 @@
 {
-    "name": "RabaisLocal",
-    "short_name": "RabaisLocal",
+    "name": "RabaisLocal Affiliés",
+    "short_name": "RL Affiliés",
     "start_url": "./",
     "scope": "./",
     "display": "standalone",
