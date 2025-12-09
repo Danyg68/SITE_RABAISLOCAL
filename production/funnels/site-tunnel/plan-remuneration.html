@@ -117,7 +117,7 @@
   <div class="box">
     <p><strong>📊 Tableau complet des rangs, commissions et conditions :</strong></p>
     <p style="font-size:13px;color:var(--rl-muted);">Le tableau détaille 15 niveaux de progression avec commissions, bonus, conditions d'accès et avantages par rang.</p>
-    <img src="assets/images/plan_remuneration.png" alt="Tableau complet du plan de rémunération RabaisLocal" style="width:100%;max-width:900px;height:auto;margin:20px auto;display:block;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.15);">
+    <img id="plan-image-zoom" src="assets/images/plan_remuneration.png" alt="Tableau complet du plan de rémunération RabaisLocal" style="width:100%;max-width:900px;height:auto;margin:20px auto;display:block;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.15);cursor:zoom-in;">
   </div>
 
   <h2>4. Frais et versements</h2>
@@ -354,48 +354,39 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  const planImg = document.querySelector('img[src*="plan_remuneration.png"]');
+  const planImg = document.getElementById('plan-image-zoom');
 
-  if (!planImg) return;
+  if (!planImg) {
+    console.error('Image du plan non trouvée');
+    return;
+  }
 
-  planImg.classList.add('zoomable');
-
+  // Créer le lightbox
   const lightbox = document.createElement('div');
   lightbox.id = 'plan-lightbox';
   lightbox.className = 'rl-lightbox';
-  lightbox.innerHTML =
-    '<img id="plan-lightbox-img" src="' + planImg.src + '" alt="' + (planImg.alt || 'Plan de remuneration RabaisLocal') + '">' +
-    '<button id="plan-lightbox-close" aria-label="Fermer l\\'agrandissement">&#10005;</button>';
-
+  lightbox.innerHTML = '<img id="plan-lightbox-img" src="' + planImg.src + '" alt="Plan de rémunération"><button id="plan-lightbox-close">✕</button>';
   document.body.appendChild(lightbox);
 
-  const lightboxImg = lightbox.querySelector('#plan-lightbox-img');
-  const closeBtn = lightbox.querySelector('#plan-lightbox-close');
+  console.log('Lightbox créé avec succès');
 
+  // Ouvrir le lightbox au clic sur l'image
   planImg.addEventListener('click', function() {
-    if (lightboxImg) {
-      lightboxImg.src = planImg.src;
-    }
+    console.log('Image cliquée !');
     lightbox.classList.add('active');
   });
 
-  if (closeBtn) {
-    closeBtn.addEventListener('click', function() {
-      lightbox.classList.remove('active');
-    });
-  }
+  // Fermer avec le bouton X
+  document.getElementById('plan-lightbox-close').addEventListener('click', function() {
+    lightbox.classList.remove('active');
+  });
 
+  // Fermer en cliquant en dehors de l'image
   lightbox.addEventListener('click', function(e) {
     if (e.target === lightbox) {
       lightbox.classList.remove('active');
     }
   });
-
-  if (lightboxImg) {
-    lightboxImg.addEventListener('click', function(e) {
-      e.stopPropagation();
-    });
-  }
 });
 </script>
 

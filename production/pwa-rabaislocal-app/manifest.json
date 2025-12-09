@@ -1,8 +1,9 @@
 {
     "name": "RabaisLocal",
     "short_name": "RabaisLocal",
-    "start_url": "./",
-    "scope": "./",
+    "description": "Application RabaisLocal - Économies locales",
+    "start_url": "/",
+    "scope": "/",
     "display": "standalone",
     "orientation": "portrait",
     "background_color": "#F5F8FF",

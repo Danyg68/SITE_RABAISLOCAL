@@ -116,13 +116,20 @@
                 Continuer vers le site ➔
             </a>
 
+            <!-- DEBUG: Afficher User Agent -->
+            <div id="debugInfo" style="margin-top:20px; padding:10px; background:#f0f0f0; border-radius:8px; font-size:10px; word-break:break-all; color:#666;"></div>
+
             <!-- Instructions iOS -->
             <div id="iosInstruct" class="manual-instruct">
-                <strong>Sur iPhone / iPad :</strong><br>
-                1. Appuyez sur <img
+                <strong>Comment ajouter l'app sur iPhone :</strong><br><br>
+                ✅ <strong>1. Ouvre Safari</strong> (obligatoire)<br>
+                ✅ <strong>2. Appuie sur "Partager"</strong> <img
                     src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMzRTUzQTUiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgM3YxMm0wLTlsNCA0bS00LTRsLTQgNE0yMCAyMXMyLTIgMi01LTItNS0yLTUtNC00LTQuNWwtMi0xWiIvPjxwYXRoIGQ9Ik00IDE3djJjMCAxLjEuOSAyIDIgMmgxMmMxLjEgMCAyLS45IDItMnYtMiIvPjwvc3ZnPg=="
-                    style="vertical-align:middle; width:18px"> <strong>Partager</strong><br>
-                2. Choisissez <strong>Sur l'écran d'accueil (+)</strong>
+                    style="vertical-align:middle; width:18px"><br>
+                ✅ <strong>3. Fais défiler vers le bas</strong><br>
+                👉 Choisis <strong>"Sur l'écran d'accueil" (+)</strong><br>
+                ✅ <strong>4. Clique sur "Ajouter"</strong><br><br>
+                🎉 <em>L’icône apparaîtra sur ton écran d'accueil.</em>
             </div>
 
             <!-- Instructions Android (si bouton masqué) -->
@@ -168,16 +175,113 @@
                 androidInstruct.style.display = 'block';
             }
 
+            // 2.1 Détection Navigateur Intégré (Messenger, Facebook, Instagram, WhatsApp)
+            const ua = (navigator.userAgent || navigator.vendor || window.opera).toLowerCase();
+
+            // Détection améliorée pour tous les navigateurs intégrés (en minuscules)
+            const isInApp = (ua.indexOf("fban") > -1) || (ua.indexOf("fbav") > -1) ||
+                           (ua.indexOf("instagram") > -1) || (ua.indexOf("fb_iab") > -1) ||
+                           (ua.indexOf("fbios") > -1) || (ua.indexOf("fbdv") > -1) ||
+                           (ua.indexOf("[fb") > -1) || (ua.indexOf("messenger") > -1) ||
+                           (ua.indexOf("whatsapp") > -1) || (ua.indexOf("line/") > -1) ||
+                           (ua.indexOf("twitter") > -1) || (ua.indexOf("linkedin") > -1) ||
+                           (ua.indexOf(";wv") > -1) || // Android WebView
+                           (ua.indexOf("fbpn/com.facebook.orca") > -1); // Messenger Android
+
+            // Ajouter le User Agent en mode debug (petit texte en bas de page)
+            console.log('User Agent:', ua);
+            console.log('Is In-App Browser:', isInApp);
+
+            const debugDiv = document.getElementById('debugInfo');
+            if (debugDiv) {
+                debugDiv.innerHTML = `<strong>DEBUG:</strong> User Agent: ${ua}<br><strong>In-App:</strong> ${isInApp}`;
+            }
+
+            if ((isIos || !isIos) && isInApp) {
+                // Si on est dans Messenger/Facebook/Instagram (iOS ou Android)
+                const deviceType = isIos ? "Safari" : "Chrome";
+                browserContent.innerHTML = `
+                    <div style="text-align:left; padding:10px;">
+                        <h1 style="color:#E94D4C; font-size:1.3rem;">⚠️ Installation impossible ici</h1>
+                        <p style="font-size:1rem; margin-bottom:20px;">
+                            Vous êtes dans le navigateur intégré de <strong>Messenger/Facebook/Instagram</strong>.<br>
+                            L'installation n'est pas possible depuis cette application.
+                        </p>
+
+                        <div style="background:white; border:2px solid #3E53A5; border-radius:12px; padding:20px; box-shadow:0 8px 20px rgba(0,0,0,0.1);">
+                            <h3 style="color:#3E53A5; margin:0 0 15px;">👇 Pour installer l'app :</h3>
+
+                            <div style="margin-bottom:15px;">
+                                <span style="background:#3E53A5; color:white; width:25px; height:25px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; font-weight:bold; margin-right:8px;">1</span>
+                                Appuyez sur les <strong>3 points</strong> <span style="font-size:1.2rem;">(•••)</span> en haut à droite
+                            </div>
+
+                            <div style="margin-bottom:15px;">
+                                <span style="background:#3E53A5; color:white; width:25px; height:25px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; font-weight:bold; margin-right:8px;">2</span>
+                                Choisissez <strong>"Ouvrir dans ${deviceType}"</strong> ou "Ouvrir dans le navigateur"
+                            </div>
+
+                            <div>
+                                <span style="background:#3E53A5; color:white; width:25px; height:25px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; font-weight:bold; margin-right:8px;">3</span>
+                                Une fois dans ${deviceType}, vous pourrez installer l'application
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <img src="logo-rabaislocal.png" class="logo" style="width:60px; opacity:0.6;">
+                `;
+            }
+
             // 3. Gestion de l'événement d'installation (Chrome/Edge/Android)
+            let installPromptReceived = false;
+
             window.addEventListener('beforeinstallprompt', (e) => {
                 // Empêcher la bannière native immédiate (on veut contrôler le clic)
                 e.preventDefault();
                 deferredPrompt = e;
+                installPromptReceived = true;
 
                 // On a la main -> on affiche le gros bouton et on masque les instructions manuelles
                 installBtn.style.display = 'block';
                 androidInstruct.style.display = 'none';
             });
+
+            // Fallback: Si beforeinstallprompt n'est pas reçu après 2s, afficher message "Ouvrir dans Chrome"
+            setTimeout(() => {
+                if (!installPromptReceived && !isIos && !isStandalone) {
+                    // Pas de prompt d'installation = probablement dans un navigateur intégré
+                    const deviceType = "Chrome";
+                    browserContent.innerHTML = `
+                        <div style="text-align:left; padding:10px;">
+                            <h1 style="color:#E94D4C; font-size:1.3rem;">⚠️ Installation impossible ici</h1>
+                            <p style="font-size:1rem; margin-bottom:20px;">
+                                Pour installer l'application, ouvrez ce lien dans <strong>${deviceType}</strong>.
+                            </p>
+
+                            <div style="background:white; border:2px solid #3E53A5; border-radius:12px; padding:20px; box-shadow:0 8px 20px rgba(0,0,0,0.1);">
+                                <h3 style="color:#3E53A5; margin:0 0 15px;">👇 Pour installer l'app :</h3>
+
+                                <div style="margin-bottom:15px;">
+                                    <span style="background:#3E53A5; color:white; width:25px; height:25px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; font-weight:bold; margin-right:8px;">1</span>
+                                    Appuyez sur les <strong>3 points</strong> <span style="font-size:1.2rem;">(•••)</span> en haut à droite
+                                </div>
+
+                                <div style="margin-bottom:15px;">
+                                    <span style="background:#3E53A5; color:white; width:25px; height:25px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; font-weight:bold; margin-right:8px;">2</span>
+                                    Choisissez <strong>"Ouvrir dans ${deviceType}"</strong> ou "Ouvrir dans le navigateur"
+                                </div>
+
+                                <div>
+                                    <span style="background:#3E53A5; color:white; width:25px; height:25px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; font-weight:bold; margin-right:8px;">3</span>
+                                    Une fois dans ${deviceType}, vous pourrez installer l'application
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <img src="logo-rabaislocal.png" class="logo" style="width:60px; opacity:0.6;">
+                    `;
+                }
+            }, 2000); // Attendre 2 secondes
 
             installBtn.addEventListener('click', async () => {
                 if (deferredPrompt) {
@@ -191,7 +295,32 @@
         // Service Worker
         if ("serviceWorker" in navigator) {
             window.addEventListener("load", () => {
-                navigator.serviceWorker.register("service-worker.js");
+                navigator.serviceWorker.register("service-worker.js").then((registration) => {
+                    // Forcer la mise à jour immédiate
+                    registration.update();
+
+                    // Écouter les mises à jour du Service Worker
+                    registration.addEventListener('updatefound', () => {
+                        const newWorker = registration.installing;
+                        if (newWorker) {
+                            newWorker.addEventListener('statechange', () => {
+                                if (newWorker.state === 'activated' && !navigator.serviceWorker.controller) {
+                                    // Premier chargement avec nouveau SW
+                                    window.location.reload();
+                                }
+                            });
+                        }
+                    });
+
+                    // Recharger si un nouveau SW prend le contrôle
+                    let refreshing = false;
+                    navigator.serviceWorker.addEventListener('controllerchange', () => {
+                        if (!refreshing) {
+                            refreshing = true;
+                            window.location.reload();
+                        }
+                    });
+                });
             });
         }
     </script>
