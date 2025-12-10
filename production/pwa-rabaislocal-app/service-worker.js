@@ -1,4 +1,4 @@
-const CACHE_NAME = "rabaislocal-app-prod-v10";
+const CACHE_NAME = "rabaislocal-app-prod-v13";
 const FILES_TO_CACHE = [
     "./",
     "./index.html",

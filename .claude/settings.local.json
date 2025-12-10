@@ -28,7 +28,9 @@
       "Bash(npm run typecheck:*)",
       "Bash(grep:*)",
       "Bash(ls:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(git ls-files:*)",
+      "Bash(git pull:*)"
     ],
     "deny": [],
     "ask": []
