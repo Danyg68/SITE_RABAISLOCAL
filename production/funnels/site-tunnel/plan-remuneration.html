@@ -361,6 +361,8 @@ document.addEventListener('DOMContentLoaded', function() {
     return;
   }
 
+  console.log('Image trouvée:', planImg);
+
   // Créer le lightbox
   const lightbox = document.createElement('div');
   lightbox.id = 'plan-lightbox';
@@ -370,23 +372,53 @@ document.addEventListener('DOMContentLoaded', function() {
 
   console.log('Lightbox créé avec succès');
 
+  const lightboxImg = document.getElementById('plan-lightbox-img');
+  const closeBtn = document.getElementById('plan-lightbox-close');
+
   // Ouvrir le lightbox au clic sur l'image
-  planImg.addEventListener('click', function() {
+  planImg.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
     console.log('Image cliquée !');
+    if (lightboxImg) {
+      lightboxImg.src = planImg.src;
+    }
     lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Empêcher le scroll
   });
 
   // Fermer avec le bouton X
-  document.getElementById('plan-lightbox-close').addEventListener('click', function() {
-    lightbox.classList.remove('active');
-  });
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      lightbox.classList.remove('active');
+      document.body.style.overflow = ''; // Réactiver le scroll
+    });
+  }
 
   // Fermer en cliquant en dehors de l'image
   lightbox.addEventListener('click', function(e) {
     if (e.target === lightbox) {
       lightbox.classList.remove('active');
+      document.body.style.overflow = ''; // Réactiver le scroll
     }
   });
+
+  // Fermer avec la touche Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+
+  // Empêcher la fermeture en cliquant sur l'image agrandie
+  if (lightboxImg) {
+    lightboxImg.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+  }
 });
 </script>
 
