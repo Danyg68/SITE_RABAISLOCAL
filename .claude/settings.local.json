@@ -30,7 +30,9 @@
       "Bash(ls:*)",
       "Bash(curl:*)",
       "Bash(git ls-files:*)",
-      "Bash(git pull:*)"
+      "Bash(git pull:*)",
+      "Bash(node --version:*)",
+      "Bash(node generate-pdf.js:*)"
     ],
     "deny": [],
     "ask": []

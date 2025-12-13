@@ -7,7 +7,7 @@
 
 ### Fichiers attendus :
 
-### - `guide-affilie.pdf` - Guide complet de l'affilié
+- `guide-affilie-2.0.pdf` - Guide complet de l'affilié
 - `presentation-rabaislocal.pptx` - Présentation PowerPoint
 - `Systeme_Remuneration.pptx` - Explication du plan de rémunération PowerPoint
 ### - `script-prospection.docx` - Scripts de messages

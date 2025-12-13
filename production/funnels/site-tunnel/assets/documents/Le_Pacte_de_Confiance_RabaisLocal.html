@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Pacte de Confiance RabaisLocal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3E53A5; /* Bleu RabaisLocal */
+            --secondary: #2C3E50;
+            --success: #27AE60;
+            --bg: #F0F4F8;
+            --card-bg: #FFFFFF;
+            --text: #334155;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* HEADER */
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .logo-badge {
+            background-color: #E0E7FF;
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* INTRO BOX */
+        .intro-box {
+            background: linear-gradient(135deg, var(--primary), #2A3B75);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(62, 83, 165, 0.2);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .intro-box p {
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        /* GRID CARDS */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background-color: var(--primary);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .card h3 {
+            color: var(--secondary);
+            font-size: 1.4rem;
+            margin: 0 0 10px 0;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #64748B;
+            margin-bottom: 15px;
+        }
+
+        .check-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .check-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .check-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            border-top: 1px solid #E2E8F0;
+            padding-top: 30px;
+            font-size: 0.9rem;
+            color: #94A3B8;
+        }
+
+        /* RESPONSIVE */
+        @media (min-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header>
+            <span class="logo-badge">Transparence Totale</span>
+            <h1>Le Pacte de Confiance</h1>
+            <p class="subtitle">Pourquoi le modèle de rémunération RabaisLocal est unique, sécuritaire et bâti pour durer.</p>
+        </header>
+
+        <div class="intro-box">
+            <p>🛡️ Avant notre lancement, nous avons soumis notre modèle à un audit strict. Nous avons choisi la sécurité mathématique plutôt que les promesses impossibles.</p>
+        </div>
+
+        <div class="grid">
+
+            <div class="card">
+                <span class="card-icon">🧮</span>
+                <h3>Sécurité Mathématique</h3>
+                [cite_start]<p>Beaucoup de systèmes s'effondrent car ils promettent de payer sur des niveaux infinis, créant une saturation mathématique[cite: 337, 446].</p>
+                <ul class="check-list">
+                    [cite_start]<li>Plafond de redistribution strict à 51%[cite: 59].</li>
+                    [cite_start]<li>Profondeur limitée à 7 niveaux pour garantir que chaque dollar promis est payé[cite: 80, 451].</li>
+                    <li>Pas de "dilution" des gains.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <span class="card-icon">🚫</span>
+                <h3>Fin du "Pay-to-Play"</h3>
+                <p>Chez nous, votre portefeuille n'achète pas votre rang. [cite_start]Les systèmes où l'on paie pour gagner plus sont risqués et illégaux[cite: 370].</p>
+                <ul class="check-list">
+                    [cite_start]<li>Taux de commission basé sur votre travail, pas votre argent[cite: 86, 275].</li>
+                    [cite_start]<li>L'achat de la trousse sert uniquement à obtenir les outils technologiques[cite: 24, 188].</li>
+                    <li>Équité totale entre tous les affiliés.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <span class="card-icon">🛍️</span>
+                <h3>De Vrais Clients</h3>
+                [cite_start]<p>Pour être légal, l'argent doit venir de la vente de produits, pas du recrutement[cite: 409].</p>
+                <ul class="check-list">
+                    [cite_start]<li>Revenus issus d'abonnements et de crédits réels[cite: 65, 66, 67].</li>
+                    [cite_start]<li>Les consommateurs sont séparés du système d'affiliation[cite: 231].</li>
+                    [cite_start]<li>Pas de garage rempli : produits 100% numériques[cite: 10, 29].</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <span class="card-icon">📈</span>
+                <h3>Objectifs Réalistes</h3>
+                [cite_start]<p>Nous avons éliminé les barrières impossibles (comme trouver 50 commerces) qui bloquent 95% des gens[cite: 383, 458].</p>
+                <ul class="check-list">
+                    [cite_start]<li>Rangs basés sur le Volume d'Équipe atteignable[cite: 83].</li>
+                    [cite_start]<li>Clause "Anti-Dette" : Vos frais ne sont pris que sur vos profits[cite: 90, 91].</li>
+                    <li>Conçu pour un revenu complémentaire sain.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <footer>
+            <p><strong>RabaisLocal</strong> • Une entreprise québécoise transparente.</p>
+            <p>Ce document résume nos engagements suite à l'analyse actuarielle de décembre 2025.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
