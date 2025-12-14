@@ -32,7 +32,8 @@
       "Bash(git ls-files:*)",
       "Bash(git pull:*)",
       "Bash(node --version:*)",
-      "Bash(node generate-pdf.js:*)"
+      "Bash(node generate-pdf.js:*)",
+      "Bash(node:*)"
     ],
     "deny": [],
     "ask": []

@@ -66,6 +66,8 @@
       display: flex;
       flex-direction: column;
       height: 100%;
+      position: relative;
+      overflow: hidden;
     }
 
     .rl-card:hover {
@@ -129,6 +131,24 @@
 
     .rl-btn-outline:hover {
       background-color: #F5F8FF;
+    }
+
+    /* Bandeau Corner Ribbon */
+    .corner-ribbon {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: linear-gradient(135deg, #E53935 0%, #C62828 100%);
+      color: white;
+      padding: 6px 16px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 12px rgba(229, 57, 53, 0.4);
+      z-index: 10;
+      text-align: center;
+      border-radius: 4px;
     }
 
     /* Section Vidéo */
@@ -334,36 +354,37 @@
         <a href="assets/documents/presentation-rabaislocal.pptx" download class="rl-btn rl-btn-outline">📥 Télécharger (PowerPoint)</a>
       </div>
 
-      <!-- Document 3 - Word -->
-      <div class="rl-card">
-        <div class="rl-card-icon">📝</div>
-        <h3>Script de prospection (Word)</h3>
-        <p>Modèle de messages pour contacter tes prospects par email ou réseaux sociaux.</p>
-        <a href="assets/documents/script-prospection.docx" download class="rl-btn rl-btn-outline">📥 Télécharger (Word)</a>
-      </div>
-
-      <!-- Document 4 - PDF -->
+      <!-- Document 3 - PDF Plan Rémunération -->
       <div class="rl-card">
         <div class="rl-card-icon">💰</div>
         <h3>Plan de rémunération détaillé (PDF)</h3>
-        <p>Document PDF complet expliquant tous les niveaux de commissions et bonus.</p>
-        <a href="assets/documents/plan-remuneration-detaille.pdf" download class="rl-btn rl-btn-outline">📥 Télécharger (PDF)</a>
+        <p>Tableau complet des 7 rangs avec commissions sur 7 niveaux de profondeur.</p>
+        <a href="assets/documents/tableau_plan_remuneration_V1.pdf" download class="rl-btn rl-btn-outline">📥 Télécharger (PDF)</a>
       </div>
 
-      <!-- Document 5 - Excel -->
+      <!-- Document 4 - Checklist Complète Membre Actif -->
       <div class="rl-card">
-        <div class="rl-card-icon">📈</div>
-        <h3>Calculateur de revenus (Excel)</h3>
-        <p>Feuille de calcul Excel pour projeter tes revenus selon ton volume de ventes.</p>
-        <a href="assets/documents/calculateur-revenus.xlsx" download class="rl-btn rl-btn-outline">📥 Télécharger (Excel)</a>
-      </div>
-
-      <!-- Document 6 - PDF -->
-      <div class="rl-card">
+        <div class="corner-ribbon">Liberté Financière</div>
         <div class="rl-card-icon">✅</div>
-        <h3>Checklist de démarrage (PDF)</h3>
-        <p>Liste des étapes à suivre pour bien démarrer ton activité d'affilié RabaisLocal.</p>
-        <a href="assets/documents/checklist-demarrage.pdf" download class="rl-btn rl-btn-outline">📥 Télécharger (PDF)</a>
+        <h3>Checklist de démarrage complète</h3>
+        <p>Pour les membres actifs qui veulent s'investir et atteindre la liberté financière : 30 tâches détaillées sur 30 jours avec priorités et conseils pratiques.</p>
+        <a href="assets/documents/Checklist_Demarrage_membre_actif.pdf" download class="rl-btn rl-btn-outline">📥 Télécharger (PDF)</a>
+      </div>
+
+      <!-- Document 5 - Checklist Passif PDF -->
+      <div class="rl-card">
+        <div class="rl-card-icon">😌</div>
+        <h3>Checklist mode passif (PDF)</h3>
+        <p>Version ultra-simple avec seulement 7 tâches pour partager ton lien sans pression et laisser faire naturellement.</p>
+        <a href="assets/documents/Checklist_Demarrage_Passif.pdf" download class="rl-btn rl-btn-outline">📥 Télécharger (PDF)</a>
+      </div>
+
+      <!-- Document 6 - Dépliant Commerçant PDF -->
+      <div class="rl-card">
+        <div class="rl-card-icon">🏪</div>
+        <h3>Dépliant commerçant (PDF)</h3>
+        <p>Dépliant professionnel à imprimer et à laisser aux commerçants locaux pour les informer sur RabaisLocal.</p>
+        <a href="assets/documents/depliant_commercant.pdf" download class="rl-btn rl-btn-outline">📥 Télécharger (PDF)</a>
       </div>
 
     </div>

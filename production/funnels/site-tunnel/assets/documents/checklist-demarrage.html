@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checklist de Démarrage - RabaisLocal Affiliés</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* --- STYLES POUR PDF --- */
+    @page {
+      size: A4;
+      margin: 2cm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #ffffff;
+      color: #1B2240;
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 4px solid #3E53A5;
+    }
+
+    .header img {
+      max-width: 200px;
+      margin-bottom: 15px;
+    }
+
+    .header h1 {
+      color: #3E53A5;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      color: #5B6385;
+      font-size: 16px;
+    }
+
+    .intro {
+      background: linear-gradient(135deg, #F5F8FF 0%, #E8F0FF 100%);
+      border-left: 5px solid #3E53A5;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+
+    .intro h2 {
+      color: #3E53A5;
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .intro p {
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 8px;
+    }
+
+    .phase {
+      margin-bottom: 35px;
+      page-break-after: auto;
+    }
+
+    .phase-header {
+      background: linear-gradient(135deg, #FF8C42 0%, #FF6B35 100%);
+      color: white;
+      padding: 15px 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(255, 140, 66, 0.3);
+    }
+
+    .phase-header h2 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .phase-header p {
+      font-size: 13px;
+      opacity: 0.95;
+    }
+
+    .checklist-item {
+      background: #FAFBFF;
+      border: 2px solid #E3E8FF;
+      border-radius: 10px;
+      padding: 18px;
+      margin-bottom: 18px;
+      display: flex;
+      gap: 15px;
+      page-break-inside: avoid;
+      transition: all 0.3s ease;
+    }
+
+    .checklist-item:hover {
+      border-color: #3E53A5;
+      box-shadow: 0 4px 12px rgba(62, 83, 165, 0.15);
+    }
+
+    .checkbox {
+      width: 24px;
+      height: 24px;
+      border: 3px solid #3E53A5;
+      border-radius: 6px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      background: white;
+    }
+
+    .item-content {
+      flex: 1;
+    }
+
+    .item-content h3 {
+      color: #1B2240;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .item-content p {
+      color: #5B6385;
+      font-size: 14px;
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    .item-content ul {
+      margin-left: 20px;
+      margin-bottom: 10px;
+    }
+
+    .item-content li {
+      color: #5B6385;
+      font-size: 13px;
+      margin-bottom: 5px;
+      line-height: 1.5;
+    }
+
+    .priority {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      letter-spacing: 0.5px;
+    }
+
+    .priority-high {
+      background: #FFE5E5;
+      color: #D32F2F;
+    }
+
+    .priority-medium {
+      background: #FFF3E0;
+      color: #F57C00;
+    }
+
+    .priority-low {
+      background: #E8F5E9;
+      color: #388E3C;
+    }
+
+    .timeline {
+      font-size: 12px;
+      color: #3E53A5;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+
+    .tip-box {
+      background: #FFF8E1;
+      border-left: 4px solid #FFC107;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      page-break-inside: avoid;
+    }
+
+    .tip-box strong {
+      color: #F57F17;
+      display: block;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+
+    .tip-box p {
+      font-size: 13px;
+      color: #5D4037;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .warning-box {
+      background: #FFEBEE;
+      border-left: 4px solid #E53935;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      page-break-inside: avoid;
+    }
+
+    .warning-box strong {
+      color: #C62828;
+      display: block;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+
+    .warning-box p {
+      font-size: 13px;
+      color: #5D4037;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .resources-box {
+      background: #F5F5F5;
+      border: 2px dashed #9E9E9E;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      page-break-inside: avoid;
+    }
+
+    .resources-box strong {
+      color: #424242;
+      display: block;
+      margin-bottom: 10px;
+      font-size: 15px;
+    }
+
+    .resources-box ul {
+      margin-left: 20px;
+    }
+
+    .resources-box li {
+      font-size: 13px;
+      color: #616161;
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+
+    .bonus-section {
+      background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+      border: 3px solid #4CAF50;
+      border-radius: 12px;
+      padding: 25px;
+      margin: 30px 0;
+      page-break-inside: avoid;
+    }
+
+    .bonus-section h2 {
+      color: #2E7D32;
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+
+    .bonus-section ul {
+      margin-left: 20px;
+    }
+
+    .bonus-section li {
+      color: #1B5E20;
+      font-size: 14px;
+      margin-bottom: 10px;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 3px solid #3E53A5;
+      page-break-inside: avoid;
+    }
+
+    .footer h3 {
+      color: #3E53A5;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .footer p {
+      color: #5B6385;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .final-recap {
+      background: #F5F8FF;
+      border: 2px solid #3E53A5;
+      border-radius: 12px;
+      padding: 25px;
+      margin: 30px 0;
+      page-break-inside: avoid;
+    }
+
+    .final-recap h3 {
+      color: #3E53A5;
+      font-size: 20px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .recap-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .recap-item {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      border-left: 4px solid #FF8C42;
+    }
+
+    .recap-item h4 {
+      color: #3E53A5;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .recap-item p {
+      color: #5B6385;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    /* Print styles */
+    @media print {
+      body {
+        padding: 0;
+      }
+
+      .phase {
+        page-break-after: auto;
+      }
+
+      .checklist-item {
+        page-break-inside: avoid;
+      }
+
+      .tip-box, .warning-box, .resources-box, .bonus-section, .final-recap {
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <h1>✅ Checklist de Démarrage</h1>
+    <p><strong>Programme Affilié RabaisLocal</strong></p>
+    <p style="font-size: 14px; margin-top: 10px;">Ton guide complet pour réussir tes 30 premiers jours</p>
+  </div>
+
+  <!-- Introduction -->
+  <div class="intro">
+    <h2>🎯 Bienvenue dans le programme RabaisLocal !</h2>
+    <p>
+      Cette checklist est conçue pour t'accompagner pas à pas durant tes 30 premiers jours en tant qu'affilié RabaisLocal.
+      Chaque phase contient des actions concrètes avec des priorités claires et des temps estimés.
+    </p>
+    <p>
+      <strong>Objectif :</strong> À la fin de ces 30 jours, tu auras une base solide, tes premiers référés actifs et une stratégie claire pour développer ton réseau de manière durable.
+    </p>
+    <p style="margin-top: 12px; font-weight: 600; color: #3E53A5;">
+      💡 Conseil : Coche chaque case au fur et à mesure pour suivre ta progression !
+    </p>
+  </div>
+
+  <!-- PHASE 1 -->
+  <div class="phase">
+    <div class="phase-header">
+      <h2>📋 Phase 1 : Configuration et Préparation (Jours 1-3)</h2>
+      <p>Établis les fondations de ton activité d'affilié</p>
+    </div>
+
+    <!-- Item 1 -->
+    <div class="checklist-item">
+      <div class="checkbox"></div>
+      <div class="item-content">
+        <span class="priority priority-high">PRIORITÉ HAUTE</span>
+        <h3>1. Compléter ton profil affilié</h3>
+        <p>Assure-toi que toutes tes informations sont correctes et complètes dans ton espace affilié.</p>
+        <ul>
+          <li>Vérifier tes coordonnées (nom, email, téléphone)</li>
+          <li>Ajouter tes informations de paiement (virement bancaire)</li>
+          <li>Compléter ton adresse postale</li>
+          <li>Télécharger ta photo de profil (optionnel mais recommandé)</li>
+        </ul>
+        <div class="timeline">⏱️ Temps estimé : 10-15 minutes</div>
+      </div>
+    </div>
+
+    <!-- Item 2 -->
+    <div class="checklist-item">
+      <div class="checkbox"></div>
+      <div class="item-content">
+        <span class="priority priority-high">PRIORITÉ HAUTE</span>
+        <h3>2. Récupérer et tester ton lien affilié</h3>
+        <p>Ton lien affilié est ton outil principal pour référer des consommateurs et commerçants.</p>
+        <ul>
+          <li>Copier ton lien affilié unique depuis ton espace</li>
+          <li>Le sauvegarder dans un endroit accessible (notes, document, etc.)</li>
+          <li>Tester le lien en l'ouvrant dans un navigateur privé</li>
+          <li>Vérifier que ton code de référence apparaît correctement</li>
+        </ul>
+        <div class="timeline">⏱️ Temps estimé : 5-10 minutes</div>
+      </div>
+    </div>
+
+    <!-- Item 3 -->
+    <div class="checklist-item">
+      <div class="checkbox"></div>
+      <div class="item-content">
+        <span class="priority priority-high">PRIORITÉ HAUTE</span>
+        <h3>3. Lire le Guide Affilié 2.0 complet</h3>
+        <p>Comprends en profondeur le plan de rémunération, les rangs et les stratégies de croissance.</p>
+        <ul>
+          <li>Lire le Guide Affilié 2.0 (version HTML ou PDF)</li>
+          <li>Comprendre les 7 rangs et la structure de commissions</li>
+          <li>Identifier ton objectif de rang pour les 3-6 prochains mois</li>
+          <li>Noter les questions à poser au support si nécessaire</li>
+        </ul>
+        <div class="timeline">⏱️ Temps estimé : 30-45 minutes</div>
+      </div>
+    </div>
+
+    <!-- Item 4 -->
+    <div class="checklist-item">
+      <div class="checkbox"></div>
+      <div class="item-content">
+        <span class="priority priority-medium">PRIORITÉ MOYENNE</span>
+        <h3>4. Regarder les 3 vidéos essentielles</h3>
+        <p>Les vidéos officielles t'aideront à comprendre le concept et à le présenter facilement.</p>
+        <ul>
+          <li>Vidéo 1 : "Voilà pourquoi nous sommes unique" (pour rassurer)</li>
+          <li>Vidéo 2 : "RabaisLocal en 1 minute" (pour introduire rapidement)</li>
+          <li>Vidéo 3 : "L'IA au service du local" (pour expliquer la technologie)</li>
+        </ul>
+        <div class="timeline">⏱️ Temps estimé : 15-20 minutes</div>
+      </div>
+    </div>
+
+    <!-- Item 5 -->
+    <div class="checklist-item">
+      <div class="checkbox"></div>
+      <div class="item-content">
+        <span class="priority priority-medium">PRIORITÉ MOYENNE</span>
+        <h3>5. Télécharger les ressources promotionnelles</h3>
+        <p>Prépare tes outils de communication pour faciliter le partage.</p>
+        <ul>
+          <li>Télécharger le Plan de rémunération détaillé (PDF)</li>
+          <li>Télécharger la Présentation PowerPoint (si tu prévois des rencontres en personne)</li>
+          <li>Sauvegarder le logo RabaisLocal officiel</li>
+          <li>Consulter les Scripts & Textes types pour t'inspirer</li>
+        </ul>
+        <div class="timeline">⏱️ Temps estimé : 10-15 minutes</div>
+      </div>
+    </div>
+
+    <!-- Item 6 -->
+    <div class="checklist-item">
+      <div class="checkbox"></div>
+      <div class="item-content">
+        <span class="priority priority-low">PRIORITÉ BASSE</span>
+        <h3>6. Rejoindre la communauté sur les réseaux sociaux</h3>
+        <p>Connecte-toi avec d'autres affiliés pour partager des conseils et rester motivé.</p>
+        <ul>
+          <li>Liker la page Facebook RabaisLocal</li>
+          <li>Rejoindre le groupe privé Facebook des affiliés (si disponible)</li>
+          <li>Activer les notifications pour ne rien manquer</li>
+          <li>Faire un post de présentation dans le groupe</li>
+        </ul>
+        <div class="timeline">⏱️ Temps estimé : 10 minutes</div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <strong>💡 Conseil de pro :</strong>
+      <p>Ne te précipite pas ! Ces 3 premiers jours sont cruciaux pour comprendre le système. Plus tu maîtrises le concept maintenant, plus tu seras confiant et efficace quand tu commenceras à partager ton lien.</p>
+    </div>
+  </div>
+
+  <!-- PHASE 2 -->
+  <div class="phase">
+    <div class="phase-header">
+      <h2>🎯 Phase 2 : Premiers Pas et Stratégie (Jours 4-7)</h2>
+      <p>Définis ta stratégie et prépare ton message</p>
+    </div>
+
+    <!-- Item 7 -->
+    <div class="checklist-item">
+      <div class="checkbox"></div>
+      <div class="item-content">
+        <span class="priority priority-high">PRIORITÉ HAUTE</span>
+        <h3>7. Créer ta liste de contacts prioritaires</h3>
+        <p>Identifie les personnes dans ton réseau qui pourraient être intéressées par RabaisLocal.</p>
+        <ul>
+          <li>Lister 15 consommateurs proches (famille, amis, collègues)</li>
+          <li>Lister 20 consommateurs moins proches (connaissances)</li>
+          <li>Lister 4 commerçants proches (commerçants que tu connais bien)</li>
+          <li>Lister 10 commerçants moins proches (commerçants de ta région)</li>
+        </ul>
+        <div class="timeline">⏱️ Temps estimé : 30-45 minutes</div>
+      </div>
+    </div>
+
+    <!-- Item 8 -->
+    <div class="checklist-item">
+      <div class="checkbox"></div>
+      <div class="item-content">
+        <span class="priority priority-high">PRIORITÉ HAUTE</span>
+        <h3>8. Préparer ton pitch de 30-60 secondes</h3>
+        <p>Crée un message court et percutant pour présenter RabaisLocal de manière naturelle.</p>
+        <ul>
+          <li>Lire les exemples de messages dans le guide "Comment partager"</li>
+          <li>Adapter un script à ton style personnel</li>
+          <li>Pratiquer ton pitch à voix haute (devant un miroir ou avec un proche)</li>
+          <li>Préparer 2 versions : une pour consommateurs, une pour commerçants</li>
+        </ul>
+        <div class="timeline">⏱️ Temps estimé : 20-30 minutes</div>
+      </div>
+    </div>
+
+    <!-- Item 9 -->
+    <div class="checklist-item">
+      <div class="checkbox"></div>
+      <div class="item-content">
+        <span class="priority priority-medium">PRIORITÉ MOYENNE</span>
+        <h3>9. Décider de ta stratégie de partage</h3>
+        <p>Choisis si tu veux être passif (envoyer ton lien) ou actif (accompagner ton réseau).</p>
+        <ul>
+          <li>Lire la section "Deux styles possibles" dans le plan de rémunération</li>
+          <li>Évaluer le temps que tu peux consacrer chaque semaine</li>
+          <li>Fixer un objectif réaliste pour ton premier mois (ex: 5-10 inscriptions)</li>
+          <li>Noter ta stratégie dans un document personnel</li>
+        </ul>
+        <div class="timeline">⏱️ Temps estimé : 15-20 minutes</div>
+      </div>
+    </div>
+
+    <!-- Item 10 -->
+    <div class="checklist-item">
+      <div class="checkbox"></div>
+      <div class="item-content">
+        <span class="priority priority-medium">PRIORITÉ MOYENNE</span>
+        <h3>10. Personnaliser tes messages types</h3>
+        <p>Adapte les scripts fournis à ton style et à ton réseau.</p>
+        <ul>
+          <li>Copier 3-5 messages types depuis la page "Scripts & Textes types"</li>
+          <li>Les personnaliser avec ton propre vocabulaire</li>
+          <li>Les sauvegarder dans un document accessible (notes, Google Docs, etc.)</li>
+          <li>Préparer des variations pour différents types de contacts</li>
+        </ul>
+        <div class="timeline">⏱️ Temps estimé : 20-30 minutes</div>
+      </div>
+    </div>
+
+    <!-- Item 11 -->
+    <div class="checklist-item">
+      <div class="checkbox"></div>
+      <div class="item-content">
+        <span class="priority priority-low">PRIORITÉ BASSE</span>
+        <h3>11. Préparer ta signature email et bio réseaux sociaux</h3>
+        <p>Intègre subtilement ton lien affilié dans tes communications quotidiennes.</p>
+        <ul>
+          <li>Ajouter une ligne sur RabaisLocal dans ta signature email</li>
+          <li>Mettre ton lien affilié dans ta bio Facebook (si pertinent)</li>
+          <li>Créer un post épinglé sur ton profil avec ton lien (optionnel)</li>
+          <li>Préparer une story Instagram pour annoncer ton lancement (optionnel)</li>
+        </ul>
+        <div class="timeline">⏱️ Temps estimé : 15-20 minutes</div>
+      </div>
+    </div>
+
+    <div class="warning-box">
+      <strong>⚠️ Attention :</strong>
+      <p>Ne spamme JAMAIS ton lien ! La méthode recommandée est de parler AVANT d'envoyer ton lien (taux de conversion 28-35% vs 4-8%). Privilégie toujours la qualité à la quantité.</p>
+    </div>
+  </div>
+
+  <!-- PHASE 3 -->
+  <div class="phase">
+    <div class="phase-header">
+      <h2>🚀 Phase 3 : Action et Premiers Référés (Jours 8-14)</h2>
+      <p>Commence à partager activement et à obtenir tes premières inscriptions</p>
+    </div>
+
+    <!-- Item 12 -->
+    <div class="checklist-item">
+      <div class="checkbox"></div>
+      <div class="item-content">
+        <span class="priority priority-high">PRIORITÉ HAUTE</span>
+        <h3>12. Contacter tes 5 premiers contacts prioritaires</h3>
+        <p>Commence par tes contacts les plus proches qui ont le plus de chances d'adhérer.</p>
+        <ul>
+          <li>Sélectionner 5 personnes dans ta liste de contacts prioritaires</li>
+          <li>Les contacter individuellement (appel, Messenger, texto)</li>
+          <li>Utiliser la Méthode 2 : parler AVANT d'envoyer le lien</li>
+          <li>Noter les réactions et les inscriptions dans un document de suivi</li>
+        </ul>
+        <div class="timeline">⏱️ Temps estimé : 1-2 heures (réparti sur plusieurs jours)</div>
+      </div>
+    </div>
+
+    <!-- Item 13 -->
+    <div class="checklist-item">
+      <div class="checkbox"></div>
+      <div class="item-content">
+        <span class="priority priority-high">PRIORITÉ HAUTE</span>
+        <h3>13. Faire ton premier post public sur Facebook</h3>
+        <p>Annonce subtilement ton association avec RabaisLocal à ton réseau plus large.</p>
+        <ul>
+          <li>Rédiger un post authentique (pas de copier-coller évident)</li>
+          <li>Partager pourquoi TU crois en RabaisLocal (achat local, économies, etc.)</li>
+          <li>Ajouter ton lien affilié à la fin du post</li>
+          <li>Inclure la vidéo "RabaisLocal en 1 minute" si possible</li>
+        </ul>
+        <div class="timeline">⏱️ Temps estimé : 20-30 minutes</div>
+      </div>
+    </div>
+
+    <!-- Item 14 -->
+    <div class="checklist-item">
+      <div class="checkbox"></div>
+      <div class="item-content">
+        <span class="priority priority-high">PRIORITÉ HAUTE</span>
+        <h3>14. Suivre tes premières inscriptions</h3>
+        <p>Vérifie ton tableau de bord affilié et familiarise-toi avec le suivi.</p>
+        <ul>
+          <li>Consulter ton tableau de bord affilié quotidiennement</li>
+          <li>Identifier qui s'est inscrit via ton lien</li>
+          <li>Remercier personnellement chaque nouveau référé</li>
+          <li>Offrir ton aide s'ils ont des questions sur la plateforme</li>
+        </ul>
+        <div class="timeline">⏱️ Temps estimé : 10-15 minutes par jour</div>
+      </div>
+    </div>
+
+    <!-- Item 15 -->
+    <div class="checklist-item">
+      <div class="checkbox"></div>
+      <div class="item-content">
+        <span class="priority priority-medium">PRIORITÉ MOYENNE</span>
+        <h3>15. Contacter 2-3 commerçants de ta région</h3>
+        <p>Les commerçants peuvent générer beaucoup de volume via leurs propres clients.</p>
+        <ul>
+          <li>Identifier 2-3 commerçants que tu connais ou fréquentes régulièrement</li>
+          <li>Les contacter en personne ou par téléphone (privilégier le direct)</li>
+          <li>Expliquer les avantages pour leur commerce (visibilité, nouveaux clients)</li>
+          <li>Envoyer ton lien et offrir de les aider à s'inscrire</li>
+        </ul>
+        <div class="timeline">⏱️ Temps estimé : 1-2 heures</div>
+      </div>
+    </div>
+
+    <!-- Item 16 -->
+    <div class="checklist-item">
+      <div class="checkbox"></div>
+      <div class="item-content">
+        <span class="priority priority-medium">PRIORITÉ MOYENNE</span>
+        <h3>16. Envoyer une série de messages par Messenger/SMS</h3>
+        <p>Continue à élargir ta portée avec des messages personnalisés.</p>
+        <ul>
+          <li>Sélectionner 10-15 contacts supplémentaires de ta liste</li>
+          <li>Envoyer des messages individualisés (pas de messages groupés)</li>
+          <li>Espacer les envois pour rester naturel (2-3 par jour maximum)</li>
+          <li>Suivre les réponses et ajuster ton approche selon les retours</li>
+        </ul>
+        <div class="timeline">⏱️ Temps estimé : 30-45 minutes réparti sur la semaine</div>
+      </div>
+    </div>
+
+    <!-- Item 17 -->
+    <div class="checklist-item">
+      <div class="checkbox"></div>
+      <div class="item-content">
+        <span class="priority priority-low">PRIORITÉ BASSE</span>
+        <h3>17. Créer du contenu visuel pour tes réseaux sociaux</h3>
+        <p>Utilise les bannières et logos officiels pour créer des visuels attrayants.</p>
+        <ul>
+          <li>Télécharger le logo RabaisLocal depuis la section ressources</li>
+          <li>Créer 2-3 visuels simples avec Canva ou un outil similaire</li>
+          <li>Planifier des posts pour les prochaines semaines</li>
+          <li>Varier les formats : carrousel, story, vidéo courte, etc.</li>
+        </ul>
+        <div class="timeline">⏱️ Temps estimé : 1-2 heures</div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <strong>💡 Astuce du fondateur :</strong>
+      <p>À ce stade, ton objectif est d'obtenir tes 5-10 premières inscriptions. Concentre-toi sur la QUALITÉ des contacts plutôt que la quantité. Une personne convaincue qui comprend bien le concept vaut mieux que 10 inscriptions passives.</p>
+    </div>
+  </div>
+
+  <!-- PHASE 4 -->
+  <div class="phase">
+    <div class="phase-header">
+      <h2>🌱 Phase 4 : Duplication et Formation (Jours 15-21)</h2>
+      <p>Aide tes premiers référés à devenir actifs et à dupliquer ton succès</p>
+    </div>
+
+    <!-- Item 18 -->
+    <div class="checklist-item">
+      <div class="checkbox"></div>
+      <div class="item-content">
+        <span class="priority priority-high">PRIORITÉ HAUTE</span>
+        <h3>18. Identifier tes affiliés potentiels dans ton réseau</h3>
+        <p>Parmi tes référés, certains pourraient devenir affiliés et développer leur propre réseau.</p>
+        <ul>
+          <li>Passer en revue tes référés actuels</li>
+          <li>Identifier 2-3 personnes motivées et bien connectées</li>
+          <li>Les contacter pour leur parler du programme affilié</li>
+          <li>Leur envoyer le Guide Affilié 2.0 et le Plan de rémunération</li>
+        </ul>
+        <div class="timeline">⏱️ Temps estimé : 1-2 heures</div>
+      </div>
+    </div>
+
+    <!-- Item 19 -->
+    <div class="checklist-item">
+      <div class="checkbox"></div>
+      <div class="item-content">
+        <span class="priority priority-high">PRIORITÉ HAUTE</span>
+        <h3>19. Organiser un appel ou rencontre avec tes nouveaux affiliés</h3>
+        <p>Aide tes affiliés directs à bien démarrer en partageant tes apprentissages.</p>
+        <ul>
+          <li>Planifier un appel individuel ou de groupe avec tes nouveaux affiliés</li>
+          <li>Partager les ressources essentielles (vidéos, guides, scripts)</li>
+          <li>Répondre à leurs questions et rassurer leurs préoccupations</li>
+          <li>Les encourager à faire leurs premiers pas dans les 48h</li>
+        </ul>
+        <div class="timeline">⏱️ Temps estimé : 30-60 minutes par affilié</div>
+      </div>
+    </div>
+
+    <!-- Item 20 -->
+    <div class="checklist-item">
+      <div class="checkbox"></div>
+      <div class="item-content">
+        <span class="priority priority-high">PRIORITÉ HAUTE</span>
+        <h3>20. Créer un document de formation simplifié</h3>
+        <p>Prépare un guide rapide pour aider tes futurs affiliés à démarrer rapidement.</p>
+        <ul>
+          <li>Créer un document Google Docs ou PDF de 1-2 pages</li>
+          <li>Inclure : ton lien vers les ressources, ton meilleur script, 3 étapes pour démarrer</li>
+          <li>Partager ce document avec tous tes nouveaux affiliés</li>
+          <li>Mettre à jour ce document selon tes apprentissages</li>
+        </ul>
+        <div class="timeline">⏱️ Temps estimé : 45-60 minutes</div>
+      </div>
+    </div>
+
+    <!-- Item 21 -->
+    <div class="checklist-item">
+      <div class="checkbox"></div>
+      <div class="item-content">
+        <span class="priority priority-medium">PRIORITÉ MOYENNE</span>
+        <h3>21. Suivre les activités de ton réseau niveau 1</h3>
+        <p>Reste connecté avec tes référés directs pour maximiser leur engagement.</p>
+        <ul>
+          <li>Vérifier ton tableau de bord pour voir qui est actif</li>
+          <li>Contacter ceux qui ne sont pas encore actifs pour offrir ton aide</li>
+          <li>Féliciter ceux qui ont déjà commencé à partager</li>
+          <li>Créer un groupe Messenger ou WhatsApp pour faciliter la communication</li>
+        </ul>
+        <div class="timeline">⏱️ Temps estimé : 30 minutes par semaine</div>
+      </div>
+    </div>
+
+    <!-- Item 22 -->
+    <div class="checklist-item">
+      <div class="checkbox"></div>
+      <div class="item-content">
+        <span class="priority priority-medium">PRIORITÉ MOYENNE</span>
+        <h3>22. Analyser tes statistiques et ajuster ta stratégie</h3>
+        <p>Prends du recul pour voir ce qui fonctionne et ce qui ne fonctionne pas.</p>
+        <ul>
+          <li>Consulter tes statistiques : nombre d'inscriptions, taux de conversion, volume généré</li>
+          <li>Identifier tes meilleures sources de référés (Facebook, messages directs, en personne)</li>
+          <li>Noter ce qui a bien fonctionné et ce qui a échoué</li>
+          <li>Ajuster ta stratégie pour les 2 prochaines semaines</li>
+        </ul>
+        <div class="timeline">⏱️ Temps estimé : 30-45 minutes</div>
+      </div>
+    </div>
+
+    <!-- Item 23 -->
+    <div class="checklist-item">
+      <div class="checkbox"></div>
+      <div class="item-content">
+        <span class="priority priority-low">PRIORITÉ BASSE</span>
+        <h3>23. Célébrer tes premiers succès</h3>
+        <p>Prends un moment pour reconnaître tes progrès et rester motivé.</p>
+        <ul>
+          <li>Faire le bilan de tes 3 premières semaines</li>
+          <li>Partager ton succès dans le groupe Facebook des affiliés</li>
+          <li>Te fixer un petit objectif récompense (repas, sortie, etc.)</li>
+          <li>Remercier les personnes qui t'ont soutenu</li>
+        </ul>
+        <div class="timeline">⏱️ Temps estimé : 15-20 minutes</div>
+      </div>
+    </div>
+
+    <div class="resources-box">
+      <strong>📚 Ressources pour cette phase :</strong>
+      <ul>
+        <li>Guide Affilié 2.0 - Section "Duplication"</li>
+        <li>Scripts & Textes types - Pour aider tes affiliés</li>
+        <li>Vidéos à partager - Pour former tes nouveaux affiliés</li>
+        <li>Groupe Facebook affiliés - Pour partager tes questions et succès</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PHASE 5 -->
+  <div class="phase">
+    <div class="phase-header">
+      <h2>📈 Phase 5 : Optimisation et Croissance (Jours 22-30)</h2>
+      <p>Consolide ton réseau et prépare ta croissance à long terme</p>
+    </div>
+
+    <!-- Item 24 -->
+    <div class="checklist-item">
+      <div class="checkbox"></div>
+      <div class="item-content">
+        <span class="priority priority-high">PRIORITÉ HAUTE</span>
+        <h3>24. Organiser ta première formation de groupe</h3>
+        <p>Rassemble tes affiliés pour une session de formation collective.</p>
+        <ul>
+          <li>Planifier un appel Zoom ou une rencontre en personne (45-60 min)</li>
+          <li>Préparer un ordre du jour : introduction, plan de rémunération, Q&A</li>
+          <li>Inviter tous tes affiliés actifs et potentiels</li>
+          <li>Enregistrer la session pour ceux qui ne peuvent pas assister</li>
+        </ul>
+        <div class="timeline">⏱️ Temps estimé : 2-3 heures (préparation + formation)</div>
+      </div>
+    </div>
+
+    <!-- Item 25 -->
+    <div class="checklist-item">
+      <div class="checkbox"></div>
+      <div class="item-content">
+        <span class="priority priority-high">PRIORITÉ HAUTE</span>
+        <h3>25. Identifier et former ton premier leader potentiel</h3>
+        <p>Trouve la personne la plus motivée de ton réseau et investis du temps avec elle.</p>
+        <ul>
+          <li>Identifier 1 personne très motivée qui pourrait devenir leader</li>
+          <li>Planifier un accompagnement personnalisé avec cette personne</li>
+          <li>L'aider à atteindre ses premiers objectifs (ex: 5-10 référés)</li>
+          <li>Partager tes meilleurs conseils et stratégies</li>
+        </ul>
+        <div class="timeline">⏱️ Temps estimé : 1-2 heures par semaine</div>
+      </div>
+    </div>
+
+    <!-- Item 26 -->
+    <div class="checklist-item">
+      <div class="checkbox"></div>
+      <div class="item-content">
+        <span class="priority priority-high">PRIORITÉ HAUTE</span>
+        <h3>26. Vérifier tes premières commissions</h3>
+        <p>Assure-toi que tout fonctionne correctement au niveau des paiements.</p>
+        <ul>
+          <li>Consulter ton tableau de bord pour voir tes commissions accumulées</li>
+          <li>Vérifier que tes informations de paiement sont correctes</li>
+          <li>Comprendre quand tu recevras ton premier virement (seuil de 25$)</li>
+          <li>Contacter le support si tu as des questions sur les paiements</li>
+        </ul>
+        <div class="timeline">⏱️ Temps estimé : 15-20 minutes</div>
+      </div>
+    </div>
+
+    <!-- Item 27 -->
+    <div class="checklist-item">
+      <div class="checkbox"></div>
+      <div class="item-content">
+        <span class="priority priority-medium">PRIORITÉ MOYENNE</span>
+        <h3>27. Planifier ta stratégie pour les 60 prochains jours</h3>
+        <p>Définis tes objectifs et tes actions pour les 2 prochains mois.</p>
+        <ul>
+          <li>Fixer un objectif de rang pour les 60 prochains jours (ex: Bâtisseur → Coordonnateur)</li>
+          <li>Calculer le volume d'équipe nécessaire pour atteindre ce rang</li>
+          <li>Planifier combien de nouveaux référés tu dois obtenir par semaine</li>
+          <li>Créer un calendrier d'actions pour les 8 prochaines semaines</li>
+        </ul>
+        <div class="timeline">⏱️ Temps estimé : 45-60 minutes</div>
+      </div>
+    </div>
+
+    <!-- Item 28 -->
+    <div class="checklist-item">
+      <div class="checkbox"></div>
+      <div class="item-content">
+        <span class="priority priority-medium">PRIORITÉ MOYENNE</span>
+        <h3>28. Automatiser ta prospection avec du contenu récurrent</h3>
+        <p>Crée un système de contenu pour partager régulièrement sans effort.</p>
+        <ul>
+          <li>Planifier 1-2 posts par semaine sur Facebook pour les 4 prochaines semaines</li>
+          <li>Créer une série de 3-5 stories Instagram à publier régulièrement</li>
+          <li>Préparer 5-10 messages types personnalisables pour différentes situations</li>
+          <li>Automatiser ta signature email avec ton lien affilié</li>
+        </ul>
+        <div class="timeline">⏱️ Temps estimé : 1-2 heures</div>
+      </div>
+    </div>
+
+    <!-- Item 29 -->
+    <div class="checklist-item">
+      <div class="checkbox"></div>
+      <div class="item-content">
+        <span class="priority priority-medium">PRIORITÉ MOYENNE</span>
+        <h3>29. Créer un système de suivi pour ton réseau</h3>
+        <p>Utilise un outil simple pour suivre l'activité de ton réseau.</p>
+        <ul>
+          <li>Créer une feuille Excel ou Google Sheets</li>
+          <li>Colonnes suggérées : Nom, Date inscription, Statut (consommateur/affilié), Niveau, Activité</li>
+          <li>Ajouter tous tes référés actuels dans ce tableau</li>
+          <li>Mettre à jour ce tableau chaque semaine</li>
+        </ul>
+        <div class="timeline">⏱️ Temps estimé : 30-45 minutes</div>
+      </div>
+    </div>
+
+    <!-- Item 30 -->
+    <div class="checklist-item">
+      <div class="checkbox"></div>
+      <div class="item-content">
+        <span class="priority priority-low">PRIORITÉ BASSE</span>
+        <h3>30. Faire le bilan complet de tes 30 premiers jours</h3>
+        <p>Prends le temps de réfléchir à ton parcours et de célébrer tes réussites.</p>
+        <ul>
+          <li>Calculer ton nombre total d'inscriptions (consommateurs + affiliés)</li>
+          <li>Calculer ton volume d'équipe généré</li>
+          <li>Calculer tes commissions totales accumulées</li>
+          <li>Identifier 3 leçons apprises et 3 objectifs pour les 30 prochains jours</li>
+          <li>Partager ton témoignage dans le groupe Facebook pour inspirer d'autres affiliés</li>
+        </ul>
+        <div class="timeline">⏱️ Temps estimé : 30-45 minutes</div>
+      </div>
+    </div>
+
+    <div class="warning-box">
+      <strong>⚠️ Rappel important :</strong>
+      <p>Les 30 premiers jours ne sont que le début ! Le vrai succès en affiliation se construit sur 6-12 mois avec de la constance et de la persévérance. Continue à apprendre, à t'adapter et à soutenir ton réseau.</p>
+    </div>
+  </div>
+
+  <!-- BONUS SECTION -->
+  <div class="bonus-section">
+    <h2>🎁 Bonus : Au-delà des 30 jours</h2>
+    <p style="margin-bottom: 15px; font-weight: 600;">
+      Une fois tes 30 premiers jours complétés, voici les stratégies avancées pour continuer à croître :
+    </p>
+    <ul>
+      <li><strong>Organiser des webinaires mensuels</strong> pour former ton réseau et attirer de nouveaux affiliés</li>
+      <li><strong>Créer des défis de croissance</strong> avec ton équipe (ex: "Qui obtient 10 nouveaux référés ce mois-ci?")</li>
+      <li><strong>Développer des partenariats locaux</strong> avec des commerçants pour créer des promotions exclusives</li>
+      <li><strong>Utiliser la publicité payante</strong> (Facebook Ads, Google Ads) une fois que tu maîtrises l'organique</li>
+      <li><strong>Créer du contenu éducatif</strong> (blog, vidéos YouTube, podcast) pour attirer un public plus large</li>
+    </ul>
+  </div>
+
+  <!-- FINAL RECAP -->
+  <div class="final-recap">
+    <h3>🎯 Récapitulatif : Tes objectifs minimums pour 30 jours</h3>
+    <div class="recap-grid">
+      <div class="recap-item">
+        <h4>📊 Inscriptions</h4>
+        <p><strong>Objectif minimum :</strong> 10-15 consommateurs + 2-3 affiliés actifs dans ton réseau direct</p>
+      </div>
+      <div class="recap-item">
+        <h4>💰 Volume d'équipe</h4>
+        <p><strong>Objectif minimum :</strong> 500-1000$ de volume mensuel pour viser le rang Bâtisseur</p>
+      </div>
+      <div class="recap-item">
+        <h4>🎓 Formation</h4>
+        <p><strong>Objectif minimum :</strong> Avoir formé au moins 1-2 affiliés qui ont obtenu leurs premiers référés</p>
+      </div>
+      <div class="recap-item">
+        <h4>🚀 Système</h4>
+        <p><strong>Objectif minimum :</strong> Avoir un système de suivi et un calendrier de contenu pour les prochaines semaines</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <h3>🏆 Félicitations pour ton engagement !</h3>
+    <p>
+      Tu as maintenant toutes les clés pour réussir en tant qu'affilié RabaisLocal.
+      N'oublie pas : le succès vient de la <strong>constance</strong>, pas de la perfection.
+    </p>
+    <p style="margin-top: 15px; font-weight: 600; color: #3E53A5;">
+      💙 L'équipe RabaisLocal est là pour t'accompagner à chaque étape de ton parcours.
+    </p>
+    <p style="margin-top: 20px; font-size: 13px; color: #9E9E9E;">
+      Document créé le 13 décembre 2025 | Version 1.0<br>
+      © RabaisLocal - Programme Affilié
+    </p>
+  </div>
+
+</body>
+</html>
