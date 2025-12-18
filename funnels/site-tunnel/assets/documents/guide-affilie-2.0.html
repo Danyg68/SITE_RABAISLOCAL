@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Guide officiel de l'affilié 2.0 - RabaisLocal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --rl-blue: #3E53A5;
+            --rl-light: #F5F8FF;
+            --rl-dark: #1F2A44;
+            --rl-accent: #00B894;
+            --rl-border: #E1E5F5;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+            background-color: #ffffff;
+            color: #222222;
+            line-height: 1.6;
+        }
+
+        .page-wrapper {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px 16px 60px 16px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--rl-blue), var(--rl-dark));
+            color: #ffffff;
+            border-radius: 18px;
+            padding: 24px 20px 26px 20px;
+            margin-bottom: 24px;
+        }
+
+        header h1 {
+            margin: 0 0 8px 0;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        header p {
+            margin: 4px 0;
+            font-size: 0.98rem;
+            opacity: 0.95;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background-color: rgba(255, 255, 255, 0.12);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 10px;
+        }
+
+        .badge strong {
+            color: #ffffff;
+        }
+
+        nav.guide-nav {
+            background-color: var(--rl-light);
+            border-radius: 16px;
+            padding: 14px 14px 10px 14px;
+            border: 1px solid var(--rl-border);
+            margin-bottom: 22px;
+        }
+
+        nav.guide-nav h2 {
+            margin: 0 0 6px 0;
+            font-size: 1rem;
+            color: var(--rl-blue);
+        }
+
+        nav.guide-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 4px 0 0 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 14px;
+        }
+
+        nav.guide-nav li {
+            font-size: 0.9rem;
+        }
+
+        nav.guide-nav a {
+            color: var(--rl-blue);
+            text-decoration: none;
+        }
+
+        nav.guide-nav a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            margin-bottom: 26px;
+            padding: 18px 16px 18px 16px;
+            border-radius: 16px;
+            border: 1px solid var(--rl-border);
+            background-color: #ffffff;
+        }
+
+        section:nth-of-type(odd) {
+            background-color: #FAFBFF;
+        }
+
+        section h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.2rem;
+            color: var(--rl-blue);
+        }
+
+        section h3 {
+            margin: 14px 0 6px 0;
+            font-size: 1.02rem;
+            color: var(--rl-dark);
+        }
+
+        p {
+            margin: 6px 0;
+            font-size: 0.97rem;
+        }
+
+        ul {
+            margin: 6px 0 6px 18px;
+            padding: 0;
+            font-size: 0.95rem;
+        }
+
+        li {
+            margin-bottom: 3px;
+        }
+
+        .tagline {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .pill {
+            display: inline-block;
+            padding: 3px 9px;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            background-color: #EEF2FF;
+            color: var(--rl-blue);
+            margin-right: 4px;
+            margin-bottom: 2px;
+        }
+
+        .highlight {
+            color: var(--rl-blue);
+            font-weight: 600;
+        }
+
+        .note {
+            font-size: 0.85rem;
+            color: #555555;
+            background-color: #FFF9E6;
+            border-radius: 10px;
+            padding: 8px 10px;
+            border: 1px solid #FFE9A8;
+            margin-top: 8px;
+        }
+
+        .kpi-box {
+            border-radius: 10px;
+            border: 1px dashed var(--rl-border);
+            padding: 8px 10px;
+            background-color: #FFFFFF;
+            margin-top: 6px;
+        }
+
+        .kpi-box strong {
+            color: var(--rl-blue);
+        }
+
+        .numbers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .numbers-card {
+            border-radius: 10px;
+            border: 1px solid var(--rl-border);
+            background-color: #ffffff;
+            padding: 10px 10px 8px 10px;
+            font-size: 0.9rem;
+        }
+
+        .numbers-card h4 {
+            margin: 0 0 4px 0;
+            font-size: 0.95rem;
+            color: var(--rl-blue);
+        }
+
+        .faq-item {
+            margin-bottom: 12px;
+        }
+
+        .faq-item strong {
+            color: var(--rl-dark);
+        }
+
+        .cta-box {
+            border-radius: 16px;
+            padding: 14px 14px 16px 14px;
+            background: linear-gradient(135deg, var(--rl-blue), var(--rl-dark));
+            color: #ffffff;
+            margin-top: 10px;
+        }
+
+        .cta-box h3 {
+            margin: 0 0 6px 0;
+            font-size: 1.15rem;
+            color: #ffffff;
+        }
+
+        .cta-box p {
+            margin: 4px 0;
+            font-size: 0.95rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 8px 16px;
+            border-radius: 999px;
+            background-color: #ffffff;
+            color: var(--rl-blue);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .cta-btn:hover {
+            background-color: #F3F4FF;
+        }
+
+        .small-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: #777777;
+        }
+
+        .list-inline {
+            list-style: none;
+            padding: 0;
+            margin: 4px 0;
+        }
+
+        .list-inline li {
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+
+        .income-box {
+            border-radius: 12px;
+            border: 1px solid var(--rl-border);
+            padding: 10px 12px;
+            background-color: #FFFFFF;
+            font-size: 0.92rem;
+            margin-top: 8px;
+        }
+
+        .income-box strong {
+            color: var(--rl-dark);
+        }
+
+        .warning-box {
+            border-radius: 10px;
+            border: 1px solid #F5B7B1;
+            padding: 8px 10px;
+            background-color: #FEF3F2;
+            font-size: 0.88rem;
+            color: #922B21;
+            margin-top: 6px;
+        }
+
+        /* Tableau plan de rémunération */
+        .plan-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+            font-size: 0.9rem;
+        }
+
+        .plan-table th {
+            background-color: var(--rl-blue);
+            color: #ffffff;
+            padding: 10px 8px;
+            text-align: center;
+            font-weight: 600;
+            border: 1px solid #ffffff;
+        }
+
+        .plan-table td {
+            padding: 8px;
+            text-align: center;
+            border: 1px solid var(--rl-border);
+        }
+
+        .plan-table tr:nth-child(even) {
+            background-color: #FAFBFF;
+        }
+
+        .plan-table .level-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin: 0 2px;
+        }
+
+        .plan-table .dot-blue {
+            background-color: #3E53A5;
+        }
+
+        .plan-table .dot-orange {
+            background-color: #FF8C42;
+        }
+
+        .plan-table .dot-gray {
+            background-color: #CCCCCC;
+        }
+
+        .special-status-box {
+            border-radius: 10px;
+            background-color: #FFF9E6;
+            border: 1px solid #FFE9A8;
+            padding: 12px;
+            margin-top: 12px;
+        }
+
+        .special-status-box h4 {
+            margin: 0 0 8px 0;
+            color: var(--rl-blue);
+            font-size: 1rem;
+        }
+
+        @media (max-width: 640px) {
+            header {
+                padding: 18px 16px 18px 16px;
+            }
+            header h1 {
+                font-size: 1.5rem;
+            }
+            nav.guide-nav ul {
+                flex-direction: column;
+                gap: 4px;
+            }
+            section {
+                padding: 14px 12px 14px 12px;
+            }
+            .plan-table {
+                font-size: 0.75rem;
+            }
+            .plan-table th,
+            .plan-table td {
+                padding: 6px 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+    <header>
+        <div class="badge"><strong>RabaisLocal</strong> • Guide officiel de l'affilié 2.0</div>
+        <h1>Guide de l'affilié RabaisLocal</h1>
+        <p class="tagline">Stimuler l'économie locale, aider les commerçants, faire économiser les familles… et te permettre de bâtir un revenu simple grâce à ton réseau.</p>
+        <p class="tagline"><strong>Statut&nbsp;:</strong> pré-lancement — les rabais et tableaux de bord seront actifs au lancement officiel.</p>
+    </header>
+
+    <nav class="guide-nav">
+        <h2>Sommaire rapide</h2>
+        <ul>
+            <li><a href="#intro">1. Bienvenue</a></li>
+            <li><a href="#cest-quoi">2. C'est quoi RabaisLocal ?</a></li>
+            <li><a href="#role-affilie">3. Ton rôle d'affilié</a></li>
+            <li><a href="#devenir-affilie">4. Devenir affilié</a></li>
+            <li><a href="#outils">5. Tes outils</a></li>
+            <li><a href="#plan-remu">6. Plan de rémunération</a></li>
+            <li><a href="#rangs">7. Progression</a></li>
+            <li><a href="#revenus">8. Revenus réalistes</a></li>
+            <li><a href="#partager">9. Comment partager ton lien</a></li>
+            <li><a href="#faq">10. Questions fréquentes</a></li>
+            <li><a href="#legal">11. Avertissement légal</a></li>
+            <li><a href="#conclusion">12. Conclusion</a></li>
+        </ul>
+    </nav>
+
+    <!-- 1. Introduction -->
+    <section id="intro">
+        <h2>1. Bienvenue dans RabaisLocal</h2>
+        <p>RabaisLocal, c'est bien plus qu'une plateforme de rabais. C'est un mouvement pour soutenir les commerçants d'ici, aider les familles à économiser, et permettre à des affiliés comme toi de bâtir un revenu réaliste en partageant simplement une solution utile.</p>
+        <p><span class="highlight">Important&nbsp;:</span> nous sommes en <strong>pré-lancement</strong>. Les rabais, applications et tableaux de bord complets seront accessibles au lancement officiel. En ce moment, le but est clair&nbsp;:</p>
+        <ul>
+            <li>pré-inscrire des consommateurs,</li>
+            <li>pré-inscrire des commerçants,</li>
+            <li>créer le réseau d'affiliés fondateurs.</li>
+        </ul>
+        <p>Ce guide a un seul objectif&nbsp;: te donner une vision claire, simple et réaliste de ton rôle et de tes possibilités.</p>
+    </section>
+
+    <!-- 2. C'est quoi RabaisLocal -->
+    <section id="cest-quoi">
+        <h2>2. C'est quoi RabaisLocal ? (version simple)</h2>
+        <p>RabaisLocal est une plateforme québécoise qui connecte trois groupes&nbsp;:</p>
+
+        <h3>👤 Les consommateurs</h3>
+        <ul>
+            <li>S'inscrivent gratuitement et obtiennent une carte membre.</li>
+            <li>Accèdent à des rabais locaux grâce à un système de <strong>crédits</strong>.</li>
+            <li>Peuvent économiser sur des restos, services, boutiques… dans leur région.</li>
+        </ul>
+
+        <h3>🏪 Les commerçants</h3>
+        <ul>
+            <li>Créent leurs promotions eux-mêmes, assistés par l'IA.</li>
+            <li>Ne paient <strong>aucune commission</strong> sur les ventes générées par RabaisLocal.</li>
+            <li>Bénéficient de visibilité locale et de nouveaux clients récurrents.</li>
+        </ul>
+
+        <h3>🤝 Les affiliés (toi)</h3>
+        <ul>
+            <li>Partagent simplement un lien affilié.</li>
+            <li>RabaisLocal s'occupe du reste&nbsp;: IA, tunnels de vente, emails, automatisation.</li>
+            <li>Reçoivent des commissions sur les abonnements, crédits et forfaits commerçants générés par leur réseau.</li>
+        </ul>
+
+        <h3>💳 Le système de crédits (pour les rabais)</h3>
+        <ul>
+            <li>Les consommateurs réservent des rabais avec des crédits (3 à 5 crédits par rabais, selon le type).</li>
+            <li>Exemples de tarifs typiques&nbsp;:
+                <ul>
+                    <li>20 crédits → 9,95&nbsp;$</li>
+                    <li>50 crédits → 19,95&nbsp;$</li>
+                    <li>100 crédits → 34,95&nbsp;$</li>
+                </ul>
+            </li>
+            <li>Les crédits n'expirent pas et peuvent aussi être gagnés (concours, partage, parrainage, etc.).</li>
+        </ul>
+
+        <div class="note">
+            <strong>Note pré-lancement&nbsp;:</strong> pour l'instant, on se concentre sur la construction du réseau. Les rabais seront utilisables au lancement officiel de la plateforme.
+        </div>
+    </section>
+
+    <!-- 3. Rôle de l'affilié -->
+    <section id="role-affilie">
+        <h2>3. Ton rôle en tant qu'affilié</h2>
+        <p>On va être clair&nbsp;: tu n'es pas là pour faire du porte-à-porte avec un catalogue sous le bras.</p>
+        <p>Ton rôle principal&nbsp;:</p>
+        <p><strong class="highlight">👉 Partager ton lien affilié, et laisser RabaisLocal faire le travail technique.</strong></p>
+
+        <h3>Deux styles possibles&nbsp;:</h3>
+        <p><span class="pill">Mode passif</span> Tu partages ton lien, tu réponds à quelques questions, et tu laisses le système (IA, tunnels, emails) faire la conversion.</p>
+        <p><span class="pill">Mode actif</span> Tu prends un peu plus le temps d'expliquer, d'accompagner tes affiliés, d'encourager tes commerçants et tes membres. Tu construis une vraie équipe.</p>
+
+        <div class="kpi-box">
+            <strong>Ce que tu n'es pas obligé de faire&nbsp;:</strong>
+            <ul>
+                <li>Pas de commandes mensuelles obligatoires.</li>
+                <li>Pas de stock à acheter ou à entreposer.</li>
+                <li>Pas de quotas de ventes personnels pour rester affilié.</li>
+                <li>Pas de frais mensuels si tu ne génères pas de commission.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 4. Devenir affilié -->
+    <section id="devenir-affilie">
+        <h2>4. Comment devenir affilié</h2>
+        <h3>💸 La trousse d'activation — 47&nbsp;$</h3>
+        <p>Pour devenir affilié RabaisLocal, tu actives ta trousse à <strong>47&nbsp;$</strong>. Elle comprend&nbsp;:</p>
+        <ul>
+            <li>Ton accès affilié RabaisLocal.</li>
+            <li>Ton tableau de bord de suivi.</li>
+            <li>Ton lien affilié unique.</li>
+            <li>Ton agent IA RabaisLocal (assistant virtuel).</li>
+            <li>L'accès aux scripts, modèles de messages et formations de base.</li>
+            <li>L'intégration dans les funnels et automatisations marketing.</li>
+        </ul>
+
+        <h3>📅 Frais annuels et mensuels</h3>
+        <ul>
+            <li><strong>47&nbsp;$ par année</strong> (renouvellement) — prélevés uniquement sur tes profits.</li>
+            <li><strong>27&nbsp;$ par mois</strong> — aussi prélevés uniquement sur tes commissions si tu as généré des revenus suffisants.</li>
+        </ul>
+
+        <div class="note">
+            <strong>Mécanisme anti-dette&nbsp;:</strong> si tu ne génères pas de commissions, tu ne paies rien. Tu ne peux pas te retrouver à payer de ta poche juste pour garder ton statut d'affilié.
+        </div>
+    </section>
+
+    <!-- 5. Outils fournis -->
+    <section id="outils">
+        <h2>5. Tes outils pour réussir</h2>
+        <h3>✔ Ton lien affilié</h3>
+        <p>C'est ton actif principal. C'est lui que tu partages avec&nbsp;:</p>
+        <ul>
+            <li>des amis et la famille,</li>
+            <li>des collègues et connaissances,</li>
+            <li>des commerçants,</li>
+            <li>ton réseau en ligne (Facebook, TikTok, etc.).</li>
+        </ul>
+
+        <h3>✔ Ton tableau de bord</h3>
+        <p>Tu peux y voir&nbsp;:</p>
+        <ul>
+            <li>qui s'est inscrit grâce à toi,</li>
+            <li>le type de membre (consommateur, commerçant, affilié),</li>
+            <li>ton volume d'équipe,</li>
+            <li>tes commissions accumulées.</li>
+        </ul>
+
+        <h3>✔ Ton agent IA RabaisLocal</h3>
+        <p>Ton agent IA peut t'aider à&nbsp;:</p>
+        <ul>
+            <li>rédiger des messages personnalisés,</li>
+            <li>répondre aux questions fréquentes,</li>
+            <li>proposer des idées de publications,</li>
+            <li>t'expliquer les chiffres et ton plan de rémunération.</li>
+        </ul>
+
+        <h3>✔ Funnels &amp; emails automatisés</h3>
+        <p>RabaisLocal gère toute la partie technique&nbsp;:</p>
+        <ul>
+            <li>pages de présentation,</li>
+            <li>emails de suivi,</li>
+            <li>rappels automatiques,</li>
+            <li>explication du concept et des forfaits.</li>
+        </ul>
+    </section>
+
+    <!-- 6. Plan de rémunération -->
+    <section id="plan-remu">
+        <h2>6. Le plan de rémunération RabaisLocal</h2>
+        <p>Le plan RabaisLocal est conçu pour être <strong>simple, transparent et soutenable</strong>. Tu es payé sur&nbsp;:</p>
+        <ul>
+            <li>les abonnements des consommateurs,</li>
+            <li>les crédits achetés,</li>
+            <li>les forfaits commerçants.</li>
+        </ul>
+
+        <h3>🔹 Niveau 1 — Tes propres référés : 25&nbsp;%</h3>
+        <p>Chaque fois qu'une personne s'inscrit via TON lien (consommateur, commerçant ou affilié) et fait un achat&nbsp;:</p>
+        <p><strong>Tu touches 25&nbsp;% sur ses achats</strong> (abonnements, crédits, forfaits commerçants).</p>
+
+        <h3>🔹 Niveaux 2 à 7 — Ton revenu d'équipe</h3>
+        <p>Tu es aussi rémunéré sur le réseau qui se développe sous toi, jusqu'à 7 niveaux au total&nbsp;:</p>
+
+        <ul>
+            <li><strong>Niveau 1&nbsp;:</strong> 25&nbsp;% (tes référés directs)</li>
+            <li><strong>Niveau 2&nbsp;:</strong> 5&nbsp;%</li>
+            <li><strong>Niveau 3&nbsp;:</strong> 5&nbsp;%</li>
+            <li><strong>Niveau 4&nbsp;:</strong> 4&nbsp;%</li>
+            <li><strong>Niveau 5&nbsp;:</strong> 4&nbsp;%</li>
+            <li><strong>Niveau 6&nbsp;:</strong> 3&nbsp;%</li>
+            <li><strong>Niveau 7&nbsp;:</strong> 2&nbsp;%</li>
+        </ul>
+
+        <p>En tout, tu peux toucher des commissions sur <strong>7 niveaux</strong>, incluant ton 25&nbsp;% personnel.</p>
+
+        <h3>📊 Visualisation du plan (7 niveaux)</h3>
+        <table class="plan-table">
+            <thead>
+                <tr>
+                    <th>Rang</th>
+                    <th>Niv. 1</th>
+                    <th>Niv. 2</th>
+                    <th>Niv. 3</th>
+                    <th>Niv. 4</th>
+                    <th>Niv. 5</th>
+                    <th>Niv. 6</th>
+                    <th>Niv. 7</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Affilié</strong></td>
+                    <td><span class="level-dot dot-blue"></span> 25%</td>
+                    <td><span class="level-dot dot-blue"></span> 5%</td>
+                    <td><span class="level-dot dot-gray"></span></td>
+                    <td><span class="level-dot dot-gray"></span></td>
+                    <td><span class="level-dot dot-gray"></span></td>
+                    <td><span class="level-dot dot-gray"></span></td>
+                    <td><span class="level-dot dot-gray"></span></td>
+                </tr>
+                <tr>
+                    <td><strong>Bâtisseur</strong></td>
+                    <td><span class="level-dot dot-blue"></span> 25%</td>
+                    <td><span class="level-dot dot-blue"></span> 5%</td>
+                    <td><span class="level-dot dot-orange"></span> 5%</td>
+                    <td><span class="level-dot dot-gray"></span></td>
+                    <td><span class="level-dot dot-gray"></span></td>
+                    <td><span class="level-dot dot-gray"></span></td>
+                    <td><span class="level-dot dot-gray"></span></td>
+                </tr>
+                <tr>
+                    <td><strong>Coordonnateur</strong></td>
+                    <td><span class="level-dot dot-blue"></span> 25%</td>
+                    <td><span class="level-dot dot-blue"></span> 5%</td>
+                    <td><span class="level-dot dot-blue"></span> 5%</td>
+                    <td><span class="level-dot dot-orange"></span> 4%</td>
+                    <td><span class="level-dot dot-gray"></span></td>
+                    <td><span class="level-dot dot-gray"></span></td>
+                    <td><span class="level-dot dot-gray"></span></td>
+                </tr>
+                <tr>
+                    <td><strong>Gérant</strong></td>
+                    <td><span class="level-dot dot-blue"></span> 25%</td>
+                    <td><span class="level-dot dot-blue"></span> 5%</td>
+                    <td><span class="level-dot dot-blue"></span> 5%</td>
+                    <td><span class="level-dot dot-blue"></span> 4%</td>
+                    <td><span class="level-dot dot-orange"></span> 4%</td>
+                    <td><span class="level-dot dot-gray"></span></td>
+                    <td><span class="level-dot dot-gray"></span></td>
+                </tr>
+                <tr>
+                    <td><strong>Directeur</strong></td>
+                    <td><span class="level-dot dot-blue"></span> 25%</td>
+                    <td><span class="level-dot dot-blue"></span> 5%</td>
+                    <td><span class="level-dot dot-blue"></span> 5%</td>
+                    <td><span class="level-dot dot-blue"></span> 4%</td>
+                    <td><span class="level-dot dot-blue"></span> 4%</td>
+                    <td><span class="level-dot dot-orange"></span> 3%</td>
+                    <td><span class="level-dot dot-gray"></span></td>
+                </tr>
+                <tr>
+                    <td><strong>Président</strong></td>
+                    <td><span class="level-dot dot-blue"></span> 25%</td>
+                    <td><span class="level-dot dot-blue"></span> 5%</td>
+                    <td><span class="level-dot dot-blue"></span> 5%</td>
+                    <td><span class="level-dot dot-blue"></span> 4%</td>
+                    <td><span class="level-dot dot-blue"></span> 4%</td>
+                    <td><span class="level-dot dot-blue"></span> 3%</td>
+                    <td><span class="level-dot dot-orange"></span> 2%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p style="margin-top: 8px; font-size: 0.85rem; color: #666;">
+            <span class="level-dot dot-blue"></span> = Niveaux débloqués &nbsp;&nbsp;
+            <span class="level-dot dot-orange"></span> = Nouveau niveau débloqué à ce rang &nbsp;&nbsp;
+            <span class="level-dot dot-gray"></span> = Non débloqué
+        </p>
+
+        <div class="note">
+            <strong>Cap de redistribution&nbsp;:</strong> RabaisLocal redistribue au maximum <strong>51&nbsp;% des profits</strong> aux affiliés. Cela garantit la stabilité et évite les excès typiques des MLM traditionnels.
+        </div>
+    </section>
+
+    <!-- 7. Rangs & progression -->
+    <section id="rangs">
+        <h2>7. Les rangs et ta progression</h2>
+        <p>Ta progression se fait en fonction du <strong>Volume d'Équipe (VE)</strong> = toutes les ventes générées par ton réseau.</p>
+
+        <div class="numbers-grid">
+            <div class="numbers-card">
+                <h4>Affilié</h4>
+                <p><span class="small-label">Conditions</span><br>Adhésion active.</p>
+                <p><span class="small-label">Rémunération</span><br>25&nbsp;% personnel, Niveaux 1–2.</p>
+            </div>
+            <div class="numbers-card">
+                <h4>Bâtisseur</h4>
+                <p><span class="small-label">Conditions</span><br>≈ 500&nbsp;$ de Volume d'Équipe / mois.</p>
+                <p><span class="small-label">Rémunération</span><br>Débloque le Niveau 3 (5&nbsp;%).</p>
+            </div>
+            <div class="numbers-card">
+                <h4>Coordonnateur</h4>
+                <p><span class="small-label">Conditions</span><br>≈ 2 000&nbsp;$ de VE.</p>
+                <p><span class="small-label">Rémunération</span><br>Débloque le Niveau 4 (4&nbsp;%).</p>
+            </div>
+            <div class="numbers-card">
+                <h4>Gérant</h4>
+                <p><span class="small-label">Conditions</span><br>≈ 5 000&nbsp;$ de VE.</p>
+                <p><span class="small-label">Rémunération</span><br>Débloque le Niveau 5 (4&nbsp;%).</p>
+            </div>
+            <div class="numbers-card">
+                <h4>Directeur</h4>
+                <p><span class="small-label">Conditions</span><br>≈ 15 000&nbsp;$ de VE.</p>
+                <p><span class="small-label">Rémunération</span><br>Débloque le Niveau 6 (3&nbsp;%).</p>
+            </div>
+            <div class="numbers-card">
+                <h4>Président</h4>
+                <p><span class="small-label">Conditions</span><br>≈ 50 000&nbsp;$ de VE.</p>
+                <p><span class="small-label">Rémunération</span><br>Débloque le Niveau 7 (2&nbsp;%).</p>
+            </div>
+        </div>
+
+        <div class="special-status-box">
+            <h4>🌟 Statuts spéciaux</h4>
+            <p><strong>Influenceur&nbsp;:</strong> Conçu pour les créateurs de contenu (TikTok, Instagram, YouTube). Commission personnelle de <strong>30&nbsp;%</strong> au lieu de 25&nbsp;%. Accès aux mêmes 7 niveaux de profondeur selon progression. Idéal si tu as une audience engagée et que tu veux monétiser ton influence tout en aidant ton réseau à économiser localement.</p>
+            <p><strong>Fondateur / Ambassadeur interne&nbsp;:</strong> 30&nbsp;% personnel, pas de frais mensuels (statut réservé sur invitation).</p>
+        </div>
+    </section>
+
+    <!-- 8. Revenus réalistes -->
+    <section id="revenus">
+        <h2>8. Exemples de revenus réalistes</h2>
+        <p>Les chiffres ci-dessous sont basés sur des modèles internes&nbsp;:</p>
+        <ul>
+            <li>≈ 15 consommateurs référés,</li>
+            <li>≈ 4 commerçants,</li>
+            <li>≈ 5 affiliés,</li>
+            <li>10&nbsp;% de perte par niveau,</li>
+            <li>40&nbsp;% des consommateurs prennent un forfait,</li>
+            <li>70&nbsp;% des commerçants prennent un forfait,</li>
+            <li>Redistribution maximale&nbsp;: 51&nbsp;% des profits.</li>
+        </ul>
+
+        <div class="income-box">
+            <strong>Scénario 1 — Affilié passif</strong><br>
+            Tu partages ton lien à ton entourage et sur tes réseaux, sans trop pousser.<br>
+            <em>Estimation&nbsp;:</em> environ 80 à 150&nbsp;$ par mois une fois le réseau lancé.
+        </div>
+
+        <div class="income-box">
+            <strong>Scénario 2 — Affilié actif</strong><br>
+            Tu expliques un peu plus, tu suis ton monde, tu aides 2–3 affiliés à faire comme toi.<br>
+            <em>Estimation&nbsp;:</em> environ 250 à 600&nbsp;$ par mois.
+        </div>
+
+        <div class="income-box">
+            <strong>Scénario 3 — Duplication solide</strong><br>
+            Tu bâtis une petite équipe qui duplique ton modèle sur plusieurs niveaux.<br>
+            <em>Estimation&nbsp;:</em> environ 1 000 à 3 000&nbsp;$ par mois dans le temps.
+        </div>
+
+        <div class="warning-box">
+            <strong>Important&nbsp;:</strong> ce sont des exemples basés sur des moyennes et des hypothèses réalistes, pas des promesses. Tes revenus dépendront de ton implication et des résultats réels de ton réseau.
+        </div>
+    </section>
+
+    <!-- 9. Partager son lien -->
+    <section id="partager">
+        <h2>9. Comment bien partager ton lien</h2>
+        <p>Tu peux partager ton lien de façon rapide (passif) ou plus personnalisée (actif). Les taux de conversion ne sont pas les mêmes.</p>
+
+        <h3>1) Message simple, sans discussion</h3>
+        <p>Taux de conversion moyen&nbsp;: <strong>4&nbsp;% à 8&nbsp;%</strong></p>
+        <p>Exemple&nbsp;:</p>
+        <p><em>« Hey, je teste une nouvelle plateforme de rabais pour les commerces locaux. C'est gratuit de s'inscrire. Voici mon lien si tu veux jeter un coup d'œil&nbsp;: [TON LIEN]. »</em></p>
+
+        <h3>2) Petite discussion avant d'envoyer le lien</h3>
+        <p>Taux de conversion moyen&nbsp;: <strong>28&nbsp;% à 35&nbsp;%</strong></p>
+        <p>Exemple&nbsp;:</p>
+        <p><em>« Tu cherches à économiser sur tes restos, épiceries et commerces locaux&nbsp;? Je fais partie d'un nouveau projet québécois, RabaisLocal. Si tu veux, je t'envoie mon lien pour que tu puisses t'inscrire gratuitement et être dans les premiers. »</em></p>
+
+        <h3>3) Approche commerçants</h3>
+        <p>Taux de conversion souvent plus élevé (surtout si tu connais le commerçant).</p>
+        <p>Exemple&nbsp;:</p>
+        <p><em>« Je fais partie d'un projet qui aide les commerces locaux à faire des promotions sans payer de commission sur les ventes. C'est RabaisLocal. Tu veux que je t'envoie le lien pour voir comment ça fonctionne&nbsp;? »</em></p>
+    </section>
+
+    <!-- 10. FAQ -->
+    <section id="faq">
+        <h2>10. Questions fréquentes (FAQ)</h2>
+
+        <div class="faq-item">
+            <p><strong>❓ Est-ce que je dois vendre quelque chose directement&nbsp;?</strong></p>
+            <p>Non. Tu n'as pas à encaisser de paiements ni à livrer de produits. Tu partages ton lien affilié, et RabaisLocal gère tout le reste (explications, tunnel, paiements, support).</p>
+        </div>
+
+        <div class="faq-item">
+            <p><strong>❓ Et si mon ami clique d'abord sur mon lien, puis plus tard sur le lien de quelqu'un d'autre&nbsp;?</strong></p>
+            <p>RabaisLocal utilise une logique de «&nbsp;premier clic&nbsp;» et/ou de priorité au premier référent, selon les règles configurées. Tu es protégé au maximum pour ne pas perdre tes référés pour rien.</p>
+        </div>
+
+        <div class="faq-item">
+            <p><strong>❓ Est-ce que je peux perdre mes affiliés ou mes clients&nbsp;?</strong></p>
+            <p>Non, sauf en cas de fraude ou de demande de transfert exceptionnelle validée par RabaisLocal. L'objectif est de protéger le travail des affiliés sérieux.</p>
+        </div>
+
+        <div class="faq-item">
+            <p><strong>❓ Et si je ne fais aucun profit pendant un mois&nbsp;?</strong></p>
+            <p>Tu ne paies rien. Ni frais mensuels, ni renouvellement. Aucun montant n'est facturé sur ta carte pour «&nbsp;rester actif&nbsp;».</p>
+        </div>
+
+        <div class="faq-item">
+            <p><strong>❓ Quand suis-je payé&nbsp;?</strong></p>
+            <p>Dès que ton solde dépasse un seuil (par exemple 25&nbsp;$), un virement automatique est déclenché vers ton compte selon les conditions fixées par RabaisLocal.</p>
+        </div>
+    </section>
+
+    <!-- 11. Avertissement légal -->
+    <section id="legal">
+        <h2>11. Avertissement légal sur les revenus</h2>
+        <p>Les exemples de revenus, scénarios et simulations présentés dans ce guide ont un but <strong>informatif et éducatif</strong> uniquement.</p>
+        <p><strong>RabaisLocal ne garantit aucun revenu spécifique.</strong> Tes résultats dépendront de nombreux facteurs, incluant&nbsp;:</p>
+        <ul>
+            <li>ton implication personnelle,</li>
+            <li>le temps que tu consacres au développement de ton réseau,</li>
+            <li>la capacité de ton équipe à dupliquer le modèle,</li>
+            <li>le nombre réel de consommateurs et de commerçants actifs.</li>
+        </ul>
+        <p>RabaisLocal ne vend pas un «&nbsp;plan pour s'enrichir rapidement&nbsp;», mais une plateforme de rabais et un programme d'affiliation basé sur des achats réels.</p>
+    </section>
+
+    <!-- 12. Conclusion -->
+    <section id="conclusion">
+        <h2>12. Conclusion : tu fais maintenant partie du mouvement</h2>
+        <p>En devenant affilié RabaisLocal, tu contribues à&nbsp;:</p>
+        <ul>
+            <li>soutenir les commerçants locaux,</li>
+            <li>aider des familles à économiser chaque mois,</li>
+            <li>créer un réseau de revenus partagés plus juste et plus transparent.</li>
+        </ul>
+
+        <div class="cta-box">
+            <h3>Prochaine étape&nbsp;: utiliser ton lien affilié</h3>
+            <p>Ton lien, c'est ton actif. Chaque personne qui s'y inscrit devient un membre de ton réseau.</p>
+            <p>Commence simple&nbsp;: pense à 5 personnes et 2 commerçants à qui tu peux en parler cette semaine.</p>
+            <a href="#partager" class="cta-btn">Voir des exemples de messages</a>
+        </div>
+    </section>
+
+</div>
+</body>
+</html>

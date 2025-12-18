@@ -47,3 +47,8 @@ nul
 
 # Claude Code
 .claude/
+
+# Documentation personnelle (ne pas committer)
+GIT_WORKFLOW_QUOTIDIEN.md
+COMMANDES_RAPIDES.md
+DEPLOIEMENT_LIQUID_WEB.md

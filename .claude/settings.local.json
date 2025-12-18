@@ -29,8 +29,9 @@
       "Bash(grep:*)",
       "Bash(ls:*)",
       "Bash(curl:*)",
-      "Bash(git ls-files:*)",
-      "Bash(git pull:*)"
+      "Bash(git merge:*)",
+      "Bash(git stash:*)",
+      "Bash(git restore:*)"
     ],
     "deny": [],
     "ask": []

@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complète ton inscription affilié – RabaisLocal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
+</head>
+<body style="margin:0;padding:0;background:#F5F8FF;">
+
+<!-- ==========================================================
+BLOC 1 - En-tête
+========================================================== -->
+<style>
+  .rl-header {
+    font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    text-align: center;
+    background: #fff;
+    color: #1B2240;
+    line-height: 1.6;
+    padding: 0 20px 40px;
+    position: relative;
+  }
+
+  .rl-banner-top {
+    background: #3E53A5;
+    color: #fff;
+    font-weight: 600;
+    padding: 12px 20px;
+    font-size: clamp(15px, 1.4vw, 17px);
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+  }
+
+  .rl-banner-top span {
+    color: #FFD500;
+    font-weight: 700;
+  }
+
+  .rl-header h1 {
+    color: #3E53A5;
+    font-size: clamp(28px, 3vw, 38px);
+    font-weight: 800;
+    margin-top: 40px;
+    margin-bottom: 14px;
+  }
+
+  .rl-header p {
+    font-size: clamp(16px, 1.6vw, 18px);
+    margin: 0 auto 20px;
+    max-width: 680px;
+    color: #4B569A;
+  }
+
+  .rl-highlight {
+    color: #3E53A5;
+    font-weight: 700;
+  }
+
+  @media (max-width: 600px) {
+    .rl-header {
+      padding: 0 14px 32px;
+    }
+    .rl-banner-top {
+      font-size: 14px;
+      padding: 10px 14px;
+    }
+    .rl-header h1 {
+      font-size: 26px;
+      margin-top: 30px;
+    }
+    .rl-header p {
+      font-size: 16px;
+    }
+  }
+</style>
+
+<section class="rl-header">
+  <div class="rl-banner-top">
+    ✅ Paiement confirmé – <span>Bienvenue dans l'équipe RabaisLocal</span> !
+  </div>
+
+  <h1>Complète ton inscription <span class="rl-highlight">Affilié Fondateur</span></h1>
+  <p>
+    Ton paiement a été confirmé avec succès ! Il ne reste qu'à compléter ces informations pour activer ton compte affilié et recevoir ton lien personnel.
+  </p>
+</section>
+
+<!-- ==========================================================
+SECTION FORMULAIRE COMPLET
+========================================================== -->
+<style>
+  #section-form-affilie {
+    padding: 50px 20px 60px;
+    background: linear-gradient(180deg, #ffffff 0%, #F5F8FF 100%);
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+  }
+
+  #section-form-affilie h2 {
+    color: #3E53A5;
+    font-size: clamp(24px, 2.8vw, 32px);
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+
+  #section-form-affilie p.subtitle {
+    font-size: 17px;
+    color: #4B569A;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .form-container {
+    max-width: 700px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px 35px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(62, 83, 165, 0.12);
+    text-align: left;
+  }
+
+  .form-container h3 {
+    color: #3E53A5;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 30px;
+    margin-bottom: 18px;
+    border-bottom: 2px solid #E0E6FF;
+    padding-bottom: 8px;
+  }
+
+  .form-container h3:first-of-type {
+    margin-top: 0;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    display: block;
+    font-weight: 600;
+    color: #1B2240;
+    margin-bottom: 8px;
+    font-size: 15px;
+  }
+
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #E0E6FF;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: #3E53A5;
+  }
+
+  /* Validation visuelle */
+  .form-group input.valid {
+    border-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.12);
+  }
+
+  .form-group input.invalid {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+  }
+
+  .checkbox-group {
+    margin-bottom: 18px;
+  }
+
+  .checkbox-group label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-weight: 500;
+    color: #1B2240;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .checkbox-group input[type="checkbox"] {
+    margin-top: 3px;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+
+  .btn-submit {
+    width: 100%;
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #3E53A5 0%, #5068C4 100%);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(62, 83, 165, 0.35);
+    transition: all 0.3s ease;
+    margin-top: 10px;
+  }
+
+  .btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(62, 83, 165, 0.45);
+  }
+
+  .success-message {
+    display: none;
+    background: #E8F5E9;
+    border-left: 4px solid #4CAF50;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    color: #2E7D32;
+    font-weight: 600;
+  }
+
+  .error-message {
+    display: none;
+    background: #FFEBEE;
+    border-left: 4px solid #F44336;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    color: #C62828;
+    font-weight: 600;
+  }
+
+  @media (max-width: 600px) {
+    #section-form-affilie {
+      padding: 40px 16px 50px;
+    }
+    .form-container {
+      padding: 30px 20px;
+    }
+    #section-form-affilie h2 {
+      font-size: 24px;
+    }
+    #section-form-affilie p.subtitle {
+      font-size: 16px;
+    }
+  }
+</style>
+
+<section id="section-form-affilie">
+  <h2>Informations complémentaires</h2>
+  <p class="subtitle">Remplis ce formulaire pour finaliser ton inscription et recevoir ton accès affilié.</p>
+
+    <div class="form-container">
+      <form id="affilie-form"
+            action="https://hook.us2.make.com/mqawrfcg1amnu38uw9i9hferf8qoto3j"
+            method="POST">
+
+      <h3>Identité</h3>
+
+      <div class="form-group">
+        <label for="prenom">Prénom *</label>
+        <input type="text" id="prenom" name="prenom" required placeholder="Ex: Jean">
+      </div>
+
+      <div class="form-group">
+        <label for="nom">Nom *</label>
+        <input type="text" id="nom" name="nom" required placeholder="Ex: Tremblay">
+      </div>
+
+      <div class="form-group">
+        <label for="email_inscription">Adresse courriel *</label>
+        <input type="email" id="email_inscription" name="email" required placeholder="Ex: jean.tremblay@exemple.com">
+      </div>
+
+      <div class="form-group">
+        <label for="telephone">Téléphone</label>
+        <input type="tel" id="telephone" name="telephone" placeholder="Ex: 514-555-1234" maxlength="14">
+        <small style="font-size: 12px; color: #6B7280; display: block; margin-top: 4px;">Format automatique : XXX-XXX-XXXX</small>
+      </div>
+
+      <h3>Adresse complète</h3>
+
+      <div class="form-group">
+        <label for="adresse_numero">Numéro civique *</label>
+        <input type="text" id="adresse_numero" name="adresse_numero" required placeholder="Ex: 444">
+      </div>
+
+      <div class="form-group">
+        <label for="adresse_appartement">Appartement / Bureau / Suite (optionnel)</label>
+        <input type="text" id="adresse_appartement" name="adresse_appartement" placeholder="Ex: App. 8, Bureau 201, Suite A">
+      </div>
+
+      <div class="form-group">
+        <label for="adresse_rue">Rue *</label>
+        <input type="text" id="adresse_rue" name="adresse_rue" required placeholder="Ex: boul Ste-Madeleine">
+      </div>
+
+      <div class="form-group">
+        <label for="province">Province *</label>
+        <select id="province" name="province" required>
+          <option value="">Sélectionne ta province</option>
+          <option value="QC">Québec</option>
+          <option value="ON">Ontario</option>
+          <option value="NB">Nouveau-Brunswick</option>
+          <option value="NS">Nouvelle-Écosse</option>
+          <option value="PE">Île-du-Prince-Édouard</option>
+          <option value="NL">Terre-Neuve-et-Labrador</option>
+          <option value="MB">Manitoba</option>
+          <option value="SK">Saskatchewan</option>
+          <option value="AB">Alberta</option>
+          <option value="BC">Colombie-Britannique</option>
+          <option value="YT">Yukon</option>
+          <option value="NT">Territoires du Nord-Ouest</option>
+          <option value="NU">Nunavut</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="ville">Ville *</label>
+        <input
+          type="text"
+          id="ville"
+          name="ville"
+          list="ville-options"
+          placeholder="Commence à taper ta ville"
+          required
+        />
+        <datalist id="ville-options"></datalist>
+      </div>
+
+      <div class="form-group">
+        <label for="code_postal">Code postal *</label>
+        <input type="text" id="code_postal" name="code_postal" required placeholder="Ex: H2X 1Y4" maxlength="7">
+        <small style="font-size: 12px; color: #6B7280; display: block; margin-top: 4px;">Format automatique : A1A 1A1</small>
+      </div>
+
+      <!-- Référence cachée - capturée automatiquement de l'URL -->
+      <input type="hidden" id="referer_affilie" name="referer" value="" />
+
+      <h3>Confirmations</h3>
+
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" name="accept_prelaunch" required>
+          <span>Je comprends que RabaisLocal est en pré-lancement et que la plateforme sera activée au lancement officiel.</span>
+        </label>
+      </div>
+
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" name="newsletter_optin">
+          <span>Je souhaite recevoir les nouveautés et conseils pour réussir comme affilié.</span>
+        </label>
+      </div>
+
+      <button type="submit" class="btn-submit">
+        📝 Signature du contrat
+      </button>
+
+      <div class="success-message" id="success-msg">
+        Merci ! Ton inscription a été envoyée avec succès. Tu vas recevoir un courriel de confirmation avec ton lien d'affilié sous peu.
+      </div>
+
+      <div class="error-message" id="error-msg">
+        Une erreur est survenue lors de l'envoi. Merci de réessayer ou de contacter le support à <a href="mailto:support@rabaislocal.com" style="color: #C62828; text-decoration: underline;">support@rabaislocal.com</a>.
+      </div>
+
+    </form>
+  </div>
+</section>
+
+<!-- ==========================================================
+BLOC 2 - Footer
+========================================================== -->
+<style>
+  .rl-footer {
+    background: #fff;
+    border-top: 2px solid #E0E6FF;
+    text-align: center;
+    font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    color: #444;
+    padding: 35px 16px 25px;
+    font-size: 14.5px;
+    line-height: 1.6;
+  }
+
+  .rl-footer a {
+    color: #3E53A5;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .rl-footer a:hover {
+    color: #2E408D;
+    text-decoration: underline;
+  }
+
+  .rl-footer .divider {
+    margin: 0 8px;
+    color: #999;
+  }
+
+  .rl-footer small {
+    display: block;
+    color: #777;
+    margin-top: 8px;
+    font-size: 13px;
+  }
+
+  @media (max-width: 600px) {
+    .rl-footer {
+      font-size: 13.5px;
+      padding: 28px 10px 22px;
+    }
+  }
+</style>
+
+<footer class="rl-footer">
+  <p>
+    © 2025 <b>RabaisLocal</b>. Tous droits réservés.
+    <span class="divider">|</span>
+    <a href="https://marketing.rabaislocal.com/politique-confidentialite.html" target="_blank">Politique de confidentialité</a>
+    <span class="divider">|</span>
+    <a href="mailto:support@rabaislocal.com">support@rabaislocal.com</a>
+  </p>
+  <small>Plateforme 100 % québécoise.</small>
+</footer>
+
+<!-- ==========================================================
+SCRIPTS - AUTO-COMPLÉTION + ENVOI WEBHOOK
+========================================================== -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // ===================================================
+  // GESTION POPUP PAYPAL - Redirection vers fenêtre principale
+  // ===================================================
+  // Si cette page s'ouvre dans une popup PayPal, rediriger la fenêtre principale et fermer la popup
+  if (window.opener && window.opener !== window) {
+    console.log('🔄 Page ouverte dans une popup PayPal - Redirection vers fenêtre principale');
+
+    // Récupérer le ref depuis l'URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const ref = urlParams.get('ref') || localStorage.getItem('rl_ref') || '0';
+
+    // Construire l'URL de redirection avec le ref
+    const redirectUrl = window.location.origin + window.location.pathname + '?ref=' + encodeURIComponent(ref);
+
+    // Rediriger la fenêtre principale (opener)
+    window.opener.location.href = redirectUrl;
+
+    // Fermer la popup après un court délai
+    setTimeout(function() {
+      window.close();
+    }, 500);
+
+    // Arrêter l'exécution du reste du script
+    return;
+  }
+
+const provinceSelect = document.getElementById('province');
+  const villeInput = document.getElementById('ville');
+  const datalist = document.getElementById('ville-options');
+  const affilieForm = document.getElementById('affilie-form');
+  const emailInput = document.getElementById('email_inscription');
+  const successMsg = document.getElementById('success-msg');
+  const errorMsg = document.getElementById('error-msg');
+
+  let villesParProvince = {};
+  let villesChargees = false;
+
+  // Récupérer le ref depuis l'URL ou localStorage
+  const urlParams = new URLSearchParams(window.location.search);
+  let ref = urlParams.get('ref') || localStorage.getItem('rl_ref') || '0';
+
+  // Sauvegarder le ref dans localStorage
+  localStorage.setItem('rl_ref', ref);
+  console.log('📌 Référence affilié (ref):', ref);
+
+  // 1) Charger toutes les villes au démarrage
+  fetch('assets/json/villes_canada.json')
+    .then(function (response) {
+      if (!response.ok) {
+        throw new Error('Erreur de chargement de villes_canada.json');
+      }
+      return response.json();
+    })
+    .then(function (data) {
+      villesParProvince = data;
+      villesChargees = true;
+      console.log('✅ Villes de toutes les provinces chargées avec succès');
+    })
+    .catch(function (error) {
+      console.error('❌ Erreur lors du chargement des villes:', error);
+      if (villeInput) {
+        villeInput.placeholder = 'Entrez votre ville manuellement (auto-complétion indisponible)';
+        villeInput.title = 'L\'auto-complétion des villes n\'a pas pu être chargée. Vous pouvez quand même saisir votre ville manuellement.';
+      }
+    });
+
+  // 2) Quand la province change, afficher les villes de cette province
+  if (provinceSelect && datalist && villeInput) {
+    provinceSelect.addEventListener('change', function () {
+      const codeProvince = provinceSelect.value;
+      datalist.innerHTML = '';
+
+      if (codeProvince && villesParProvince[codeProvince]) {
+        const villes = villesParProvince[codeProvince];
+
+        villes.forEach(function (ville) {
+          const option = document.createElement('option');
+          option.value = ville;
+          datalist.appendChild(option);
+        });
+
+        villeInput.placeholder = 'Commence à taper ta ville';
+        console.log('🏙️ ' + villes.length + ' villes affichées pour ' + codeProvince);
+      } else if (codeProvince) {
+        villeInput.placeholder = 'Entrez votre ville manuellement';
+        console.warn('⚠️ Aucune ville trouvée pour la province:', codeProvince);
+      } else {
+        villeInput.placeholder = 'Sélectionnez d\'abord une province';
+      }
+    });
+  }
+
+  // 3) Auto-formatage du téléphone
+  const telephoneInput = document.getElementById('telephone');
+  if (telephoneInput) {
+    telephoneInput.addEventListener('input', function (e) {
+      let value = e.target.value.replace(/\D/g, ''); // Garder seulement les chiffres
+
+      if (value.length > 10) {
+        value = value.slice(0, 10); // Limiter à 10 chiffres
+      }
+
+      // Formatter: XXX-XXX-XXXX
+      let formatted = '';
+      if (value.length > 0) {
+        formatted = value.slice(0, 3);
+      }
+      if (value.length > 3) {
+        formatted += '-' + value.slice(3, 6);
+      }
+      if (value.length > 6) {
+        formatted += '-' + value.slice(6, 10);
+      }
+
+      e.target.value = formatted;
+
+      // Couleur: vert uniquement si 10 chiffres complets
+      e.target.classList.remove('valid', 'invalid');
+      if (value.length === 0) return;
+      if (value.length === 10) {
+        e.target.classList.add('valid');
+      } else {
+        e.target.classList.add('invalid');
+      }
+    });
+  }
+
+  // 4) Auto-formatage du code postal
+  const codePostalInput = document.getElementById('code_postal');
+  if (codePostalInput) {
+    codePostalInput.addEventListener('input', function (e) {
+      let value = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, ''); // Garder seulement lettres et chiffres
+
+      if (value.length > 6) {
+        value = value.slice(0, 6); // Limiter à 6 caractères
+      }
+
+      // Formatter: A1A 1A1
+      let formatted = '';
+      if (value.length > 0) {
+        formatted = value.slice(0, 3);
+      }
+      if (value.length > 3) {
+        formatted += ' ' + value.slice(3, 6);
+      }
+
+      e.target.value = formatted;
+
+      // Couleur: vert si format complet A1A 1A1
+      const postalCodeRegex = /^[A-Z]\d[A-Z] \d[A-Z]\d$/;
+      e.target.classList.remove('valid', 'invalid');
+      if (formatted.length === 0) return;
+      if (postalCodeRegex.test(formatted)) {
+        e.target.classList.add('valid');
+      } else {
+        e.target.classList.add('invalid');
+      }
+    });
+  }
+
+  // 4b) Validation email (suppression des espaces + couleur)
+  if (emailInput) {
+    emailInput.addEventListener('input', function (e) {
+      const trimmed = (e.target.value || '').replace(/\s/g, '');
+      e.target.value = trimmed;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+      e.target.classList.remove('valid', 'invalid');
+      if (trimmed.length === 0) return;
+      if (emailRegex.test(trimmed)) {
+        e.target.classList.add('valid');
+      } else {
+        e.target.classList.add('invalid');
+      }
+    });
+  }
+
+  // 4c) Numéro civique : chiffres uniquement + couleur
+  const numeroInput = document.getElementById('adresse_numero');
+  if (numeroInput) {
+    numeroInput.addEventListener('input', function (e) {
+      const digits = e.target.value.replace(/\D/g, '');
+      e.target.value = digits;
+      e.target.classList.remove('valid', 'invalid');
+      if (digits.length === 0) return;
+      e.target.classList.add('valid');
+    });
+  }
+
+  // 4d) Appartement : lettres/chiffres seulement + couleur (optionnel)
+  const appartementInput = document.getElementById('adresse_appartement');
+  if (appartementInput) {
+    appartementInput.addEventListener('input', function (e) {
+      const cleaned = e.target.value.replace(/[^A-Za-z0-9 -]/g, '');
+      e.target.value = cleaned;
+      e.target.classList.remove('valid', 'invalid');
+      if (cleaned.length === 0) return; // optionnel, donc pas de rouge si vide
+      e.target.classList.add('valid');
+    });
+  }
+
+  // 5) Pré-remplir le formulaire avec les données du localStorage
+  const emailSaved = localStorage.getItem('rl_affilie_email');
+  const transactionId = localStorage.getItem('rl_affilie_transaction_id');
+
+  if (emailSaved) document.getElementById('email_inscription').value = emailSaved;
+
+  // Remplir automatiquement le champ caché referer avec le ref de l'URL
+  document.getElementById('referer_affilie').value = ref;
+
+  // 6) Envoi du formulaire à Make via webhook (soumission native pour laisser suivre les 302)
+  if (affilieForm) {
+    affilieForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Masquer les messages précédents
+      successMsg.style.display = 'none';
+      errorMsg.style.display = 'none';
+
+      // Désactiver le bouton pour éviter le double clic
+      const submitBtn = affilieForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn ? submitBtn.innerHTML : '';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Envoi en cours...';
+      }
+
+      // Sauvegarder quelques infos pour le suivi
+      if (emailInput?.value) {
+        localStorage.setItem('rl_affilie_email', emailInput.value.trim());
+        document.cookie = 'user_email=' + encodeURIComponent(emailInput.value.trim()) + ';path=/;max-age=' + (7*24*60*60);
+      }
+      if (ref) {
+        localStorage.setItem('rl_ref', ref);
+        document.cookie = 'rl_ref=' + encodeURIComponent(ref) + ';path=/;max-age=' + (180*24*60*60);
+      }
+      if (transactionId) {
+        localStorage.setItem('rl_affilie_transaction_id', transactionId);
+      }
+
+      // Préparer/mettre à jour les champs cachés nécessaires pour Make
+      function ensureHidden(name, value) {
+        let input = affilieForm.querySelector('input[name="' + name + '"]');
+        if (!input) {
+          input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = name;
+          affilieForm.appendChild(input);
+        }
+        input.value = value || '';
+      }
+
+      ensureHidden('transaction_id', transactionId || '');
+      ensureHidden('ref', ref || '');
+      ensureHidden('timestamp', new Date().toISOString());
+      ensureHidden('type', 'formulaire_complet_affilie');
+      ensureHidden('source', 'page2_form_affilie');
+
+      // Soumettre : laisser le navigateur suivre le 302 / Location de Make
+      affilieForm.submit();
+
+      // Sécurité : réactiver le bouton si aucune redirection ne se produit
+      setTimeout(function() {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+        }
+      }, 6000);
+    });
+  }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tableau Rémunération RabaisLocal - Officiel</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #ffffff;
+        padding: 20px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        background: #fff;
+    }
+    th, td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: center;
+    }
+    th {
+        background: #2c3e50;
+        color: #fff;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 11px;
+        letter-spacing: 0.5px;
+    }
+    .rank { 
+        text-align: left; 
+        font-weight: bold; 
+        font-size: 14px;
+        min-width: 130px;
+    }
+    
+    /* Couleurs des rangs */
+    .explorateur { background:#FAD7A0; }
+    .batisseur { background:#D5F5E3; }
+    .coordonnateur { background:#D5F5E3; }
+    .gerant { background:#E9F7CF; }
+    .directeur { background:#D6EAF8; }
+    .president { background:#AED6F1; }
+    .ambassadeur { background:#A9CCE3; font-weight:bold; }
+    
+    /* Statuts Spéciaux */
+    .influenceur { background:#E8DAEF; color:#000; font-weight:bold; }
+    .fondateur { background:#F9E79F; font-weight:bold; border-top: 1px solid #F1C40F; }
+
+    /* --- LA LIGNE DE SÉPARATION ÉPAISSE --- */
+    .separator-row {
+        border-bottom: 6px solid #000000 !important; /* Ligne noire très visible */
+    }
+
+    .note {
+        text-align: left;
+        font-size: 12px;
+        line-height: 1.4;
+    }
+    .pct-bonus {
+        color: #d35400;
+        font-weight: 800;
+        font-size: 14px;
+    }
+    .condition-tag {
+        display: inline-block;
+        background: rgba(255,255,255,0.7);
+        padding: 2px 6px;
+        border-radius: 4px;
+        border: 1px solid rgba(0,0,0,0.1);
+        margin-top: 4px;
+        font-weight: bold;
+        color: #333;
+    }
+    .volume-highlight {
+        color: #27ae60;
+        font-weight: 800;
+    }
+</style>
+</head>
+
+<body>
+
+<table>
+<thead>
+<tr>
+    <th>Rang</th>
+    <th>Accès</th>
+    <th>N1<br>(Direct)</th>
+    <th>N2<br>5%</th>
+    <th>N3<br>5%</th>
+    <th>N4<br>4%</th>
+    <th>N5<br>4%</th>
+    <th>N6<br>3%</th>
+    <th>N7<br>2%</th>
+    <th width="30%">Conditions (Volume Équipe)</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr class="explorateur">
+    <td class="rank">1. Explorateur</td>
+    <td>Trousse 47$</td>
+    <td>25%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td>
+    <td class="note">
+        ✅ Payer la trousse<br>
+        ✅ Avoir <strong>1 Client Actif</strong>
+    </td>
+</tr>
+
+<tr class="batisseur">
+    <td class="rank">2. Bâtisseur</td>
+    <td>Automatique</td>
+    <td>25%</td><td>5%</td><td>5%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td>
+    <td class="note">
+        🎯 <span class="volume-highlight">500 $</span> Volume Équipe<br>
+        <span class="condition-tag">≈ 25 abonnements</span>
+    </td>
+</tr>
+
+<tr class="coordonnateur">
+    <td class="rank">3. Coordonnateur</td>
+    <td>Automatique</td>
+    <td>25%</td><td>5%</td><td>5%</td><td>4%</td><td>0%</td><td>0%</td><td>0%</td>
+    <td class="note">
+        🎯 <span class="volume-highlight">2 000 $</span> Volume Équipe<br>
+        <span class="condition-tag">≈ 100 abonnements</span>
+    </td>
+</tr>
+
+<tr class="gerant">
+    <td class="rank">4. Gérant</td>
+    <td>Automatique</td>
+    <td>25%</td><td>5%</td><td>5%</td><td>4%</td><td>4%</td><td>0%</td><td>0%</td>
+    <td class="note">
+        🎯 <span class="volume-highlight">5 000 $</span> Volume Équipe<br>
+        <span class="condition-tag">≈ 250 abonnements</span>
+    </td>
+</tr>
+
+<tr class="directeur">
+    <td class="rank">5. Directeur</td>
+    <td>Automatique</td>
+    <td>25%</td><td>5%</td><td>5%</td><td>4%</td><td>4%</td><td>3%</td><td>0%</td>
+    <td class="note">
+        🎯 <span class="volume-highlight">15 000 $</span> Volume Équipe<br>
+        <span class="condition-tag">Leadership régional</span>
+    </td>
+</tr>
+
+<tr class="president">
+    <td class="rank">6. Président</td>
+    <td>Automatique</td>
+    <td>25%</td><td>5%</td><td>5%</td><td>4%</td><td>4%</td><td>3%</td><td>2%</td>
+    <td class="note">
+        🎯 <span class="volume-highlight">50 000 $</span> Volume Équipe<br>
+        <span class="condition-tag">Liberté financière</span>
+    </td>
+</tr>
+
+<tr class="ambassadeur separator-row">
+    <td class="rank">7. Ambassadeur</td>
+    <td>Automatique</td>
+    <td class="pct-bonus">30% 🔥</td><td>5%</td><td>5%</td><td>4%</td><td>4%</td><td>3%</td><td>2%</td>
+    <td class="note">
+        🎯 <span class="volume-highlight">100 000 $</span> Volume Équipe<br>
+        <span class="condition-tag">Sommet du plan standard</span>
+    </td>
+</tr>
+
+<tr class="influenceur">
+    <td class="rank">⭐ Influenceur</td>
+    <td>Invitation VIP</td>
+    <td class="pct-bonus">30% 🔥</td><td>5%</td><td>5%</td><td>4%</td><td>4%</td><td>3%</td><td>2%</td>
+    <td class="note">
+        🚀 <strong>Aucune condition</strong><br>
+        <span class="condition-tag">Accès immédiat aux commissions max</span>
+    </td>
+</tr>
+
+<tr class="fondateur">
+    <td class="rank">👑 Ambassadeur Fondateur</td>
+    <td>Nomination VIP</td>
+    <td class="pct-bonus">30% 🔥</td><td>5%</td><td>5%</td><td>4%</td><td>4%</td><td>3%</td><td>2%</td>
+    <td class="note">
+        🔒 <strong>Nomination Stratégique</strong><br>
+        <span class="condition-tag">Fondateurs & Famille</span>
+    </td>
+</tr>
+
+</tbody>
+</table>
+
+</body>
+</html>

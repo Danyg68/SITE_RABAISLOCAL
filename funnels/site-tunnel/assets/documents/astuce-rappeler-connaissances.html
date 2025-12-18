@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Astuce : Comment se rappeler de connaissances oubliées - RabaisLocal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* --- STYLES POUR L'ASTUCE --- */
+    @page {
+      size: A4;
+      margin: 2cm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #F5F8FF;
+      color: #1B2240;
+      line-height: 1.7;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 35px;
+      padding-bottom: 20px;
+      border-bottom: 4px solid #3E53A5;
+    }
+
+    .header h1 {
+      color: #3E53A5;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      color: #5B6385;
+      font-size: 16px;
+    }
+
+    .intro {
+      background: linear-gradient(135deg, #FFF8E1 0%, #FFE8CC 100%);
+      border-left: 5px solid #FF8C42;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+
+    .intro p {
+      font-size: 15px;
+      line-height: 1.8;
+      margin-bottom: 8px;
+    }
+
+    .level {
+      margin-bottom: 40px;
+    }
+
+    .level-header {
+      background: linear-gradient(135deg, #3E53A5 0%, #2C3E80 100%);
+      color: white;
+      padding: 15px 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .level-header h2 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .level-header p {
+      font-size: 14px;
+      opacity: 0.95;
+    }
+
+    .category {
+      background: #FAFBFF;
+      border: 2px solid #E3E8FF;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .category h3 {
+      color: #3E53A5;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .category ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .category li {
+      padding-left: 25px;
+      position: relative;
+      margin-bottom: 8px;
+      font-size: 15px;
+      color: #1B2240;
+    }
+
+    .category li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #10b981;
+      font-weight: 700;
+    }
+
+    .astuce {
+      background: #E8F5E9;
+      border-left: 4px solid #4CAF50;
+      padding: 12px 15px;
+      margin-top: 15px;
+      border-radius: 6px;
+      font-size: 14px;
+      color: #1B5E20;
+      font-weight: 600;
+    }
+
+    .example-box {
+      background: #FFF3E0;
+      border: 2px dashed #FF8C42;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    .example-box h4 {
+      color: #E65100;
+      font-size: 16px;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .example-box p {
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .example-box ul {
+      list-style: none;
+      padding-left: 20px;
+      margin-top: 10px;
+    }
+
+    .example-box li {
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    .triggers {
+      background: #F5F5F5;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 15px;
+    }
+
+    .triggers h4 {
+      color: #424242;
+      font-size: 16px;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .triggers ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .triggers li {
+      padding: 10px 15px;
+      background: white;
+      margin-bottom: 8px;
+      border-radius: 6px;
+      border-left: 3px solid #FF8C42;
+      font-size: 14px;
+    }
+
+    .routine {
+      background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+      border: 3px solid #4CAF50;
+      border-radius: 12px;
+      padding: 25px;
+      margin-top: 30px;
+    }
+
+    .routine h3 {
+      color: #2E7D32;
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    .routine ol {
+      padding-left: 25px;
+    }
+
+    .routine li {
+      margin-bottom: 10px;
+      font-size: 15px;
+      color: #1B5E20;
+      font-weight: 500;
+    }
+
+    .truth-box {
+      background: linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%);
+      border-left: 5px solid #E53935;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 30px;
+    }
+
+    .truth-box h3 {
+      color: #C62828;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .truth-box ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .truth-box li {
+      padding: 8px 0;
+      font-size: 15px;
+      color: #5D4037;
+      font-weight: 600;
+      padding-left: 25px;
+      position: relative;
+    }
+
+    .truth-box li::before {
+      content: "💪";
+      position: absolute;
+      left: 0;
+    }
+
+    .back-link {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 2px solid #E3E8FF;
+    }
+
+    .back-link a {
+      color: #3E53A5;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      transition: color 0.3s ease;
+    }
+
+    .back-link a:hover {
+      color: #2C3E80;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 25px;
+      }
+
+      .header h1 {
+        font-size: 26px;
+      }
+
+      .level-header h2 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Header -->
+    <div class="header">
+      <h1>🧠 Comment se rappeler de connaissances oubliées</h1>
+      <p>Méthode en 3 niveaux pour maximiser ta liste de contacts</p>
+    </div>
+
+    <!-- Introduction -->
+    <div class="intro">
+      <p><strong>Je te donne une méthode en 3 niveaux, avec beaucoup d'exemples concrets, puis une routine simple à refaire quand tu bloques.</strong></p>
+    </div>
+
+    <!-- NIVEAU 1 -->
+    <div class="level">
+      <div class="level-header">
+        <h2>🔹 NIVEAU 1 – Vider ta mémoire par catégories</h2>
+        <p>Objectif : sortir le maximum de noms, sans juger s'ils sont "bons" ou non.</p>
+      </div>
+
+      <!-- Famille -->
+      <div class="category">
+        <h3>👨‍👩‍👧‍👦 Famille & entourage proche</h3>
+        <ul>
+          <li>Parents, beaux-parents</li>
+          <li>Frères, sœurs, demi-frères</li>
+          <li>Cousins / cousines (1er, 2e degré)</li>
+          <li>Oncles / tantes</li>
+          <li>Ex-conjoint(e)</li>
+          <li>Famille de ton ex</li>
+          <li>Amis de la famille</li>
+          <li>Voisins d'enfance</li>
+        </ul>
+        <div class="astuce">👉 Astuce : pense aux partys, mariages, funérailles. La mémoire revient fort là.</div>
+      </div>
+
+      <!-- École -->
+      <div class="category">
+        <h3>🏫 École (primaire → adultes)</h3>
+        <ul>
+          <li>Amis proches</li>
+          <li>Amis "de corridor"</li>
+          <li>Personnes assises près de toi</li>
+          <li>Intimidateurs / leaders (oui, même eux)</li>
+          <li>Professeurs marquants</li>
+          <li>Directeurs / éducateurs</li>
+          <li>Parents de tes amis</li>
+          <li>Gens des équipes sportives scolaires</li>
+        </ul>
+        <div class="astuce">👉 Astuce : visualise la classe, puis les rangées.</div>
+      </div>
+
+      <!-- Travail -->
+      <div class="category">
+        <h3>💼 Travail (tous les emplois, même courts)</h3>
+        <ul>
+          <li>Collègues directs</li>
+          <li>Boss / superviseurs</li>
+          <li>Clients réguliers</li>
+          <li>Fournisseurs</li>
+          <li>Gens des autres départements</li>
+          <li>Remplaçants / temporaires</li>
+          <li>Partenaires externes</li>
+          <li>Clients que tu croisais souvent</li>
+        </ul>
+        <div class="astuce">👉 Astuce : pense en horaires (quart de jour, de soir).</div>
+      </div>
+
+      <!-- Sports -->
+      <div class="category">
+        <h3>🏒 Sports & loisirs</h3>
+        <ul>
+          <li>Coéquipiers</li>
+          <li>Entraîneurs</li>
+          <li>Parents des coéquipiers</li>
+          <li>Gens du vestiaire</li>
+          <li>Organisateurs</li>
+          <li>Arbitres (oui oui)</li>
+          <li>Gens rencontrés souvent mais peu parlés</li>
+        </ul>
+      </div>
+
+      <!-- Voisinage -->
+      <div class="category">
+        <h3>🏘️ Voisinage (présent & passé)</h3>
+        <ul>
+          <li>Voisins directs</li>
+          <li>Voisins de rue</li>
+          <li>Gens avec qui tu jappais dehors</li>
+          <li>Parents d'amis du quartier</li>
+          <li>Propriétaires / concierges</li>
+          <li>Gens du bloc / immeuble</li>
+        </ul>
+      </div>
+
+      <!-- Événements -->
+      <div class="category">
+        <h3>⛪ Événements & communautés</h3>
+        <ul>
+          <li>Église / funérailles / baptêmes</li>
+          <li>Associations</li>
+          <li>MLM passés (très important)</li>
+          <li>Clubs sociaux</li>
+          <li>Réunions, formations, congrès</li>
+          <li>Voyages organisés</li>
+        </ul>
+      </div>
+
+      <!-- En ligne -->
+      <div class="category">
+        <h3>🌐 En ligne / réseaux sociaux</h3>
+        <ul>
+          <li>Facebook amis actuels</li>
+          <li>Anciens amis supprimés</li>
+          <li>Groupes Facebook</li>
+          <li>Commentateurs réguliers</li>
+          <li>Admins de groupes</li>
+          <li>TikTok / YouTube (créateurs avec qui tu échanges)</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- NIVEAU 2 -->
+    <div class="level">
+      <div class="level-header">
+        <h2>🔹 NIVEAU 2 – Technique du rayonnement</h2>
+        <p>Maintenant, chaque nom devient un déclencheur.</p>
+      </div>
+
+      <p style="font-size: 15px; margin-bottom: 15px;">Pour CHAQUE personne sur ta liste, pose-toi ces questions :</p>
+
+      <ul style="list-style: none; padding-left: 0; margin-bottom: 20px;">
+        <li style="padding: 8px 0; padding-left: 25px; position: relative;">
+          <span style="position: absolute; left: 0; color: #10b981; font-weight: 700;">✓</span>
+          Avec qui travaillait-elle ?
+        </li>
+        <li style="padding: 8px 0; padding-left: 25px; position: relative;">
+          <span style="position: absolute; left: 0; color: #10b981; font-weight: 700;">✓</span>
+          Qui était son/sa conjoint(e) ?
+        </li>
+        <li style="padding: 8px 0; padding-left: 25px; position: relative;">
+          <span style="position: absolute; left: 0; color: #10b981; font-weight: 700;">✓</span>
+          Qui sont ses amis proches ?
+        </li>
+        <li style="padding: 8px 0; padding-left: 25px; position: relative;">
+          <span style="position: absolute; left: 0; color: #10b981; font-weight: 700;">✓</span>
+          Qui faisait partie de son équipe ?
+        </li>
+        <li style="padding: 8px 0; padding-left: 25px; position: relative;">
+          <span style="position: absolute; left: 0; color: #10b981; font-weight: 700;">✓</span>
+          Qui était souvent avec elle ?
+        </li>
+        <li style="padding: 8px 0; padding-left: 25px; position: relative;">
+          <span style="position: absolute; left: 0; color: #10b981; font-weight: 700;">✓</span>
+          Qui parlait souvent avec elle ?
+        </li>
+        <li style="padding: 8px 0; padding-left: 25px; position: relative;">
+          <span style="position: absolute; left: 0; color: #10b981; font-weight: 700;">✓</span>
+          Qui elle recommandait / mentionnait ?
+        </li>
+      </ul>
+
+      <div class="example-box">
+        <h4>👉 Exemple :</h4>
+        <p><strong>Marc Tremblay</strong></p>
+        <ul>
+          <li>→ Sa blonde : Julie</li>
+          <li>→ Son collègue : Steve</li>
+          <li>→ Son ami de hockey : Éric</li>
+          <li>→ Son boss : Alain</li>
+          <li>→ Sa sœur : Mélanie</li>
+        </ul>
+        <p style="margin-top: 12px; font-weight: 700; color: #E65100;">💥 Tu viens de multiplier x5 un seul nom.</p>
+      </div>
+
+    </div>
+
+    <!-- NIVEAU 3 -->
+    <div class="level">
+      <div class="level-header">
+        <h2>🔹 NIVEAU 3 – Déclencheurs mentaux puissants</h2>
+        <p>Quand tu bloques, utilise un de ces déclencheurs :</p>
+      </div>
+
+      <div class="triggers">
+        <h4>🧠 Déclencheurs de mémoire</h4>
+        <ul>
+          <li>« Qui j'ai vu souvent mais jamais appelé ? »</li>
+          <li>« Qui me reconnaîtrait encore aujourd'hui ? »</li>
+          <li>« Qui m'a déjà aidé ? »</li>
+          <li>« Qui m'a déjà demandé conseil ? »</li>
+          <li>« Qui me faisait confiance ? »</li>
+        </ul>
+      </div>
+
+      <div class="triggers">
+        <h4>🕰️ Déclencheurs temporels</h4>
+        <ul>
+          <li>10–15 ans</li>
+          <li>5–10 ans</li>
+          <li>1–5 ans</li>
+          <li>L'an dernier</li>
+        </ul>
+      </div>
+
+      <div class="triggers">
+        <h4>📍 Déclencheurs de lieux</h4>
+        <ul>
+          <li>Un lieu précis (job, école, gym)</li>
+          <li>Une salle (cafétéria, vestiaire)</li>
+          <li>Une rue</li>
+          <li>Un commerce</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- ROUTINE PRATIQUE -->
+    <div class="routine">
+      <h3>🔹 ROUTINE PRATIQUE (15 minutes)</h3>
+      <p style="margin-bottom: 15px; font-weight: 600;">Fais ça chaque jour pendant 7 jours :</p>
+      <ol>
+        <li>Choisis UNE catégorie</li>
+        <li>Écris tout ce qui sort, sans filtre</li>
+        <li>Prends 3 noms au hasard</li>
+        <li>Applique le rayonnement</li>
+        <li>Arrête AVANT d'être brûlé</li>
+      </ol>
+      <p style="margin-top: 15px; font-weight: 700; color: #2E7D32;">➡️ Le lendemain, la mémoire continue à travailler toute seule.</p>
+    </div>
+
+    <!-- VÉRITÉ FRANCHE -->
+    <div class="truth-box">
+      <h3>🔹 Vérité franche (entre amis)</h3>
+      <ul>
+        <li>Ton réseau est beaucoup plus grand que tu penses.</li>
+        <li>80 % des opportunités viennent de gens que tu connais déjà.</li>
+        <li>Ce n'est PAS de déranger — c'est de reconnecter.</li>
+      </ul>
+    </div>
+
+    <!-- Back Link -->
+    <div class="back-link">
+      <a href="checklist-demarrage.html">← Retour à la checklist de démarrage</a>
+    </div>
+
+  </div>
+
+</body>
+</html>

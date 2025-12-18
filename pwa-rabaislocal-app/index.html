@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Application RabaisLocal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#3E53A5">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="apple-touch-startup-image" href="splash-portrait.png">
+
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #F5F8FF;
+            text-align: center;
+            color: #1B2240;
+            padding: 20px;
+        }
+
+        .logo {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            margin-bottom: 12px;
+            transition: transform 0.2s;
+            box-sizing: border-box;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-primary {
+            background-color: #3E53A5;
+            color: white;
+            box-shadow: 0 4px 12px rgba(62, 83, 165, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: #eef2ff;
+            color: #3E53A5;
+        }
+
+        /* Instructions manuelles (cachées par défaut) */
+        .manual-instruct {
+            display: none;
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: #666;
+            background: #f0f2f5;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <img src="logo-rabaislocal.png" alt="RabaisLocal" class="logo">
+
+        <!-- Contenu browser -->
+        <div id="browserContent">
+            <h1>Installer l'application</h1>
+            <p>Accès direct à votre espace partenaire.</p>
+
+            <!-- Bouton "Installer" principal (affiché si supporté) -->
+            <button id="installBtn" class="btn btn-primary" style="display:none">
+                📲 Installer l'application
+            </button>
+
+            <!-- Bouton "Ouvrir" si déjà installé (fallback) -->
+            <a href="https://partenaires.rabaislocal.com" class="btn btn-secondary">
+                Continuer vers le site ➔
+            </a>
+
+            <!-- DEBUG: Afficher User Agent -->
+            <div id="debugInfo"
+                style="margin-top:20px; padding:10px; background:#f0f0f0; border-radius:8px; font-size:10px; word-break:break-all; color:#666;">
+            </div>
+
+            <!-- Instructions iOS -->
+            <div id="iosInstruct" class="manual-instruct">
+                <strong>Comment ajouter l'app sur iPhone / iPad :</strong><br>
+                <div
+                    style="font-size:0.8rem; background:#fff3cd; color:#856404; padding:5px; margin:5px 0; border-radius:5px;">
+                    ⚠️ Fonctionne uniquement avec <strong>Safari</strong>.<br>
+                    Si vous êtes sur Chrome/Firefox : copiez le lien et ouvrez Safari.
+                </div>
+                <br>
+                ✅ <strong>1. Ouvre Safari</strong> (obligatoire)<br>
+                ✅ <strong>2. Appuie sur "Partager"</strong> <img
+                    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMzRTUzQTUiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTIgM3YxMm0wLTlsNCA0bS00LTRsLTQgNE0yMCAyMXMyLTIgMi01LTItNS0yLTUtNC00LTQuNWwtMi0xWiIvPjxwYXRoIGQ9Ik00IDE3djJjMCAxLjEuOSAyIDIgMmgxMmMxLjEgMCAyLS45IDItMnYtMiIvPjwvc3ZnPg=="
+                    style="vertical-align:middle; width:18px"><br>
+                ✅ <strong>3. Fais défiler vers le bas</strong><br>
+                👉 Choisis <strong>"Sur l'écran d'accueil" (+)</strong><br>
+                ✅ <strong>4. Clique sur "Ajouter"</strong><br><br>
+                🎉 <em>L’icône apparaîtra sur ton écran d'accueil.</em>
+            </div>
+
+            <!-- Instructions Android (si bouton masqué) -->
+            <div id="androidInstruct" class="manual-instruct">
+                <strong>Installation manuelle :</strong><br>
+                Appuyez sur le menu du navigateur (⋮) puis sur <strong>Installer l'application</strong> ou "Ajouter à
+                l'écran d'accueil".
+            </div>
+        </div>
+
+        <!-- Contenu App (Redirection) -->
+        <div id="appContent" style="display:none;">
+            <p>Redirection en cours...</p>
+        </div>
+    </div>
+
+    <script>
+        const destination = "https://partenaires.rabaislocal.com";
+        const installBtn = document.getElementById('installBtn');
+        const iosInstruct = document.getElementById('iosInstruct');
+        const androidInstruct = document.getElementById('androidInstruct');
+        const browserContent = document.getElementById('browserContent');
+        const appContent = document.getElementById('appContent');
+        let deferredPrompt;
+
+        // 1. Mode Standalone (App installée) -> Redirection instantanée
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+
+        if (isStandalone) {
+            browserContent.style.display = 'none';
+            appContent.style.display = 'block';
+            window.location.replace(destination);
+        } else {
+            // 2. Détection iOS
+            const isIos = /iPhone|iPad|iPod/.test(navigator.userAgent);
+
+            if (isIos) {
+                // Sur iOS, pas de bouton d'install auto -> on montre les instructions
+                iosInstruct.style.display = 'block';
+            } else {
+                // Sur Android/Desktop, on espère l'événement beforeinstallprompt
+                // On affiche les instructions manuelles par défaut, au cas où le bouton n'apparait pas
+                androidInstruct.style.display = 'block';
+            }
+
+            // 2.1 Détection Navigateur Intégré (Messenger, Facebook, Instagram, WhatsApp)
+            const ua = (navigator.userAgent || navigator.vendor || window.opera).toLowerCase();
+
+            // Détection améliorée pour tous les navigateurs intégrés (en minuscules)
+            const isInApp = (ua.indexOf("fban") > -1) || (ua.indexOf("fbav") > -1) ||
+                (ua.indexOf("instagram") > -1) || (ua.indexOf("fb_iab") > -1) ||
+                (ua.indexOf("fbios") > -1) || (ua.indexOf("fbdv") > -1) ||
+                (ua.indexOf("[fb") > -1) || (ua.indexOf("messenger") > -1) ||
+                (ua.indexOf("whatsapp") > -1) || (ua.indexOf("line/") > -1) ||
+                (ua.indexOf("twitter") > -1) || (ua.indexOf("linkedin") > -1) ||
+                (ua.indexOf("wv") > -1) || // Android WebView (plus large)
+                (ua.indexOf("orca") > -1); // Messenger Android (Orca)
+
+            // Ajouter le User Agent en mode debug (masqué par défaut, utile si besoin)
+            console.log('User Agent:', ua);
+            console.log('Is In-App Browser:', isInApp);
+
+            // Masquer le debug pour la production
+            const debugDiv = document.getElementById('debugInfo');
+            if (debugDiv) {
+                debugDiv.style.display = 'none';
+            }
+
+            if ((isIos || !isIos) && isInApp) {
+                // Si on est dans Messenger/Facebook/Instagram (iOS ou Android)
+                const deviceType = isIos ? "Safari" : "Chrome";
+                browserContent.innerHTML = `
+                    <div style="text-align:left; padding:10px;">
+                        <h1 style="color:#E94D4C; font-size:1.3rem;">⚠️ Action Requise</h1>
+                        <p style="font-size:1rem; margin-bottom:20px;">
+                            L'installation n'est pas possible directment depuis <strong>Facebook/Messenger</strong>.
+                        </p>
+
+                        <div style="background:white; border:2px solid #3E53A5; border-radius:12px; padding:20px; box-shadow:0 8px 20px rgba(0,0,0,0.1);">
+                            <h3 style="color:#3E53A5; margin:0 0 15px;">👇 Pour installer l'app :</h3>
+
+                            <div style="margin-bottom:15px;">
+                                <span style="background:#3E53A5; color:white; width:25px; height:25px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; font-weight:bold; margin-right:8px;">1</span>
+                                Appuyez sur les <strong>3 points</strong> <span style="font-size:1.2rem;">(•••)</span> en haut (ou bas) à droite
+                            </div>
+
+                            <div style="margin-bottom:15px;">
+                                <span style="background:#3E53A5; color:white; width:25px; height:25px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; font-weight:bold; margin-right:8px;">2</span>
+                                Choisissez <strong>"Ouvrir dans ${deviceType}"</strong> ou "Navigateur"
+                            </div>
+                            
+                            <div>
+                                <span style="background:#3E53A5; color:white; width:25px; height:25px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; font-weight:bold; margin-right:8px;">3</span>
+                                Une fois dans ${deviceType}, le bouton d'installation apparaîtra.
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <img src="logo-rabaislocal.png" class="logo" style="width:60px; opacity:0.6;">
+                `;
+            }
+
+            // 3. Gestion de l'événement d'installation (Chrome/Edge/Android)
+            let installPromptReceived = false;
+
+            window.addEventListener('beforeinstallprompt', (e) => {
+                // Empêcher la bannière native immédiate (on veut contrôler le clic)
+                e.preventDefault();
+                deferredPrompt = e;
+                installPromptReceived = true;
+
+                // On a la main -> on affiche le gros bouton et on masque les instructions manuelles
+                // SEULEMENT si on a pas déjà détecté le in-app browser (sécurité double)
+                if (!isInApp) {
+                    installBtn.style.display = 'block';
+                    androidInstruct.style.display = 'none';
+                }
+            });
+
+            // Fallback: Si beforeinstallprompt n'est pas reçu après 1s, afficher message "Ouvrir dans Chrome"
+            setTimeout(() => {
+                // On déclenche le fallback SI:
+                // 1. Pas de prompt reçu
+                // 2. Pas iOS (iOS géré ailleurs)
+                // 3. Pas Standalone
+                // 4. ET on n'a pas déjà affiché le message InApp ci-dessus (isInApp checks)
+                if (!installPromptReceived && !isIos && !isStandalone && !isInApp) {
+
+                    // Pas de prompt d'installation = probablement dans un navigateur intégré qui a échappé à la détection
+                    const deviceType = "Chrome";
+                    browserContent.innerHTML = `
+                        <div style="text-align:left; padding:10px;">
+                            <h1 style="color:#E94D4C; font-size:1.3rem;">⚠️ Action Requise</h1>
+                            <p style="font-size:1rem; margin-bottom:20px;">
+                                L'installation ne semble pas disponible ici.<br>
+                                Ouvrez ce lien dans <strong>${deviceType}</strong>.
+                            </p>
+
+                            <div style="background:white; border:2px solid #3E53A5; border-radius:12px; padding:20px; box-shadow:0 8px 20px rgba(0,0,0,0.1);">
+                                <h3 style="color:#3E53A5; margin:0 0 15px;">👇 Solution :</h3>
+
+                                <div style="margin-bottom:15px;">
+                                    <span style="background:#3E53A5; color:white; width:25px; height:25px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; font-weight:bold; margin-right:8px;">1</span>
+                                    Appuyez sur les <strong>3 points</strong> <span style="font-size:1.2rem;">(•••)</span> en haut à droite
+                                </div>
+
+                                <div style="margin-bottom:15px;">
+                                    <span style="background:#3E53A5; color:white; width:25px; height:25px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; font-weight:bold; margin-right:8px;">2</span>
+                                    Choisissez <strong>"Ouvrir dans ${deviceType}"</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <img src="logo-rabaislocal.png" class="logo" style="width:60px; opacity:0.6;">
+                    `;
+                }
+            }, 1000); // Réduit à 1 seconde
+
+            installBtn.addEventListener('click', async () => {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    deferredPrompt = null;
+                }
+            });
+        }
+
+        // Service Worker
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("service-worker.js").then((registration) => {
+                    // Forcer la mise à jour immédiate
+                    registration.update();
+
+                    // Écouter les mises à jour du Service Worker
+                    registration.addEventListener('updatefound', () => {
+                        const newWorker = registration.installing;
+                        if (newWorker) {
+                            newWorker.addEventListener('statechange', () => {
+                                if (newWorker.state === 'activated' && !navigator.serviceWorker.controller) {
+                                    // Premier chargement avec nouveau SW
+                                    window.location.reload();
+                                }
+                            });
+                        }
+                    });
+
+                    // Recharger si un nouveau SW prend le contrôle
+                    let refreshing = false;
+                    navigator.serviceWorker.addEventListener('controllerchange', () => {
+                        if (!refreshing) {
+                            refreshing = true;
+                            window.location.reload();
+                        }
+                    });
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>

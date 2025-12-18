@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fichiers Test Fondateurs - RabaisLocal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1B2240 0%, #2C3E50 100%);
+      color: #1B2240;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #FF6B35 0%, #E53935 100%);
+      color: white;
+      text-align: center;
+      padding: 30px;
+      border-radius: 16px;
+      margin-bottom: 30px;
+      box-shadow: 0 8px 24px rgba(229, 57, 53, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: "⚠️ TEST";
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 40px 80px;
+      transform: rotate(45deg);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .header h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .header p {
+      font-size: 16px;
+      opacity: 0.95;
+    }
+
+    .warning-banner {
+      background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
+      border-left: 5px solid #F57C00;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 12px rgba(245, 124, 0, 0.2);
+    }
+
+    .warning-banner h2 {
+      color: #E65100;
+      font-size: 20px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .warning-banner p {
+      color: #5D4037;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .files-section {
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+
+    .files-section h2 {
+      color: #3E53A5;
+      font-size: 24px;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #FF8C42;
+    }
+
+    .file-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .file-card {
+      background: linear-gradient(135deg, #F5F8FF 0%, #E8F0FF 100%);
+      border: 2px solid #E3E8FF;
+      border-radius: 12px;
+      padding: 20px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .file-card:hover {
+      border-color: #3E53A5;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(62, 83, 165, 0.15);
+    }
+
+    .file-card::before {
+      content: "TEST";
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #E53935;
+      color: white;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .file-icon {
+      font-size: 48px;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .file-card h3 {
+      color: #1B2240;
+      font-size: 18px;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .file-info {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+
+    .file-type, .file-size {
+      background: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      color: #5B6385;
+      font-weight: 600;
+    }
+
+    .file-description {
+      color: #5B6385;
+      font-size: 14px;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .download-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #3E53A5 0%, #2C3E80 100%);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(62, 83, 165, 0.3);
+    }
+
+    .download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(62, 83, 165, 0.4);
+      background: linear-gradient(135deg, #2C3E80 0%, #1B2860 100%);
+    }
+
+    .back-link {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .back-link a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+    }
+
+    .back-link a:hover {
+      opacity: 1;
+    }
+
+    .secret-notice {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px dashed rgba(255, 255, 255, 0.3);
+      color: white;
+      padding: 15px;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 13px;
+      margin-top: 20px;
+    }
+
+    /* Prévisualisation Media */
+    .media-preview {
+      margin: 20px 0;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .media-preview img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .media-preview video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .view-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #FF8C42 0%, #FF6B35 100%);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(255, 140, 66, 0.3);
+    }
+
+    .view-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(255, 140, 66, 0.4);
+      background: linear-gradient(135deg, #FF6B35 0%, #E53935 100%);
+    }
+
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 24px;
+      }
+
+      .files-section {
+        padding: 20px;
+      }
+
+      .action-buttons {
+        flex-direction: column;
+      }
+
+      .download-btn, .view-btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Header -->
+    <div class="header">
+      <h1>🔒 Espace Fondateurs - Fichiers Test</h1>
+      <p>Documents en développement - Accès réservé</p>
+    </div>
+
+    <!-- Warning Banner -->
+    <div class="warning-banner">
+      <h2>⚠️ Attention - Zone de Test</h2>
+      <p>
+        <strong>Ces fichiers sont en phase de test et ne sont pas encore finalisés.</strong><br>
+        Ils sont réservés exclusivement aux fondateurs pour révision et validation.
+        Ne les partagez pas avec vos affiliés tant qu'ils ne sont pas approuvés officiellement.
+      </p>
+    </div>
+
+    <!-- Files Section -->
+    <div class="files-section">
+      <h2>📁 Fichiers Disponibles</h2>
+
+      <div class="file-grid">
+
+        <!-- File 1: Guide PDF Fondateur -->
+        <div class="file-card">
+          <span class="file-icon">📘</span>
+          <h3>Guide de Démarrage - Ambassadeur Fondateur</h3>
+          <div class="file-info">
+            <span class="file-type">PDF</span>
+            <span class="file-size">14.5 MB</span>
+          </div>
+          <p class="file-description">
+            Guide complet pour les ambassadeurs fondateurs. Contient les instructions de démarrage,
+            stratégies et ressources pour les premiers leaders du programme.
+          </p>
+          <div class="action-buttons">
+            <a href="assets/documents/pub test/Ambassadeur_Fondateur_Votre_Guide_de_Démarrage.pdf" target="_blank" class="view-btn">
+              👁️ Ouvrir le PDF
+            </a>
+            <a href="assets/documents/pub test/Ambassadeur_Fondateur_Votre_Guide_de_Démarrage.pdf" download class="download-btn">
+              📥 Télécharger
+            </a>
+          </div>
+        </div>
+
+        <!-- File 2: Vidéo Guide Fondateur -->
+        <div class="file-card">
+          <span class="file-icon">🎥</span>
+          <h3>Vidéo - Guide de Départ Fondateur</h3>
+          <div class="file-info">
+            <span class="file-type">MP4</span>
+            <span class="file-size">25.4 MB</span>
+          </div>
+          <p class="file-description">
+            Vidéo de formation destinée aux fondateurs pour expliquer le démarrage du programme,
+            les premières étapes et les objectifs à atteindre.
+          </p>
+          <div class="media-preview">
+            <video controls>
+              <source src="assets/documents/pub test/Guide_de_Départ___Fondateur.mp4" type="video/mp4">
+              Votre navigateur ne supporte pas la lecture de vidéos.
+            </video>
+          </div>
+          <div class="action-buttons">
+            <a href="assets/documents/pub test/Guide_de_Départ___Fondateur.mp4" download class="download-btn">
+              📥 Télécharger la Vidéo
+            </a>
+          </div>
+        </div>
+
+        <!-- File 3: Trousse Ambassadeur Vidéo -->
+        <div class="file-card">
+          <span class="file-icon">🎬</span>
+          <h3>Vidéo - Trousse Ambassadeur RabaisLocal</h3>
+          <div class="file-info">
+            <span class="file-type">MP4</span>
+            <span class="file-size">19.8 MB</span>
+          </div>
+          <p class="file-description">
+            Présentation vidéo de la trousse complète pour les ambassadeurs.
+            Couvre tous les outils et ressources disponibles pour réussir.
+          </p>
+          <div class="media-preview">
+            <video controls>
+              <source src="assets/documents/pub test/Trousse_Ambassadeur_RabaisLocal.mp4" type="video/mp4">
+              Votre navigateur ne supporte pas la lecture de vidéos.
+            </video>
+          </div>
+          <div class="action-buttons">
+            <a href="assets/documents/pub test/Trousse_Ambassadeur_RabaisLocal.mp4" download class="download-btn">
+              📥 Télécharger la Vidéo
+            </a>
+          </div>
+        </div>
+
+        <!-- File 4: Publicité Entreprise 1 -->
+        <div class="file-card">
+          <span class="file-icon">🖼️</span>
+          <h3>Publicité Entreprise - Version 1</h3>
+          <div class="file-info">
+            <span class="file-type">PNG</span>
+            <span class="file-size">6.9 MB</span>
+          </div>
+          <p class="file-description">
+            Visuel publicitaire destiné aux entreprises et commerçants.
+            Première version à tester pour les campagnes de recrutement de commerces locaux.
+          </p>
+          <div class="media-preview">
+            <img src="assets/documents/pub test/pub_cie_1.png" alt="Publicité Entreprise Version 1">
+          </div>
+          <div class="action-buttons">
+            <a href="assets/documents/pub test/pub_cie_1.png" download class="download-btn">
+              📥 Télécharger l'Image
+            </a>
+          </div>
+        </div>
+
+        <!-- File 5: Publicité Entreprise 2 -->
+        <div class="file-card">
+          <span class="file-icon">🖼️</span>
+          <h3>Publicité Entreprise - Version 2</h3>
+          <div class="file-info">
+            <span class="file-type">PNG</span>
+            <span class="file-size">6.7 MB</span>
+          </div>
+          <p class="file-description">
+            Visuel publicitaire alternatif pour les entreprises.
+            Deuxième version avec un design différent pour tests A/B.
+          </p>
+          <div class="media-preview">
+            <img src="assets/documents/pub test/pub_cie_2.png" alt="Publicité Entreprise Version 2">
+          </div>
+          <div class="action-buttons">
+            <a href="assets/documents/pub test/pub_cie_2.png" download class="download-btn">
+              📥 Télécharger l'Image
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Secret Notice -->
+    <div class="secret-notice">
+      🔐 Cette page est confidentielle et non indexée.
+      URL à partager uniquement avec les fondateurs autorisés.
+    </div>
+
+    <!-- Back Link -->
+    <div class="back-link">
+      <a href="documents-utiles.html">← Retour aux documents utiles</a>
+    </div>
+
+  </div>
+
+</body>
+</html>

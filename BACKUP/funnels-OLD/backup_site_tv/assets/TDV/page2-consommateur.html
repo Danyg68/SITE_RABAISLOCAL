@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://marketing.rabaislocal.com/page2-consommateur.html -->
+<html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Confirme ton courriel - RabaisLocal</title>
+
+<!-- Google Fonts - Poppins -->
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="./page2-consommateur_files/css2" rel="stylesheet">
+
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="https://marketing.rabaislocal.com/assets/images/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="https://marketing.rabaislocal.com/assets/images/favicon.ico">
+
+<style>
+/* ================================================
+   RABAISLOCAL - PAGE VALIDATION EMAIL
+   Variables CSS & Reset
+   ================================================ */
+:root {
+  --rl-blue: #3E53A5;
+  --rl-blue-dark: #2E4191;
+  --rl-orange: #FF8C42;
+  --rl-danger: #E94D4C;
+  --rl-success: #10b981;
+  --bg: #F5F8FF;
+  --card: #fff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: #1A1A1A;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  font-weight: 700;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ================================================
+   ANIMATIONS
+   ================================================ */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.fade-up {
+  opacity: 0;
+  animation: fadeSlideUp 1s ease forwards;
+}
+
+.fade-delay-1 { animation-delay: 0.2s; }
+.fade-delay-2 { animation-delay: 0.4s; }
+.fade-delay-3 { animation-delay: 0.6s; }
+.fade-delay-4 { animation-delay: 0.8s; }
+
+.pulse-animation {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes flashRed {
+  0%, 100% { color: var(--rl-blue); }
+  50% { color: #ff2c2c; }
+}
+
+.flash-text {
+  animation: flashRed 1.2s infinite;
+  transition: color 0.3s ease;
+}
+
+/* ================================================
+   HEADER - LOGO
+   ================================================ */
+.header {
+  text-align: center;
+  padding: 25px 15px 15px;
+  background: #ffffff;
+}
+
+.header .logo {
+  max-width: 280px;
+  height: auto;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+/* ================================================
+   BARRE SUPÉRIEURE
+   ================================================ */
+.topbar {
+  background: var(--rl-blue);
+  color: #fff;
+  text-align: center;
+  padding: 12px 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+}
+
+/* ================================================
+   CONTENEUR PRINCIPAL
+   ================================================ */
+.container {
+  max-width: 1040px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.video-block {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 0 auto;
+}
+
+/* ================================================
+   TITRE PRINCIPAL
+   ================================================ */
+.hero-title {
+  text-align: center;
+  font-size: clamp(1.7rem, 4vw, 2.2rem);
+  font-weight: 800;
+  margin-bottom: 18px;
+  color: #1A1A1A;
+  line-height: 1.3;
+}
+
+.hero-title span {
+  color: var(--rl-blue);
+}
+
+/* ================================================
+   BLOC AVERTISSEMENT PRINCIPAL
+   ================================================ */
+.warning-box {
+  background: linear-gradient(135deg, #fff9e6, #fff3cc);
+  border: 3px solid var(--rl-orange);
+  border-radius: 16px;
+  padding: 35px 40px;
+  margin: 0 auto;
+  max-width: 800px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(255, 140, 66, 0.25);
+}
+
+.warning-box h2 {
+  font-size: clamp(1.3rem, 3vw, 1.6rem);
+  font-weight: 800;
+  color: #1B2240;
+  margin-bottom: 16px;
+}
+
+.warning-box p {
+  font-size: 1.05rem;
+  margin-bottom: 16px;
+  color: #333;
+  line-height: 1.7;
+}
+
+.warning-box .email-display {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--rl-blue);
+  margin: 20px 0;
+}
+
+.warning-box .steps {
+  font-size: 1rem;
+  margin: 20px 0;
+  color: #444;
+  line-height: 2;
+}
+
+.warning-box .spam-notice {
+  margin-top: 25px;
+  color: var(--rl-danger);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* ================================================
+   BOUTONS CTA
+   ================================================ */
+.cta-btn {
+  display: inline-block;
+  background: var(--rl-blue);
+  color: #fff;
+  padding: 16px 40px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.15rem;
+  box-shadow: 0 6px 18px rgba(62, 83, 165, 0.35);
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.cta-btn:hover {
+  background: var(--rl-blue-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(62, 83, 165, 0.45);
+}
+
+.cta-secondary {
+  display: inline-block;
+  background: transparent;
+  color: #666;
+  border: 2px solid #ddd;
+  padding: 12px 28px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.cta-secondary:hover {
+  background: #f5f5f5;
+  border-color: #bbb;
+}
+
+/* ================================================
+   SECTION POURQUOI
+   ================================================ */
+.why-section {
+  max-width: 820px;
+  margin: 0 auto 40px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.why-section h2 {
+  color: var(--rl-blue);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3vw, 1.8rem);
+  margin-bottom: 30px;
+}
+
+.why-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  display: inline-block;
+}
+
+.why-list li {
+  font-size: 1.1rem;
+  margin-bottom: 18px;
+  line-height: 1.6;
+  color: #333;
+  padding-left: 35px;
+  position: relative;
+}
+
+.why-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--rl-success);
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+/* ================================================
+   FOOTER
+   ================================================ */
+.footer {
+  background: var(--rl-blue);
+  color: rgba(255, 255, 255, 0.9);
+  padding: 40px 20px 30px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.footer .logo {
+  max-width: 160px;
+  margin: 0 auto 15px;
+}
+
+.footer p {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* ================================================
+   LIENS ADDITIONNELS
+   ================================================ */
+.additional-links {
+  text-align: center;
+  padding: 30px 20px;
+  margin-top: 30px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.additional-links p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.link-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  border: 2px solid;
+}
+
+.link-btn.info {
+  background: #f0f4ff;
+  border-color: var(--rl-blue);
+  color: var(--rl-blue);
+}
+
+.link-btn.info:hover {
+  background: var(--rl-blue);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(62, 83, 165, 0.3);
+}
+
+.link-btn.site {
+  background: #fff;
+  border-color: #ddd;
+  color: #333;
+}
+
+.link-btn.site:hover {
+  background: #f5f5f5;
+  border-color: #999;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .link-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .link-btn {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+  }
+}
+
+/* ================================================
+   RESPONSIVE
+   ================================================ */
+@media (max-width: 768px) {
+  .container {
+    margin: 25px auto;
+    padding: 0 15px;
+  }
+
+  .main-content {
+    gap: 20px;
+  }
+
+  .header {
+    padding: 18px 10px 10px;
+  }
+
+  .header .logo {
+    max-width: 200px;
+  }
+
+  .hero-title {
+    font-size: 1.45rem;
+  }
+
+  .warning-box {
+    padding: 20px 16px;
+  }
+
+  .warning-box h2 {
+    font-size: 1.2rem;
+  }
+}
+
+/* ================================================
+   ACCESSIBILITÉ
+   ================================================ */
+a:focus,
+button:focus {
+  outline: 2px solid var(--rl-blue);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================================================
+     HEADER - LOGO
+     ================================================ -->
+<header class="header">
+  <img src="./page2-consommateur_files/logo rabaislocal-2025-2.png" alt="RabaisLocal" class="logo">
+</header>
+
+<!-- ================================================
+     BARRE SUPÉRIEURE
+     ================================================ -->
+<div class="topbar fade-up">
+  🚀 Pré-lancement RabaisLocal — Active ton compte maintenant
+</div>
+
+<!-- ================================================
+     CONTENU PRINCIPAL
+     ================================================ -->
+<div class="container fade-up fade-delay-1 main-content">
+
+  <!-- Titre principal -->
+  <h1 class="hero-title">
+    📩 Confirme ton courriel pour activer<br>ton compte <span>RabaisLocal</span>
+  </h1>
+
+  <!-- ================================================
+       SECTION VIDÉO
+       ================================================ -->
+  <div class="video-block">
+    <p style="margin-bottom: 15px; color: #333; font-size: 1rem; font-weight: 600;">
+      🎬 Découvre RabaisLocal en action
+    </p>
+
+    <p class="flash-text" style="margin-bottom: 15px; color: var(--rl-blue); font-size: 1.1rem; font-weight: 700;">
+      Clic ici ⬇
+    </p>
+
+    <div style="position: relative; width: 100%; max-width: 400px; margin: 0 auto; aspect-ratio: 9/16; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);">
+      <iframe src="./page2-consommateur_files/ndtszA86XVk.html" title="RabaisLocal - Découvre la plateforme" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+      </iframe>
+    </div>
+  </div>
+
+  <!-- Section Pourquoi valider -->
+  <div class="why-section fade-up fade-delay-2">
+    <h2>
+      💡 Pourquoi tu dois valider ton courriel ?
+    </h2>
+
+    <ul class="why-list">
+      <li>💳 Pour recevoir ta <strong>carte membre gratuite</strong></li>
+      <li>🔗 Pour obtenir ton <strong>lien de parrainage personnel</strong></li>
+      <li>🎁 Pour accéder à la plateforme et tester toutes les fonctionnalités</li>
+      <li>🚀 Pour profiter des <strong>3 mois gratuits</strong> au lancement officiel le <strong>19 mars 2026</strong></li>
+      <li>💰 Pour découvrir comment <strong>transformer ton inscription en revenu passif</strong></li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- ================================================
+     LIENS ADDITIONNELS
+     ================================================ -->
+<div class="additional-links">
+  <p>💼 Tu es commerçant ou tu veux devenir affilié ?</p>
+  <div class="link-buttons">
+    <a href="https://marketing.rabaislocal.com/index.html?ref=9999998" class="link-btn info">
+      📋 Info commerçant ou affilié - Clique ici
+    </a>
+    <a href="https://rabaislocal.com/" class="link-btn site" data-no-ref="true" target="_blank">
+      🌐 Visiter RabaisLocal.com
+    </a>
+  </div>
+</div>
+
+<!-- ================================================
+     FOOTER
+     ================================================ -->
+<footer class="footer">
+  <div class="container">
+    <img src="./page2-consommateur_files/logo rabaislocal-2025-2(1).png" alt="RabaisLocal" class="logo">
+    <p>© 2025 <strong>RabaisLocal</strong> — Fait avec 💙 au Québec</p>
+  </div>
+</footer>
+
+<!-- ================================================
+     JAVASCRIPT - TRACKING REF & FONCTIONNALITÉS
+     ================================================ -->
+<script>
+(function() {
+  "use strict";
+
+  /* ====================================================
+     UTILITAIRES
+     ==================================================== */
+  function getParam(name) {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(name) || '';
+    } catch(e) {
+      return '';
+    }
+  }
+
+  function sanitize(value) {
+    return (value || '').toString().replace(/[^\w\-]/g, '').trim();
+  }
+
+  function setCookie(name, value, days) {
+    try {
+      const date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      document.cookie = name + "=" + encodeURIComponent(value) + ";expires=" + date.toUTCString() + ";path=/";
+    } catch(e) {}
+  }
+
+  function getCookie(name) {
+    try {
+      const match = document.cookie.match(new RegExp("(^| )" + name + "=([^;]+)"));
+      return match ? decodeURIComponent(match[2]) : '';
+    } catch(e) {
+      return '';
+    }
+  }
+
+  function setLS(key, value) {
+    try {
+      localStorage.setItem(key, value);
+    } catch(e) {}
+  }
+
+  function getLS(key) {
+    try {
+      return localStorage.getItem(key) || '';
+    } catch(e) {
+      return '';
+    }
+  }
+
+  /* ====================================================
+     CAPTURE ET GESTION DU REF
+     ==================================================== */
+
+  // Récupération du ref depuis URL, cookies ou localStorage
+  const refFromURL = getParam('ref') || getParam('rl_ref') || getParam('referred_by');
+  const refFromCookie = getCookie('rl_ref');
+  const refFromLS = getLS('rl_ref');
+
+  // Priorité: URL > localStorage > Cookie
+  let REF = sanitize(refFromURL || refFromLS || refFromCookie);
+
+  // Persistance du REF
+  if (refFromURL) {
+    REF = sanitize(refFromURL);
+    setCookie('rl_ref', REF, 180);
+    setLS('rl_ref', REF);
+  } else if (REF) {
+    setCookie('rl_ref', REF, 180);
+    setLS('rl_ref', REF);
+  }
+
+  console.log('✅ REF capturé sur page validation email:', REF || '(aucun parrain)');
+
+  /* ====================================================
+     AFFICHAGE EMAIL UTILISATEUR
+     ==================================================== */
+  const userEmail = getParam('email') || getLS('user_email') || getCookie('user_email');
+  if (userEmail) {
+    const emailEl = document.getElementById('userEmail');
+    if (emailEl) {
+      emailEl.textContent = userEmail;
+    }
+    setLS('user_email', userEmail);
+    setCookie('user_email', userEmail, 7);
+  }
+
+  /* ====================================================
+     FONCTION RENVOI EMAIL
+     ==================================================== */
+  window.resendEmail = function() {
+    // TODO: Implémenter l'appel webhook pour renvoyer l'email
+    alert('📧 Un nouveau courriel de validation va t\'être envoyé sous peu. Vérifie ta boîte de réception dans quelques minutes.');
+
+    // Exemple d'appel webhook (à adapter selon ton système)
+    /*
+    fetch('https://hook.us2.make.com/ton-webhook-resend', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: userEmail,
+        ref: REF
+      })
+    });
+    */
+  };
+
+  /* ====================================================
+     PROPAGATION DU REF DANS LES LIENS
+     ==================================================== */
+  function propagateLinks() {
+    if (!REF) return;
+
+    document.querySelectorAll('a[href]').forEach(function(link) {
+      const href = link.getAttribute('href');
+
+      // Ignorer les liens avec data-no-ref
+      if (link.hasAttribute('data-no-ref')) {
+        return;
+      }
+
+      if (!href ||
+          href.startsWith('mailto:') ||
+          href.startsWith('tel:') ||
+          href.startsWith('javascript:') ||
+          href.startsWith('#')) {
+        return;
+      }
+
+      try {
+        const url = new URL(href, window.location.origin);
+        if (!url.searchParams.get('ref') && !url.searchParams.get('rl_ref')) {
+          url.searchParams.set('ref', REF);
+          link.setAttribute('href', url.toString());
+        }
+      } catch(e) {
+        if (href.indexOf('?') === -1) {
+          link.setAttribute('href', href + '?ref=' + encodeURIComponent(REF));
+        } else if (!/[?&](ref|rl_ref)=/i.test(href)) {
+          link.setAttribute('href', href + '&ref=' + encodeURIComponent(REF));
+        }
+      }
+    });
+  }
+
+  // Exécution au chargement
+  window.addEventListener('load', propagateLinks);
+
+})();
+</script>
+
+
+</body></html>

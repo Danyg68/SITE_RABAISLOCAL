@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guide – Comment partager ton lien – RabaisLocal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+  <style>
+    :root {
+      --rl-blue: #3E53A5;
+      --rl-orange: #FF8C42;
+      --rl-bg: #F5F8FF;
+      --rl-ink: #1B2240;
+      --rl-muted: #5B6385;
+      --rl-line: #E3E8FF;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: var(--rl-bg);
+      color: var(--rl-ink);
+      line-height: 1.6;
+    }
+
+    /* Logo en haut */
+    .logo-header {
+      text-align: center;
+      padding: 30px 0 20px;
+      background: #fff;
+      border-bottom: 3px solid var(--rl-blue);
+    }
+
+    .logo-header img {
+      max-width: 260px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* Container principal */
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }
+
+    /* Titre principal */
+    h1 {
+      color: var(--rl-blue);
+      font-size: clamp(26px, 4vw, 36px);
+      margin-bottom: 12px;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    h2 {
+      color: var(--rl-blue);
+      font-size: 22px;
+      margin: 30px 0 15px;
+      font-weight: 700;
+    }
+
+    h3 {
+      color: var(--rl-ink);
+      font-size: 18px;
+      margin: 24px 0 12px;
+      font-weight: 600;
+    }
+
+    h4 {
+      color: var(--rl-ink);
+      font-size: 16px;
+      margin: 18px 0 10px;
+      font-weight: 600;
+    }
+
+    p.intro {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--rl-muted);
+    }
+
+    p.intro strong {
+      color: var(--rl-ink);
+      font-weight: 600;
+    }
+
+    p {
+      margin: 12px 0;
+      line-height: 1.7;
+    }
+
+    /* Sections */
+    .section {
+      background: white;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      margin-bottom: 30px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .section:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    }
+
+    /* Info boxes */
+    .info-box {
+      border: 2px solid var(--rl-line);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 20px 0;
+      background: #FAFBFF;
+      border-left: 4px solid var(--rl-blue);
+    }
+
+    .info-box strong {
+      color: var(--rl-blue);
+    }
+
+    .warning-box {
+      border: 2px solid #FFE0B2;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 20px 0;
+      background: #FFF3E0;
+      border-left: 4px solid var(--rl-orange);
+    }
+
+    .success-box {
+      border: 2px solid #C8E6C9;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 20px 0;
+      background: #E8F5E9;
+      border-left: 4px solid #4CAF50;
+    }
+
+    /* Listes */
+    ul {
+      padding-left: 24px;
+      margin: 12px 0;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    /* Séparateurs */
+    hr {
+      border: none;
+      border-top: 2px solid var(--rl-line);
+      margin: 30px 0;
+    }
+
+    /* Liens */
+    a {
+      color: var(--rl-blue);
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    a:hover {
+      color: var(--rl-orange);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 30px 15px 50px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .section {
+        padding: 20px;
+      }
+
+      h2 {
+        font-size: 19px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo en haut -->
+  <div class="logo-header">
+    <img src="assets/images/logo rabaislocal-2025-2.png" alt="RabaisLocal">
+  </div>
+
+  <!-- Contenu principal -->
+  <div class="container">
+    <h1>🚀 Guide pratique – Comment partager ton lien RabaisLocal</h1>
+    <p class="intro">
+      <strong>En tant qu'affilié RabaisLocal, ton rôle est simple :</strong><br>
+      Parler de RabaisLocal, partager ton lien et référer des consommateurs, des commerçants et des affiliés.<br>
+      RabaisLocal s'occupe du reste (tunnels, emails, IA, automatisations).
+    </p>
+
+    <!-- Introduction -->
+    <div class="section">
+      <p>
+        Chaque personne qui s'inscrit via <strong>ton lien</strong> est associée à toi <strong>à vie</strong>, tant qu'elle reste active.
+      </p>
+    </div>
+
+    <!-- Section 1 -->
+    <div class="section">
+      <h2>⭐ 1. Deux façons de partager ton lien… deux résultats très différents</h2>
+
+      <h3>🟡 Méthode 1 – Envoyer seulement ton lien (passif)</h3>
+      <p>
+        Tu copies ton lien, tu l'envoies par Messenger, texto ou courriel, sans expliquer grand-chose.
+        C'est simple et rapide, mais les résultats sont limités.
+      </p>
+      <p>
+        <strong>Taux de conversion moyen :</strong> entre <strong>4 % et 8 %</strong> des personnes contactées vont s'inscrire.
+      </p>
+
+      <div style="background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%); border: 3px solid #4CAF50; border-radius: 16px; padding: 24px; margin: 24px 0; box-shadow: 0 6px 20px rgba(76, 175, 80, 0.25);">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+          <span style="font-size: 32px;">🏆</span>
+          <h3 style="margin: 0; color: #2E7D32; font-size: 22px;">Méthode 2 – En parler AVANT + envoyer ton lien (actif)</h3>
+        </div>
+        <div style="background: white; padding: 20px; border-radius: 12px; margin-bottom: 16px;">
+          <p style="margin: 0 0 12px 0; font-weight: 600; color: #2E7D32; font-size: 17px;">
+            ✅ MÉTHODE RECOMMANDÉE
+          </p>
+          <p style="margin: 0 0 12px 0;">
+            Tu prends d'abord <strong>30 à 60 secondes</strong> pour expliquer :
+          </p>
+          <ul style="margin: 12px 0; padding-left: 24px;">
+            <li>que l'inscription est <strong>gratuite</strong> ;</li>
+            <li>que RabaisLocal permet d'<strong>économiser localement</strong> ;</li>
+            <li>que ça aide les <strong>commerçants de la région</strong> ;</li>
+            <li>que tu vas ensuite lui envoyer <strong>TON lien d'inscription</strong>.</li>
+          </ul>
+          <p style="margin: 12px 0 0 0;">
+            Puis tu envoies ton lien en privé (Messenger, texto, email, etc.).
+          </p>
+        </div>
+        <div style="background: #2E7D32; color: white; padding: 16px; border-radius: 12px; text-align: center;">
+          <p style="margin: 0; font-size: 18px; font-weight: 700;">
+            📊 Taux de conversion moyen : <span style="font-size: 24px;">28 % à 35 %</span>
+          </p>
+          <p style="margin: 8px 0 0 0; font-size: 14px; opacity: 0.9;">
+            🚀 Jusqu'à 7× plus efficace que la méthode 1 !
+          </p>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <strong>À retenir :</strong><br>
+        – Envoyer seulement ton lien → <strong>4–8 %</strong> d'inscriptions<br>
+        – Parler AVANT + envoyer ton lien → <strong>28–35 %</strong> d'inscriptions<br>
+        <em>Ton temps de parole est ce qui fait vraiment la différence.</em>
+      </div>
+    </div>
+
+    <!-- Section 2 -->
+    <div class="section">
+      <h2>🎯 2. La méthode 5–2–1 pour bien démarrer</h2>
+      <p>
+        Pour lancer ton réseau rapidement, applique cette méthode simple :
+      </p>
+      <ul>
+        <li><strong>5 consommateurs</strong> : amis, famille, collègues, voisins qui aiment économiser ;</li>
+        <li><strong>2 commerçants</strong> : restos, salons, coachs, boutiques locales que tu connais ;</li>
+        <li><strong>1 personne curieuse</strong> : quelqu'un qui aime les nouveaux projets ou qui a de l'influence.</li>
+      </ul>
+      <p>
+        <strong>Objectif :</strong> au moins <strong>8 personnes</strong> qui découvrent RabaisLocal et s'inscrivent via ton lien.
+      </p>
+    </div>
+
+    <!-- Section 3 -->
+    <div class="section">
+      <h2>📊 3. Statistiques utiles pour comprendre ton potentiel</h2>
+      <p>
+        Les chiffres ci-dessous sont des moyennes utilisées dans les projections RabaisLocal :
+      </p>
+
+      <h3>🔥 Affilié RabaisLocal</h3>
+      <ul>
+        <li><strong>15 consommateurs proches</strong> → environ <strong>95 %</strong> s'inscrivent ;</li>
+        <li><strong>20 consommateurs moins proches</strong> → environ <strong>80 %</strong> s'inscrivent ;</li>
+        <li><strong>4 commerçants proches</strong> → environ <strong>90 %</strong> s'inscrivent ;</li>
+        <li><strong>10 commerçants moins proches</strong> → environ <strong>70 %</strong> s'inscrivent.</li>
+      </ul>
+
+      <h3>📈 Conversion en affiliés (parmi les personnes déjà inscrites)</h3>
+      <ul>
+        <li>Parmi les proches : environ <strong>45 %</strong> deviennent affiliés ;</li>
+        <li>Parmi les connaissances moins proches : environ <strong>22 %</strong> deviennent affiliés.</li>
+      </ul>
+
+      <div class="warning-box">
+        <strong>Note importante :</strong> Ces chiffres ne sont pas des promesses, mais ils te montrent le potentiel si tu appliques les bonnes habitudes
+        (parler avant, cibler les bonnes personnes, suivre un minimum tes contacts).
+      </div>
+    </div>
+
+    <!-- Section 4 -->
+    <div class="section">
+      <h2>📱 4. Où partager ton lien (et comment)</h2>
+
+      <h3>1) Messages privés (Messenger, texto, WhatsApp)</h3>
+      <p>
+        C'est ce qui convertit le mieux. Tu écris à une personne à la fois, tu expliques en quelques phrases, puis tu envoies ton lien.
+      </p>
+
+      <h3>2) Facebook</h3>
+      <ul>
+        <li>Story rapide pour annoncer que tu rejoins RabaisLocal ;</li>
+        <li>Publication sur ton profil (avec ton lien) ;</li>
+        <li>Messages privés à quelques contacts ciblés ;</li>
+        <li>Partage dans des groupes locaux (selon les règles du groupe).</li>
+      </ul>
+
+      <h3>3) Instagram / TikTok</h3>
+      <ul>
+        <li>Story ou courte vidéo expliquant que tu rejoins RabaisLocal ;</li>
+        <li>Message privé à des commerces locaux ;</li>
+        <li>Lien dans ta bio (si possible).</li>
+      </ul>
+    </div>
+
+    <!-- Section 5 -->
+    <div class="section">
+      <h2>🗣️ 5. Exemples de messages prêts à utiliser</h2>
+
+      <div class="info-box" style="margin-bottom: 20px;">
+        <strong>💡 Besoin de plus de scripts ?</strong><br>
+        Consulte la page complète des <a href="scripts-textes-types.html" style="color: #3E53A5; font-weight: 700;">Scripts & Textes types</a> pour encore plus d'exemples personnalisables (emails, SMS, messages Messenger, etc.).
+      </div>
+
+      <h3>👉 Pour un consommateur</h3>
+      <p style="background:#f9f9f9;padding:14px;border-left:3px solid var(--rl-blue);border-radius:8px;font-style:italic;">
+        « RabaisLocal lance bientôt. C'est une plateforme de rabais locaux, l'inscription est gratuite et ça va te permettre
+        d'économiser dans ta région. Je t'en parle vite fait et je t'envoie mon lien, inscris-toi avant le lancement, ça prend 10 secondes. »
+      </p>
+
+      <h3>👉 Pour un commerçant</h3>
+      <p style="background:#f9f9f9;padding:14px;border-left:3px solid var(--rl-orange);border-radius:8px;font-style:italic;">
+        « RabaisLocal arrive dans la région. C'est gratuit pour les commerces et il n'y a <strong>aucune commission</strong> sur tes ventes.
+        Tu peux créer des promos facilement avec l'IA et attirer de nouveaux clients. Je t'envoie mon lien d'inscription, inscris ton commerce
+        et tu seras prêt pour le lancement. »
+      </p>
+
+      <h3>👉 Pour une personne curieuse / influente</h3>
+      <p style="background:#f9f9f9;padding:14px;border-left:3px solid #4CAF50;border-radius:8px;font-style:italic;">
+        « Je participe au pré-lancement de RabaisLocal, une plateforme de rabais locaux qui va aider les commerces et les familles à économiser.
+        Je t'explique vite fait comment ça marche et je t'envoie mon lien. Inscris-toi gratuitement, tu vas comprendre pourquoi ça risque
+        de devenir gros. »
+      </p>
+    </div>
+
+    <!-- Section 6 -->
+    <div class="section">
+      <h2>🚫 6. Ce qu'il vaut mieux éviter</h2>
+      <ul>
+        <li>Envoyer ton lien à tout le monde sans expliquer → tu restes dans la zone 4–8 % de conversion ;</li>
+        <li>Écrire de très longs messages compliqués ;</li>
+        <li>Parler uniquement de l'argent, sans mentionner l'économie locale et la mission ;</li>
+        <li>Discuter du plan de rémunération avec quelqu'un qui n'est même pas encore inscrit.</li>
+      </ul>
+    </div>
+
+    <!-- Section 6.5 - Bonus -->
+    <div class="section">
+      <h2>🧠 Pourquoi le taux de conversion change ? (Version courte)</h2>
+
+      <p>
+        Le taux d'inscription ne dépend pas juste du lien… mais de <strong>la manière dont la personne le reçoit</strong>.
+      </p>
+
+      <h3>👉 1. Lien envoyé "froid"</h3>
+      <p>
+        Tu envoies juste le lien, sans message :<br>
+        ➡️ <strong>Conversion faible</strong> — c'est normal.
+      </p>
+
+      <h3>👉 2. Lien venant d'un proche</h3>
+      <p>
+        Si la personne te connaît :<br>
+        ➡️ <strong>Confiance immédiate</strong> → plus d'inscriptions.
+      </p>
+
+      <h3>👉 3. Lien + petit message</h3>
+      <p>
+        Un message simple comme :
+      </p>
+      <p style="background:#f9f9f9;padding:12px;border-left:3px solid var(--rl-blue);border-radius:6px;font-style:italic;margin:12px 0;">
+        « C'est gratuit et ça aide les commerces d'ici 👇 »
+      </p>
+      <p>
+        ➡️ Conversion <strong>2 à 3× meilleure</strong>.
+      </p>
+
+      <h3>👉 4. Lien après une courte discussion</h3>
+      <p>
+        Tu expliques 20-30 secondes, puis tu envoies ton lien :<br>
+        ➡️ <strong>C'est la méthode la plus puissante</strong>.
+      </p>
+
+      <h3>👉 5. Influenceurs</h3>
+      <p>
+        Les abonnés font confiance à l'influenceur qu'ils suivent :<br>
+        ➡️ Les inscriptions <strong>montent plus vite</strong>.
+      </p>
+
+      <div class="success-box" style="margin-top:24px;">
+        <h3 style="margin:0 0 12px 0;font-size:18px;">🚀 En résumé</h3>
+        <p style="margin:8px 0;">
+          <strong>Plus tu ajoutes de l'humain et du contexte, plus les gens s'inscrivent.</strong>
+        </p>
+        <p style="margin:8px 0;">
+          RabaisLocal convertit super bien parce que c'est :
+        </p>
+        <ul style="margin:12px 0;padding-left:20px;">
+          <li>✔ <strong>gratuit</strong></li>
+          <li>✔ <strong>local</strong></li>
+          <li>✔ <strong>simple</strong></li>
+          <li>✔ <strong>utile</strong></li>
+        </ul>
+        <p style="margin:8px 0;font-weight:600;color:#2E7D32;">
+          Et ça, les gens embarquent. 💚
+        </p>
+      </div>
+    </div>
+
+    <!-- Section 7 -->
+    <div class="section">
+      <h2>✅ 7. Résumé à retenir</h2>
+      <ul>
+        <li><strong>Parler AVANT</strong> d'envoyer ton lien = <strong>28–35 %</strong> de conversion ;</li>
+        <li>Envoyer seulement ton lien = <strong>4–8 %</strong> de conversion ;</li>
+        <li>Applique la méthode <strong>5–2–1</strong> (5 consommateurs, 2 commerçants, 1 curieux) pour bien démarrer ;</li>
+        <li>Un affilié qui suit ces conseils peut rapidement bâtir un réseau de consommateurs et de commerçants ;</li>
+        <li>Ton lien est ton actif : chaque inscription via ce lien est associée à toi pour longtemps.</li>
+      </ul>
+
+      <div class="success-box">
+        <strong>🙌 Commence simple :</strong> parle à quelques personnes aujourd'hui, envoie ton lien après la discussion…
+        et laisse RabaisLocal faire le reste.
+      </div>
+    </div>
+
+    <!-- Menu de navigation compact -->
+    <nav style="background:#fff;border-radius:12px;padding:20px;margin-top:40px;box-shadow:0 2px 8px rgba(0,0,0,0.08);border-top:3px solid #3E53A5;">
+      <div style="display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;">
+        <a href="guide-demarrage-affilie.html" style="display:inline-flex;align-items:center;gap:6px;padding:10px 16px;background:#F5F8FF;color:#3E53A5;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;transition:0.2s;border:2px solid transparent;">
+          🧭 Guide démarrage
+        </a>
+        <span style="color:#ddd;">|</span>
+        <a href="documents-utiles.html" style="display:inline-flex;align-items:center;gap:6px;padding:10px 16px;background:#F5F8FF;color:#3E53A5;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;transition:0.2s;border:2px solid transparent;">
+          📚 Documents
+        </a>
+        <span style="color:#ddd;">|</span>
+        <a href="plan-remuneration.html" style="display:inline-flex;align-items:center;gap:6px;padding:10px 16px;background:#F5F8FF;color:#3E53A5;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;transition:0.2s;border:2px solid transparent;">
+          💰 Plan
+        </a>
+        <span style="color:#ddd;">|</span>
+        <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;padding:10px 16px;background:#E53935;color:#fff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;transition:0.2s;">
+          🏠 Accueil
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <!-- =======================
+       FOOTER RABAISLOCAL 2025 – VERSION PRO RESPONSIVE
+       ======================= -->
+
+  <!-- 1️⃣ VERSION PC / TABLETTE -->
+  <footer class="rl-footer-desktop" style="background:#F5F8FF;border-top:4px solid #3E53A5;padding:40px 0 30px;
+                 text-align:center;font-family:'Poppins',sans-serif;color:#1B2240;line-height:1.7;
+                 box-shadow:0 -3px 10px rgba(0,0,0,0.04);">
+
+    <!-- Logo + slogan -->
+    <div style="margin-bottom:22px;">
+      <img src="assets/images/logo rabaislocal-2025-2.png"
+           alt="Logo RabaisLocal"
+           style="width:160px;max-width:80%;height:auto;display:block;margin:0 auto 12px auto;">
+      <p style="font-size:15px;font-weight:600;color:#3E53A5;margin:0;">
+        💙 Ensemble, on fait gagner tout le monde.
+      </p>
+    </div>
+
+    <!-- Liens légaux -->
+    <div style="font-size:14px;margin-bottom:10px;">
+      <a href="conditions-utilisation.html" style="color:#1B2240;text-decoration:none;margin:0 8px;">Conditions d'utilisation</a> |
+      <a href="politique-confidentialite.html" style="color:#1B2240;text-decoration:none;margin:0 8px;">Confidentialité</a> |
+      <a href="politique-cookies.html" style="color:#1B2240;text-decoration:none;margin:0 8px;">Cookies</a> |
+      <a href="politique-remboursement.html" style="color:#1B2240;text-decoration:none;margin:0 8px;">Remboursement</a> |
+      <a href="utilisation-acceptable.html" style="color:#1B2240;text-decoration:none;margin:0 8px;">Utilisation acceptable</a> |
+      <a href="non-responsabilite.html" style="color:#1B2240;text-decoration:none;margin:0 8px;">Non-responsabilité</a> |
+      <a href="app-ia.html" style="color:#1B2240;text-decoration:none;margin:0 8px;">App & IA</a> |
+      <a href="mentions-legales.html" style="color:#1B2240;text-decoration:none;margin:0 8px;">Mentions légales</a>
+    </div>
+
+    <!-- Copyright -->
+    <div style="color:#5B6385;font-size:13px;margin-top:8px;">
+      © 2025 RabaisLocal – Tous droits réservés • Trois-Rivières (QC) •
+      <a href="mailto:support@rabaislocal.com" style="color:#3E53A5;text-decoration:none;">Contact</a> •
+      <a href="#" onclick="window.dispatchEvent(new CustomEvent('rl-open-prefs'));return false;"
+         style="color:#3E53A5;text-decoration:none;">Gérer mes cookies</a>
+    </div>
+
+    <!-- Preuve sociale -->
+    <div style="margin-top:15px;font-size:13px;color:#3E53A5;font-weight:500;">
+      Une initiative 100 % québécoise propulsée par l'IA 🤖
+    </div>
+  </footer>
+
+  <!-- 2️⃣ VERSION MOBILE ALLÉGÉE + "VOIR PLUS" -->
+  <div class="rl-footer-mobile" style="display:none;background:#F5F8FF;border-top:4px solid #3E53A5;
+              text-align:center;font-family:'Poppins',sans-serif;color:#1B2240;padding:35px 18px 30px;">
+
+    <!-- Logo -->
+    <img src="assets/images/logo rabaislocal-2025-2.png"
+         alt="RabaisLocal Logo"
+         style="width:140px;height:auto;margin:0 auto 12px auto;display:block;">
+
+    <!-- Slogan -->
+    <p style="margin:0;font-size:15px;font-weight:600;color:#3E53A5;">
+      💙 Ensemble, on fait gagner tout le monde.
+    </p>
+
+    <!-- CTA -->
+    <a href="index.html"
+       style="display:inline-block;margin-top:14px;background:#3E53A5;color:#fff;
+              font-weight:600;text-decoration:none;padding:12px 28px;border-radius:8px;">
+       🏠 Retour à l'accueil
+    </a>
+
+    <!-- Liens essentiels -->
+    <div style="margin-top:16px;font-size:13px;line-height:1.8;">
+      <a href="conditions-utilisation.html" style="color:#1B2240;text-decoration:none;">Conditions</a> |
+      <a href="politique-confidentialite.html" style="color:#1B2240;text-decoration:none;">Confidentialité</a> |
+      <a href="politique-cookies.html" style="color:#1B2240;text-decoration:none;">Cookies</a>
+    </div>
+
+    <!-- Bouton "Voir plus" -->
+    <div id="rl-more-links" style="margin-top:8px;">
+      <a href="#" onclick="document.getElementById('rl-extra-links').style.display='block'; this.style.display='none'; return false;"
+         style="color:#3E53A5;text-decoration:none;font-size:13px;font-weight:600;">
+         🔽 Voir plus de pages
+      </a>
+    </div>
+
+    <!-- Liens cachés (affichés après clic) -->
+    <div id="rl-extra-links" style="display:none;margin-top:8px;font-size:13px;line-height:1.8;">
+      <a href="politique-remboursement.html" style="color:#1B2240;text-decoration:none;">Remboursement</a> |
+      <a href="utilisation-acceptable.html" style="color:#1B2240;text-decoration:none;">Utilisation</a> |
+      <a href="non-responsabilite.html" style="color:#1B2240;text-decoration:none;">Non-responsabilité</a> |
+      <a href="app-ia.html" style="color:#1B2240;text-decoration:none;">App & IA</a> |
+      <a href="mentions-legales.html" style="color:#1B2240;text-decoration:none;">Mentions légales</a>
+    </div>
+
+    <!-- Copyright -->
+    <p style="margin-top:16px;font-size:12px;color:#5B6385;">
+      © 2025 RabaisLocal • Trois-Rivières (QC) •
+      <a href="mailto:support@rabaislocal.com" style="color:#3E53A5;text-decoration:none;">Contact</a>
+    </p>
+  </div>
+
+  <!-- 3️⃣ RESPONSIVE CSS -->
+  <style>
+  @media(max-width:768px){
+    .rl-footer-desktop{display:none !important;}
+    .rl-footer-mobile{display:block !important;}
+  }
+  @media(min-width:769px){
+    .rl-footer-desktop{display:block !important;}
+    .rl-footer-mobile{display:none !important;}
+  }
+  </style>
+
+  <!-- Script pour gestion du REF -->
+  <script>
+  (function() {
+    'use strict';
+
+    // Fonctions utilitaires
+    function getLS(key) {
+      try { return localStorage.getItem(key) || ''; } catch(e) { return ''; }
+    }
+
+    function setLS(key, val) {
+      try { localStorage.setItem(key, val); } catch(e) {}
+    }
+
+    function getCookie(name) {
+      const val = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+      return val ? decodeURIComponent(val.pop()) : '';
+    }
+
+    function setCookie(name, val, days) {
+      const d = new Date();
+      d.setTime(d.getTime() + days * 86400000);
+      document.cookie = name + '=' + encodeURIComponent(val) + ';expires=' + d.toUTCString() + ';path=/';
+    }
+
+    function sanitize(str) {
+      return (str || '').replace(/[^a-zA-Z0-9_-]/g, '');
+    }
+
+    // Récupérer le REF
+    const urlParams = new URLSearchParams(window.location.search);
+    let REF = sanitize(urlParams.get('ref') || urlParams.get('rl_ref') || getLS('rl_ref') || getCookie('rl_ref'));
+
+    if (REF) {
+      setLS('rl_ref', REF);
+      setCookie('rl_ref', REF, 180);
+      console.log('✅ REF capturé:', REF);
+    }
+
+    // Propager le REF sur tous les liens
+    function propagateLinks() {
+      if (!REF) return;
+
+      document.querySelectorAll('a[href]').forEach(function(link) {
+        const href = link.getAttribute('href');
+
+        if (!href ||
+            href.startsWith('mailto:') ||
+            href.startsWith('tel:') ||
+            href.startsWith('javascript:') ||
+            href.startsWith('#')) {
+          return;
+        }
+
+        try {
+          const url = new URL(href, window.location.origin);
+          if (!url.searchParams.get('ref') && !url.searchParams.get('rl_ref')) {
+            url.searchParams.set('ref', REF);
+            link.setAttribute('href', url.toString());
+          }
+        } catch(e) {
+          if (href.indexOf('?') === -1) {
+            link.setAttribute('href', href + '?ref=' + encodeURIComponent(REF));
+          } else if (!/[?&](ref|rl_ref)=/i.test(href)) {
+            link.setAttribute('href', href + '&ref=' + encodeURIComponent(REF));
+          }
+        }
+      });
+    }
+
+    // Exécution
+    window.addEventListener('load', propagateLinks);
+  })();
+  </script>
+
+</body>
+</html>
