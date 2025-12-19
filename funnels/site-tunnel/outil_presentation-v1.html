@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centre de Ressources - RabaisLocal Affiliés & Fondateurs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+  <style>
+    :root {
+      --rl-blue: #3E53A5;
+      --rl-bg: #F5F8FF;
+      --rl-ink: #1B2240;
+      --rl-muted: #5B6385;
+      --rl-line: #E3E8FF;
+      --rl-orange: #FF8C42;
+      --rl-red: #E53935;
+      --rl-green: #4CAF50;
+      --rl-purple: #9C27B0;
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--rl-bg);
+      color: var(--rl-ink);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Header Section */
+    .header {
+      background: linear-gradient(135deg, var(--rl-blue) 0%, #2c3e80 100%);
+      color: white;
+      border-radius: var(--radius);
+      padding: 40px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 30px rgba(62, 83, 165, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 400px;
+      height: 400px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo {
+      max-width: 250px;
+      height: auto;
+      margin-bottom: 20px;
+      filter: brightness(0) invert(1);
+    }
+
+    .header h1 {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 900;
+      margin-bottom: 15px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .header p {
+      font-size: 18px;
+      opacity: 0.95;
+      max-width: 800px;
+    }
+
+    .status-pill {
+      display: inline-block;
+      background: var(--rl-red);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 14px;
+      margin-top: 15px;
+      box-shadow: 0 4px 15px rgba(229, 57, 53, 0.4);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* Section Title */
+    .section-title {
+      color: var(--rl-blue);
+      font-size: 32px;
+      font-weight: 900;
+      margin: 50px 0 25px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 3px;
+      background: linear-gradient(90deg, var(--rl-red) 0%, transparent 100%);
+    }
+
+    .section-subtitle {
+      color: var(--rl-muted);
+      font-size: 16px;
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+
+    /* Grid Layout */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+      margin-bottom: 30px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+
+    /* Card Styles */
+    .card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--rl-blue), var(--rl-red));
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 35px rgba(62, 83, 165, 0.15);
+      border-color: var(--rl-blue);
+    }
+
+    .card:hover::before {
+      transform: translateX(0);
+    }
+
+    /* Featured Cards */
+    .card.featured {
+      background: linear-gradient(135deg, var(--rl-blue) 0%, #2c3e80 100%);
+      color: white;
+      border: none;
+    }
+
+    .card.featured h3,
+    .card.featured p {
+      color: white;
+    }
+
+    .card.featured .card-icon {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Card Icon */
+    .card-icon {
+      font-size: 48px;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--rl-bg);
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    .card h3 {
+      color: var(--rl-ink);
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: var(--rl-muted);
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      transition: all 0.2s ease;
+      border: 2px solid transparent;
+      cursor: pointer;
+      width: 100%;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: var(--rl-blue);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #2c3e80;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(62, 83, 165, 0.3);
+    }
+
+    .btn-danger {
+      background: var(--rl-red);
+      color: white;
+    }
+
+    .btn-danger:hover {
+      background: #c62828;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(229, 57, 53, 0.3);
+    }
+
+    .btn-success {
+      background: var(--rl-green);
+      color: white;
+    }
+
+    .btn-success:hover {
+      background: #45a049;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--rl-blue);
+      color: var(--rl-blue);
+    }
+
+    .btn-outline:hover {
+      background: var(--rl-blue);
+      color: white;
+    }
+
+    .btn-white {
+      background: white;
+      color: var(--rl-blue);
+    }
+
+    .btn-white:hover {
+      background: var(--rl-bg);
+      transform: translateY(-2px);
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-group .btn {
+      flex: 1;
+      min-width: 180px;
+    }
+
+    /* Badge */
+    .badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: var(--rl-red);
+      color: white;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 12px rgba(229, 57, 53, 0.4);
+    }
+
+    .badge.new {
+      background: var(--rl-orange);
+    }
+
+    .badge.important {
+      background: var(--rl-red);
+      animation: pulse 2s infinite;
+    }
+
+    /* Info Box */
+    .info-box {
+      background: #FFF8E1;
+      border-left: 5px solid #FFC107;
+      padding: 25px;
+      border-radius: 12px;
+      margin: 30px 0;
+    }
+
+    .info-box strong {
+      display: block;
+      font-size: 18px;
+      color: #5D4037;
+      margin-bottom: 10px;
+    }
+
+    .info-box p {
+      color: #5D4037;
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    /* Video Card */
+    .video-card {
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease;
+    }
+
+    .video-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      background: #000;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-content {
+      padding: 20px;
+    }
+
+    .video-title {
+      font-weight: 700;
+      color: var(--rl-blue);
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .video-desc {
+      font-size: 14px;
+      color: var(--rl-muted);
+    }
+
+    /* Quick Links Section */
+    .quick-links {
+      background: white;
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+      position: sticky;
+      top: 20px;
+    }
+
+    .quick-links h3 {
+      color: var(--rl-blue);
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .quick-links ul {
+      list-style: none;
+    }
+
+    .quick-links li {
+      margin-bottom: 12px;
+    }
+
+    .quick-links a {
+      color: var(--rl-ink);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .quick-links a:hover {
+      background: var(--rl-bg);
+      color: var(--rl-blue);
+      transform: translateX(5px);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--rl-muted);
+      font-size: 14px;
+      margin-top: 60px;
+      border-top: 2px solid var(--rl-line);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px;
+      }
+
+      .header {
+        padding: 30px 20px;
+      }
+
+      .header h1 {
+        font-size: 28px;
+      }
+
+      .section-title {
+        font-size: 24px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .btn-group {
+        flex-direction: column;
+      }
+
+      .btn-group .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- ========================================
+         HEADER
+    ========================================= -->
+    <div class="header">
+      <div class="header-content">
+        <img class="logo" src="https://statics.myclickfunnels.com/workspace/jklqVP/image/17823503/file/d5fb15091926d11524543af90a9a5e26.png" alt="RabaisLocal">
+        <h1>Centre de Ressources Affiliés & Fondateurs</h1>
+        <p>Tous les outils, documents et liens dont tu as besoin pour réussir avec RabaisLocal. Organise ta stratégie, forme ton équipe et partage l'opportunité !</p>
+        <span class="status-pill">🔥 PRÉ-LANCEMENT - Positionnez-vous maintenant !</span>
+      </div>
+    </div>
+
+    <!-- ========================================
+         🎯 NOUVEAU ? COMMENCE ICI ! (PARCOURS DÉBUTANT)
+    ========================================= -->
+    <div style="background: linear-gradient(135deg, #FF8C42 0%, #FF6B35 100%); color: white; border-radius: var(--radius); padding: 40px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(255, 140, 66, 0.3);">
+      <h2 style="margin: 0 0 15px; font-size: 36px; font-weight: 900;">🎯 Nouveau ? Commence ici !</h2>
+      <p style="font-size: 18px; margin: 0; opacity: 0.95;">Suis ces 7 étapes dans l'ordre pour tout comprendre et démarrer en 15 minutes chrono.</p>
+    </div>
+
+    <div class="grid" style="margin-bottom: 60px;">
+
+      <!-- Étape 1 -->
+      <div class="card" style="border-left: 5px solid #FF8C42;">
+        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+          <div style="background: #FF8C42; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 900; flex-shrink: 0;">1</div>
+          <h3 style="margin: 0;">Découvre RabaisLocal en 90 secondes</h3>
+        </div>
+        <p>Regarde cette courte vidéo pour comprendre l'opportunité unique que représente RabaisLocal.</p>
+        <a href="https://www.youtube.com/embed/uMjpJ2dTF8Y" target="_blank" class="btn btn-primary" style="background: #FF8C42; border-color: #FF8C42;">▶️ Voir la vidéo</a>
+      </div>
+
+      <!-- Étape 2 -->
+      <div class="card" style="border-left: 5px solid #FF8C42;">
+        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+          <div style="background: #FF8C42; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 900; flex-shrink: 0;">2</div>
+          <h3 style="margin: 0;">Comprends les 3 rôles</h3>
+        </div>
+        <p>Consommateur, commerçant, affilié : découvre comment tout le monde gagne avec RabaisLocal.</p>
+        <div class="btn-group">
+          <a href="assets/documents/guide-affilie-2.0.html" target="_blank" class="btn btn-primary" style="background: #FF8C42; border-color: #FF8C42;">📖 Guide complet</a>
+        </div>
+      </div>
+
+      <!-- Étape 3 -->
+      <div class="card" style="border-left: 5px solid #FF8C42;">
+        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+          <div style="background: #FF8C42; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 900; flex-shrink: 0;">3</div>
+          <h3 style="margin: 0;">Vois ton potentiel de revenus</h3>
+        </div>
+        <p>Découvre combien tu peux gagner avec le plan de rémunération et le calculateur interactif.</p>
+        <a href="plan-remuneration.html" target="_blank" class="btn btn-primary" style="background: #FF8C42; border-color: #FF8C42;">💰 Plan de rémunération</a>
+      </div>
+
+      <!-- Étape 4 -->
+      <div class="card" style="border-left: 5px solid #FF8C42;">
+        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+          <div style="background: #FF8C42; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 900; flex-shrink: 0;">4</div>
+          <h3 style="margin: 0;">Ce n'est PAS un MLM classique</h3>
+        </div>
+        <p>Pas de quotas, pas d'achats forcés, pas de vente. Comprends pourquoi RabaisLocal est différent.</p>
+        <a href="https://www.youtube.com/embed/TmU1RraWt2o" target="_blank" class="btn btn-primary" style="background: #FF8C42; border-color: #FF8C42;">🧠 Voir pourquoi</a>
+      </div>
+
+      <!-- Étape 5 -->
+      <div class="card" style="border-left: 5px solid #E53935; background: linear-gradient(135deg, #fff 0%, #ffebee 100%);">
+        <div class="badge important" style="animation: pulse 2s infinite;">👉 ACTION</div>
+        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+          <div style="background: #E53935; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 900; flex-shrink: 0;">5</div>
+          <h3 style="margin: 0;">Inscris-toi MAINTENANT</h3>
+        </div>
+        <p><strong>PRÉ-LANCEMENT :</strong> Positionne-toi avant tout le monde ! Les premiers arrivés seront les mieux positionnés.</p>
+        <a href="page1-1-affilie.html" target="_blank" class="btn btn-danger" style="font-size: 17px; padding: 16px 32px;">🚀 Je m'inscris gratuitement</a>
+      </div>
+
+      <!-- Étape 6 -->
+      <div class="card" style="border-left: 5px solid #4CAF50;">
+        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+          <div style="background: #4CAF50; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 900; flex-shrink: 0;">6</div>
+          <h3 style="margin: 0;">Télécharge l'application</h3>
+        </div>
+        <p>Installe l'app mobile RabaisLocal pour gérer ton business depuis ton téléphone.</p>
+        <a href="https://app.rabaislocal.com" target="_blank" class="btn btn-success">📱 Télécharger l'app</a>
+      </div>
+
+      <!-- Étape 7 -->
+      <div class="card" style="border-left: 5px solid #3E53A5;">
+        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+          <div style="background: #3E53A5; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 900; flex-shrink: 0;">7</div>
+          <h3 style="margin: 0;">Accède à ton espace membre</h3>
+        </div>
+        <p>Connecte-toi à ton tableau de bord pour obtenir tes liens d'affiliation et suivre tes commissions.</p>
+        <a href="https://partenaires.rabaislocal.com/login" target="_blank" class="btn btn-primary">🔐 Mon espace membre</a>
+      </div>
+
+    </div>
+
+    <div class="info-box" style="background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%); border-left: 5px solid #4CAF50; margin-bottom: 50px;">
+      <strong>✅ Félicitations !</strong>
+      <p>Si tu as suivi toutes ces étapes, tu es maintenant prêt à partager RabaisLocal et à construire ton revenu passif. Explore maintenant tous les outils ci-dessous pour maximiser ton succès !</p>
+    </div>
+
+    <!-- ========================================
+         📦 TOUS TES OUTILS & DOCUMENTS
+    ========================================= -->
+    <h2 class="section-title">📦 Tous tes Outils & Documents Disponibles</h2>
+    <p class="section-subtitle">Voici TOUT ce que tu as à ta disposition pour réussir. N'hésite pas à explorer et utiliser ces ressources !</p>
+
+    <div class="grid">
+
+      <!-- Guide Affilié 2.0 -->
+      <div class="card">
+        <div class="card-icon">📖</div>
+        <h3>Guide Affilié 2.0 - Complet</h3>
+        <div class="btn-group">
+          <a href="assets/documents/guide-affilie-2.0.html" target="_blank" class="btn btn-primary">👁️ Consulter</a>
+          <a href="assets/documents/guide-affilie-2.0.pdf" download class="btn btn-outline">📥 PDF</a>
+        </div>
+      </div>
+
+      <!-- Guide de démarrage -->
+      <div class="card">
+        <div class="card-icon">📘</div>
+        <h3>Guide de démarrage affilié</h3>
+        <a href="guide-demarrage-affilie.html" target="_blank" class="btn btn-primary">👁️ Consulter</a>
+      </div>
+
+      <!-- Guide Comment Partager -->
+      <div class="card">
+        <div class="card-icon">🚀</div>
+        <h3>Guide "Comment partager"</h3>
+        <a href="guide-comment-partager.html" target="_blank" class="btn btn-primary">👁️ Consulter</a>
+      </div>
+
+      <!-- Plan de rémunération -->
+      <div class="card">
+        <div class="card-icon">💰</div>
+        <h3>Plan de rémunération</h3>
+        <div class="btn-group">
+          <a href="plan-remuneration.html" target="_blank" class="btn btn-primary">👁️ Consulter</a>
+          <a href="assets/documents/tableau_plan_remuneration_V1.pdf" download class="btn btn-outline">📥 PDF</a>
+        </div>
+      </div>
+
+      <!-- Plan Ambassadeur -->
+      <div class="card">
+        <div class="card-icon">🌟</div>
+        <h3>Plan Ambassadeur</h3>
+        <div class="btn-group">
+          <a href="plan-remuneration-ambassadeur.html" target="_blank" class="btn btn-primary">👁️ Consulter</a>
+          <a href="assets/images/tableau_plan_remuneration_ambassadeur.pdf" download class="btn btn-outline">📥 PDF</a>
+        </div>
+      </div>
+
+      <!-- Pacte de Confiance -->
+      <div class="card">
+        <div class="card-icon">🤝</div>
+        <h3>Le Pacte de Confiance</h3>
+        <a href="assets/documents/Le_Pacte_de_Confiance_RabaisLocal.pdf" download class="btn btn-outline">📥 Télécharger PDF</a>
+      </div>
+
+      <!-- Checklist Membre Actif -->
+      <div class="card">
+        <div class="card-icon">✅</div>
+        <h3>Checklist Membre Actif (30 jours)</h3>
+        <div class="btn-group">
+          <a href="assets/documents/checklist-demarrage.html" target="_blank" class="btn btn-primary">👁️ Consulter</a>
+          <a href="assets/documents/Checklist_Demarrage_membre_actif.pdf" download class="btn btn-outline">📥 PDF</a>
+        </div>
+      </div>
+
+      <!-- Checklist Mode Passif -->
+      <div class="card">
+        <div class="card-icon">😌</div>
+        <h3>Checklist Mode Passif (7 tâches)</h3>
+        <div class="btn-group">
+          <a href="assets/documents/checklist-demarrage-passif.html" target="_blank" class="btn btn-primary">👁️ Consulter</a>
+          <a href="assets/documents/Checklist_Demarrage_Passif.pdf" download class="btn btn-outline">📥 PDF</a>
+        </div>
+      </div>
+
+      <!-- Guide Présentations Minutes -->
+      <div class="card" style="border: 2px solid #FF6B35;">
+        <div class="badge new">Outil Puissant</div>
+        <div class="card-icon">⏱️</div>
+        <h3>Guide Présentations Minutes</h3>
+        <p style="font-size: 14px; margin-bottom: 15px; line-height: 1.7;">
+          <strong>3 pages mobiles optimisées</strong> pour présenter RabaisLocal en 90 secondes :
+        </p>
+        <ul style="list-style: none; padding: 0; margin: 0 0 20px 0; font-size: 13px;">
+          <li style="padding: 8px 0; border-bottom: 1px solid #f0f0f0;">🏪 <strong>Page Commerçant</strong> - Pour recruter les commerces locaux</li>
+          <li style="padding: 8px 0; border-bottom: 1px solid #f0f0f0;">💚 <strong>Page Consommateur</strong> - Pour inscrire des membres</li>
+          <li style="padding: 8px 0;">💜 <strong>Page Affilié</strong> - Pour bâtir ton équipe d'affiliés</li>
+        </ul>
+        <p style="font-size: 13px; color: #e53935; font-weight: 600; margin-bottom: 15px;">⚠️ Important : Remplis tes infos dans ton espace membre avant d'utiliser ces pages !</p>
+        <a href="guide-presentations-minutes.html" target="_blank" class="btn btn-primary" style="background: #FF6B35; border-color: #FF6B35;">📖 Voir le guide + 3 pages</a>
+      </div>
+
+      <!-- Scripts & Textes -->
+      <div class="card">
+        <div class="card-icon">💬</div>
+        <h3>Scripts & Textes types</h3>
+        <a href="scripts-textes-types.html" target="_blank" class="btn btn-primary">👁️ Consulter</a>
+      </div>
+
+      <!-- Logo et Bannières -->
+      <div class="card">
+        <div class="card-icon">🎨</div>
+        <h3>Logo, Bannières & Documents</h3>
+        <a href="logo-banniere-documents.html" target="_blank" class="btn btn-primary">👁️ Consulter</a>
+      </div>
+
+      <!-- Médias Sociaux -->
+      <div class="card">
+        <div class="card-icon">📱</div>
+        <h3>Médias Sociaux</h3>
+        <a href="medias-sociaux.html" target="_blank" class="btn btn-primary">👁️ Consulter</a>
+      </div>
+
+      <!-- Présentation PowerPoint -->
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <h3>Présentation PowerPoint</h3>
+        <a href="assets/documents/presentation-rabaislocal.pptx" download class="btn btn-outline">📥 Télécharger</a>
+      </div>
+
+      <!-- Dépliant Commerçant -->
+      <div class="card">
+        <div class="card-icon">🏪</div>
+        <h3>Dépliant commerçant (PDF)</h3>
+        <a href="assets/documents/depliant_commercant.pdf" download class="btn btn-outline">📥 Télécharger PDF</a>
+      </div>
+
+      <!-- Vidéos YouTube -->
+      <div class="card">
+        <div class="card-icon">🎥</div>
+        <h3>Vidéos YouTube à partager</h3>
+        <p style="font-size: 13px; margin-bottom: 15px;">3 vidéos essentielles pour présenter RabaisLocal</p>
+        <a href="#videos-section" class="btn btn-outline">👁️ Voir les vidéos</a>
+      </div>
+
+      <!-- Documents Légaux -->
+      <div class="card">
+        <div class="card-icon">⚖️</div>
+        <h3>Documents Légaux</h3>
+        <p style="font-size: 13px; margin-bottom: 15px;">Conditions, confidentialité, remboursement...</p>
+        <div class="btn-group">
+          <a href="conditions-utilisation.html" target="_blank" class="btn btn-outline">👁️ Consulter</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Section Vidéos -->
+    <div id="videos-section" style="margin-top: 60px;">
+      <h3 style="color: var(--rl-blue); font-size: 24px; font-weight: 700; margin-bottom: 20px;">🎥 Vidéos à partager</h3>
+      <div class="grid">
+        <div class="video-card">
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/TmU1RraWt2o" allowfullscreen></iframe>
+          </div>
+          <div class="video-content">
+            <div class="video-title">Voilà pourquoi nous sommes unique</div>
+            <p class="video-desc">Idéal pour rassurer les gens sur toutes leurs interrogations.</p>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/uMjpJ2dTF8Y" allowfullscreen></iframe>
+          </div>
+          <div class="video-content">
+            <div class="video-title">RabaisLocal en 1 minute</div>
+            <p class="video-desc">La vidéo parfaite pour une introduction rapide et percutante.</p>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/CaiJ4ILPyyY" allowfullscreen></iframe>
+          </div>
+          <div class="video-content">
+            <div class="video-title">L'IA au service du local</div>
+            <p class="video-desc">Montre comment notre technologie rend l'achat local moins cher.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================
+         ASTUCE FINALE
+    ========================================= -->
+    <div class="info-box" style="margin-top: 50px;">
+      <strong>💡 Astuce du fondateur</strong>
+      <p>Commence par partager la vidéo <em>"RabaisLocal en 1 minute"</em>, puis envoie le <em>Plan de rémunération</em> seulement si la personne est intéressée. N'oublie pas de mettre <strong>l'espace membre partenaire</strong> et <strong>l'app mobile</strong> en favoris sur ton téléphone !</p>
+    </div>
+
+    <!-- ========================================
+         FOOTER
+    ========================================= -->
+    <div class="footer">
+      <p><strong>© 2024 RabaisLocal</strong> - Centre de Ressources Affiliés & Fondateurs</p>
+      <p style="margin-top: 10px;">Besoin d'aide ? Contacte ton parrain ou le support à <a href="mailto:support@rabaislocal.com" style="color: var(--rl-blue);">support@rabaislocal.com</a></p>
+    </div>
+
+  </div>
+
+  <!-- Script pour sauvegarder la référence d'affiliation -->
+  <script>
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const ref = params.get('ref');
+      if (ref) {
+        localStorage.setItem('rl_ref', ref);
+        console.log('✅ Référence affilié sauvegardée:', ref);
+      }
+    })();
+  </script>
+
+</body>
+</html>
