@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="RabaisLocal - Plateforme pour commerçants locaux sans commission">
+  <title>RabaisLocal - Commerçants</title>
+
+  <style>
+    /* ==================== RESET & BASE ==================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #1B2240;
+      --primary-dark: #0f1628;
+      --secondary: #4CAF50;
+      --secondary-dark: #388E3C;
+      --accent: #FF6B35;
+      --error: #E94D4C;
+      --warning: #FFC107;
+      --text-dark: #1B2240;
+      --text-light: #5B6385;
+      --bg-light: #F8FAFC;
+      --bg-white: #FFFFFF;
+      --border-color: #E3E8FF;
+      --shadow: rgba(0, 0, 0, 0.08);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background: var(--bg-light);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ==================== CONTAINER ==================== */
+    .container {
+      max-width: 420px;
+      margin: 0 auto;
+      background: var(--bg-white);
+      min-height: 100vh;
+    }
+
+    /* ==================== HERO SECTION ==================== */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 50px 24px 45px;
+      text-align: center;
+      position: relative;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--accent);
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+    }
+
+    .hero h1 {
+      font-size: 34px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      opacity: 0.95;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .hero .launch-date {
+      font-size: 13px;
+      opacity: 0.75;
+      margin-top: 20px;
+      font-weight: 400;
+    }
+
+    /* ==================== SECTION ==================== */
+    .section {
+      padding: 40px 24px;
+    }
+
+    .section-alt {
+      background: var(--bg-light);
+    }
+
+    .section-title {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .section-subtitle {
+      font-size: 15px;
+      color: var(--text-light);
+      text-align: center;
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+
+    /* ==================== CARDS ==================== */
+    .card {
+      background: var(--bg-white);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 12px var(--shadow);
+    }
+
+    .section-alt .card {
+      background: var(--bg-white);
+    }
+
+    .card-icon {
+      font-size: 40px;
+      margin-bottom: 14px;
+      line-height: 1;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .card-text {
+      font-size: 15px;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* ==================== BULLETS ==================== */
+    .bullet-list {
+      list-style: none;
+      padding: 0;
+      margin: 24px 0 0;
+    }
+
+    .bullet-list li {
+      padding: 14px 0;
+      font-size: 15px;
+      color: var(--text-dark);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .bullet-list li:last-child {
+      border-bottom: none;
+    }
+
+    .bullet-list li::before {
+      content: "✓";
+      color: var(--secondary);
+      font-weight: 700;
+      font-size: 18px;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+
+    /* ==================== HIGHLIGHT BOX ==================== */
+    .highlight-box {
+      background: linear-gradient(135deg, #FFF9E6 0%, #FFF3D6 100%);
+      border: 2px solid var(--warning);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 28px 0;
+      text-align: center;
+    }
+
+    .highlight-box strong {
+      display: block;
+      font-size: 17px;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .highlight-box p {
+      font-size: 14px;
+      color: var(--text-light);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* ==================== GIFT SECTION ==================== */
+    .gift-card {
+      background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+      border: 3px solid var(--secondary);
+      border-radius: 20px;
+      padding: 32px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gift-card::before {
+      content: "🎁";
+      font-size: 80px;
+      position: absolute;
+      top: -10px;
+      right: 10px;
+      opacity: 0.15;
+    }
+
+    .gift-badge {
+      display: inline-block;
+      background: var(--secondary);
+      color: white;
+      padding: 6px 16px;
+      border-radius: 16px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .gift-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .gift-list {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0 0;
+      text-align: left;
+    }
+
+    .gift-list li {
+      padding: 10px 0;
+      font-size: 15px;
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+
+    .gift-list li::before {
+      content: "🌟";
+      margin-right: 10px;
+    }
+
+    /* ==================== FORM (NE PAS MODIFIER LA STRUCTURE HTML) ==================== */
+    .form-section {
+      background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+      padding: 45px 24px;
+    }
+
+    .form-title {
+      color: white;
+      font-size: 26px;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+
+    .form-subtitle {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 14px;
+      text-align: center;
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 16px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      font-size: 16px;
+      background: rgba(255, 255, 255, 0.95);
+      color: var(--text-dark);
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: white;
+      background: white;
+      box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2);
+    }
+
+    .form-input.error {
+      border-color: var(--error);
+      background: #ffebee;
+    }
+
+    .error-message {
+      color: #ffebee;
+      font-size: 13px;
+      margin-top: 6px;
+      display: none;
+      font-weight: 600;
+    }
+
+    .error-message.visible {
+      display: block;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 18px;
+      background: white;
+      color: var(--secondary-dark);
+      border: none;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-submit:active {
+      transform: translateY(0);
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* ==================== SUCCESS MESSAGE (NE PAS MODIFIER) ==================== */
+    .success-message {
+      background: white;
+      border-radius: 16px;
+      padding: 32px 24px;
+      text-align: center;
+      display: none;
+    }
+
+    .success-message.visible {
+      display: block;
+    }
+
+    .success-icon {
+      font-size: 56px;
+      margin-bottom: 16px;
+      line-height: 1;
+    }
+
+    .success-title {
+      color: var(--text-dark);
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .success-text {
+      color: var(--text-light);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ==================== FOOTER ==================== */
+    .footer {
+      padding: 32px 24px;
+      text-align: center;
+      background: var(--bg-light);
+      border-top: 1px solid var(--border-color);
+    }
+
+    .footer-text {
+      font-size: 14px;
+      color: var(--text-light);
+      margin-bottom: 8px;
+    }
+
+    .footer-legal {
+      font-size: 12px;
+      color: #9E9E9E;
+      margin-top: 12px;
+    }
+
+    /* ==================== UTILITY ==================== */
+    .hidden {
+      display: none;
+    }
+
+    /* ==================== ANIMATIONS ==================== */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.5s ease;
+    }
+
+    /* ==================== RESPONSIVE ==================== */
+    @media (max-width: 380px) {
+      .hero h1 {
+        font-size: 28px;
+      }
+
+      .section-title {
+        font-size: 22px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- ========================================
+         SECTION 1 - HERO / HOOK
+    ========================================= -->
+    <section class="hero">
+      <div class="badge">🚀 Pré-lancement exclusif</div>
+      <h1>Gardez 100 % de vos revenus</h1>
+      <p>Plateforme locale 0 % commission</p>
+      <p>100 % gratuite pour démarrer</p>
+      <p class="launch-date">Lancement officiel : 19 mars 2026</p>
+    </section>
+
+    <!-- ========================================
+         SECTION 2 - IA (WOW)
+    ========================================= -->
+    <section class="section">
+      <h2 class="section-title">Votre expert marketing IA… inclus</h2>
+      <p class="section-subtitle">Créez et diffusez une promotion en moins de 20 minutes</p>
+
+      <div class="card">
+        <div class="card-icon">🤖</div>
+        <div class="card-title">Mode Autonome (≤ 20 min)</div>
+        <div class="card-text">L'IA crée votre promotion de A à Z : titre, description, visuels et publication automatique</div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">Mode Guidé</div>
+        <div class="card-text">Grâce à votre agent IA, vous gardez le contrôle de vos offres en temps réel. L'IA vous accompagne à chaque étape pour créer, ajuster et optimiser vos promotions.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">✨</div>
+        <div class="card-title">8 Styles de promotions</div>
+        <div class="card-text">
+          • Rabais standards<br>
+          • Promotions fidélité (carte de membre)<br>
+          • Offres de dernière minute<br>
+          • Offres groupées avec d'autres commerces de la région<br>
+          • Offres découverte<br>
+          • Promotions événementielles<br>
+          • Offres spéciales limitées<br>
+          • Autres formats innovants selon les objectifs
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         SECTION 3 - ANIMATION (TRAFIC)
+    ========================================= -->
+    <section class="section section-alt">
+      <h2 class="section-title">On attire des clients pour vous</h2>
+      <p class="section-subtitle">Vous choisissez vos promotions. RabaisLocal attire les clients.</p>
+
+      <div class="card">
+        <div class="card-icon">🎮</div>
+        <div class="card-title">Jeux et concours locaux</div>
+        <div class="card-text">RabaisLocal organise des jeux, concours et animations locales qui attirent des centaines de consommateurs vers les commerces participants.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📣</div>
+        <div class="card-title">Diffusion locale ciblée</div>
+        <div class="card-text">Vos promotions sont diffusées via recherche, notifications, réseaux sociaux, IA, influenceurs, affiliés, consommateurs locaux et personnes de passage.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🎉</div>
+        <div class="card-title">Offres événementielles</div>
+        <div class="card-text">Profitez des occasions spéciales (Fêtes, soldes, événements locaux) pour maximiser votre visibilité</div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         SECTION 3.5 - IA QUI S'AMÉLIORE
+    ========================================= -->
+    <section class="section">
+      <h2 class="section-title">Un agent IA qui s'améliore avec le temps</h2>
+      <p class="section-subtitle">Votre assistant marketing devient plus performant à chaque utilisation</p>
+
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <div class="card-title">Apprentissage continu</div>
+        <div class="card-text">L'IA analyse les résultats de vos promotions et apprend ce qui fonctionne le mieux pour votre commerce et votre clientèle.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">Recommandations personnalisées</div>
+        <div class="card-text">Plus vous utilisez RabaisLocal, plus l'IA vous propose des stratégies adaptées à votre réalité et à vos objectifs.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🚀</div>
+        <div class="card-title">Performance optimisée</div>
+        <div class="card-text">Votre agent IA identifie les meilleures périodes, les formats gagnants et les messages qui génèrent le plus de résultats.</div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         SECTION 4 - GRATUITÉ (NO-BRAINER)
+    ========================================= -->
+    <section class="section">
+      <h2 class="section-title">Même gratuit, c'est puissant</h2>
+      <p class="section-subtitle">Voici ce que vous obtenez sans débourser un sou</p>
+
+      <ul class="bullet-list">
+        <li><strong>0 % commission</strong> — Gardez 100 % de vos revenus</li>
+        <li><strong>Page web de présentation de votre commerce</strong></li>
+        <li><strong>Créer des promotions gratuitement*</strong> (*selon les offres du mois)</li>
+        <li><strong>Visibilité locale auprès des consommateurs de votre région</strong></li>
+        <li><strong>IA de base</strong> — Assistant marketing pour créer vos promotions</li>
+      </ul>
+
+      <div class="highlight-box">
+        <strong>Sans contrat. Sans carte de crédit. Sans risque.</strong>
+        <p>Commencez gratuitement et voyez les résultats par vous-même</p>
+      </div>
+    </section>
+
+    <!-- ========================================
+         SECTION 5 - OFFRE PRÉ-LANCEMENT (CLOSING)
+    ========================================= -->
+    <section class="section section-alt">
+      <h2 class="section-title">Cadeau de lancement 🎁</h2>
+
+      <div class="gift-card">
+        <div class="gift-badge">Offre exclusive</div>
+        <div class="gift-title">3 mois d'accès PREMIUM complet offerts</div>
+
+        <ul class="gift-list">
+          <li>Page web complète PREMIUM dédiée à votre commerce</li>
+          <li>Priorité d'affichage dans les résultats</li>
+          <li>Promotions illimitées</li>
+          <li>IA avancée avec analytics prédictifs</li>
+          <li>Statistiques détaillées en temps réel</li>
+          <li>Support prioritaire</li>
+        </ul>
+      </div>
+
+      <p class="section-subtitle" style="margin-top: 24px;">Réservé aux commerçants qui s'inscrivent avant le lancement officiel</p>
+    </section>
+
+    <!-- ========================================
+         SECTION 6 - CTA / FORMULAIRE
+         ⚠️ NE PAS MODIFIER LE CONTENU INTERNE ⚠️
+    ========================================= -->
+    <section class="form-section">
+      <div id="formContainer">
+        <h2 class="form-title">Recevez votre accès prioritaire</h2>
+        <p class="form-subtitle">Affilié : entrez d'abord votre numéro, puis l'email du commerçant</p>
+
+        <form id="emailForm">
+          <!-- CHAMPS HIDDEN POUR IDENTIFICATION DU RÔLE -->
+          <input type="hidden" name="role_consommateur" value="0">
+          <input type="hidden" name="role_commercant" value="1">
+          <input type="hidden" name="role_affilie" value="0">
+
+          <!-- CHAMP RÉFÉRENCE AFFILIÉ -->
+          <div class="form-group">
+            <label for="refAffilie" class="form-label">🎯 Votre numéro d'affiliation</label>
+            <input
+              type="text"
+              id="refAffilie"
+              name="refAffilie"
+              class="form-input"
+              placeholder="Ex: 1234567"
+              required
+              autocomplete="off"
+              maxlength="7"
+              pattern="\d{7}"
+            >
+            <div class="error-message" id="errorRefMessage">
+              Le numéro doit contenir exactement 7 chiffres
+            </div>
+          </div>
+
+          <!-- CHAMP EMAIL COMMERÇANT -->
+          <div class="form-group">
+            <label for="email" class="form-label">📧 Email du commerçant</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-input"
+              placeholder="commercant@example.com"
+              required
+              autocomplete="email"
+            >
+            <div class="error-message" id="errorMessage">
+              Veuillez entrer une adresse email valide
+            </div>
+          </div>
+
+          <button type="submit" class="btn-submit" id="submitBtn">
+            📧 Recevoir mon accès
+          </button>
+        </form>
+      </div>
+
+      <div class="success-message" id="successMessage">
+        <div class="success-icon">✅</div>
+        <div class="success-title">Email envoyé !</div>
+        <div class="success-text">
+          Vérifiez votre boîte de réception. Vous allez recevoir un email avec votre lien d'inscription personnalisé dans quelques instants.
+          <br><br>
+          <strong>Pensez à vérifier vos courriers indésirables.</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         FOOTER / LEGAL
+    ========================================= -->
+    <section class="footer">
+      <p class="footer-text">
+        <strong>RabaisLocal</strong> est actuellement en <strong>pré-lancement</strong>
+      </p>
+      <p class="footer-text">
+        Inscrivez-vous maintenant pour être parmi les premiers commerçants
+      </p>
+      <p class="footer-legal">
+        Lancement officiel : <strong>19 mars 2026</strong>
+      </p>
+      <p class="footer-legal">
+        © 2025 RabaisLocal - Fait avec 💙 au Québec
+      </p>
+    </section>
+  </div>
+
+  <!-- ========================================
+       JAVASCRIPT - NE PAS MODIFIER
+  ========================================= -->
+  <script>
+    // ==================== CONFIGURATION ====================
+    const CONFIG = {
+      refAffilie: '{{REF_AFFILIE}}', // Remplacer par la vraie ref ou laisser dynamique
+      redirectUrl: 'https://marketing.rabaislocal.com/page1-commercant.html',
+      webhookUrl: 'https://hook.us2.make.com/4xk94ufbnfviqqhnu02bk3hk3c4up1lf'
+    };
+
+    // ==================== AUTO-DETECT REF FROM URL ====================
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const refFromUrl = urlParams.get('ref');
+
+      if (refFromUrl) {
+        CONFIG.refAffilie = refFromUrl;
+        console.log('✅ Ref affilié détectée:', refFromUrl);
+      } else {
+        console.log('⚠️ Aucune ref affilié dans l\'URL, utilisation de la config par défaut');
+      }
+    });
+
+    // ==================== FORM VALIDATION ====================
+    const emailForm = document.getElementById('emailForm');
+    const refAffilieInput = document.getElementById('refAffilie');
+    const emailInput = document.getElementById('email');
+    const errorRefMessage = document.getElementById('errorRefMessage');
+    const errorMessage = document.getElementById('errorMessage');
+    const submitBtn = document.getElementById('submitBtn');
+    const formContainer = document.getElementById('formContainer');
+    const successMessage = document.getElementById('successMessage');
+
+    function isValidEmail(email) {
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return regex.test(email);
+    }
+
+    function isValidRef(ref) {
+      // Validation : exactement 7 chiffres uniquement
+      const regex = /^\d{7}$/;
+      return regex.test(ref.trim());
+    }
+
+    function showRefError(message) {
+      refAffilieInput.classList.add('error');
+      errorRefMessage.textContent = message;
+      errorRefMessage.classList.add('visible');
+    }
+
+    function hideRefError() {
+      refAffilieInput.classList.remove('error');
+      errorRefMessage.classList.remove('visible');
+    }
+
+    function showError(message) {
+      emailInput.classList.add('error');
+      errorMessage.textContent = message;
+      errorMessage.classList.add('visible');
+    }
+
+    function hideError() {
+      emailInput.classList.remove('error');
+      errorMessage.classList.remove('visible');
+    }
+
+    // ==================== REF AFFILIÉ INPUT VALIDATION ====================
+    refAffilieInput.addEventListener('input', () => {
+      if (refAffilieInput.value && !isValidRef(refAffilieInput.value)) {
+        showRefError('Le numéro doit contenir exactement 7 chiffres (ex: 1234567)');
+      } else {
+        hideRefError();
+      }
+    });
+
+    // ==================== EMAIL INPUT VALIDATION ====================
+    emailInput.addEventListener('input', () => {
+      if (emailInput.value && !isValidEmail(emailInput.value)) {
+        showError('Veuillez entrer une adresse email valide');
+      } else {
+        hideError();
+      }
+    });
+
+    // ==================== FORM SUBMISSION ====================
+    emailForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const refAffilie = refAffilieInput.value.trim();
+      const email = emailInput.value.trim();
+
+      // Validation référence affilié
+      if (!refAffilie) {
+        showRefError('Votre numéro d\'affiliation est requis');
+        refAffilieInput.focus();
+        return;
+      }
+
+      if (!isValidRef(refAffilie)) {
+        showRefError('Le numéro doit contenir exactement 7 chiffres (ex: 1234567)');
+        refAffilieInput.focus();
+        return;
+      }
+
+      // Validation email
+      if (!email) {
+        showError('L\'adresse email est requise');
+        emailInput.focus();
+        return;
+      }
+
+      if (!isValidEmail(email)) {
+        showError('Veuillez entrer une adresse email valide');
+        emailInput.focus();
+        return;
+      }
+
+      // Disable form
+      submitBtn.disabled = true;
+      submitBtn.textContent = '⏳ Envoi en cours...';
+
+      // Prepare data - UTILISE LA REF ENTRÉE PAR L'AFFILIÉ
+      const generatedLink = `${CONFIG.redirectUrl}?ref=${refAffilie}`;
+      const data = {
+        email: email,
+        lien_commercant: generatedLink,
+        ref: refAffilie,
+        role_consommateur: "0",
+        role_commercant: "1",
+        role_affilie: "0",
+        timestamp: new Date().toISOString()
+      };
+
+      console.log('📧 Données à envoyer:', data);
+
+      // Send to webhook or simulate
+      try {
+        const result = await sendToWebhook(data);
+
+        if (result.success) {
+          // Show success message
+          formContainer.classList.add('hidden');
+          successMessage.classList.add('visible');
+          successMessage.classList.add('fade-in');
+
+          console.log('✅ Email envoyé avec succès');
+
+          // Optional: Redirect after 5 seconds
+          setTimeout(() => {
+            // window.location.href = generatedLink;
+          }, 5000);
+        } else {
+          throw new Error('Échec de l\'envoi');
+        }
+      } catch (error) {
+        console.error('❌ Erreur:', error);
+
+        // Message d'erreur détaillé selon le type d'erreur
+        let errorMsg = 'Une erreur est survenue. Veuillez réessayer.';
+
+        if (error.message === 'Failed to fetch' || error.message.includes('Network')) {
+          errorMsg = '❌ Impossible de contacter le serveur. Vérifiez votre connexion internet.';
+        } else if (error.message === 'Webhook timeout') {
+          errorMsg = '⏱️ Le serveur met trop de temps à répondre. Réessayez dans quelques instants.';
+        } else if (error.message === 'Webhook failed') {
+          errorMsg = '⚠️ Le serveur a renvoyé une erreur. Contactez le support si le problème persiste.';
+        }
+
+        showError(errorMsg);
+        submitBtn.disabled = false;
+        submitBtn.textContent = '📧 Recevoir mon accès';
+      }
+    });
+
+    // ==================== WEBHOOK FUNCTION ====================
+    async function sendToWebhook(data) {
+      if (CONFIG.webhookUrl) {
+        // Real webhook call avec timeout de 10 secondes
+        try {
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+          const response = await fetch(CONFIG.webhookUrl, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+            signal: controller.signal
+          });
+
+          clearTimeout(timeoutId);
+
+          if (response.ok) {
+            return { success: true };
+          } else {
+            throw new Error('Webhook failed');
+          }
+        } catch (error) {
+          if (error.name === 'AbortError') {
+            throw new Error('Webhook timeout');
+          }
+          console.error('Webhook error:', error);
+          throw error;
+        }
+      } else {
+        // Simulation mode (for testing without webhook)
+        console.log('🧪 MODE SIMULATION - Pas de webhook configuré');
+        console.log('📧 Email simulé envoyé à:', data.email);
+        console.log('🔗 Lien:', data.lien_commercant);
+
+        // Simulate delay
+        await new Promise(resolve => setTimeout(resolve, 1500));
+
+        return { success: true };
+      }
+    }
+
+    // ==================== CONSOLE INFO ====================
+    console.log('%c🚀 RabaisLocal - Page Présentation Commerçant', 'font-size: 16px; font-weight: bold; color: #3E53A5;');
+    console.log('📱 Version: 2.0');
+    console.log('🔧 Mode:', CONFIG.webhookUrl ? 'Production (Webhook)' : 'Simulation (Test)');
+    console.log('🔗 URL de redirection:', CONFIG.redirectUrl);
+  </script>
+</body>
+</html>

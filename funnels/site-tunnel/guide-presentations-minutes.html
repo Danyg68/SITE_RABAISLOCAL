@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guide Présentations Minutes - RabaisLocal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #F5F8FF;
+      color: #1B2240;
+      line-height: 1.7;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      color: #3E53A5;
+      font-size: 32px;
+      margin-bottom: 10px;
+      border-bottom: 3px solid #FF6B35;
+      padding-bottom: 15px;
+    }
+
+    h2 {
+      color: #3E53A5;
+      font-size: 24px;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      border-left: 5px solid #FF6B35;
+      padding-left: 15px;
+    }
+
+    h3 {
+      color: #1B2240;
+      font-size: 20px;
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    .intro {
+      background: linear-gradient(135deg, #3E53A5 0%, #2c3e80 100%);
+      color: white;
+      padding: 25px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .warning-box {
+      background: #FFF3E0;
+      border-left: 5px solid #FF6B35;
+      padding: 20px;
+      margin: 25px 0;
+      border-radius: 8px;
+    }
+
+    .warning-box strong {
+      color: #E65100;
+      font-size: 18px;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .success-box {
+      background: #E8F5E9;
+      border-left: 5px solid #4CAF50;
+      padding: 20px;
+      margin: 25px 0;
+      border-radius: 8px;
+    }
+
+    .success-box strong {
+      color: #2E7D32;
+      font-size: 18px;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .info-box {
+      background: #E3F2FD;
+      border-left: 5px solid #2196F3;
+      padding: 20px;
+      margin: 25px 0;
+      border-radius: 8px;
+    }
+
+    .info-box strong {
+      color: #1565C0;
+      font-size: 18px;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .presentation-card {
+      border: 2px solid #E0E0E0;
+      border-radius: 12px;
+      padding: 25px;
+      margin: 25px 0;
+      transition: all 0.3s ease;
+    }
+
+    .presentation-card:hover {
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transform: translateY(-3px);
+    }
+
+    .presentation-card.commercant {
+      border-color: #E53935;
+      background: #FFEBEE;
+    }
+
+    .presentation-card.consommateur {
+      border-color: #4CAF50;
+      background: #E8F5E9;
+    }
+
+    .presentation-card.affilie {
+      border-color: #9C27B0;
+      background: #F3E5F5;
+    }
+
+    .presentation-card h3 {
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon {
+      font-size: 28px;
+    }
+
+    ul, ol {
+      margin: 15px 0 15px 25px;
+    }
+
+    li {
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #3E53A5;
+      color: white !important;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 10px 10px 10px 0;
+      transition: all 0.2s;
+    }
+
+    .btn:hover {
+      background: #2c3e80;
+      transform: translateY(-2px);
+    }
+
+    .btn-orange {
+      background: #FF6B35;
+    }
+
+    .btn-orange:hover {
+      background: #E55A2B;
+    }
+
+    .btn-green {
+      background: #4CAF50;
+    }
+
+    .btn-green:hover {
+      background: #388E3C;
+    }
+
+    .screenshot {
+      width: 100%;
+      max-width: 700px;
+      margin: 25px auto;
+      display: block;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      border: 3px solid #E0E0E0;
+    }
+
+    .steps {
+      counter-reset: step-counter;
+      list-style: none;
+      margin-left: 0;
+    }
+
+    .steps li {
+      counter-increment: step-counter;
+      position: relative;
+      padding-left: 50px;
+      margin-bottom: 25px;
+    }
+
+    .steps li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: linear-gradient(135deg, #3E53A5 0%, #2c3e80 100%);
+      color: white;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .example-box {
+      background: #FAFAFA;
+      border: 2px dashed #BDBDBD;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 15px 0;
+      font-style: italic;
+      color: #424242;
+    }
+
+    .quick-links {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin: 25px 0;
+      flex-wrap: wrap;
+    }
+
+    .quick-link-btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      color: white !important;
+      transition: all 0.2s;
+      border: none;
+    }
+
+    .quick-link-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+
+    .quick-link-btn.commercant {
+      background: #E53935;
+    }
+
+    .quick-link-btn.consommateur {
+      background: #4CAF50;
+    }
+
+    .quick-link-btn.affilie {
+      background: #9C27B0;
+    }
+
+    @media (max-width: 768px) {
+      .quick-links {
+        flex-direction: column;
+      }
+
+      .quick-link-btn {
+        width: 100%;
+      }
+      .container {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 26px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+
+      .intro {
+        padding: 20px;
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <h1>⏱️ Guide Présentations Minutes</h1>
+
+    <div class="intro">
+      Les <strong>Présentations Minutes</strong> sont des pages mobiles ultra-optimisées qui te permettent de présenter RabaisLocal en <strong>90 secondes</strong> et de capturer directement l'email de tes prospects. Elles font tout le travail pour toi : présentation claire, formulaire intégré et envoi automatique du lien d'inscription personnalisé.
+    </div>
+
+    <!-- Liens rapides vers les 3 pages -->
+    <div class="quick-links">
+      <a href="assets/presentation-entreprise/presentation-commercant.html" target="_blank" class="quick-link-btn commercant">📱 Page Commerçant</a>
+      <a href="assets/presentation-entreprise/presentation-consommateur.html" target="_blank" class="quick-link-btn consommateur">💚 Page Consommateur</a>
+      <a href="assets/presentation-entreprise/presentation-affilie.html" target="_blank" class="quick-link-btn affilie">💜 Page Affilié</a>
+    </div>
+
+    <!-- ========================================
+         AVANT DE COMMENCER - IMPORTANT
+    ========================================= -->
+    <div class="warning-box">
+      <strong>⚠️ AVANT DE COMMENCER - ABSOLUMENT ESSENTIEL</strong>
+      <p>Avant d'utiliser ces pages, tu DOIS remplir <strong>TOUTES tes informations</strong> dans ton espace membre, surtout :</p>
+      <ul style="margin-top: 10px;">
+        <li><strong>Ton numéro de téléphone</strong> — Il sera envoyé par email avec le lien d'inscription pour que tes filleuls puissent te contacter</li>
+        <li><strong>Ton numéro de référencement</strong> — Indispensable pour que les inscriptions soient créditées à ton compte</li>
+        <li>Ton nom, email et autres informations de profil</li>
+      </ul>
+    </div>
+
+    <h2>📍 Où trouver et mettre à jour tes informations</h2>
+
+    <h3>1. Accéder à ton espace membre</h3>
+    <p>Connecte-toi à ton espace membre RabaisLocal :</p>
+    <a href="https://partenaires.rabaislocal.com/login" target="_blank" class="btn btn-green">🔐 Connexion Espace Membre</a>
+
+    <h3>2. Trouver ton numéro de référencement</h3>
+    <p>Une fois connecté, tu verras ton <strong>Lien d'affiliation</strong> sur ta page d'accueil. Ton numéro de référencement est visible dans ce lien.</p>
+
+    <img src="assets/images/screenshot-lien-affiliation.png" alt="Capture d'écran du lien d'affiliation" class="screenshot">
+
+    <div class="info-box">
+      <strong>💡 Exemple de lien d'affiliation</strong>
+      <p>Si ton lien est : <code>https://partenaires.rabaislocal.com/?ref=9999999&utm_source=affilie</code></p>
+      <p>Ton numéro de référencement est : <strong>9999999</strong></p>
+    </div>
+
+    <h3>3. Mettre à jour ton numéro de téléphone</h3>
+    <p>Clique sur <strong>Réglages</strong> dans le menu en haut de ton espace membre, puis remplis ton numéro de téléphone avec l'indicatif du pays (+1 pour Canada).</p>
+
+    <img src="assets/images/screenshot-reglages-telephone.png" alt="Capture d'écran des réglages avec le numéro de téléphone" class="screenshot">
+
+    <a href="https://partenaires.rabaislocal.com/settings" target="_blank" class="btn btn-orange">⚙️ Mettre à jour mes informations</a>
+
+    <div class="warning-box">
+      <strong>🚨 Pourquoi c'est CRUCIAL</strong>
+      <p>Quand tu captures l'email d'un prospect, RabaisLocal lui envoie automatiquement un email avec :</p>
+      <ul style="margin-top: 10px;">
+        <li>Le lien d'inscription personnalisé avec TON numéro de référencement</li>
+        <li><strong>Tes coordonnées (nom, téléphone, email)</strong> pour qu'il puisse te contacter s'il a des questions</li>
+      </ul>
+      <p style="margin-top: 15px;">Si tu n'as pas rempli ton téléphone, le prospect ne pourra pas te joindre et tu risques de perdre l'inscription !</p>
+    </div>
+
+    <!-- ========================================
+         LES 3 PAGES DE PRÉSENTATION
+    ========================================= -->
+    <h2>📱 Les 3 Pages de Présentation</h2>
+
+    <p>Tu disposes de <strong>3 pages différentes</strong>, chacune adaptée à un public spécifique :</p>
+
+    <!-- COMMERÇANT -->
+    <div class="presentation-card commercant">
+      <h3><span class="icon">📱</span> Page Présentation Commerçant</h3>
+      <p><strong>Pour qui :</strong> Propriétaires de commerces locaux (restaurants, boutiques, salons, etc.)</p>
+      <p><strong>Objectif :</strong> Leur montrer comment RabaisLocal peut attirer plus de clients dans leur commerce</p>
+      <p><strong>Durée :</strong> ~90 secondes de lecture</p>
+
+      <a href="assets/presentation-entreprise/presentation-commercant.html" target="_blank" class="btn" style="background: #E53935;">📲 Ouvrir la page Commerçant</a>
+
+      <h4 style="margin-top: 25px;">💡 Exemples d'utilisation</h4>
+
+      <div class="example-box">
+        <strong>Scénario 1 : En personne au commerce</strong>
+        <p>Tu entres dans un restaurant local. Tu discutes avec le propriétaire et lui dis : "J'ai une plateforme qui pourrait t'aider à attirer plus de clients. Je te montre en 2 minutes sur mon téléphone ?"</p>
+        <p>→ Tu lui montres la page sur ton mobile. Il lit pendant 90 secondes. À la fin, tu entres ton numéro de référencement et son email. Terminé !</p>
+      </div>
+
+      <div class="example-box">
+        <strong>Scénario 2 : Par SMS/WhatsApp</strong>
+        <p>Tu envoies ce message à un commerçant que tu connais :</p>
+        <p>"Salut Marc ! J'ai découvert une plateforme pour aider les commerces locaux à attirer plus de clients. Regarde cette présentation rapide : [lien]. Si ça t'intéresse, laisse-moi ton email à la fin et je t'envoie les détails !"</p>
+      </div>
+
+      <div class="example-box">
+        <strong>Scénario 3 : Réseautage / Chambre de commerce</strong>
+        <p>Tu participes à un événement de réseautage. Tu rencontres plusieurs commerçants. Au lieu de tout expliquer verbalement, tu leur donnes le lien de la page sur ta carte de visite ou par QR code.</p>
+      </div>
+    </div>
+
+    <!-- CONSOMMATEUR -->
+    <div class="presentation-card consommateur">
+      <h3><span class="icon">💚</span> Page Présentation Consommateur</h3>
+      <p><strong>Pour qui :</strong> Consommateurs qui aiment économiser chez les commerces locaux</p>
+      <p><strong>Objectif :</strong> Leur montrer comment trouver des rabais locaux près de chez eux</p>
+      <p><strong>Durée :</strong> ~90 secondes de lecture</p>
+
+      <a href="assets/presentation-entreprise/presentation-consommateur.html" target="_blank" class="btn" style="background: #4CAF50;">📲 Ouvrir la page Consommateur</a>
+
+      <h4 style="margin-top: 25px;">💡 Exemples d'utilisation</h4>
+
+      <div class="example-box">
+        <strong>Scénario 1 : Famille et amis</strong>
+        <p>Tu envoies ce message à ton groupe WhatsApp familial :</p>
+        <p>"Hey ! J'ai trouvé une plateforme pour économiser chez les commerces locaux. Regardez ça : [lien]. Laissez votre email à la fin si vous voulez en profiter !"</p>
+      </div>
+
+      <div class="example-box">
+        <strong>Scénario 2 : Réseaux sociaux</strong>
+        <p>Tu publies sur Facebook :</p>
+        <p>"Nouveau en ville ! Je cherchais des rabais chez les commerces locaux et j'ai découvert RabaisLocal. C'est gratuit et ça fonctionne partout au Québec. Voici la présentation rapide : [lien]"</p>
+      </div>
+
+      <div class="example-box">
+        <strong>Scénario 3 : En personne</strong>
+        <p>Tu discutes avec un voisin qui se plaint des prix. Tu lui dis : "J'ai quelque chose pour toi. Regarde ça sur ton téléphone" et tu lui montres la page.</p>
+      </div>
+    </div>
+
+    <!-- AFFILIÉ -->
+    <div class="presentation-card affilie">
+      <h3><span class="icon">💜</span> Page Présentation Affilié</h3>
+      <p><strong>Pour qui :</strong> Personnes intéressées par générer des revenus en recommandant RabaisLocal</p>
+      <p><strong>Objectif :</strong> Leur expliquer le programme d'affiliation 2.0 sans vente</p>
+      <p><strong>Durée :</strong> ~2-3 minutes de lecture</p>
+
+      <a href="assets/presentation-entreprise/presentation-affilie.html" target="_blank" class="btn" style="background: #9C27B0;">📲 Ouvrir la page Affilié</a>
+
+      <h4 style="margin-top: 25px;">💡 Exemples d'utilisation</h4>
+
+      <div class="example-box">
+        <strong>Scénario 1 : Personne qui cherche un revenu d'appoint</strong>
+        <p>Tu discutes avec un ami qui cherche à arrondir ses fins de mois. Tu lui dis :</p>
+        <p>"J'ai commencé à recommander une plateforme locale et je touche des commissions récurrentes sans vendre quoi que ce soit. Regarde cette présentation rapide : [lien]. Si ça t'intéresse, laisse ton email à la fin."</p>
+      </div>
+
+      <div class="example-box">
+        <strong>Scénario 2 : Groupe Facebook / LinkedIn</strong>
+        <p>Tu publies dans un groupe d'entrepreneurs :</p>
+        <p>"Pour ceux qui cherchent un revenu passif sans vente ni MLM, j'ai découvert le programme d'affiliation 2.0 de RabaisLocal. Voici la présentation complète : [lien]. C'est basé sur l'utilisation réelle, pas sur le recrutement."</p>
+      </div>
+
+      <div class="example-box">
+        <strong>Scénario 3 : Par email</strong>
+        <p>Tu envoies un email à des contacts professionnels :</p>
+        <p>"Bonjour, je voulais te parler d'une opportunité intéressante. RabaisLocal lance un programme d'affiliation unique : commissions à vie sur l'utilisation, pas de vente obligatoire. Voici tous les détails : [lien]"</p>
+      </div>
+    </div>
+
+    <!-- ========================================
+         COMMENT UTILISER LES PAGES
+    ========================================= -->
+    <h2>🎯 Comment utiliser les pages efficacement</h2>
+
+    <ol class="steps">
+      <li>
+        <strong>Choisis la bonne page selon ton prospect</strong>
+        <p>Commerçant → Page rouge | Consommateur → Page verte | Futur affilié → Page violette</p>
+      </li>
+
+      <li>
+        <strong>Ouvre la page sur ton téléphone ou envoie le lien</strong>
+        <p>Si tu es en personne, montre la page directement. Sinon, envoie le lien par SMS, email, WhatsApp, Messenger, etc.</p>
+      </li>
+
+      <li>
+        <strong>Laisse la page faire le travail</strong>
+        <p>La page explique tout en 90 secondes (2-3 minutes pour la page affilié). Tu n'as rien à expliquer !</p>
+      </li>
+
+      <li>
+        <strong>Entre TON numéro de référencement (7 chiffres)</strong>
+        <p>C'est CRUCIAL ! Sans ton numéro, l'inscription ne sera pas créditée à ton compte.</p>
+      </li>
+
+      <li>
+        <strong>Capture l'email du prospect</strong>
+        <p>Le prospect entre son email. RabaisLocal lui envoie automatiquement un email avec :</p>
+        <ul style="margin-top: 10px;">
+          <li>Le lien d'inscription personnalisé avec ton numéro de référencement</li>
+          <li>Tes coordonnées pour qu'il puisse te contacter</li>
+        </ul>
+      </li>
+
+      <li>
+        <strong>Le prospect reçoit l'email et s'inscrit</strong>
+        <p>Il clique sur le lien dans l'email et complète son inscription. L'inscription est automatiquement liée à ton compte !</p>
+      </li>
+    </ol>
+
+    <!-- ========================================
+         CONSEILS PRATIQUES
+    ========================================= -->
+    <h2>💡 Conseils pratiques</h2>
+
+    <div class="success-box">
+      <strong>✅ Ce qui fonctionne bien</strong>
+      <ul style="margin-top: 10px;">
+        <li>Montrer la page en personne sur ton téléphone (meilleur taux de conversion)</li>
+        <li>Envoyer le lien avec un court message personnalisé, pas juste le lien seul</li>
+        <li>Utiliser le lien après une conversation, pas à froid</li>
+        <li>Suivre avec un message 24h après l'envoi : "As-tu eu le temps de regarder ?"</li>
+      </ul>
+    </div>
+
+    <div class="warning-box">
+      <strong>⚠️ Erreurs à éviter</strong>
+      <ul style="margin-top: 10px;">
+        <li>Oublier d'entrer ton numéro de référencement (l'inscription ne sera pas créditée !)</li>
+        <li>Ne pas avoir rempli ton profil et ton téléphone dans l'espace membre</li>
+        <li>Envoyer le lien sans contexte (spam)</li>
+        <li>Vouloir tout expliquer verbalement au lieu de laisser la page faire le travail</li>
+        <li>Utiliser la mauvaise page (commerçant vs consommateur vs affilié)</li>
+      </ul>
+    </div>
+
+    <!-- ========================================
+         QUESTIONS FRÉQUENTES
+    ========================================= -->
+    <h2>❓ Questions fréquentes</h2>
+
+    <h3>Q: Dois-je créer un compte différent pour chaque type de prospect ?</h3>
+    <p><strong>R:</strong> Non ! Tu utilises le MÊME numéro de référencement pour les 3 pages. Le système sait automatiquement quel type d'inscription c'est (commerçant, consommateur ou affilié) grâce aux champs cachés dans le formulaire.</p>
+
+    <h3>Q: Que se passe-t-il après que le prospect a entré son email ?</h3>
+    <p><strong>R:</strong> RabaisLocal envoie automatiquement un email au prospect avec :</p>
+    <ul>
+      <li>Le lien d'inscription personnalisé (avec ton numéro de référencement)</li>
+      <li>Tes coordonnées (nom, téléphone, email) pour qu'il puisse te contacter</li>
+      <li>Les instructions pour compléter son inscription</li>
+    </ul>
+
+    <h3>Q: Combien de temps le lien d'inscription est-il valide ?</h3>
+    <p><strong>R:</strong> Le lien n'expire jamais. Le prospect peut s'inscrire quand il veut, et l'inscription sera toujours créditée à ton compte.</p>
+
+    <h3>Q: Puis-je personnaliser les pages ?</h3>
+    <p><strong>R:</strong> Non, les pages sont standardisées pour garantir un message cohérent. Par contre, tu peux personnaliser ton message d'introduction quand tu envoies le lien.</p>
+
+    <h3>Q: Dois-je suivre avec le prospect après qu'il ait reçu l'email ?</h3>
+    <p><strong>R:</strong> Oui, c'est recommandé ! Envoie un message 24-48h après : "As-tu eu le temps de t'inscrire ? As-tu des questions ?" Ça augmente considérablement le taux de conversion.</p>
+
+    <!-- ========================================
+         LIENS RAPIDES
+    ========================================= -->
+    <h2>🔗 Liens rapides</h2>
+
+    <div style="margin-top: 25px;">
+      <a href="assets/presentation-entreprise/presentation-commercant.html" target="_blank" class="btn" style="background: #E53935;">📱 Page Commerçant</a>
+      <a href="assets/presentation-entreprise/presentation-consommateur.html" target="_blank" class="btn" style="background: #4CAF50;">💚 Page Consommateur</a>
+      <a href="assets/presentation-entreprise/presentation-affilie.html" target="_blank" class="btn" style="background: #9C27B0;">💜 Page Affilié</a>
+    </div>
+
+    <div style="margin-top: 15px;">
+      <a href="https://partenaires.rabaislocal.com/settings" target="_blank" class="btn btn-orange">⚙️ Mettre à jour mes informations</a>
+      <a href="https://partenaires.rabaislocal.com/login" target="_blank" class="btn btn-green">🔐 Connexion Espace Membre</a>
+    </div>
+
+    <div style="margin-top: 15px;">
+      <a href="documents-utiles.html" class="btn">← Retour aux Documents Utiles</a>
+    </div>
+
+    <!-- ========================================
+         FOOTER
+    ========================================= -->
+    <div style="margin-top: 50px; padding-top: 25px; border-top: 2px solid #E0E0E0; text-align: center; color: #666;">
+      <p style="font-size: 14px;">© 2025 RabaisLocal - Programme d'Affiliation 2.0</p>
+      <p style="font-size: 13px; margin-top: 10px;">Lancement officiel : 19 mars 2026</p>
+    </div>
+
+  </div>
+
+</body>
+</html>
