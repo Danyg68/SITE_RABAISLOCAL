@@ -296,6 +296,46 @@
     </div>
 
     <!-- ========================================
+         📱 PRÉSENTATIONS MINUTES
+    ========================================= -->
+    <h2 class="rl-section-title">📱 Présentations Minutes</h2>
+    <p style="margin-bottom: 20px; color: #666; font-size: 14px;">
+      Pages mobiles optimisées pour présenter RabaisLocal en 90 secondes.
+      <a href="guide-presentations-minutes.html" style="color: #3E53A5; font-weight: 600; text-decoration: underline;">📖 Voir le guide complet et accès aux présentations</a>
+    </p>
+
+    <div class="rl-grid">
+
+      <!-- Page Présentation Commerçant -->
+      <div class="rl-card" style="border: 2px solid #E53935;">
+        <div class="rl-card-icon">📱</div>
+        <h3>Page Présentation Commerçant</h3>
+        <p><strong>⚠️ IMPORTANT :</strong> Avant d'utiliser cette page, <strong>remplis TOUTES tes informations</strong> dans ton espace membre, <strong>surtout ton numéro de téléphone</strong>. Cela permet aux commerçants de te contacter facilement.</p>
+        <p style="margin-top: 10px; font-size: 13px; color: #5B6385;">Page mobile optimisée pour présenter rapidement RabaisLocal aux commerçants locaux. Entre ton numéro d'affiliation (7 chiffres) et capture leur email.</p>
+        <a href="assets/presentation-entreprise/presentation-commercant.html" target="_blank" class="rl-btn rl-btn-single" style="background: #E53935;">📲 Ouvrir la page</a>
+      </div>
+
+      <!-- Page Présentation Consommateur -->
+      <div class="rl-card" style="border: 2px solid #4CAF50;">
+        <div class="rl-card-icon">💚</div>
+        <h3>Page Présentation Consommateur</h3>
+        <p><strong>⚠️ IMPORTANT :</strong> Avant d'utiliser cette page, <strong>remplis TOUTES tes informations</strong> dans ton espace membre, <strong>surtout ton numéro de téléphone</strong>. Cela permet aux consommateurs de te contacter facilement.</p>
+        <p style="margin-top: 10px; font-size: 13px; color: #5B6385;">Page mobile optimisée pour présenter rapidement RabaisLocal aux consommateurs. Capture directement leur email pour leur envoyer leur accès.</p>
+        <a href="assets/presentation-entreprise/presentation-consommateur.html" target="_blank" class="rl-btn rl-btn-single" style="background: #4CAF50;">📲 Ouvrir la page</a>
+      </div>
+
+      <!-- Page Présentation Affilié -->
+      <div class="rl-card" style="border: 2px solid #9C27B0;">
+        <div class="rl-card-icon">💜</div>
+        <h3>Page Présentation Affilié</h3>
+        <p><strong>⚠️ IMPORTANT :</strong> Avant d'utiliser cette page, <strong>remplis TOUTES tes informations</strong> dans ton espace membre, <strong>surtout ton numéro de téléphone</strong>. Cela permet aux futurs affiliés de te contacter facilement.</p>
+        <p style="margin-top: 10px; font-size: 13px; color: #5B6385;">Page mobile optimisée pour présenter le programme d'affiliation 2.0 aux prospects intéressés. Explique le concept sans vente et capture leur email.</p>
+        <a href="assets/presentation-entreprise/presentation-affilie.html" target="_blank" class="rl-btn rl-btn-single" style="background: #9C27B0;">📲 Ouvrir la page</a>
+      </div>
+
+    </div>
+
+    <!-- ========================================
          💰 PLANS DE RÉMUNÉRATION
     ========================================= -->
     <h2 class="rl-section-title">💰 Plans de Rémunération</h2>
@@ -443,6 +483,15 @@
         <a href="assets/documents/presentation-rabaislocal.pptx" download class="rl-btn rl-btn-outline rl-btn-single">📥 Télécharger PowerPoint</a>
       </div>
 
+      <!-- Présentations Minutes - Guide -->
+      <div class="rl-card" style="border: 2px solid #FF6B35;">
+        <div class="corner-ribbon" style="background: linear-gradient(135deg, #FF6B35 0%, #E55A2B 100%);">Nouveauté</div>
+        <div class="rl-card-icon">⏱️</div>
+        <h3>Présentations Minutes</h3>
+        <p>Apprends à utiliser efficacement les 3 pages de présentation mobile pour recruter commerçants, consommateurs et affiliés en 90 secondes.</p>
+        <a href="guide-presentations-minutes.html" class="rl-btn rl-btn-single" style="background: #FF6B35;">📖 Voir le guide complet et accès aux présentations</a>
+      </div>
+
     </div>
 
     <!-- ========================================
@@ -468,81 +517,6 @@
     </div>
 
   </div>
-
-  <!-- Script pour gestion du REF -->
-  <script>
-  (function() {
-    'use strict';
-
-    // Fonctions utilitaires
-    function getLS(key) {
-      try { return localStorage.getItem(key) || ''; } catch(e) { return ''; }
-    }
-
-    function setLS(key, val) {
-      try { localStorage.setItem(key, val); } catch(e) {}
-    }
-
-    function getCookie(name) {
-      const val = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
-      return val ? decodeURIComponent(val.pop()) : '';
-    }
-
-    function setCookie(name, val, days) {
-      const d = new Date();
-      d.setTime(d.getTime() + days * 86400000);
-      document.cookie = name + '=' + encodeURIComponent(val) + ';expires=' + d.toUTCString() + ';path=/';
-    }
-
-    function sanitize(str) {
-      return (str || '').replace(/[^a-zA-Z0-9_-]/g, '');
-    }
-
-    // Récupérer le REF
-    const urlParams = new URLSearchParams(window.location.search);
-    let REF = sanitize(urlParams.get('ref') || urlParams.get('rl_ref') || getLS('rl_ref') || getCookie('rl_ref'));
-
-    if (REF) {
-      setLS('rl_ref', REF);
-      setCookie('rl_ref', REF, 180);
-      console.log('✅ REF capturé:', REF);
-    }
-
-    // Propager le REF sur tous les liens
-    function propagateLinks() {
-      if (!REF) return;
-
-      document.querySelectorAll('a[href]').forEach(function(link) {
-        const href = link.getAttribute('href');
-
-        if (!href ||
-            href.startsWith('mailto:') ||
-            href.startsWith('tel:') ||
-            href.startsWith('javascript:') ||
-            href.startsWith('#')) {
-          return;
-        }
-
-        try {
-          const url = new URL(href, window.location.origin);
-          if (!url.searchParams.get('ref') && !url.searchParams.get('rl_ref')) {
-            url.searchParams.set('ref', REF);
-            link.setAttribute('href', url.toString());
-          }
-        } catch(e) {
-          if (href.indexOf('?') === -1) {
-            link.setAttribute('href', href + '?ref=' + encodeURIComponent(REF));
-          } else if (!/[?&](ref|rl_ref)=/i.test(href)) {
-            link.setAttribute('href', href + '&ref=' + encodeURIComponent(REF));
-          }
-        }
-      });
-    }
-
-    // Exécution
-    window.addEventListener('load', propagateLinks);
-  })();
-  </script>
 
 </body>
 </html>
