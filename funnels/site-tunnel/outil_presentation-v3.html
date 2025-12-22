@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centre de Ressources - RabaisLocal Affiliés & Fondateurs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+  <style>
+    :root {
+      /* Brand Colors - Modernized */
+      --primary: #3E53A5;
+      --primary-dark: #2c3e80;
+      --primary-light: #F0F4FF;
+
+      --accent: #FF8C42;
+      --accent-hover: #ff7b29;
+
+      --bg-body: #F8FAFC;
+      --bg-card: #FFFFFF;
+
+      --text-main: #1E293B;
+      --text-muted: #64748B;
+
+      --b-radius: 20px;
+      --b-radius-sm: 12px;
+
+      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+      --shadow-glow: 0 0 20px rgba(62, 83, 165, 0.15);
+
+      --nav-height: 80px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s ease;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    /* =========================================
+       ANIMATIONS
+    ========================================= */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-100 {
+      transition-delay: 0.1s;
+    }
+
+    .delay-200 {
+      transition-delay: 0.2s;
+    }
+
+    .delay-300 {
+      transition-delay: 0.3s;
+    }
+
+    /* =========================================
+       STICKY NAVIGATION
+    ========================================= */
+    .sticky-nav {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      width: 90%;
+      max-width: 1200px;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 100px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      padding: 12px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .sticky-nav.scrolled {
+      top: 10px;
+      padding: 10px 25px;
+      width: 95%;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-brand {
+      font-weight: 800;
+      color: var(--primary);
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-brand span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-item {
+      color: var(--text-muted);
+      font-weight: 500;
+      font-size: 15px;
+      position: relative;
+      cursor: pointer;
+      padding: 5px 0;
+    }
+
+    .nav-item:hover,
+    .nav-item.active {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .nav-item::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+      border-radius: 2px;
+    }
+
+    .nav-item:hover::after,
+    .nav-item.active::after {
+      width: 100%;
+    }
+
+    /* Mobile Nav */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--text-main);
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: 80px;
+      /* Below nav */
+      left: 50%;
+      transform: translateX(-50%) translateY(-20px);
+      width: 90%;
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 999;
+      flex-direction: column;
+      text-align: center;
+      gap: 15px;
+    }
+
+    .mobile-menu.open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* =========================================
+       HERO SECTION
+    ========================================= */
+    .hero {
+      position: relative;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 140px 20px 120px 20px;
+      /* Added top padding for fixed nav */
+      text-align: center;
+      overflow: hidden;
+      border-radius: 0 0 50px 50px;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -20%;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+      border-radius: 50%;
+      animation: float 20s infinite ease-in-out;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255, 140, 66, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+      border-radius: 50%;
+      animation: float 15s infinite ease-in-out reverse;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translate(0, 0);
+      }
+
+      50% {
+        transform: translate(30px, 50px);
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 800;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+      line-height: 1.2;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero p {
+      font-size: clamp(16px, 2vw, 20px);
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 700px;
+      margin: 0 auto 30px auto;
+      font-weight: 300;
+    }
+
+    .tag-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 10px 24px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 700;
+      color: white;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .tag-pill:hover {
+      transform: scale(1.05);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .tag-pulse {
+      width: 10px;
+      height: 10px;
+      background: #FFD180;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+      box-shadow: 0 0 0 0 rgba(255, 209, 128, 0.7);
+    }
+
+    /* =========================================
+       MAIN LAYOUT
+    ========================================= */
+    .container {
+      max-width: 1200px;
+      margin: -60px auto 40px auto;
+      /* Overlap hero */
+      padding: 0 20px;
+      position: relative;
+      z-index: 5;
+    }
+
+    .section {
+      margin-bottom: 100px;
+      padding-top: 120px;
+      margin-top: -120px;
+      /* Offset for anchor links */
+    }
+
+    .section-header {
+      margin-bottom: 50px;
+      text-align: center;
+    }
+
+    .section-title {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--text-main);
+      display: inline-block;
+      position: relative;
+      margin-bottom: 10px;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--accent);
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
+    .section-desc {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* =========================================
+       WIZARD / TIMELINE START
+    ========================================= */
+    .start-card {
+      background: white;
+      border-radius: var(--b-radius);
+      box-shadow: var(--shadow-lg);
+      padding: 50px;
+      margin-bottom: 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 24px;
+      top: 30px;
+      bottom: 30px;
+      width: 2px;
+      background: #E2E8F0;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 50px;
+      padding-left: 80px;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .step-number {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 50px;
+      height: 50px;
+      background: var(--bg-card);
+      border: 3px solid var(--accent);
+      color: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 20px;
+      z-index: 2;
+      transition: all 0.3s ease;
+    }
+
+    .timeline-item:hover .step-number {
+      background: var(--accent);
+      color: white;
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(255, 140, 66, 0.4);
+    }
+
+    .step-content {
+      transition: transform 0.3s ease;
+    }
+
+    .step-title {
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .step-desc {
+      font-size: 16px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    /* Special Highlights for Step 5 & 6 */
+    .step-highlight-red .step-number {
+      border-color: #E53935;
+      color: #E53935;
+    }
+
+    .step-highlight-red:hover .step-number {
+      background: #E53935;
+      color: white;
+      box-shadow: 0 0 20px rgba(229, 57, 53, 0.4);
+    }
+
+    .step-highlight-green .step-number {
+      border-color: #4CAF50;
+      color: #4CAF50;
+    }
+
+    .step-highlight-green:hover .step-number {
+      background: #4CAF50;
+      color: white;
+      box-shadow: 0 0 20px rgba(76, 175, 80, 0.4);
+    }
+
+    /* =========================================
+       RESOURCE GRID
+    ========================================= */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 30px;
+    }
+
+    .resource-card {
+      background: white;
+      border-radius: var(--b-radius);
+      padding: 30px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 1px solid #F1F5F9;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .resource-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(62, 83, 165, 0.2);
+    }
+
+    .card-icon {
+      font-size: 36px;
+      margin-bottom: 20px;
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 16px;
+      background: var(--bg-body);
+      transition: transform 0.3s ease;
+    }
+
+    .resource-card:hover .card-icon {
+      transform: scale(1.1) rotate(5deg);
+      background: var(--primary-light);
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 10px;
+    }
+
+    .card-desc {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 25px;
+      flex-grow: 1;
+      line-height: 1.6;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      box-shadow: 0 4px 10px rgba(62, 83, 165, 0.2);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(62, 83, 165, 0.3);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--text-main);
+      border: 2px solid #E2E8F0;
+    }
+
+    .btn-secondary:hover {
+      background: #f8fafc;
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-danger {
+      background: #E53935;
+      color: white;
+      box-shadow: 0 4px 10px rgba(229, 57, 53, 0.2);
+    }
+
+    .btn-danger:hover {
+      transform: translateY(-2px);
+      background: #c62828;
+    }
+
+    .btn-copy {
+      flex: 0 0 46px;
+      /* Square button */
+      background: #F1F5F9;
+      color: var(--text-muted);
+    }
+
+    .btn-copy:hover {
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    /* Badges */
+    .badge-corner {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #DEF7EC;
+      color: #03543F;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-corner.hot {
+      background: #FEF3C7;
+      color: #92400E;
+    }
+
+    /* =========================================
+       VIDEOS Grid
+    ========================================= */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .video-thumb {
+      background: #1a202c;
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      position: relative;
+      margin-bottom: 20px;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .video-thumb:hover {
+      transform: scale(1.02);
+    }
+
+    .video-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+
+    .video-thumb:hover img {
+      opacity: 1;
+    }
+
+    .play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: var(--primary);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s;
+    }
+
+    .video-thumb:hover .play-btn {
+      transform: translate(-50%, -50%) scale(1.1);
+      background: white;
+    }
+
+    /* =========================================
+       INFO BOXES
+    ========================================= */
+    .info-box {
+      background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%);
+      border-radius: var(--b-radius);
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+      margin-top: 50px;
+      border: 1px solid rgba(255, 193, 7, 0.3);
+    }
+
+    .info-box::before {
+      content: '💡';
+      position: absolute;
+      right: -20px;
+      top: -20px;
+      font-size: 150px;
+      opacity: 0.1;
+      transform: rotate(20deg);
+    }
+
+    /* =========================================
+       FOOTER
+    ========================================= */
+    footer {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-muted);
+      font-size: 14px;
+      border-top: 1px solid #E2E8F0;
+      background: white;
+      margin-top: 100px;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #1E293B;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 50px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+      transform: translateY(150px);
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 500;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .toast.show {
+      transform: translateY(0);
+    }
+
+    /* Animation Keyframes */
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(255, 209, 128, 0.7);
+      }
+
+      70% {
+        box-shadow: 0 0 0 15px rgba(255, 209, 128, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(255, 209, 128, 0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .sticky-nav {
+        width: 92%;
+        padding: 10px 20px;
+        border-radius: 16px;
+        top: 15px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .hero {
+        padding-top: 120px;
+        border-radius: 0 0 30px 30px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .container {
+        padding: 0 15px;
+        margin-top: -30px;
+      }
+
+      .start-card {
+        padding: 25px 20px;
+      }
+
+      .timeline::before {
+        left: 19px;
+      }
+
+      .timeline-item {
+        padding-left: 60px;
+      }
+
+      .step-number {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+      }
+
+      .section-title {
+        font-size: 28px;
+      }
+
+      .card-actions {
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .btn-copy {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="toast">
+    <span>✅ Lien copié avec succès !</span>
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav class="sticky-nav">
+    <div class="nav-brand">
+      RabaisLocal<span>.</span>
+    </div>
+    <ul class="nav-links">
+      <li class="nav-item active" onclick="scrollToSection('start')">🚀 Débuter</li>
+      <li class="nav-item" onclick="scrollToSection('tools')">📦 Outils</li>
+      <li class="nav-item" onclick="scrollToSection('videos')">🎥 Vidéos</li>
+      <li class="nav-item" onclick="scrollToSection('legal')">⚖️ Légal</li>
+    </ul>
+
+    <div style="display: flex; gap: 15px; align-items: center;">
+      <a href="https://partenaires.rabaislocal.com/login" class="btn btn-primary"
+        style="padding: 10px 20px; box-shadow: none;">Connexion</a>
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <li class="nav-item" onclick="scrollToSection('start'); toggleMobileMenu()">🚀 Débuter</li>
+    <li class="nav-item" onclick="scrollToSection('tools'); toggleMobileMenu()">📦 Outils</li>
+    <li class="nav-item" onclick="scrollToSection('videos'); toggleMobileMenu()">🎥 Vidéos</li>
+    <li class="nav-item" onclick="scrollToSection('legal'); toggleMobileMenu()">⚖️ Légal</li>
+  </div>
+
+  <!-- HERO SECTION -->
+  <header class="hero">
+    <div class="hero-content fade-up">
+      <img
+        src="https://statics.myclickfunnels.com/workspace/jklqVP/image/17823503/file/d5fb15091926d11524543af90a9a5e26.png"
+        alt="RabaisLocal" style="height: 50px; margin-bottom: 25px; filter: brightness(0) invert(1);">
+
+      <h1>Le QG des Partenaires<br>& Fondateurs</h1>
+      <p>La ressource unique pour vous former, récupérer vos outils marketing et bâtir votre empire local.</p>
+
+      <div class="tag-pill delay-100">
+        <div class="tag-pulse"></div>
+        <span>PRÉ-LANCEMENT : Positionnez-vous maintenant !</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- SECTION: START HERE -->
+    <div id="start" class="section">
+      <div class="start-card fade-up">
+        <div class="section-header">
+          <h2 class="section-title">Nouveau ? Commence ici !</h2>
+          <p class="section-desc">Suis ces 7 étapes précises pour démarrer en 15 minutes chrono.</p>
+        </div>
+
+        <div class="timeline">
+
+          <!-- Step 1 -->
+          <div class="timeline-item fade-up">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <div class="step-title">Découvre le concept (90 sec)</div>
+              <p class="step-desc">Regarde cette courte vidéo pour comprendre l'opportunité unique.</p>
+              <a href="video-rabaislocal-1min.html" class="btn btn-primary">▶️ Voir la vidéo</a>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="timeline-item fade-up delay-100">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <div class="step-title">Comprends les 3 rôles</div>
+              <p class="step-desc">Consommateur, commerçant, affilié : comment l'écosystème fonctionne.</p>
+              <div class="card-actions">
+                <a href="assets/documents/guide-affilie-2.0.html" class="btn btn-secondary">📖 Lire le guide complet</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="timeline-item fade-up">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <div class="step-title">Ton potentiel de revenus</div>
+              <p class="step-desc">Combien peux-tu gagner ? Découvre le plan de rémunération détaillé.</p>
+              <a href="plan-remuneration.html" class="btn btn-secondary">💰 Voir le plan (PDF)</a>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="timeline-item fade-up delay-100">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <div class="step-title">Pourquoi c'est unique ?</div>
+              <p class="step-desc">Pas de vente, pas de quotas, pas d'achats forcés. Comprends la différence.</p>
+              <a href="video-pourquoi-unique.html" class="btn btn-secondary">🧠 Comprendre le modèle</a>
+            </div>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="timeline-item step-highlight-red fade-up">
+            <div class="step-number">5</div>
+            <div class="step-content">
+              <div class="badge-corner hot">Priorité</div>
+              <div class="step-title" style="color: #E53935;">Inscris-toi MAINTENANT</div>
+              <p class="step-desc">Positionne-toi avant tout le monde ! C'est 100% gratuit en pré-lancement.</p>
+              <a href="page1-1-affilie.html" class="btn btn-danger" style="font-size: 16px; padding: 14px;">🚀 Je
+                m'inscris gratuitement</a>
+            </div>
+          </div>
+
+          <!-- Step 6 -->
+          <div class="timeline-item step-highlight-green fade-up delay-100">
+            <div class="step-number">6</div>
+            <div class="step-content">
+              <div class="step-title" style="color: #2E7D32;">Télécharge l'App</div>
+              <p class="step-desc">Gère ton business depuis ta poche. Indispensable.</p>
+              <a href="https://app.rabaislocal.com" class="btn" style="background: #4CAF50; color: white;">📱
+                Télécharger l'App Mobil</a>
+            </div>
+          </div>
+
+          <!-- Step 7 -->
+          <div class="timeline-item fade-up">
+            <div class="step-number">7</div>
+            <div class="step-content">
+              <div class="step-title">Ton Espace Membre</div>
+              <p class="step-desc">Accède à ton tableau de bord pour récupérer tes liens d'affiliation uniques.</p>
+              <a href="https://partenaires.rabaislocal.com/login" class="btn btn-primary">🔐 Connexion Espace Membre</a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Success Block -->
+        <div class="info-box fade-up delay-200">
+          <strong style="font-size: 18px; color: #795548; display: block; margin-bottom: 10px;">🎉 Félicitations
+            !</strong>
+          <p style="color: #5D4037;">Tu as franchi toutes les étapes. Tu es maintenant prêt(e) à conquérir ta ville !
+            Explore les outils ci-dessous pour passer à l'action.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION: TOOLS & DOCS -->
+    <div id="tools" class="section">
+      <div class="section-header fade-up">
+        <h2 class="section-title">📦 Outils & Documents</h2>
+        <p class="section-desc">L'arsenal complet pour présenter, convaincre et réussir.</p>
+      </div>
+
+      <div class="grid">
+
+        <!-- Guide Presentation Minutes -->
+        <div class="resource-card fade-up" style="border-top: 5px solid #FF8C42;">
+          <div class="badge-corner hot">Best-seller</div>
+          <div class="card-icon" style="color: white; background: #FF8C42;">⏱️</div>
+          <div class="card-title">Présentations Minutes</div>
+          <div class="card-desc">3 pages mobiles optimisées pour présenter le concept en <strong
+              style="color:var(--accent);">90 secondes</strong>. L'outil préféré des pros.</div>
+          <div class="card-actions">
+            <a href="guide-presentations-minutes.html" class="btn btn-primary" style="background: #FF8C42;">Ouvrir le
+              guide</a>
+            <button class="btn btn-copy" onclick="copyLink('guide-presentations-minutes.html')"
+              title="Copier le lien">🔗</button>
+          </div>
+        </div>
+
+        <!-- Guide Affilié -->
+        <div class="resource-card fade-up delay-100">
+          <div class="card-icon">📖</div>
+          <div class="card-title">Guide Affilié 2.0</div>
+          <div class="card-desc">Le manuel stratégique complet. De débutant à leader, tout y est expliqué.</div>
+          <div class="card-actions">
+            <a href="assets/documents/guide-affilie-2.0.html" class="btn btn-primary">Lire</a>
+            <a href="assets/documents/guide-affilie-2.0.pdf" class="btn btn-secondary">PDF</a>
+          </div>
+        </div>
+
+        <!-- Guide Démarrage -->
+        <div class="resource-card fade-up">
+          <div class="card-icon">📘</div>
+          <div class="card-title">Guide de Démarrage</div>
+          <div class="card-desc">L'essentiel pour bien se lancer sans se noyer dans l'information.</div>
+          <div class="card-actions">
+            <a href="guide-demarrage-affilie.html" class="btn btn-primary">Lire</a>
+            <button class="btn btn-copy" onclick="copyLink('guide-demarrage-affilie.html')">🔗</button>
+          </div>
+        </div>
+
+        <!-- Plan Rémunération -->
+        <div class="resource-card fade-up delay-100">
+          <div class="card-icon">💰</div>
+          <div class="card-title">Plan de Rémunération</div>
+          <div class="card-desc">Commissions, niveaux, bonus. Le détail technique de tes gains.</div>
+          <div class="card-actions">
+            <a href="plan-remuneration.html" class="btn btn-primary">Voir</a>
+            <a href="assets/documents/tableau_plan_remuneration_V1.pdf" class="btn btn-secondary">PDF</a>
+          </div>
+        </div>
+
+        <!-- Plan Ambassadeur -->
+        <div class="resource-card fade-up">
+          <div class="card-icon">🌟</div>
+          <div class="card-title">Plan Ambassadeur</div>
+          <div class="card-desc">Le niveau supérieur. Pour ceux qui veulent bâtir une carrière.</div>
+          <div class="card-actions">
+            <a href="plan-remuneration-ambassadeur.html" class="btn btn-primary">Voir</a>
+            <a href="assets/documents/tableau_plan_remuneration_ambassadeur.pdf" class="btn btn-secondary">PDF</a>
+          </div>
+        </div>
+
+        <!-- Checklists -->
+        <div class="resource-card fade-up delay-100">
+          <div class="card-icon">✅</div>
+          <div class="card-title">Checklist 30 Jours</div>
+          <div class="card-desc">Le plan d'action quotidien pour devenir un membre actif, jour par jour.</div>
+          <div class="card-actions">
+            <a href="assets/documents/checklist-demarrage.html" class="btn btn-primary">Ouvrir</a>
+            <a href="assets/documents/Checklist_Demarrage_membre_actif.pdf" class="btn btn-secondary">PDF</a>
+          </div>
+        </div>
+
+        <!-- Scripts -->
+        <div class="resource-card fade-up">
+          <div class="card-icon">💬</div>
+          <div class="card-title">Scripts & Textes</div>
+          <div class="card-desc">Quoi dire sur Messenger, SMS ou en personne. Copie-colle le succès.</div>
+          <div class="card-actions">
+            <a href="scripts-textes-types.html" class="btn btn-primary">Voir les scripts</a>
+          </div>
+        </div>
+
+        <!-- Media Social -->
+        <div class="resource-card fade-up delay-100">
+          <div class="card-icon">🎨</div>
+          <div class="card-title">Pack Média</div>
+          <div class="card-desc">Logos, bannières et visuels officiels pour tes réseaux sociaux.</div>
+          <div class="card-actions">
+            <a href="logo-banniere-documents.html" class="btn btn-primary">Télécharger</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- SECTION: VIDEOS -->
+    <div id="videos" class="section">
+      <div class="section-header fade-up">
+        <h2 class="section-title">🎥 Vidéos à Partager</h2>
+        <p class="section-desc">Laisse les vidéos faire le travail de conviction à ta place.</p>
+      </div>
+
+      <div class="video-grid">
+
+        <div class="resource-card fade-up">
+          <div class="video-thumb">
+            <img src="assets/images/ljones.jpg" alt="Video cover" style="background:#1a202c;">
+            <div class="play-btn">▶</div>
+          </div>
+          <div class="card-title">RabaisLocal en 1 minute</div>
+          <div class="card-desc">L'intro parfaite. Courte, dynamique, elle donne envie d'en savoir plus.</div>
+          <div class="card-actions">
+            <a href="video-rabaislocal-1min.html" class="btn btn-primary">Regarder</a>
+            <button class="btn btn-copy" onclick="copyLink('video-rabaislocal-1min.html')">🔗</button>
+          </div>
+        </div>
+
+        <div class="resource-card fade-up delay-100">
+          <div class="video-thumb">
+            <img src="assets/images/ljones.jpg" alt="Video cover" style="background:#1a202c;">
+            <div class="play-btn">▶</div>
+          </div>
+          <div class="card-title">Pourquoi Unique ?</div>
+          <div class="card-desc">Tue les objections dans l'œuf (pyramidal, arnaque, etc) avec des faits.</div>
+          <div class="card-actions">
+            <a href="video-pourquoi-unique.html" class="btn btn-primary">Regarder</a>
+            <button class="btn btn-copy" onclick="copyLink('video-pourquoi-unique.html')">🔗</button>
+          </div>
+        </div>
+
+        <div class="resource-card fade-up delay-200">
+          <div class="video-thumb">
+            <img src="assets/images/ljones.jpg" alt="Video cover" style="background:#1a202c;">
+            <div class="play-btn">▶</div>
+          </div>
+          <div class="card-title">L'IA et le Local</div>
+          <div class="card-desc">Démystifie la technologie. Montre comment l'IA change la donne.</div>
+          <div class="card-actions">
+            <a href="video-ia-local.html" class="btn btn-primary">Regarder</a>
+            <button class="btn btn-copy" onclick="copyLink('video-ia-local.html')">🔗</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ASTUCE FONDATEUR -->
+    <div class="info-box fade-up" style="margin-bottom: 80px;">
+      <strong style="color: #E65100; font-size: 20px; display: block; margin-bottom: 12px;">💡 Astuce du
+        fondateur</strong>
+      <p style="font-size: 16px; color: #5D4037;">Commence toujours par envoyer la vidéo <em>"RabaisLocal en 1
+          minute"</em>. C'est le meilleur "filtre". Si la personne est curieuse, envoie ensuite le <em>Plan de
+          rémunération</em>. Ne bombarde pas tes prospects de liens !</p>
+    </div>
+
+    <!-- SECTION: LEGAL -->
+    <div id="legal" class="section">
+      <div class="section-header fade-up">
+        <h2 class="section-title">⚖️ Documents Légaux</h2>
+        <p class="section-desc">La transparence est notre fondation.</p>
+      </div>
+
+      <div class="grid fade-up" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));">
+        <a href="conditions-utilisation.html" class="btn btn-secondary">Conditions d'utilisation</a>
+        <a href="politique-confidentialite.html" class="btn btn-secondary">Confidentialité</a>
+        <a href="assets/documents/Le_Pacte_de_Confiance_RabaisLocal.pdf" class="btn btn-secondary">Pacte de Confiance
+          (PDF)</a>
+        <a href="politique-remboursement.html" class="btn btn-secondary">Remboursements</a>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>© 2025 RabaisLocal. Tous droits réservés.</p>
+      <p style="margin-top: 10px;">Une question ? <a href="mailto:support@rabaislocal.com"
+          style="color:var(--primary); font-weight:600;">support@rabaislocal.com</a></p>
+    </footer>
+
+  </div>
+
+  <script>
+    // === SCROLL ANIMATIONS (Intersection Observer) ===
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target); // Only animate once
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-up').forEach(el => {
+      observer.observe(el);
+    });
+
+    // === SMOOTH SCROLL ===
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      const offset = 100; // Sticky nav height + buffer
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = el.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+
+    // === NAV ACTIVE STATE ===
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('.sticky-nav');
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+
+      // Active link highlighting
+      const sections = document.querySelectorAll('.section');
+      const navLi = document.querySelectorAll('.nav-item');
+
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (scrollY >= sectionTop - 150) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLi.forEach(li => {
+        li.classList.remove('active');
+        if (li.getAttribute('onclick') && li.getAttribute('onclick').includes(current)) {
+          li.classList.add('active');
+        }
+      });
+    });
+
+    // === MOBILE MENU TOGGLE ===
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('open');
+    }
+
+    // === COPY TO CLIPBOARD ===
+    function copyLink(url) {
+      // Construct full URL
+      const fullUrl = window.location.origin + window.location.pathname.replace('outil_presentation-v3.html', '') + url;
+
+      navigator.clipboard.writeText(fullUrl).then(() => {
+        showToast();
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+        // Fallback for older browsers? Not strictly needed for modern internal tool usage
+      });
+    }
+
+    function showToast() {
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+  </script>
+</body>
+
+</html>

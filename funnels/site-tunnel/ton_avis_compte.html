@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Intro – QG RabaisLocal (Présentation)</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --rl-blue:#3E53A5;
+      --rl-bg:#F5F8FF;
+      --rl-ink:#1B2240;
+      --rl-muted:#5B6385;
+      --rl-line:#E3E8FF;
+      --rl-white:#ffffff;
+      --rl-orange:#FF8C42;
+      --rl-green:#27ae60;
+      --shadow: 0 10px 30px rgba(27,34,64,.12);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--rl-ink);
+      background: radial-gradient(1000px 600px at 20% -10%, rgba(62,83,165,.25), transparent 55%),
+                  radial-gradient(900px 500px at 90% 0%, rgba(255,140,66,.16), transparent 45%),
+                  var(--rl-bg);
+      line-height:1.6;
+    }
+    a{color:inherit}
+    .wrap{width:min(1120px, 94vw); margin:0 auto; padding:28px 0 70px}
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
+      padding:14px 16px; border:1px solid var(--rl-line);
+      border-radius:999px; background:rgba(255,255,255,.85); backdrop-filter: blur(8px);
+      box-shadow: 0 6px 16px rgba(27,34,64,.06);
+    }
+    .brand{display:flex; align-items:center; gap:12px; min-width: 200px;}
+    .brand img{height:34px; width:auto; display:block}
+    .brand small{display:block; color:var(--rl-muted); font-size:12px; margin-top:-2px}
+    .nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:center}
+    .pill{
+      font-size:13px; font-weight:600;
+      padding:10px 12px; border-radius:999px;
+      border:1px solid var(--rl-line);
+      background:#fff;
+      text-decoration:none;
+      transition:.2s;
+    }
+    .pill:hover{transform: translateY(-1px); box-shadow: 0 10px 18px rgba(27,34,64,.08)}
+    .cta{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:10px 14px; border-radius:999px;
+      background: var(--rl-blue); color:#fff; text-decoration:none;
+      font-weight:700; font-size:13px;
+      border:1px solid rgba(255,255,255,.18);
+      transition:.2s;
+    }
+    .cta:hover{transform: translateY(-1px); filter: brightness(1.02); box-shadow: 0 12px 24px rgba(62,83,165,.25)}
+    .hero{
+      margin-top:18px;
+      border-radius: calc(var(--radius) + 6px);
+      padding:28px;
+      background:
+        radial-gradient(900px 420px at 10% 0%, rgba(255,255,255,.18), transparent 60%),
+        linear-gradient(135deg, rgba(62,83,165,.92), rgba(27,34,64,.92));
+      color:#fff;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:-60px -120px auto auto;
+      width:420px; height:420px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,140,66,.45), transparent 60%);
+      transform: rotate(18deg);
+      opacity:.9;
+      pointer-events:none;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:24px;
+      align-items:center;
+      position:relative;
+      z-index:1;
+    }
+    .badge-row{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px}
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      background: rgba(255,255,255,.14);
+      border:1px solid rgba(255,255,255,.18);
+      font-size:12px; font-weight:700;
+    }
+    .hero h1{
+      margin:8px 0 12px;
+      font-size: clamp(22px, 3.6vw, 40px);
+      line-height:1.15;
+      letter-spacing: -0.4px;
+    }
+    .hero p{margin:0 0 16px; color: rgba(255,255,255,.92); font-size:15px}
+    .hero .note{
+      margin-top:14px;
+      background: rgba(0,0,0,.16);
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 14px;
+      padding:14px 14px;
+      font-size:13px;
+      color: rgba(255,255,255,.92);
+    }
+    .hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 16px;
+      border-radius: 12px;
+      text-decoration:none;
+      font-weight:800;
+      transition:.2s;
+      border:1px solid transparent;
+    }
+    .btn.primary{background: var(--rl-orange); color:#fff}
+    .btn.primary:hover{transform: translateY(-2px); box-shadow: 0 14px 28px rgba(255,140,66,.25)}
+    .btn.ghost{background: rgba(255,255,255,.12); color:#fff; border-color: rgba(255,255,255,.18)}
+    .btn.ghost:hover{transform: translateY(-2px); background: rgba(255,255,255,.16)}
+    .portrait{
+      background: rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.16);
+      border-radius: 18px;
+      padding:14px;
+    }
+    .portrait .img{
+      width:100%;
+      aspect-ratio: 4 / 3;
+      border-radius: 14px;
+      overflow:hidden;
+      background: rgba(255,255,255,.12);
+      position:relative;
+    }
+    .portrait img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      filter: contrast(1.02) saturate(1.02);
+    }
+    .portrait .cap{
+      margin-top:10px;
+      font-size:12px;
+      color: rgba(255,255,255,.92);
+    }
+    .section{margin-top:22px}
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:16px;
+    }
+    .card{
+      background:#fff;
+      border:1px solid var(--rl-line);
+      border-radius: var(--radius);
+      padding:18px;
+      box-shadow: 0 8px 18px rgba(27,34,64,.06);
+    }
+    .card h2{margin:0 0 10px; font-size:18px; color: var(--rl-blue)}
+    .card p{margin:0; color: var(--rl-muted); font-size:14px}
+    .list{margin:12px 0 0; padding-left:18px; color: var(--rl-muted)}
+    .list li{margin:8px 0; font-size:14px}
+    .callout{
+      margin-top:16px;
+      border-radius: var(--radius);
+      padding:16px 18px;
+      background: linear-gradient(135deg, rgba(62,83,165,.10), rgba(255,140,66,.10));
+      border: 1px dashed rgba(62,83,165,.35);
+    }
+    .callout strong{color: var(--rl-ink)}
+    .kpis{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:12px;
+      margin-top:16px;
+    }
+    .kpi{
+      padding:14px;
+      border-radius: 16px;
+      border:1px solid var(--rl-line);
+      background: rgba(255,255,255,.9);
+      text-align:left;
+    }
+    .kpi .v{font-size:20px; font-weight:900; color: var(--rl-blue); line-height:1.2}
+    .kpi .l{font-size:12px; color: var(--rl-muted); margin-top:4px}
+    .chart-card{padding:0; overflow:hidden}
+    .chart-head{
+      padding:16px 18px;
+      border-bottom:1px solid var(--rl-line);
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+    }
+    .chart-head h2{margin:0; font-size:16px; color: var(--rl-blue)}
+    .legend{display:flex; gap:10px; flex-wrap:wrap; font-size:12px; color: var(--rl-muted)}
+    .dot{width:10px; height:10px; border-radius:50%; display:inline-block; margin-right:6px; vertical-align:middle}
+    .dot.blue{background: var(--rl-blue)}
+    .dot.orange{background: var(--rl-orange)}
+    .chart-wrap{padding:14px 18px 18px}
+    .svg{width:100%; height:auto; display:block}
+    .divider{
+      margin:18px 0;
+      height:1px;
+      background: linear-gradient(90deg, transparent, rgba(62,83,165,.25), transparent);
+    }
+    .howto{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:16px;
+      align-items:stretch;
+    }
+    .steps{counter-reset: s}
+    .step{
+      display:flex; gap:12px;
+      padding:12px 0;
+      border-bottom:1px solid var(--rl-line);
+    }
+    .step:last-child{border-bottom:none}
+    .num{
+      width:34px; height:34px; border-radius: 999px;
+      background: rgba(62,83,165,.12);
+      border:1px solid rgba(62,83,165,.25);
+      display:flex; align-items:center; justify-content:center;
+      color: var(--rl-blue);
+      font-weight:900;
+      flex: 0 0 34px;
+    }
+    .step h3{margin:0; font-size:14px}
+    .step p{margin:4px 0 0; color: var(--rl-muted); font-size:13px}
+    .quote{
+      background: #fff;
+      border: 1px solid var(--rl-line);
+      border-radius: var(--radius);
+      padding:16px 18px;
+      box-shadow: 0 8px 18px rgba(27,34,64,.06);
+      display:flex; flex-direction:column; justify-content:space-between;
+    }
+    blockquote{
+      margin:0;
+      color: var(--rl-ink);
+      font-size:14px;
+      line-height:1.7;
+    }
+    .sig{
+      margin-top:12px;
+      font-size:12px;
+      color: var(--rl-muted);
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .sig .avatar{
+      width:34px; height:34px; border-radius:50%;
+      background: rgba(62,83,165,.12);
+      border: 1px solid rgba(62,83,165,.25);
+      display:flex; align-items:center; justify-content:center;
+      color: var(--rl-blue); font-weight:900;
+    }
+    footer{
+      margin-top:26px;
+      text-align:center;
+      color: var(--rl-muted);
+      font-size:12px;
+    }
+    .footer-links{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:10px}
+    .footer-links a{color: var(--rl-muted); text-decoration:none; border-bottom:1px dotted rgba(91,99,133,.45)}
+    .footer-links a:hover{color: var(--rl-ink)}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns: 1fr}
+      .grid{grid-template-columns: 1fr}
+      .kpis{grid-template-columns: 1fr 1fr}
+      .howto{grid-template-columns: 1fr}
+      .brand{min-width:auto}
+      .nav{display:none}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <!-- Topbar -->
+    <div class="topbar">
+      <div class="brand">
+        <!-- Logo officiel (tu m'as donné l'URL ClickFunnels) -->
+        <img src="https://statics.myclickfunnels.com/workspace/jklqVP/image/17823503/file/d5fb15091926d11524543af90a9a5e26.png" alt="RabaisLocal">
+        <div>
+          <div style="font-weight:800; font-size:14px; color:var(--rl-ink);">Présentation stratégique</div>
+          <small>Lecture guidée • 5–7 min</small>
+        </div>
+      </div>
+
+      <div class="nav" aria-label="Navigation rapide">
+        <a class="pill" href="#pourquoi">Pourquoi cette page</a>
+        <a class="pill" href="#serieux">Sérieux du projet</a>
+        <a class="pill" href="#auto">Automatisation</a>
+        <a class="pill" href="#comment">Comment l'utiliser</a>
+      </div>
+
+      <!-- IMPORTANT: ce bouton devrait pointer vers la section "Commence ici" de TA page existante -->
+      <a class="cta" href="#commence">⚡️ Commence ici</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="hero-grid">
+        <div>
+          <div class="badge-row">
+            <div class="badge">🚀 PRÉ-LANCEMENT</div>
+            <div class="badge">🤝 Invitation personnelle</div>
+            <div class="badge">🤖 IA + Automatisation</div>
+          </div>
+
+          <h1>Avant de commencer… j'ai besoin de ton avis honnête.</h1>
+
+          <p>
+            Si tu es ici, <strong>ce n'est probablement pas par hasard</strong>.
+            Tu as été <strong>invité personnellement</strong>, parce que ton opinion compte vraiment pour moi.
+          </p>
+
+          <div class="note">
+            <strong>Ce que cette page n'est PAS :</strong> une page de vente, ni un pitch agressif.<br>
+            <strong>Ce que c'est :</strong> une présentation claire, guidée, pour comprendre RabaisLocal en profondeur –
+            puis décider si ce type de système pourrait t'intéresser (ou non).
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#commence">✅ Démarrer la lecture guidée</a>
+            <a class="btn ghost" href="#question">💬 La question finale à te poser</a>
+          </div>
+        </div>
+
+        <aside class="portrait" aria-label="Encadré photo">
+          <div class="img">
+            <!-- Photo placeholder : remplace par une photo réelle (toi / équipe / ville / commerçants) -->
+            <img
+              src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=70"
+              alt="Photo illustrative (remplacer par ta photo ou une photo locale)">
+          </div>
+          <div class="cap">
+            <strong>Conseil :</strong> remplace cette image par une photo "réelle" (toi, ton équipe, Trois-Rivières, un commerce local).
+            Ça augmente la confiance instantanément.
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Why -->
+    <section class="section" id="pourquoi">
+      <div class="grid">
+        <div class="card">
+          <h2>🎯 Pourquoi cette page existe</h2>
+          <p>
+            Le but est simple : te présenter RabaisLocal, t'expliquer comment ça fonctionne réellement,
+            et ensuite obtenir ton avis <strong>sans pression</strong>.
+          </p>
+          <ul class="list">
+            <li><strong>Comprendre</strong> le projet en profondeur (dans l'ordre, étape par étape).</li>
+            <li><strong>Évaluer</strong> si ça pourrait te parler, ou pas.</li>
+            <li><strong>Me dire</strong> franchement ce que tu en penses (forces / faiblesses / risques / potentiel).</li>
+          </ul>
+
+          <div class="callout">
+            <strong>Important :</strong> on est en <strong>pré-lancement</strong>. Les offres/rabais et certains tableaux de bord seront actifs au lancement officiel.
+            Ici, on parle surtout de la <strong>vision</strong>, du <strong>modèle</strong> et de la <strong>stratégie</strong>.
+          </div>
+        </div>
+
+        <div class="card chart-card" id="auto">
+          <div class="chart-head">
+            <h2>🔥 Le gros avantage : effort flexible, système constant</h2>
+            <div class="legend">
+              <span><i class="dot orange"></i>Ton effort</span>
+              <span><i class="dot blue"></i>Automatisation RabaisLocal</span>
+            </div>
+          </div>
+
+          <div class="chart-wrap">
+            <!-- Graphique simple en SVG (zéro dépendance) -->
+            <svg class="svg" viewBox="0 0 640 240" role="img" aria-label="Graphique effort vs automatisation">
+              <!-- axes -->
+              <line x1="40" y1="200" x2="610" y2="200" stroke="rgba(91,99,133,.35)" stroke-width="2"/>
+              <line x1="40" y1="30" x2="40" y2="200" stroke="rgba(91,99,133,.35)" stroke-width="2"/>
+
+              <!-- labels -->
+              <text x="40" y="222" font-size="12" fill="rgba(91,99,133,.9)">Temps</text>
+              <text x="6" y="28" font-size="12" fill="rgba(91,99,133,.9)">Impact</text>
+
+              <!-- automation line (blue) -->
+              <path d="M40 160 C 140 140, 240 110, 340 95 C 430 80, 520 75, 610 70"
+                    fill="none" stroke="rgba(62,83,165,.95)" stroke-width="4" stroke-linecap="round"/>
+              <!-- effort line (orange) -->
+              <path d="M40 175 C 160 170, 280 165, 400 162 C 500 160, 560 160, 610 160"
+                    fill="none" stroke="rgba(255,140,66,.95)" stroke-width="4" stroke-linecap="round"/>
+
+              <!-- points -->
+              <circle cx="610" cy="70" r="5" fill="rgba(62,83,165,.95)"/>
+              <circle cx="610" cy="160" r="5" fill="rgba(255,140,66,.95)"/>
+
+              <!-- annotation -->
+              <rect x="340" y="36" width="260" height="56" rx="12" fill="rgba(255,255,255,.9)" stroke="rgba(227,232,255,.9)"/>
+              <text x="352" y="58" font-size="12" fill="#1B2240" font-weight="700">Tu choisis ton niveau d'implication.</text>
+              <text x="352" y="78" font-size="12" fill="#5B6385">L'IA + l'automatisation continuent le travail.</text>
+            </svg>
+
+            <p style="margin:10px 0 0; font-size:13px; color:var(--rl-muted);">
+              <strong>Idée clé :</strong> si quelqu'un veut juste référer et "ne rien faire après", RabaisLocal prend la relève :
+              séquences, relances, contenu, suivi… tout peut tourner en arrière-plan.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="kpis" id="serieux">
+        <div class="kpi">
+          <div class="v">+1 an</div>
+          <div class="l">Conception & structuration avant dev</div>
+        </div>
+        <div class="kpi">
+          <div class="v">Cadré</div>
+          <div class="l">Cahier des charges & règles établies</div>
+        </div>
+        <div class="kpi">
+          <div class="v">Lancé</div>
+          <div class="l">Programmation déjà entamée</div>
+        </div>
+        <div class="kpi">
+          <div class="v">Simple</div>
+          <div class="l">Lecture guidée en étapes (sans blabla)</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="card">
+        <h2>🏗️ Un projet mûrement réfléchi (sans ambiguïté)</h2>
+        <p>
+          RabaisLocal n'est pas une idée improvisée.
+          Cela fait <strong>plus d'un an</strong> que le concept, la logique d'affaires, la structure, le positionnement,
+          les garde-fous et le <strong>cahier des charges</strong> ont été travaillés.
+        </p>
+        <ul class="list">
+          <li>Cette phase était volontaire : <strong>éviter les improvisations</strong>, clarifier les règles, sécuriser la vision.</li>
+          <li>Aujourd'hui, les bases sont solides et <strong>l'exécution est en cours</strong> (programmation déjà démarrée).</li>
+          <li>Le projet avance de façon progressive, structurée, et testée par étapes.</li>
+        </ul>
+        <div class="callout">
+          <strong>Traduction :</strong> le gros du travail stratégique est fait.
+          Maintenant, on est dans une phase d'exécution maîtrisée (sans te noyer dans les détails techniques).
+        </div>
+      </div>
+    </section>
+
+    <!-- How to use -->
+    <section class="section" id="comment">
+      <div class="howto">
+        <div class="card steps" id="commence">
+          <h2>🧠 Comment utiliser cette page</h2>
+
+          <div class="step">
+            <div class="num">1</div>
+            <div>
+              <h3>Suis les étapes "Commence ici" (dans l'ordre)</h3>
+              <p>Ne saute pas directement à la rémunération. Le contexte change tout.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="num">2</div>
+            <div>
+              <h3>Regarde le projet comme un écosystème</h3>
+              <p>Commerçants + consommateurs + stratégie de croissance (affiliation 2.0).</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="num">3</div>
+            <div>
+              <h3>Évalue la faisabilité + l'intérêt (sans émotion)</h3>
+              <p>Demande-toi : est-ce simple, duplicable, réaliste, et attrayant pour les gens?</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="num">4</div>
+            <div>
+              <h3>Donne-moi ton avis honnête</h3>
+              <p>Ce qui te convainc. Ce qui te bloque. Ce que tu améliorerais.</p>
+            </div>
+          </div>
+
+          <div class="hero-actions" style="margin-top:14px">
+            <!-- Lien vers TA page principale, section "Commence ici" -->
+            <a class="btn primary" href="javascript:void(0)" onclick="goToMain()">⚡️ Aller au parcours "Commence ici"</a>
+            <a class="btn ghost" href="#question">→ Voir la question finale</a>
+          </div>
+
+          <p style="margin:10px 0 0; font-size:12px; color:var(--rl-muted);">
+            Astuce : si tu partages cette page à quelqu'un, dis-lui juste :
+            <strong>"Lis l'intro, puis commence à l'étape 1. Ensuite donne-moi ton avis."</strong>
+          </p>
+        </div>
+
+        <div class="quote" id="question">
+          <blockquote>
+            <strong>Question finale (la seule qui compte) :</strong><br><br>
+            Est-ce que ce type de plateforme <strong>automatisée</strong>, structurée et progressive –
+            où quelqu'un peut simplement <strong>référer</strong> et laisser le système travailler en arrière-plan –
+            pourrait être quelque chose qui m'intéresserait… ou non?
+          </blockquote>
+          <div class="sig">
+            <div class="avatar">DG</div>
+            <div>
+              <div style="font-weight:700; color:var(--rl-ink)">Invitation personnelle</div>
+              <div>Ton avis = précieux. Zéro pression.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="y"></span> RabaisLocal • Page d'introduction (présentation guidée)
+      <div class="footer-links">
+        <!-- Remplace par tes vrais liens -->
+        <a href="javascript:void(0)" onclick="goToMain()">Page principale</a>
+        <a href="assets/documents/guide-affilie-2.0.html">Documents</a>
+        <a href="outil_presentation-v3.html#videos">Vidéos</a>
+        <a href="mailto:support@rabaislocal.com">support@rabaislocal.com</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // ✅ URL de TA page principale (celle avec "Commence ici" et les étapes)
+    const MAIN_PAGE_URL = "outil_presentation-v3.html#start";
+
+    function goToMain(){
+      // Redirige vers la page principale, section "Commence ici"
+      window.location.href = MAIN_PAGE_URL;
+    }
+
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
