@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Compensation Plan – RabaisLocal Affiliates</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+    <style>
+        :root {
+            --rl-blue: #3E53A5;
+            --rl-orange: #FF8C42;
+            --rl-bg: #F5F8FF;
+            --rl-ink: #1B2240;
+            --rl-muted: #5B6385;
+            --rl-line: #E3E8FF;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: var(--rl-bg);
+            color: var(--rl-ink);
+            font-family: Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            line-height: 1.6
+        }
+
+        .wrap {
+            width: min(1100px, 94vw);
+            margin: 0 auto;
+            padding: 30px 0 60px
+        }
+
+        .logo {
+            display: block;
+            margin: 20px auto 30px;
+            max-width: 280px;
+            height: auto
+        }
+
+        h1 {
+            text-align: center;
+            font-size: clamp(22px, 3.5vw, 32px);
+            color: var(--rl-blue);
+            font-weight: 700;
+            margin: 0 0 8px;
+            border-bottom: 3px solid var(--rl-blue);
+            padding-bottom: 12px
+        }
+
+        h2 {
+            font-size: clamp(17px, 2.5vw, 22px);
+            color: var(--rl-blue);
+            font-weight: 700;
+            margin: 30px 0 14px
+        }
+
+        h3 {
+            font-size: clamp(15px, 2vw, 18px);
+            color: var(--rl-ink);
+            font-weight: 600;
+            margin: 18px 0 10px
+        }
+
+        p {
+            font-size: 15px;
+            line-height: 1.7;
+            margin: 10px 0
+        }
+
+        ul {
+            margin: 12px 0;
+            padding-left: 24px
+        }
+
+        li {
+            margin: 6px 0;
+            font-size: 15px
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08)
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid var(--rl-line)
+        }
+
+        th {
+            background: #7B8DD4;
+            color: #fff;
+            font-weight: 600
+        }
+
+        .highlight {
+            background: #FFFACD;
+            padding: 3px 6px;
+            font-weight: 600
+        }
+
+        .emoji {
+            font-style: normal
+        }
+
+        .note {
+            background: #E8EDFF;
+            border-left: 4px solid var(--rl-blue);
+            padding: 14px;
+            border-radius: 8px;
+            margin: 16px 0;
+            font-size: 14px
+        }
+
+        .box {
+            background: #fff;
+            border: 1px solid var(--rl-line);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0
+        }
+
+        .btn-link {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--rl-orange);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin: 10px 0;
+            transition: 0.3s
+        }
+
+        .btn-link:hover {
+            background: #e67a35;
+            transform: translateY(-2px)
+        }
+
+        .zoomable {
+            cursor: zoom-in;
+            transition: transform 0.2s ease
+        }
+
+        .zoomable:hover {
+            transform: translateY(-2px)
+        }
+
+        .rl-lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 20px
+        }
+
+        .rl-lightbox.active {
+            display: flex
+        }
+
+        .rl-lightbox img {
+            max-width: 92vw;
+            max-height: 92vh;
+            border-radius: 12px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35)
+        }
+
+        .rl-lightbox button {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%;
+            background: #fff;
+            color: #1B2240;
+            font-weight: 700;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25)
+        }
+
+        @media(max-width:768px) {
+            table {
+                font-size: 12px
+            }
+
+            th,
+            td {
+                padding: 8px
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrap">
+
+        <img class="logo" src="assets/images/logo rabaislocal-2025-2.png" alt="RabaisLocal">
+
+        <h1>Compensation Plan – RabaisLocal Affiliates</h1>
+
+        <h2>1. Why RabaisLocal is NOT a Traditional MLM</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>📊 Item</th>
+                    <th>🚫 Traditional MLM</th>
+                    <th style="background:#27ae60;color:#fff;">💡 RabaisLocal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Entry Cost</td>
+                    <td>$100 to $1,000</td>
+                    <td style="background:#E8F5E9;font-weight:600;">$47 (promo, no purchase required)</td>
+                </tr>
+                <tr>
+                    <td>Commissions</td>
+                    <td>On recruitment</td>
+                    <td style="background:#E8F5E9;font-weight:600;">On real purchases from referrals</td>
+                </tr>
+                <tr>
+                    <td>Monthly & Annual Fees</td>
+                    <td>Mandatory</td>
+                    <td style="background:#E8F5E9;font-weight:600;">Deducted only if profits. No amount swiped from your
+                        credit card.</td>
+                </tr>
+                <tr>
+                    <td>Products</td>
+                    <td>Hard to resell</td>
+                    <td style="background:#E8F5E9;font-weight:600;">Useful local discounts</td>
+                </tr>
+                <tr>
+                    <td>Structure</td>
+                    <td>Vague</td>
+                    <td style="background:#E8F5E9;font-weight:600;">Clear on 7 levels of depth</td>
+                </tr>
+                <tr>
+                    <td>Risk</td>
+                    <td>High</td>
+                    <td style="background:#E8F5E9;font-weight:600;">Zero financial risk</td>
+                </tr>
+                <tr>
+                    <td>Image</td>
+                    <td>Pyramid scheme suspicion</td>
+                    <td style="background:#E8F5E9;font-weight:600;">Local, transparent</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>2. How Does It Work?</h2>
+        <ul>
+            <li class="emoji">👉 You share your affiliate link</li>
+            <li class="emoji">💡 RabaisLocal handles the rest (AI, emails, funnel...)</li>
+            <li class="emoji">🎯 You earn on every purchase from your network</li>
+        </ul>
+
+        <h2>3. Compensation Plan – Summary</h2>
+        <div class="box">
+            <p><strong>📊 Full table of ranks, commissions, and 7 levels of depth:</strong></p>
+            <p style="font-size:13px;color:var(--rl-muted);">The table details the 7 ranks with their respective
+                commissions over 7 levels of depth (25%, 5%, 5%, 4%, 4%, 3%, 2%).</p>
+            <!-- Linking to same PDF for now as translation of PDF itself is out of scope for HTML file, but label is translated -->
+            <embed id="plan-pdf-embed" src="assets/documents/tableau_plan_remuneration_V1.pdf#toolbar=0&navpanes=0"
+                type="application/pdf"
+                style="width:100%;max-width:900px;height:600px;margin:20px auto;display:block;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.15);">
+            <p style="text-align:center;margin-top:10px;">
+                <a href="assets/documents/tableau_plan_remuneration_V1.pdf" download
+                    style="display:inline-block;padding:12px 24px;background:#3E53A5;color:#fff;text-decoration:none;border-radius:8px;font-weight:600;">
+                    📥 Download PDF Table
+                </a>
+            </p>
+        </div>
+
+        <h2>4. Fees and Payouts</h2>
+        <ul>
+            <li class="emoji">💸 <strong>$27/month</strong> deducted only if you make commissions</li>
+            <li class="emoji">💰 As soon as $25 accumulated → automatic transfer</li>
+            <li class="emoji">💵 <strong>$47/year</strong> deducted from <strong>profits</strong></li>
+        </ul>
+
+        <h2>5. Realistic Monthly Income Examples</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Active Levels</th>
+                    <th>Conservative Scenario</th>
+                    <th>Active Scenario</th>
+                    <th>Optimized Scenario</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Explorer</strong></td>
+                    <td>1 level</td>
+                    <td>$25 - $50</td>
+                    <td>$50 - $100</td>
+                    <td>$100 - $200</td>
+                </tr>
+                <tr>
+                    <td><strong>Builder</strong></td>
+                    <td>3 levels</td>
+                    <td>$150 - $300</td>
+                    <td>$300 - $500</td>
+                    <td>$500 - $800</td>
+                </tr>
+                <tr>
+                    <td><strong>Coordinator</strong></td>
+                    <td>4 levels</td>
+                    <td>$400 - $700</td>
+                    <td>$700 - $1,200</td>
+                    <td>$1,200 - $2,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Manager</strong></td>
+                    <td>5 levels</td>
+                    <td>$1,000 - $2,000</td>
+                    <td>$2,000 - $3,500</td>
+                    <td>$3,500 - $5,500</td>
+                </tr>
+                <tr>
+                    <td><strong>Director</strong></td>
+                    <td>6 levels</td>
+                    <td>$2,500 - $4,500</td>
+                    <td>$4,500 - $7,000</td>
+                    <td>$7,000 - $10,000</td>
+                </tr>
+                <tr>
+                    <td><strong>President</strong></td>
+                    <td>7 levels</td>
+                    <td>$5,000 - $8,000</td>
+                    <td>$8,000 - $12,000</td>
+                    <td>$12,000 - $18,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Ambassador</strong></td>
+                    <td>7 levels (30% L1)</td>
+                    <td>$10,000 - $15,000</td>
+                    <td>$15,000 - $25,000</td>
+                    <td>$25,000 - $40,000+</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div
+            style="background: linear-gradient(135deg, #FF6B6B 0%, #FFA07A 100%); border: 4px solid #DC143C; border-radius: 16px; padding: 30px; margin: 30px 0; box-shadow: 0 8px 24px rgba(220, 20, 60, 0.3);">
+            <h3 style="margin: 0 0 16px 0; color: #fff; font-size: 22px; text-align: center;">⚠️ IMPORTANT WARNING</h3>
+            <p style="margin: 0 0 16px 0; color: #fff; font-size: 16px; line-height: 1.6; font-weight: 600;">
+                These amounts are <strong>THEORETICAL PROJECTIONS</strong> based on constant duplication and regular
+                engagement. Real results vary considerably depending on your involvement, network, and local market.
+                <strong>RabaisLocal does NOT guarantee ANY specific income amount.</strong>
+            </p>
+            <p style="margin: 0; color: #fff; font-size: 16px; line-height: 1.6; font-weight: 600;">
+                <strong>✅ Key Benefit:</strong> Unlike traditional MLMs, you will <strong>never pay out of
+                    pocket</strong> — all fees are deducted from your commissions only.
+            </p>
+        </div>
+
+        <h3>📌 Scenario Definitions</h3>
+        <ul>
+            <li><strong>Conservative</strong>: You share your link occasionally, network of 5-15 active people</li>
+            <li><strong>Active</strong>: You recommend regularly, support your referrals, network of 15-50 active people
+            </li>
+            <li><strong>Optimized</strong>: You actively train your network, structured support, network of 50+ active
+                and engaged people</li>
+        </ul>
+
+        <h2>6. Two Possible Styles</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Mode</th>
+                    <th>Description</th>
+                    <th>Earnings</th>
+                    <th>Examples</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Passive</strong></td>
+                    <td>I refer, RL does the rest</td>
+                    <td>Automatic</td>
+                    <td>Student, retiree</td>
+                </tr>
+                <tr>
+                    <td><strong>Active</strong></td>
+                    <td>I guide, I support</td>
+                    <td>Scalable</td>
+                    <td>Coach, entrepreneur profile</td>
+                <tr>
+                    <td><strong>Hybrid</strong></td>
+                    <td>I guide, support, and let RL do the rest</td>
+                    <td>Automatic & Scalable</td>
+                    <td>Everyone</td>
+                </tr>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>7. The 7 Affiliate Ranks</h2>
+        <ul>
+            <li class="emoji">⭐ <strong>1. Explorer</strong> → Starting point with $47 kit + 1 active client (25% Level
+                1 only)</li>
+            <li class="emoji">🔨 <strong>2. Builder</strong> → $500 team volume ≈ 25 subscriptions (unlock levels 2-3 at
+                5%)</li>
+            <li class="emoji">📊 <strong>3. Coordinator</strong> → $2,000 team volume ≈ 100 subscriptions (unlock level
+                4 at 4%)</li>
+            <li class="emoji">⚙️ <strong>4. Manager</strong> → $5,000 team volume ≈ 250 subscriptions (unlock level 5 at
+                4%)</li>
+            <li class="emoji">🎯 <strong>5. Director</strong> → $15,000 team volume - Regional leadership (unlock level
+                6 at 3%)</li>
+            <li class="emoji">🏆 <strong>6. President</strong> → $50,000 team volume - Financial freedom (unlock level 7
+                at 2%)</li>
+            <li class="emoji">💎 <strong>7. Ambassador</strong> → $100,000 team volume - Plan summit (30% L1 + all 7
+                levels)</li>
+        </ul>
+        <p class="note">
+            <strong>💡 Important:</strong> Progression is automatic based on your <strong>team volume</strong> (total
+            purchases from your network). Each rank unlocks additional depth levels. The more you advance, the more you
+            earn on purchases from your extended network.
+        </p>
+
+        <h2>8. Key Takeaways</h2>
+        <ul>
+            <li>You can earn while being 100% passive</li>
+            <li>No purchase required, no quotas</li>
+            <li>REAL commissions</li>
+            <li>You can build real recurring income</li>
+        </ul>
+
+        <!-- Compact Navigation Menu -->
+        <nav
+            style="background:#fff;border-radius:12px;padding:20px;margin-top:40px;box-shadow:0 2px 8px rgba(0,0,0,0.08);border-top:3px solid #3E53A5;">
+            <div style="display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;">
+                <a href="#" onclick="alert('To be translated')"
+                    style="display:inline-flex;align-items:center;gap:6px;padding:10px 16px;background:#F5F8FF;color:#3E53A5;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;transition:0.2s;">
+                    📚 Documents
+                </a>
+                <span style="color:#ddd;">|</span>
+                <a href="#" onclick="alert('To be translated')"
+                    style="display:inline-flex;align-items:center;gap:6px;padding:10px 16px;background:#F5F8FF;color:#3E53A5;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;transition:0.2s;">
+                    🧭 Startup Guide
+                </a>
+                <span style="color:#ddd;">|</span>
+                <a href="#" onclick="alert('To be translated')"
+                    style="display:inline-flex;align-items:center;gap:6px;padding:10px 16px;background:#F5F8FF;color:#3E53A5;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;transition:0.2s;">
+                    🚀 How to Share
+                </a>
+                <span style="color:#ddd;">|</span>
+                <a href="test_en_outil_presentation.html"
+                    style="display:inline-flex;align-items:center;gap:6px;padding:10px 16px;background:#E53935;color:#fff;text-decoration:none;border-radius:8px;font-size:14px;font-weight:600;transition:0.2s;">
+                    🏠 Home
+                </a>
+            </div>
+        </nav>
+
+    </div>
+
+    <!-- =======================
+       FOOTER RABAISLOCAL 2025 – PRO RESPONSIVE VERSION
+       ======================= -->
+
+    <!-- 1️⃣ PC / TABLET VERSION -->
+    <footer class="rl-footer-desktop" style="background:#F5F8FF;border-top:4px solid #3E53A5;padding:40px 0 30px;
+                 text-align:center;font-family:'Poppins',sans-serif;color:#1B2240;line-height:1.7;
+                 box-shadow:0 -3px 10px rgba(0,0,0,0.04);">
+
+        <!-- Logo + slogan -->
+        <div style="margin-bottom:22px;">
+            <img src="assets/images/logo rabaislocal-2025-2.png" alt="RabaisLocal Logo"
+                style="width:160px;max-width:80%;height:auto;display:block;margin:0 auto 12px auto;">
+            <p style="font-size:15px;font-weight:600;color:#3E53A5;margin:0;">
+                💙 Together, everyone wins.
+            </p>
+        </div>
+
+        <!-- Legal Links -->
+        <div style="font-size:14px;margin-bottom:10px;">
+            <a href="#" onclick="alert('To be translated')"
+                style="color:#1B2240;text-decoration:none;margin:0 8px;">Terms of Use</a> |
+            <a href="#" onclick="alert('To be translated')"
+                style="color:#1B2240;text-decoration:none;margin:0 8px;">Privacy</a> |
+            <a href="#" onclick="alert('To be translated')"
+                style="color:#1B2240;text-decoration:none;margin:0 8px;">Cookies</a> |
+            <a href="#" onclick="alert('To be translated')"
+                style="color:#1B2240;text-decoration:none;margin:0 8px;">Refunds</a> |
+            <a href="#" onclick="alert('To be translated')"
+                style="color:#1B2240;text-decoration:none;margin:0 8px;">Acceptable Use</a> |
+            <a href="#" onclick="alert('To be translated')"
+                style="color:#1B2240;text-decoration:none;margin:0 8px;">Disclaimer</a> |
+            <a href="#" onclick="alert('App remains same')" style="color:#1B2240;text-decoration:none;margin:0 8px;">App
+                & AI</a> |
+            <a href="#" onclick="alert('To be translated')"
+                style="color:#1B2240;text-decoration:none;margin:0 8px;">Legal Mentions</a>
+        </div>
+
+        <!-- Copyright -->
+        <div style="color:#5B6385;font-size:13px;margin-top:8px;">
+            © 2025 RabaisLocal – All rights reserved • Trois-Rivières (QC) •
+            <a href="mailto:support@rabaislocal.com" style="color:#3E53A5;text-decoration:none;">Contact</a> •
+            <a href="#" onclick="window.dispatchEvent(new CustomEvent('rl-open-prefs'));return false;"
+                style="color:#3E53A5;text-decoration:none;">Manage Cookies</a>
+        </div>
+
+        <!-- Social Proof -->
+        <div style="margin-top:15px;font-size:13px;color:#3E53A5;font-weight:500;">
+            A 100% local initiative powered by AI 🤖
+        </div>
+    </footer>
+
+    <!-- 2️⃣ MOBILE LIGHT VERSION + "SEE MORE" -->
+    <div class="rl-footer-mobile" style="display:none;background:#F5F8FF;border-top:4px solid #3E53A5;
+              text-align:center;font-family:'Poppins',sans-serif;color:#1B2240;padding:35px 18px 30px;">
+
+        <!-- Logo -->
+        <img src="assets/images/logo rabaislocal-2025-2.png" alt="RabaisLocal Logo"
+            style="width:140px;height:auto;margin:0 auto 12px auto;display:block;">
+
+        <!-- Slogan -->
+        <p style="margin:0;font-size:15px;font-weight:600;color:#3E53A5;">
+            💙 Together, everyone wins.
+        </p>
+
+        <!-- CTA -->
+        <a href="test_en_page1-1-affiliate.html" style="display:inline-block;margin-top:14px;background:#3E53A5;color:#fff;
+              font-weight:600;text-decoration:none;padding:12px 28px;border-radius:8px;">
+            🔗 Join for Free
+        </a>
+
+        <!-- Essential Links -->
+        <div style="margin-top:16px;font-size:13px;line-height:1.8;">
+            <a href="#" onclick="alert('To be translated')" style="color:#1B2240;text-decoration:none;">Terms</a> |
+            <a href="#" onclick="alert('To be translated')" style="color:#1B2240;text-decoration:none;">Privacy</a> |
+            <a href="#" onclick="alert('To be translated')" style="color:#1B2240;text-decoration:none;">Cookies</a>
+        </div>
+
+        <!-- "See More" Button -->
+        <div id="rl-more-links" style="margin-top:8px;">
+            <a href="#"
+                onclick="document.getElementById('rl-extra-links').style.display='block'; this.style.display='none'; return false;"
+                style="color:#3E53A5;text-decoration:none;font-size:13px;font-weight:600;">
+                🔽 See more pages
+            </a>
+        </div>
+
+        <!-- Hidden Links (shown after click) -->
+        <div id="rl-extra-links" style="display:none;margin-top:8px;font-size:13px;line-height:1.8;">
+            <a href="#" onclick="alert('To be translated')" style="color:#1B2240;text-decoration:none;">Refunds</a> |
+            <a href="#" onclick="alert('To be translated')" style="color:#1B2240;text-decoration:none;">Usage</a> |
+            <a href="#" onclick="alert('To be translated')" style="color:#1B2240;text-decoration:none;">Disclaimer</a> |
+            <a href="#" onclick="alert('App remains same')" style="color:#1B2240;text-decoration:none;">App & AI</a> |
+            <a href="#" onclick="alert('To be translated')" style="color:#1B2240;text-decoration:none;">Legal
+                Mentions</a>
+        </div>
+
+        <!-- Copyright -->
+        <p style="margin-top:16px;font-size:12px;color:#5B6385;">
+            © 2025 RabaisLocal • Trois-Rivières (QC) •
+            <a href="mailto:support@rabaislocal.com" style="color:#3E53A5;text-decoration:none;">Contact</a>
+        </p>
+    </div>
+
+    <!-- 3️⃣ RESPONSIVE CSS -->
+    <style>
+        @media(max-width:768px) {
+            .rl-footer-desktop {
+                display: none !important;
+            }
+
+            .rl-footer-mobile {
+                display: block !important;
+            }
+        }
+
+        @media(min-width:769px) {
+            .rl-footer-desktop {
+                display: block !important;
+            }
+
+            .rl-footer-mobile {
+                display: none !important;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get ref from URL or localStorage
+            const urlParams = new URLSearchParams(window.location.search);
+            const ref = urlParams.get('ref') || localStorage.getItem('rl_ref') || '0';
+
+            console.log('📊 Compensation Plan - Affiliate Ref:', ref);
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('✅ Compensation Plan V2 - 7 depth levels loaded');
+        });
+    </script>
+
+</body>
+
+</html>

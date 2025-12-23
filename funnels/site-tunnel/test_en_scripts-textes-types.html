@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Scripts & Templates – RabaisLocal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+    <style>
+        :root {
+            --rl-blue: #3E53A5;
+            --rl-blue-light: #F5F8FF;
+            --rl-accent: #E53935;
+            --rl-text: #222222;
+            --rl-muted: #555555;
+            --rl-border: #E0E3F0;
+            --rl-radius: 10px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background-color: var(--rl-blue-light);
+            color: var(--rl-text);
+            line-height: 1.6;
+        }
+
+        .page {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 24px 16px 40px;
+        }
+
+        .page-header {
+            background: white;
+            border-radius: 16px;
+            padding: 20px 20px 18px;
+            border: 1px solid var(--rl-border);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .page-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--rl-blue);
+            margin: 0;
+        }
+
+        .page-subtitle {
+            font-size: 0.95rem;
+            color: var(--rl-muted);
+            margin: 0;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            background: var(--rl-blue-light);
+            color: var(--rl-blue);
+            padding: 3px 10px;
+            border-radius: 999px;
+            border: 1px solid #D5DCF8;
+            margin-top: 2px;
+        }
+
+        .badge span {
+            font-size: 0.9rem;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+            gap: 20px;
+        }
+
+        .main-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .side-column {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            position: sticky;
+            top: 10px;
+            align-self: flex-start;
+        }
+
+        @media (max-width: 900px) {
+            .layout {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .side-column {
+                position: static;
+            }
+        }
+
+        .card {
+            background: #FFFFFF;
+            border-radius: 14px;
+            border: 1px solid var(--rl-border);
+            padding: 16px 18px;
+        }
+
+        .card-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin: 0 0 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--rl-blue);
+        }
+
+        .card-subtitle {
+            font-size: 0.9rem;
+            color: var(--rl-muted);
+            margin: 0 0 8px;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.8rem;
+            padding: 1px 8px;
+            border-radius: 999px;
+            background: #F3F4FB;
+            color: var(--rl-muted);
+            margin-right: 4px;
+            margin-bottom: 4px;
+        }
+
+        .section-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin: 0 0 8px;
+            color: var(--rl-blue);
+        }
+
+        .hint {
+            font-size: 0.85rem;
+            color: var(--rl-muted);
+            margin: 0 0 6px;
+        }
+
+        .script-block {
+            border-radius: 10px;
+            border: 1px solid #E3E6F2;
+            background: #FBFCFF;
+            padding: 10px 12px;
+            margin-top: 8px;
+            margin-bottom: 10px;
+        }
+
+        .script-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 0 0 4px;
+            color: var(--rl-text);
+        }
+
+        .script-meta {
+            font-size: 0.78rem;
+            color: var(--rl-muted);
+            margin: 0 0 4px;
+        }
+
+        .script-text {
+            font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 0.88rem;
+            white-space: pre-line;
+        }
+
+        .pill-info {
+            font-size: 0.8rem;
+            color: var(--rl-muted);
+            margin-top: 2px;
+        }
+
+        .bullet-note {
+            font-size: 0.9rem;
+            margin: 0 0 4px;
+        }
+
+        .side-card-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin: 0 0 4px;
+            color: var(--rl-blue);
+        }
+
+        .side-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 4px 0 0;
+            font-size: 0.88rem;
+            color: var(--rl-muted);
+        }
+
+        .side-list li {
+            margin-bottom: 3px;
+        }
+
+        .highlight {
+            color: var(--rl-accent);
+            font-weight: 600;
+        }
+
+        .link-placeholder {
+            font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 0.84rem;
+            background: #FFF5F3;
+            border-radius: 999px;
+            padding: 2px 8px;
+            border: 1px dashed #F3B5A9;
+            display: inline-block;
+            margin-top: 3px;
+        }
+
+        .footer-note {
+            font-size: 0.8rem;
+            color: var(--rl-muted);
+            margin-top: 4px;
+        }
+
+        /* Access Footer */
+        .nav-footer {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 40px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border-top: 3px solid #3E53A5;
+        }
+
+        .nav-footer-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .nav-footer a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 16px;
+            background: #F5F8FF;
+            color: #3E53A5;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.2s;
+            border: 2px solid transparent;
+        }
+
+        .nav-footer a:hover {
+            background: #3E53A5;
+            color: white;
+        }
+
+        .nav-footer a.home {
+            background: #E53935;
+            color: white;
+        }
+
+        .nav-footer a.home:hover {
+            background: #C62828;
+        }
+
+        .nav-footer .separator {
+            color: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+
+        <header class="page-header">
+            <h1 class="page-title">Scripts & Templates – RabaisLocal</h1>
+            <p class="page-subtitle">
+                Don't search for words. Copy-paste our email, SMS, and Messenger examples
+                to invite consumers and merchants to sign up for free.
+            </p>
+            <div class="badge">
+                <span>🚀 Easy Duplication</span>
+            </div>
+        </header>
+
+        <div class="layout">
+
+            <!-- Main Column -->
+            <div class="main-column">
+
+                <!-- 1. SMS -->
+                <section class="card">
+                    <h2 class="card-title">1. Short SMS Messages</h2>
+                    <p class="card-subtitle">Perfect for your close network: family, friends, colleagues.</p>
+
+                    <p class="hint">Replace <span class="highlight">(YOUR LINK)</span> with your RabaisLocal affiliate
+                        link.</p>
+
+                    <div class="script-block">
+                        <p class="script-title">SMS #1 – Simple and Direct</p>
+                        <p class="script-meta">👉 Use for someone who knows you well.</p>
+                        <p class="script-text">
+                            Hi! I'm sending you a link to sign up for free to RabaisLocal.
+                            It's a new local platform supporting local businesses.
+                            It's free → (YOUR LINK)
+                        </p>
+                    </div>
+
+                    <div class="script-block">
+                        <p class="script-title">SMS #2 – For someone who loves saving</p>
+                        <p class="script-meta">👉 Send to those who love discounts, deals, and bargains.</p>
+                        <p class="script-text">
+                            Hey! I discovered a project giving super local discounts.
+                            Registration is free and it helps local businesses.
+                            You should sign up 👉 (YOUR LINK)
+                        </p>
+                    </div>
+
+                    <div class="script-block">
+                        <p class="script-title">SMS #3 – For a close one ("Help me out" mode)</p>
+                        <p class="script-meta">👉 For family / close friends who want to support you.</p>
+                        <p class="script-text">
+                            Hi! I'd love for you to sign up, it helps my project and it's 100% free.
+                            Takes 30 seconds → (YOUR LINK)
+                        </p>
+                    </div>
+
+                    <div class="script-block">
+                        <p class="script-title">SMS #4 – Your Inner Circle</p>
+                        <p class="script-meta">👉 When you want to be very direct and personal.</p>
+                        <p class="script-text">
+                            Hello! I'm launching a big local project.
+                            Can you sign up? It's free and it really helps me a lot.
+                            Link: (YOUR LINK)
+                        </p>
+                    </div>
+                </section>
+
+                <!-- 2. Messenger / WhatsApp -->
+                <section class="card">
+                    <h2 class="card-title">2. Messenger / WhatsApp Messages</h2>
+                    <p class="card-subtitle">A bit more human, perfect for quick chats.</p>
+
+                    <div class="script-block">
+                        <p class="script-title">Messenger #1 – To Open Conversation</p>
+                        <p class="script-meta">👉 Ideal before sending your link.</p>
+                        <p class="script-text">
+                            Hi! Can I share something quickly?
+                            It's a local project I support and it's really simple.
+                        </p>
+                    </div>
+
+                    <div class="script-block">
+                        <p class="script-title">Messenger #2 – For Deal Fans</p>
+                        <p class="script-meta">👉 For people who love saving.</p>
+                        <p class="script-text">
+                            Hey! I think you'll like this.
+                            RabaisLocal → a local discount platform opening soon properly.
+                            Free sign-up and takes 20 seconds.
+                            👉 (YOUR LINK)
+                        </p>
+                    </div>
+
+                    <div class="script-block">
+                        <p class="script-title">Messenger #3 – For Those Who Support Local</p>
+                        <p class="script-meta">👉 Focus on local businesses.</p>
+                        <p class="script-text">
+                            Hi! If you like buying local, you'll love this.
+                            It's a local project I'm supporting.
+                            You can sign up for free here: (YOUR LINK)
+                        </p>
+                    </div>
+
+                    <div class="script-block">
+                        <p class="script-title">Messenger #4 – Very Personal Message</p>
+                        <p class="script-meta">👉 When you want to show you're really thinking of them.</p>
+                        <p class="script-text">
+                            I'm sharing this because I think you'll really like it.
+                            It's a local project I'm participating in.
+                            Can you sign up for free?
+                            👉 (YOUR LINK)
+                        </p>
+                    </div>
+                </section>
+
+                <!-- 3. Conversation Scripts -->
+                <section class="card">
+                    <h2 class="card-title">3. Conversation Scripts (Before Sending Link)</h2>
+                    <p class="card-subtitle">
+                        These scripts give the best conversion rates:
+                        talk 20–30 seconds, then send your link.
+                    </p>
+
+                    <div class="script-block">
+                        <p class="script-title">Script #1 – 15-Second Explanation</p>
+                        <p class="script-meta">👉 Use everywhere: in person, phone, audio.</p>
+                        <p class="script-text">
+                            It's a new local platform helping local businesses
+                            and giving exclusive discounts to consumers.
+                            It's free and super simple.
+                            Shall I send you my link?
+                        </p>
+                    </div>
+
+                    <div class="script-block">
+                        <p class="script-title">Script #2 – "Local Economy" Version</p>
+                        <p class="script-meta">👉 For people sensitive to "buying local".</p>
+                        <p class="script-text">
+                            You know I love supporting local... I found a platform that does exactly that.
+                            The discounts are really good and it launches soon.
+                            do you want me to send you my free link?
+                        </p>
+                    </div>
+
+                    <div class="script-block">
+                        <p class="script-title">Script #3 – "Help Me" Version</p>
+                        <p class="script-meta">👉 Use with your close circle.</p>
+                        <p class="script-text">
+                            I'm working on a big project and just your free registration helps me hugely.
+                            Takes 20 seconds.
+                            Shall I send the link?
+                        </p>
+                    </div>
+
+                    <div class="script-block">
+                        <p class="script-title">Script #4 – "Curiosity" Version</p>
+                        <p class="script-meta">👉 For curious people who like new things.</p>
+                        <p class="script-text">
+                            Want to see a new local project that's going to be talked about a lot soon?
+                            It's free.
+                            Shall I send my link?
+                        </p>
+                    </div>
+                </section>
+
+                <!-- 4. Emails -->
+                <section class="card">
+                    <h2 class="card-title">4. Ready-to-Send Emails</h2>
+                    <p class="card-subtitle">You can use them for your wider or professional network.</p>
+
+                    <div class="script-block">
+                        <p class="script-title">Email #1 – Short & Direct</p>
+                        <p class="script-meta">Subject: A local project you should see 😊</p>
+                        <p class="script-text">
+                            Hello!
+
+                            I want to share a local platform launching soon: RabaisLocal.
+                            It's free, it helps local businesses, and takes 20 seconds to sign up.
+
+                            You can create your account here:
+                            👉 (YOUR LINK)
+
+                            Thanks for encouraging the local economy and a local project!
+                        </p>
+                    </div>
+
+                    <div class="script-block">
+                        <p class="script-title">Email #2 – For a friend or colleague</p>
+                        <p class="script-meta">Subject: Small favor for me (and good deal for you!)</p>
+                        <p class="script-text">
+                            Hi!
+
+                            I'm participating in a very promising local project: RabaisLocal.
+                            It's 100% free and gives access to local discounts when it opens.
+
+                            If you can sign up via my link, it helps me a lot:
+                            👉 (YOUR LINK)
+
+                            Thanks, super appreciated!
+                        </p>
+                    </div>
+
+                    <div class="script-block">
+                        <p class="script-title">Email #3 – More Professional</p>
+                        <p class="script-meta">Subject: Official Invitation – RabaisLocal</p>
+                        <p class="script-text">
+                            Good day,
+
+                            I'm sharing a new initiative aiming to support local businesses
+                            while offering consumers exclusive discounts.
+                            Registration is free and takes less than 30 seconds.
+
+                            Here is the link to create your account:
+                            👉 (YOUR LINK)
+
+                            Thank you for being among the first to encourage this local initiative.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- 5. Merchants -->
+                <section class="card">
+                    <h2 class="card-title">5. Scripts to talk to Merchants</h2>
+                    <p class="card-subtitle">Simple, non-intimidating and benefit-oriented for them.</p>
+
+                    <div class="script-block">
+                        <p class="script-title">Merchant #1 – Quick Entry</p>
+                        <p class="script-meta">👉 Perfect in person (shop, cafe, restaurant).</p>
+                        <p class="script-text">
+                            Do you accept membership cards?
+
+                            Perfect! RabaisLocal is launching a platform soon that brings customers in-store
+                            without charging you commission.
+                            Can I send you the link?
+                        </p>
+                    </div>
+
+                    <div class="script-block">
+                        <p class="script-title">Merchant #2 – Ultra Short</p>
+                        <p class="script-meta">👉 When you have very little time.</p>
+                        <p class="script-text">
+                            I'm helping launch a local platform sending customers to businesses
+                            without commission fees.
+                            Want to see? I'll send you the link.
+                        </p>
+                    </div>
+
+                    <div class="script-block">
+                        <p class="script-title">Merchant #3 – "Curiosity" Version</p>
+                        <p class="script-meta">👉 Focus on AI and Innovation.</p>
+                        <p class="script-text">
+                            I know a local project allowing businesses to create intelligent promotions
+                            thanks to AI, without paying commission on sales.
+                            Can I send you the info?
+                        </p>
+                    </div>
+
+                    <div class="script-block">
+                        <p class="script-title">Merchant #4 – "Soft" Version</p>
+                        <p class="script-meta">👉 To approach quietly.</p>
+                        <p class="script-text">
+                            I'm one of the first members of a local platform helping businesses here
+                            attract more customers.
+                            Interested in being on the list before launch?
+                            I'll send you the link.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- 6. Social Media -->
+                <section class="card">
+                    <h2 class="card-title">6. Social Media Messages</h2>
+                    <p class="card-subtitle">To post on Facebook, Instagram, etc. → copy/paste, add your link.</p>
+
+                    <div class="script-block">
+                        <p class="script-title">Post #1 – Simple</p>
+                        <p class="script-text">
+                            I just joined a great local project: RabaisLocal!
+                            Local discount platform, free, and helping businesses here.
+                            You can sign up for free here 👉 (YOUR LINK)
+                        </p>
+                    </div>
+
+                    <div class="script-block">
+                        <p class="script-title">Post #2 – Local & Human</p>
+                        <p class="script-text">
+                            Supporting local has never been so simple.
+                            I'm one of the first members of RabaisLocal, a platform connecting
+                            consumers and businesses from here.
+                            Free registration → (YOUR LINK)
+                        </p>
+                    </div>
+
+                    <div class="script-block">
+                        <p class="script-title">Post #3 – Savings</p>
+                        <p class="script-text">
+                            If you like saving and supporting local businesses, you'll love this:
+                            RabaisLocal is coming soon!
+                            Free registration: (YOUR LINK)
+                        </p>
+                    </div>
+
+                    <div class="script-block">
+                        <p class="script-title">Post #4 – "Counting on You"</p>
+                        <p class="script-text">
+                            Friends and family:
+                            I need a little help.
+                            Can you sign up for free to RabaisLocal via my link?
+                            It helps me a lot for the launch. Thanks! ❤️
+                            👉 (YOUR LINK)
+                        </p>
+                    </div>
+                </section>
+
+                <!-- 7. Voice Scripts -->
+                <section class="card">
+                    <h2 class="card-title">7. Scripts for Calls & Voice Messages</h2>
+                    <p class="card-subtitle">For phone, audio Messenger, voice note, etc.</p>
+
+                    <div class="script-block">
+                        <p class="script-title">Call #1 – 10 Seconds</p>
+                        <p class="script-meta">👉 To ask for a "small favor".</p>
+                        <p class="script-text">
+                            Hi! I'm calling quickly to ask a small favor.
+                            I'm working on a local project, registration is free and it helps me hugely.
+                            I'll send you my link, OK?
+                        </p>
+                    </div>
+
+                    <div class="script-block">
+                        <p class="script-title">Call #2 – "Local Curiosity" Version</p>
+                        <p class="script-meta">👉 Ideal for people who like supporting local.</p>
+                        <p class="script-text">
+                            I discovered a local platform helping businesses here
+                            with really interesting discounts.
+                            It opens soon and it's free.
+                            Want me to send the registration?
+                        </p>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- Side Column -->
+            <aside class="side-column">
+
+                <div class="card">
+                    <p class="side-card-title">How to use these scripts?</p>
+                    <ul class="side-list">
+                        <li>1. Choose script based on the person (close, unknown, merchant).</li>
+                        <li>2. Personalize 1–2 sentences so it sounds like you.</li>
+                        <li>3. Replace <span class="highlight">(YOUR LINK)</span> with your affiliate link.</li>
+                        <li>4. Send → then follow up gently if needed.</li>
+                    </ul>
+                    <p class="footer-note">
+                        The more you talk before sending your link, the higher your conversion rate.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <p class="side-card-title">Important Reminder</p>
+                    <p class="bullet-note">
+                        ✅ You don't need to explain RabaisLocal fully.
+                    </p>
+                    <p class="bullet-note">
+                        Your role: <span class="highlight">open the door</span> by sending your link.
+                    </p>
+                    <p class="bullet-note">
+                        RabaisLocal takes care of pages, videos, and explanations.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <p class="side-card-title">Pro Tip</p>
+                    <p class="bullet-note">
+                        Always start with your closest circle: that's where conversion rates
+                        are highest.
+                    </p>
+                </div>
+
+            </aside>
+        </div>
+
+        <!-- Access Footer -->
+        <nav class="nav-footer">
+            <div class="nav-footer-links">
+                <a href="test_en_guide-demarrage-affilie.html">🧭 Startup Guide</a>
+                <span class="separator">|</span>
+                <a href="#" onclick="alert('Share guide translated soon')">🚀 How to Share</a>
+                <span class="separator">|</span>
+                <a href="#" onclick="alert('Docs page translated soon')">📚 Documents</a>
+                <span class="separator">|</span>
+                <a href="test_en_plan-remuneration.html">💰 Plan</a>
+                <span class="separator">|</span>
+                <a href="test_en_outil_presentation.html" class="home">🏠 Home</a>
+            </div>
+        </nav>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const ref = urlParams.get('ref') || localStorage.getItem('rl_ref') || '0';
+            console.log('📊 Scripts Page - Affiliate Ref:', ref);
+        });
+    </script>
+
+</body>
+
+</html>
