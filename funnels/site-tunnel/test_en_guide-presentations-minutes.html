@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minute Presentations Guide - RabaisLocal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #F5F8FF;
+            color: #1B2240;
+            line-height: 1.7;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            color: #3E53A5;
+            font-size: 32px;
+            margin-bottom: 10px;
+            border-bottom: 3px solid #FF6B35;
+            padding-bottom: 15px;
+        }
+
+        h2 {
+            color: #3E53A5;
+            font-size: 24px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-left: 5px solid #FF6B35;
+            padding-left: 15px;
+        }
+
+        h3 {
+            color: #1B2240;
+            font-size: 20px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .intro {
+            background: linear-gradient(135deg, #3E53A5 0%, #2c3e80 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+        .warning-box {
+            background: #FFF3E0;
+            border-left: 5px solid #FF6B35;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .warning-box strong {
+            color: #E65100;
+            font-size: 18px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .success-box {
+            background: #E8F5E9;
+            border-left: 5px solid #4CAF50;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .success-box strong {
+            color: #2E7D32;
+            font-size: 18px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .info-box {
+            background: #E3F2FD;
+            border-left: 5px solid #2196F3;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .info-box strong {
+            color: #1565C0;
+            font-size: 18px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .presentation-card {
+            border: 2px solid #E0E0E0;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            transition: all 0.3s ease;
+        }
+
+        .presentation-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .presentation-card.commercant {
+            border-color: #E53935;
+            background: #FFEBEE;
+        }
+
+        .presentation-card.consommateur {
+            border-color: #4CAF50;
+            background: #E8F5E9;
+        }
+
+        .presentation-card.affilie {
+            border-color: #9C27B0;
+            background: #F3E5F5;
+        }
+
+        .presentation-card h3 {
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon {
+            font-size: 28px;
+        }
+
+        ul,
+        ol {
+            margin: 15px 0 15px 25px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #3E53A5;
+            color: white !important;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 10px 10px 10px 0;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background: #2c3e80;
+            transform: translateY(-2px);
+        }
+
+        .btn-orange {
+            background: #FF6B35;
+        }
+
+        .btn-orange:hover {
+            background: #E55A2B;
+        }
+
+        .btn-green {
+            background: #4CAF50;
+        }
+
+        .btn-green:hover {
+            background: #388E3C;
+        }
+
+        .screenshot {
+            width: 100%;
+            max-width: 700px;
+            margin: 25px auto;
+            display: block;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            border: 3px solid #E0E0E0;
+        }
+
+        .steps {
+            counter-reset: step-counter;
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .steps li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 25px;
+        }
+
+        .steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: linear-gradient(135deg, #3E53A5 0%, #2c3e80 100%);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .example-box {
+            background: #FAFAFA;
+            border: 2px dashed #BDBDBD;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-style: italic;
+            color: #424242;
+        }
+
+        .quick-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+
+        .quick-link-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            color: white !important;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .quick-link-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .quick-link-btn.commercant {
+            background: #E53935;
+        }
+
+        .quick-link-btn.consommateur {
+            background: #4CAF50;
+        }
+
+        .quick-link-btn.affilie {
+            background: #9C27B0;
+        }
+
+        @media (max-width: 768px) {
+            .quick-links {
+                flex-direction: column;
+            }
+
+            .quick-link-btn {
+                width: 100%;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 26px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            .intro {
+                padding: 20px;
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>⏱️ Minute Presentations Guide</h1>
+
+        <div class="intro">
+            The <strong>Minute Presentations</strong> are ultra-optimized mobile pages that allow you to present
+            RabaisLocal in <strong>90 seconds</strong> and directly capture your prospects' emails. They do all the work
+            for you: clear presentation, integrated form, and automatic sending of the personalized registration link.
+        </div>
+
+        <!-- Quick links to the 3 pages -->
+        <div class="quick-links">
+            <a href="#" onclick="alert('Translated presentation pages coming soon')"
+                class="quick-link-btn commercant">📱 Merchant Page</a>
+            <a href="#" onclick="alert('Translated presentation pages coming soon')"
+                class="quick-link-btn consommateur">💚 Consumer Page</a>
+            <a href="#" onclick="alert('Translated presentation pages coming soon')" class="quick-link-btn affilie">💜
+                Affiliate Page</a>
+        </div>
+
+        <!-- ========================================
+         BEFORE STARTING - IMPORTANT
+    ========================================= -->
+        <div class="warning-box">
+            <strong>⚠️ BEFORE STARTING - ABSOLUTELY ESSENTIAL</strong>
+            <p>Before using these pages, you MUST fill in <strong>ALL your information</strong> in your member area,
+                especially:</p>
+            <ul style="margin-top: 10px;">
+                <li><strong>Your phone number</strong> — It will be sent by email with the registration link so your
+                    referrals can contact you</li>
+                <li><strong>Your referral number</strong> — Essential for registrations to be credited to your account
+                </li>
+                <li>Your name, email, and other profile information</li>
+            </ul>
+        </div>
+
+        <h2>📍 Where to find and update your information</h2>
+
+        <h3>1. Access your member area</h3>
+        <p>Log in to your RabaisLocal member area:</p>
+        <a href="https://partenaires.rabaislocal.com/login" target="_blank" class="btn btn-green">🔐 Member Area
+            Login</a>
+
+        <h3>2. Find your referral number</h3>
+        <p>Once logged in, you will see your <strong>Affiliate Link</strong> on your dashboard. Your referral number is
+            visible in this link.</p>
+
+        <!-- Use original image for now -->
+        <img src="assets/images/screenshot-lien-affiliation.png" alt="Affiliate link screenshot" class="screenshot">
+
+        <div class="info-box">
+            <strong>💡 Affiliate Link Example</strong>
+            <p>If your link is: <code>https://partenaires.rabaislocal.com/?ref=9999999&utm_source=affilie</code></p>
+            <p>Your referral number is: <strong>9999999</strong></p>
+        </div>
+
+        <h3>3. Update your phone number</h3>
+        <p>Click on <strong>Settings</strong> in the top menu of your member area, then fill in your phone number with
+            the country code (+1 for Canada).</p>
+
+        <img src="assets/images/screenshot-reglages-telephone.png" alt="Settings screenshot with phone number"
+            class="screenshot">
+
+        <a href="https://partenaires.rabaislocal.com/settings" target="_blank" class="btn btn-orange">⚙️ Update My
+            Information</a>
+
+        <div class="warning-box">
+            <strong>🚨 Why it is CRITICAL</strong>
+            <p>When you capture a prospect's email, RabaisLocal automatically sends them an email with:</p>
+            <ul style="margin-top: 10px;">
+                <li>The personalized registration link with YOUR referral number</li>
+                <li><strong>Your contact info (name, phone, email)</strong> so they can contact you if they have
+                    questions</li>
+            </ul>
+            <p style="margin-top: 15px;">If you haven't filled in your phone number, the prospect won't be able to reach
+                you and you risk losing the registration!</p>
+        </div>
+
+        <!-- ========================================
+         THE 3 PRESENTATION PAGES
+    ========================================= -->
+        <h2>📱 The 3 Presentation Pages</h2>
+
+        <p>You have <strong>3 different pages</strong>, each adapted to a specific audience:</p>
+
+        <!-- MERCHANT -->
+        <div class="presentation-card commercant">
+            <h3><span class="icon">📱</span> Merchant Presentation Page</h3>
+            <p><strong>For whom:</strong> Local business owners (restaurants, boutiques, salons, etc.)</p>
+            <p><strong>Goal:</strong> Show them how RabaisLocal can attract more customers to their business</p>
+            <p><strong>Duration:</strong> ~90 seconds to read</p>
+
+            <a href="#" onclick="alert('Translated presentation pages coming soon')" class="btn"
+                style="background: #E53935;">📲 Open Merchant Page</a>
+
+            <h4 style="margin-top: 25px;">💡 Usage Examples</h4>
+
+            <div class="example-box">
+                <strong>Scenario 1: In person at the business</strong>
+                <p>You enter a local restaurant. You chat with the owner and say: "I have a platform that could help you
+                    attract more customers. Shall I show you in 2 minutes on my phone?"</p>
+                <p>→ You show them the page on your mobile. They read for 90 seconds. At the end, you enter your
+                    referral number and their email. Done!</p>
+            </div>
+
+            <div class="example-box">
+                <strong>Scenario 2: By SMS/WhatsApp</strong>
+                <p>You send this message to a merchant you know:</p>
+                <p>"Hi Marc! I discovered a platform to help local businesses attract more customers. Check out this
+                    quick presentation: [link]. If you're interested, leave me your email at the end and I'll send you
+                    the details!"</p>
+            </div>
+        </div>
+
+        <!-- CONSUMER -->
+        <div class="presentation-card consommateur">
+            <h3><span class="icon">💚</span> Consumer Presentation Page</h3>
+            <p><strong>For whom:</strong> Consumers who love saving money at local businesses</p>
+            <p><strong>Goal:</strong> Show them how to find local discounts near them</p>
+            <p><strong>Duration:</strong> ~90 seconds to read</p>
+
+            <a href="#" onclick="alert('Translated presentation pages coming soon')" class="btn"
+                style="background: #4CAF50;">📲 Open Consumer Page</a>
+
+            <h4 style="margin-top: 25px;">💡 Usage Examples</h4>
+
+            <div class="example-box">
+                <strong>Scenario 1: Family and friends</strong>
+                <p>You send this message to your family WhatsApp group:</p>
+                <p>"Hey! I found a platform to save money at local businesses. Check this out: [link]. Leave your email
+                    at the end if you want to benefit from it!"</p>
+            </div>
+        </div>
+
+        <!-- AFFILIATE -->
+        <div class="presentation-card affilie">
+            <h3><span class="icon">💜</span> Affiliate Presentation Page</h3>
+            <p><strong>For whom:</strong> People interested in generating income by recommending RabaisLocal</p>
+            <p><strong>Goal:</strong> Explain the 2.0 affiliate program without selling</p>
+            <p><strong>Duration:</strong> ~2-3 minutes to read</p>
+
+            <a href="#" onclick="alert('Translated presentation pages coming soon')" class="btn"
+                style="background: #9C27B0;">📲 Open Affiliate Page</a>
+
+            <h4 style="margin-top: 25px;">💡 Usage Examples</h4>
+
+            <div class="example-box">
+                <strong>Scenario 1: Someone looking for extra income</strong>
+                <p>You chat with a friend looking to make ends meet. You say:</p>
+                <p>"I started recommending a local platform and I earn recurring commissions without selling anything.
+                    Check out this quick presentation: [link]. If you're interested, leave your email at the end."</p>
+            </div>
+        </div>
+
+        <!-- ========================================
+         HOW TO USE THE PAGES
+    ========================================= -->
+        <h2>🎯 How to use pages effectively</h2>
+
+        <ol class="steps">
+            <li>
+                <strong>Choose the right page for your prospect</strong>
+                <p>Merchant → Red Page | Consumer → Green Page | Future Affiliate → Purple Page</p>
+            </li>
+
+            <li>
+                <strong>Open the page on your phone or send the link</strong>
+                <p>If you are in person, show the page directly. Otherwise, send the link by SMS, email, WhatsApp,
+                    Messenger, etc.</p>
+            </li>
+
+            <li>
+                <strong>Let the page do the work</strong>
+                <p>The page explains everything in 90 seconds (2-3 minutes for the affiliate page). You don't have to
+                    explain anything!</p>
+            </li>
+
+            <li>
+                <strong>Enter YOUR referral number (7 digits)</strong>
+                <p>This is CRITICAL! Without your number, the registration will not be credited to your account.</p>
+            </li>
+
+            <li>
+                <strong>Capture the prospect's email</strong>
+                <p>The prospect enters their email. RabaisLocal automatically sends them an email with:</p>
+                <ul style="margin-top: 10px;">
+                    <li>The personalized registration link with your referral number</li>
+                    <li>Your contact info so they can contact you</li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>The prospect receives the email and signs up</strong>
+                <p>They click the link in the email and complete their registration. The registration is automatically
+                    linked to your account!</p>
+            </li>
+        </ol>
+
+        <!-- ========================================
+         PRACTICAL TIPS
+    ========================================= -->
+        <h2>💡 Practical Tips</h2>
+
+        <div class="success-box">
+            <strong>✅ What works well</strong>
+            <ul style="margin-top: 10px;">
+                <li>Showing the page in person on your phone (best conversion rate)</li>
+                <li>Sending the link with a short personalized message, not just the link alone</li>
+                <li>Using the link after a conversation, not cold</li>
+                <li>Following up with a message 24h after sending: "Did you have time to look?"</li>
+            </ul>
+        </div>
+
+        <div class="warning-box">
+            <strong>⚠️ Errors to avoid</strong>
+            <ul style="margin-top: 10px;">
+                <li>Forgetting to enter your referral number (registration won't be credited!)</li>
+                <li>Not having filled in your profile and phone number in the member area</li>
+                <li>Sending the link without context (spam)</li>
+                <li>Wanting to explain everything verbally instead of letting the page do the work</li>
+                <li>Using the wrong page (merchant vs consumer vs affiliate)</li>
+            </ul>
+        </div>
+
+        <!-- ========================================
+         FAQ
+    ========================================= -->
+        <h2>❓ Frequently Asked Questions</h2>
+
+        <h3>Q: Do I need to create a different account for each type of prospect?</h3>
+        <p><strong>A:</strong> No! You use the SAME referral number for all 3 pages. The system automatically knows what
+            type of registration it is (merchant, consumer, or affiliate) thanks to hidden fields in the form.</p>
+
+        <h3>Q: What happens after the prospect enters their email?</h3>
+        <p><strong>A:</strong> RabaisLocal automatically sends an email to the prospect with:</p>
+        <ul>
+            <li>The personalized registration link (with your referral number)</li>
+            <li>Your contact details (name, phone, email) so they can contact you</li>
+            <li>Instructions to complete their registration</li>
+        </ul>
+
+        <h3>Q: How long is the registration link valid?</h3>
+        <p><strong>A:</strong> The link never expires. The prospect can sign up whenever they want, and the registration
+            will still be credited to your account.</p>
+
+        <h3>Q: Can I customize the pages?</h3>
+        <p><strong>A:</strong> No, the pages are standardized to ensure a consistent message. However, you can customize
+            your introductory message when you send the link.</p>
+
+        <h3>Q: Should I follow up with the prospect after they receive the email?</h3>
+        <p><strong>A:</strong> Yes, it is recommended! Send a message 24-48h later: "Did you have time to sign up? Do
+            you have any questions?" This significantly increases the conversion rate.</p>
+
+        <!-- ========================================
+         QUICK LINKS
+    ========================================= -->
+        <h2>🔗 Quick Links</h2>
+
+        <div style="margin-top: 25px;">
+            <a href="#" onclick="alert('Translated presentation pages coming soon')" class="btn"
+                style="background: #E53935;">📱 Merchant Page</a>
+            <a href="#" onclick="alert('Translated presentation pages coming soon')" class="btn"
+                style="background: #4CAF50;">💚 Consumer Page</a>
+            <a href="#" onclick="alert('Translated presentation pages coming soon')" class="btn"
+                style="background: #9C27B0;">💜 Affiliate Page</a>
+        </div>
+
+        <div style="margin-top: 15px;">
+            <a href="https://partenaires.rabaislocal.com/settings" target="_blank" class="btn btn-orange">⚙️ Update My
+                Information</a>
+            <a href="https://partenaires.rabaislocal.com/login" target="_blank" class="btn btn-green">🔐 Member Area
+                Login</a>
+        </div>
+
+        <div style="margin-top: 15px;">
+            <a href="#" onclick="alert('Documents page to be translated')" class="btn">← Back to Useful Documents</a>
+        </div>
+
+        <!-- ========================================
+         FOOTER
+    ========================================= -->
+        <div
+            style="margin-top: 50px; padding-top: 25px; border-top: 2px solid #E0E0E0; text-align: center; color: #666;">
+            <p style="font-size: 14px;">© 2025 RabaisLocal - Affiliate Program 2.0</p>
+            <p style="font-size: 13px; margin-top: 10px;">Official Launch: March 19, 2026</p>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
