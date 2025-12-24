@@ -1,34 +1,69 @@
-// ============================================================================
-// RABAISLOCAL - HOME PAGE
-// ============================================================================
+import Header from '@/components/Header';
+import Hero from '@/components/Hero';
+import OfferCard from '@/components/OfferCard';
+import PopularCategories from '@/components/PopularCategories';
+import Footer from '@/components/Footer';
 
 export default function Home() {
+  // Données d'exemple pour les offres
+  const featuredOffers = [
+    {
+      id: '1',
+      title: 'Restaurant Le Gourmet',
+      description: '- 20% de rabais',
+      image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80',
+      badge: {
+        text: '20%',
+        subtext: 'de rabais',
+      },
+      rating: 5,
+    },
+    {
+      id: '2',
+      title: 'Boutique Mode Locale',
+      description: '- 2 pour 1',
+      image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80',
+      badge: {
+        text: '2 pour',
+        subtext: '1',
+      },
+      rating: 5,
+    },
+    {
+      id: '3',
+      title: 'Service de Réparation',
+      description: '- 15% off',
+      image: 'https://images.unsplash.com/photo-1581093458791-9d42e4e6b4e7?auto=format&fit=crop&w=800&q=80',
+      badge: {
+        text: '15%',
+        subtext: 'off',
+      },
+      rating: 5,
+    },
+  ];
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      <div className="max-w-5xl w-full items-center justify-between font-mono text-sm">
-        <h1 className="text-4xl font-bold text-center mb-8">
-          🎉 Bienvenue sur RabaisLocal
-        </h1>
+    <div className="min-h-screen flex flex-col">
+      <Header />
 
-        <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-8 rounded-lg shadow-xl">
-          <h2 className="text-2xl font-semibold mb-4">
-            La Plateforme Québécoise de Rabais Locaux
-          </h2>
-          <p className="text-lg mb-4">
-            Zéro commission • IA Intelligente • Économie Locale
-          </p>
-          <ul className="space-y-2">
-            <li>✅ Consommateurs : Rabais exclusifs</li>
-            <li>✅ Commerçants : Visibilité sans commission</li>
-            <li>✅ Affiliés : Revenu passif automatisé</li>
-          </ul>
-        </div>
+      <main className="flex-1">
+        <Hero />
 
-        <div className="mt-8 text-center text-gray-600">
-          <p>Version 1.0.0 - En développement</p>
-          <p className="text-sm mt-2">Fait avec ❤️ pour l'économie locale québécoise</p>
-        </div>
-      </div>
-    </main>
+        {/* Featured Offers Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {featuredOffers.map((offer) => (
+                <OfferCard key={offer.id} {...offer} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <PopularCategories />
+      </main>
+
+      <Footer />
+    </div>
   );
 }

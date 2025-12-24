@@ -20,21 +20,34 @@ const nextConfig = {
       'rabaislocal.com',
       'supabase.co',
       '*.supabase.co',
+      'images.unsplash.com',
     ],
     formats: ['image/webp', 'image/avif'],
   },
 
   // Headers for security
   async headers() {
-    const cspDirectives = [
-      "default-src 'self'",
-      "script-src 'self'",
-      "style-src 'self' 'unsafe-inline'",
-      "img-src 'self' data: blob:",
-      "font-src 'self'",
-      "connect-src 'self' https://localhost http://localhost https://rabaislocal.com http://rabaislocal.com",
-      "frame-ancestors 'none'",
-    ].join('; ');
+    const isDev = process.env.NODE_ENV === 'development';
+
+    const cspDirectives = isDev
+      ? [
+          "default-src 'self'",
+          "script-src 'self' 'unsafe-eval' 'unsafe-inline'",
+          "style-src 'self' 'unsafe-inline'",
+          "img-src 'self' data: blob: https: http:",
+          "font-src 'self' data:",
+          "connect-src 'self' ws: wss: https://localhost http://localhost https://rabaislocal.com http://rabaislocal.com",
+          "frame-ancestors 'none'",
+        ].join('; ')
+      : [
+          "default-src 'self'",
+          "script-src 'self'",
+          "style-src 'self' 'unsafe-inline'",
+          "img-src 'self' data: blob: https://images.unsplash.com",
+          "font-src 'self'",
+          "connect-src 'self' https://localhost http://localhost https://rabaislocal.com http://rabaislocal.com",
+          "frame-ancestors 'none'",
+        ].join('; ');
 
     return [
       {
