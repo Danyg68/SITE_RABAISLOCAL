@@ -31,7 +31,15 @@
       "Bash(curl:*)",
       "Bash(git merge:*)",
       "Bash(git stash:*)",
-      "Bash(git restore:*)"
+      "Bash(git restore:*)",
+      "Bash(git -C \"c:\\\\Users\\\\manager\\\\OneDrive\\\\rabaislocal\\\\SITE_RABAISLOCAL\" log --oneline -15)",
+      "Bash(git -C \"c:\\\\Users\\\\manager\\\\OneDrive\\\\rabaislocal\\\\SITE_RABAISLOCAL\" diff HEAD -- \"frontend/src/app/globals.css\" \"frontend/src/app/page.tsx\" \"funnels/site-tunnel/page2-affilie.html\")",
+      "Bash(git -C \"c:\\\\Users\\\\manager\\\\OneDrive\\\\rabaislocal\\\\SITE_RABAISLOCAL\" branch -a)",
+      "Bash(git -C \"c:\\\\Users\\\\manager\\\\OneDrive\\\\rabaislocal\\\\SITE_RABAISLOCAL\" log --oneline -1)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(taskkill /PID 66868 /F)",
+      "Bash(taskkill:*)"
     ],
     "deny": [],
     "ask": []
